@@ -1,0 +1,170 @@
+/* 资源 tab (resource-panel.js + resource-cards.js; redesign 2026-10-08).
+   Linked on first render (CSP style-src 'self'); tokens only (tokens.css). Shared fold / chip / attention styles: app.css. */
+.res-scroll { background: var(--sc-bg); padding-top: var(--sp-1); }
+.holdings { display: flex; flex-direction: column; min-width: 0; }
+
+/* ---- summary strip: four stat cards, 2 x 2 ---- */
+.stat-strip { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-2); margin-top: var(--sp-3); }
+.stat-card {
+  display: grid; grid-template-columns: 32px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: var(--sp-2);
+  align-items: center; min-width: 0; padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-2);
+  border: 1px solid var(--sc-border); border-radius: var(--r-m); background: var(--sc-surface);
+}
+.stat-icon { grid-row: 1 / span 2; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
+.stat-note { margin-left: 4px; padding: 0 4px; border: 1px solid var(--sc-border); border-radius: var(--r-s); font-size: var(--fs-11); line-height: 14px; color: var(--sc-text-2); }
+
+/* one icon look for the page (2026-10-08b): the in-game tile in a fixed square well; the line / glyph plate (packaged
+   builds without private assets) fills the same well, so sizes and spacing never change between the two */
+.res-icon { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; }
+.res-icon > .item-img, .res-icon > .holding-img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; }
+.res-icon > .line-plate { width: 100% !important; height: 100% !important; }
+.stat-main { display: flex; flex-direction: column; min-width: 0; }
+.stat-label { font-size: var(--fs-11); color: var(--sc-text-2); line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stat-num { font-size: var(--fs-16); font-weight: 600; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stat-max { font-size: var(--fs-12); font-weight: 400; color: var(--sc-text-2); }
+.stat-none { font-size: var(--fs-13); font-weight: 400; color: var(--sc-text-2); }
+.stat-card .fresh { grid-column: 2; }
+.stat-card.is-missing { border-style: dashed; background: transparent; }
+.stat-card.is-missing .stat-icon { opacity: .5; filter: grayscale(1); }
+
+/* freshness: quiet text; older than a day gets a warning dot in front */
+.fresh { font-size: var(--fs-11); line-height: 1.4; color: var(--sc-text-2); white-space: nowrap; }
+.fresh.is-stale::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: var(--sc-warning); vertical-align: 1px; }
+.extra-readings { list-style: none; margin: var(--sp-2) 0 0; padding: 0 var(--sp-1); display: grid; gap: 2px; font-size: var(--fs-12); }
+.extra-readings li { display: flex; align-items: baseline; gap: var(--sp-2); }
+.extra-readings .fresh { margin-left: auto; }
+
+/* ---- item tiles ---- */
+.item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 6px; }
+.item-tile {
+  display: flex; flex-direction: column; align-items: center; gap: 1px; min-width: 0; padding: var(--sp-2) 2px 6px;
+  border: 1px solid transparent; border-radius: var(--r-m); background: var(--sc-surface-2); color: var(--sc-text); font: inherit; cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.item-tile:hover { border-color: var(--sc-control); }
+.item-tile:focus-visible { outline-offset: 1px; }
+.item-tile-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+.item-tile-icon .res-icon { width: 32px; height: 32px; }
+.holding-img.is-crop { outline: 1px dashed var(--sc-control); outline-offset: 1px; border-radius: var(--r-s); }
+.item-tile-count { font-size: var(--fs-13); font-weight: 600; line-height: 1.35; }
+.item-tile-count.is-none { font-size: var(--fs-11); font-weight: 400; color: var(--sc-text-2); }
+.item-tile-name { max-width: 100%; font-size: var(--fs-11); line-height: 1.35; color: var(--sc-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.item-tile.is-missing { background: transparent; border: 1px dashed var(--sc-border); }
+.item-tile.is-missing .item-tile-icon, .item-tile.is-indicator .item-tile-icon { opacity: .5; filter: grayscale(1); }
+.item-detail { margin: var(--sp-2) 0 0; min-height: 1.5em; overflow-wrap: anywhere; }
+
+/* ---- cards: segmented kind, chips, queue, toolbar, grid ---- */
+.rcards { display: flex; flex-direction: column; gap: var(--sp-2); min-width: 0; }
+.rc-kind .segment { min-height: 30px; font-size: var(--fs-13); }
+.rc-toolbar { display: flex; align-items: center; gap: var(--sp-2); min-width: 0; }
+.rc-toolbar .search-wrap { min-width: 0; }
+.rc-search { height: 28px; font-size: var(--fs-12); }
+.rc-sort { flex: none; flex-wrap: nowrap; }
+.rcards .chip-row { gap: 4px; }
+.rcards .chip { padding: 0 6px; gap: 4px; }
+.chip-row-quiet .chip { min-height: 24px; padding: 0 5px; }
+.rar-swatch { width: 8px; height: 8px; border-radius: 2px; background: var(--rar, var(--rar-n)); }
+
+/* rarity colours (frames, swatches, tags) */
+.rar-ur { --rar: var(--rar-ur); }
+.rar-ssr { --rar: var(--rar-ssr); }
+.rar-sr { --rar: var(--rar-sr); }
+.rar-r { --rar: var(--rar-r); }
+.rar-n { --rar: var(--rar-n); }
+
+/* 需要你确认 queue */
+.rq { border: 1px solid var(--sc-border); border-left: 3px solid var(--sc-accent); border-radius: var(--r-m); padding: var(--sp-2) var(--sp-2) var(--sp-1) var(--sp-3); }
+.rq-head { display: flex; align-items: center; gap: var(--sp-2); min-height: 24px; }
+.rq-title-main { font-size: var(--fs-13); font-weight: 600; }
+.rq-list { list-style: none; margin: var(--sp-1) 0 0; padding: 0; }
+.rq-row { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: var(--sp-2); padding: 6px 0; border-top: 1px solid var(--sc-border); }
+.rq-thumb { width: 40px; height: 40px; }
+.rq-main { display: flex; flex-direction: column; min-width: 0; }
+.rq-name { font-size: var(--fs-13); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rq-title { font-size: var(--fs-11); font-weight: 400; color: var(--sc-text-2); }
+.rq-what { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: var(--fs-12); color: var(--sc-text-2); }
+.rq-row.is-conflict .rq-what > span:first-child { color: var(--sc-text); }
+.rq-tag { padding: 0 4px; border: 1px dashed var(--sc-warning); border-radius: var(--r-s); font-size: var(--fs-11); line-height: 16px; color: var(--sc-text-2); }
+.rq-tag.is-conf { border: 1px solid var(--sc-border); }
+.rq-actions { display: flex; gap: 4px; }
+
+/* auto-apply: one quiet line (✓ + count + 撤销本次自动采用) and the page's single hint line */
+.rc-hint { margin: 0; }
+.rc-auto { display: flex; flex-wrap: wrap; align-items: center; gap: 2px var(--sp-2); min-height: 28px; padding: 2px var(--sp-1) 2px var(--sp-2);
+  border: 1px solid var(--sc-border); border-radius: var(--r-m); font-size: var(--fs-12); }
+.rc-auto-mark { display: inline-grid; place-items: center; width: 14px; height: 14px; border: 1px solid var(--sc-success); border-radius: 50%;
+  color: var(--sc-success); font-size: 9px; font-weight: 700; line-height: 1; }
+.rc-auto-text { min-width: 0; }
+.chip.tone-auto .dot { background: var(--sc-success); }
+.rq-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--sp-1); padding: 4px 0 2px; border-top: 1px solid var(--sc-border); }
+
+/* thumbnail grid */
+.rc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: var(--sp-2) 6px; min-width: 0; }
+.rc-tile {
+  display: flex; flex-direction: column; align-items: stretch; gap: 3px; min-width: 0; padding: 0;
+  border: 0; background: transparent; color: var(--sc-text); font: inherit; cursor: pointer; text-align: center;
+}
+.rc-tile:focus-visible { outline-offset: 1px; }
+.rc-frame {
+  position: relative; display: block; width: 100%; aspect-ratio: 1; overflow: hidden;
+  border: 2px solid var(--rar, var(--sc-border)); border-radius: var(--r-m); background: var(--sc-surface-2);
+}
+.rc-tile:hover .rc-frame { border-color: var(--sc-primary); }
+.rc-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.rc-placeholder { display: grid; place-items: center; color: var(--sc-text-2); }
+.rc-bar {
+  position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 2px;
+  height: 15px; padding: 0 3px; background: var(--card-bar); color: var(--on-card-bar); font-size: 10px; line-height: 15px; font-weight: 600;
+}
+.rc-lv { white-space: nowrap; }
+.rc-mark {
+  position: absolute; top: 2px; right: 2px; display: grid; place-items: center; width: 14px; height: 14px; border-radius: 50%;
+  font-size: 10px; font-weight: 700; line-height: 1; color: var(--on-card-bar); border: 1.5px solid var(--sc-surface);
+}
+.rc-mark.is-pending { background: var(--sc-accent); width: 12px; height: 12px; }
+.rc-mark.is-conflict { background: var(--sc-warning); }
+.rc-mark.is-unknown { background: var(--sc-muted); }
+.rc-mark.is-auto { width: 12px; height: 12px; font-size: 8px; background: var(--sc-surface); color: var(--sc-success); border-color: var(--sc-success); border-width: 1px; }
+.rc-name { font-size: var(--fs-11); line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rc-more { align-self: center; min-width: 60%; }
+
+/* 凸 stars: gold 1-3, purple when fully broken (as in the game) */
+.lb-stars { display: inline-flex; letter-spacing: -1px; font-size: 9px; line-height: 1; }
+.lb-star { color: var(--lb-off); }
+.lb-star.is-on { color: var(--lb-on); }
+.lb-stars.is-max .lb-star.is-on { color: var(--lb-max); }
+
+/* card sheet dialog */
+.rc-sheet { width: min(400px, calc(100vw - 24px)); padding: var(--sp-4); }
+.rc-sheet-head { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: var(--sp-3); align-items: start; }
+.rc-sheet-art { width: 96px; height: 96px; }
+.rc-sheet-id { min-width: 0; }
+.rc-sheet-id .dialog-title { margin: 0; font-size: var(--fs-16); }
+.rc-sheet-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.rc-tag { padding: 0 5px; border: 1px solid var(--sc-border); border-radius: var(--r-s); font-size: var(--fs-11); line-height: 18px; color: var(--sc-text-2); }
+.rc-tag.rar-text { border-color: var(--rar); color: var(--sc-text); font-weight: 600; }
+.rc-facts { margin-top: var(--sp-3); font-size: var(--fs-12); grid-template-columns: 56px 1fr; }
+.rc-edit { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: flex-end; margin-top: var(--sp-3); }
+.rc-field { display: flex; flex-direction: column; gap: 2px; }
+.rc-lv-input { width: 84px; }
+.rc-lb-seg .segment { min-width: 34px; }
+.rc-err { display: block; min-height: 1.4em; margin-top: 4px; color: var(--sc-danger); }
+.rc-sheet-actions { align-items: center; margin-top: var(--sp-2); }
+
+/* footer actions inside 持有卡牌 */
+.holdings-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); padding-top: var(--sp-2); border-top: 1px solid var(--sc-border); }
+.fold-summary-tags { display: inline-flex; align-items: center; gap: var(--sp-2); }
+
+.extra-readings .res-icon { align-self: center; }
+
+/* 扫描持有卡 (card-scan.js): footer, progress block, confirmation dialog, last-result note */
+.holdings-footer { display: flex; flex-direction: column; gap: var(--sp-2); }
+.holdings-footer > .holdings-actions { border-top: 1px solid var(--sc-border); }
+.card-scan-progress { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); min-width: 0; }
+.card-scan-title { font-weight: 600; }
+.card-scan-line { overflow-wrap: anywhere; }
+.card-scan-note { margin: 0; color: var(--sc-text-2); }
+.card-scan-note.tone-success { color: var(--sc-success); }
+.card-scan-note.tone-warning { color: var(--sc-text); }
+.card-scan-dialog { width: min(420px, calc(100vw - 24px)); padding: var(--sp-4); }
+.card-scan-lines { margin: var(--sp-3) 0 0; padding-left: 1.2em; display: grid; gap: var(--sp-2); }

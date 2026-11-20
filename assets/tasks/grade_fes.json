@@ -1,0 +1,616 @@
+{
+    "task": [
+        {
+            "name": "GradeFes",
+            "label": "Grade Fes／彩排",
+            "entry": "SC.Grade.Entry",
+            "default_check": false,
+            "description": "按所选模式打设定的局数。消耗：1 个参加权/局。确认结算并回到 Fes 主页后才继续；结果不确定将暂停。",
+            "option": [
+                "Grade模式",
+                "Grade难度",
+                "Grade每日次数",
+                "Grade一次消耗",
+                "Grade参加ユニット",
+                "Grade参加权保留",
+                "Grade回复券",
+                "Grade回复券上限",
+                "Grade采样每日上限",
+                "Grade自动演出",
+                "Grade倍速"
+            ]
+        }
+    ],
+    "option": {
+        "Grade模式": {
+            "type": "select",
+            "label": "模式",
+            "description": "正式 Fes 和彩排共享参加权。彩排在选择难度时消耗参加权并开演。",
+            "default_case": "グレードフェス",
+            "cases": [
+                {
+                    "name": "グレードフェス",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Mode": {
+                            "attach": {
+                                "mode": "grade"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "フェスリハーサル",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Mode": {
+                            "attach": {
+                                "mode": "rehearsal"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade难度": {
+            "type": "select",
+            "label": "グレードフェス 难度",
+            "description": "得分倍率 Easy ×0.75 / Normal ×1.00 / Hard ×1.25；每局消耗 1 个参加权。",
+            "default_case": "Normal",
+            "cases": [
+                {
+                    "name": "Easy",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Difficulty": {
+                            "attach": {
+                                "difficulty": "Easy"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Normal",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Difficulty": {
+                            "attach": {
+                                "difficulty": "Normal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Hard",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Difficulty": {
+                            "attach": {
+                                "difficulty": "Hard"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade每日次数": {
+            "type": "select",
+            "label": "每日局数（所选模式）",
+            "description": "每次运行打的局数。参加权与 Match 共享，Grade 先用。关闭自动演出时只开一局，之后由你操作。",
+            "default_case": "1",
+            "cases": [
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "6",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 6
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "7",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 7
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "8",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 8
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "9",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 9
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "10",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 10
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "11",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 11
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "12",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 12
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "13",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 13
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "14",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 14
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "15",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 15
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "16",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 16
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "17",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 17
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "18",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 18
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "19",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 19
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "20",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Runs": {
+                            "attach": {
+                                "runs_per_day": 20
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade一次消耗": {
+            "type": "select",
+            "label": "一次最多消耗（まとめて消費）",
+            "description": "每局消耗几个参加权（游戏的「まとめて消費」）。仅支持 1；2–5 暂不可用，开始前会被拒绝。",
+            "default_case": "1",
+            "cases": [
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Bulk": {
+                            "attach": {
+                                "bulk_count": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Bulk": {
+                            "attach": {
+                                "bulk_count": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Bulk": {
+                            "attach": {
+                                "bulk_count": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Bulk": {
+                            "attach": {
+                                "bulk_count": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Bulk": {
+                            "attach": {
+                                "bulk_count": 5
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade参加ユニット": {
+            "type": "input",
+            "label": "参加ユニット 绑定（编队评价值）",
+            "description": "仅正式 Grade Fes：填「参加ユニット」页的编队评价值（如 21801），开演前数字不一致就返回，不消耗。留空不核对；编队变化后需重填。彩排使用游戏当前编队，不核对评价值。",
+            "inputs": [
+                {
+                    "name": "score",
+                    "label": "编队评价值",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^([0-9]{3,6})?$",
+                    "pattern_msg": "3–6 位数字（不含逗号），留空=不绑定"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Grade.Config.Unit": {
+                    "attach": {
+                        "unit_score": "{score}"
+                    }
+                }
+            }
+        },
+        "Grade参加权保留": {
+            "type": "select",
+            "label": "至少保留的フェス参加権",
+            "description": "打完后至少剩下这么多参加权（与 Match 共享）。",
+            "default_case": "0",
+            "cases": [
+                {
+                    "name": "0",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Reserve": {
+                            "attach": {
+                                "rights_reserve": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Reserve": {
+                            "attach": {
+                                "rights_reserve": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Reserve": {
+                            "attach": {
+                                "rights_reserve": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "10",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Reserve": {
+                            "attach": {
+                                "rights_reserve": 10
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade回复券": {
+            "type": "switch",
+            "label": "参加权不足时使用回复券",
+            "description": "参加权回复券（参加権回復）与参加权分开计算。暂未开放：打开后开始前会被拒绝。永不使用ジュエル。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Recovery": {
+                            "attach": {
+                                "use_recovery_tickets": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Recovery": {
+                            "attach": {
+                                "use_recovery_tickets": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade回复券上限": {
+            "type": "select",
+            "label": "回复券每次最多",
+            "description": "每次运行最多使用几张回复券（只在上一项打开时有效）。",
+            "default_case": "1",
+            "cases": [
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Grade.Config.RecoveryCap": {
+                            "attach": {
+                                "recovery_cap": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Grade.Config.RecoveryCap": {
+                            "attach": {
+                                "recovery_cap": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Grade.Config.RecoveryCap": {
+                            "attach": {
+                                "recovery_cap": 3
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade采样每日上限": {
+            "type": "select",
+            "label": "每日尝试上限（开发者）",
+            "description": "默认跟随每日局数。可设更低的上限；结果不明的局也占一次。旧档案中的明确上限仍保留。",
+            "default_case": "跟随每日局数",
+            "cases": [
+                {
+                    "name": "跟随每日局数",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Samples": {
+                            "attach": { "samples_runs_per_day": 0 }
+                        }
+                    }
+                },
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Samples": {
+                            "attach": {
+                                "samples_runs_per_day": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Samples": {
+                            "attach": {
+                                "samples_runs_per_day": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Samples": {
+                            "attach": {
+                                "samples_runs_per_day": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "10",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Samples": {
+                            "attach": {
+                                "samples_runs_per_day": 10
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "20",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Samples": {
+                            "attach": {
+                                "samples_runs_per_day": 20
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade自动演出": {
+            "type": "select",
+            "label": "ライブ開始 后自动演出（实验）",
+            "description": "开启：自动选卡、选审查员、按时机条并结算。关闭：开演后提醒你接手并停止后续任务；本局已消耗参加权。",
+            "default_case": "开启",
+            "cases": [
+                {
+                    "name": "关闭",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Live": {
+                            "attach": {
+                                "live_play": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "开启",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Live": {
+                            "attach": {
+                                "live_play": true
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Grade倍速": {
+            "type": "select",
+            "label": "演出中的倍速",
+            "description": "开启：显示「倍速OFF」时按一次。不改：不碰倍速按钮。",
+            "default_case": "开启",
+            "cases": [
+                {
+                    "name": "开启",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Speed": {
+                            "attach": {
+                                "live_speed": "on"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "保持",
+                    "pipeline_override": {
+                        "SC.Grade.Config.Speed": {
+                            "attach": {
+                                "live_speed": "keep"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

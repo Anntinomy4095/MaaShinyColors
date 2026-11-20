@@ -1,0 +1,629 @@
+{
+    "task": [
+        {
+            "name": "CollaboFes",
+            "label": "Collabo Fes",
+            "entry": "SC.Collabo.Entry",
+            "default_check": false,
+            "description": "从首页横幅进入 Collabo Fes，用所选编队打所选会场的 Hard。Live 中把自己的面板拖到第 2 位后出牌。消耗：每局コラボフェスパス 1；结果不确定将暂停。",
+            "option": [
+                "Collabo会场",
+                "Collabo满员时",
+                "Collabo局数",
+                "Collabo编队",
+                "Collabo等级"
+            ]
+        }
+    ],
+    "option": {
+        "Collabo会场": {
+            "type": "select",
+            "label": "会场",
+            "default_case": "Vocal",
+            "description": "每局打这个会场。",
+            "cases": [
+                {
+                    "name": "Vocal",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Stage": {
+                            "attach": {
+                                "stage": "vocal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Dance",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Stage": {
+                            "attach": {
+                                "stage": "dance"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Visual",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Stage": {
+                            "attach": {
+                                "stage": "visual"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Center",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Stage": {
+                            "attach": {
+                                "stage": "center"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Collabo局数": {
+            "type": "select",
+            "label": "局数",
+            "default_case": "全部用完",
+            "description": "全部用完：开始时的コラボフェスパス全部用掉（最多 6）。选局数：Pass 不够时回首页等恢复再打。",
+            "cases": [
+                {
+                    "name": "全部用完",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Count": {
+                            "attach": {
+                                "count": "all"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "6",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Count": {
+                            "attach": {
+                                "count": 6
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Count": {
+                            "attach": {
+                                "count": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Count": {
+                            "attach": {
+                                "count": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Count": {
+                            "attach": {
+                                "count": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Count": {
+                            "attach": {
+                                "count": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Count": {
+                            "attach": {
+                                "count": 1
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Collabo编队": {
+            "type": "select",
+            "label": "编队",
+            "default_case": "ユニット1",
+            "cases": [
+                {
+                    "name": "ユニット1",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット2",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット3",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット4",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット5",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット6",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 6
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット7",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 7
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット8",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 8
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット9",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 9
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット10",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Unit": {
+                            "attach": {
+                                "unit": 10
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Collabo等级": {
+            "type": "select",
+            "label": "Hard 等级",
+            "default_case": "自动推关",
+            "description": "自动推关：打已开放的最高等级，输过的等级不再打。",
+            "cases": [
+                {
+                    "name": "自动推关",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "auto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "30",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "30"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "29",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "29"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "28",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "28"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "27",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "27"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "26",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "26"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "25",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "25"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "24",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "24"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "23",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "23"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "22",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "22"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "21",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "21"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "20",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "20"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "19",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "19"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "18",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "18"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "17",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "17"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "16",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "16"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "15",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "15"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "14",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "14"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "13",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "13"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "12",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "12"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "11",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "11"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "10",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "10"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "9",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "9"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "8",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "8"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "7",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "7"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "6",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "6"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "5"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "4"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "3"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "2"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Level": {
+                            "attach": {
+                                "level": "1"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Collabo满员时": {
+            "type": "select",
+            "label": "满员换会场",
+            "default_case": "等待",
+            "description": "等待：只打所选会场，满员御礼时回首页等。改打：所选会场满员时打这个会场，所选会场重开后回去；两个会场的等级各自推。",
+            "cases": [
+                {
+                    "name": "等待",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Backup": {
+                            "attach": {
+                                "backup": ""
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "改打 Vocal",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Backup": {
+                            "attach": {
+                                "backup": "vocal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "改打 Dance",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Backup": {
+                            "attach": {
+                                "backup": "dance"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "改打 Visual",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Backup": {
+                            "attach": {
+                                "backup": "visual"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "改打 Center",
+                    "pipeline_override": {
+                        "SC.Collabo.Config.Backup": {
+                            "attach": {
+                                "backup": "center"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

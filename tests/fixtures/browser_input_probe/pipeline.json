@@ -1,0 +1,36 @@
+{
+  "SC.BrowserLab.Observe": {
+    "recognition": "DirectHit", "action": "DoNothing",
+    "next": ["SC.BrowserLab.Ambiguous", "SC.BrowserLab.Complete", "SC.BrowserLab.Ready", "SC.BrowserLab.Unknown"],
+    "on_error": ["SC.BrowserLab.Error"], "timeout": 1000, "rate_limit": 0,
+    "pre_delay": 0, "post_delay": 0
+  },
+  "SC.BrowserLab.Ready": {
+    "recognition": "ColorMatch", "method": 4, "roi": [430, 380, 420, 160],
+    "lower": [10, 145, 55], "upper": [35, 180, 95], "count": 30000,
+    "action": "DoNothing", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.BrowserLab.Complete": {
+    "recognition": "ColorMatch", "method": 4, "roi": [320, 250, 640, 130],
+    "lower": [25, 85, 215], "upper": [70, 115, 255], "count": 45000,
+    "action": "DoNothing", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.BrowserLab.Click.ReadyGuard": {
+    "enabled": false,
+    "recognition": "ColorMatch", "method": 4, "roi": [430, 380, 420, 160],
+    "lower": [10, 145, 55], "upper": [35, 180, 95], "count": 30000,
+    "action": "Click", "target": [640, 460, 1, 1],
+    "on_error": ["SC.BrowserLab.Error"], "pre_delay": 0, "post_delay": 0
+  },
+  "SC.BrowserLab.Ambiguous": {
+    "recognition": "And", "all_of": ["SC.BrowserLab.Ready", "SC.BrowserLab.Complete"],
+    "action": "StopTask", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.BrowserLab.Unknown": {
+    "recognition": "Or", "any_of": ["SC.BrowserLab.Ready", "SC.BrowserLab.Complete"], "inverse": true,
+    "action": "StopTask", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.BrowserLab.Error": {
+    "recognition": "DirectHit", "action": "StopTask", "pre_delay": 0, "post_delay": 0
+  }
+}

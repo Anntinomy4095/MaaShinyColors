@@ -1,0 +1,576 @@
+{
+    "task": [
+        {
+            "name": "WeeklyProduce",
+            "label": "Auto Produce（周常）",
+            "entry": "SC.WeeklyProduce.Entry",
+            "default_check": false,
+            "description": "用游戏「オートスケジュール」的「オート1」开 Auto。オート1 每次进入都是空的：Maa 按所选剧本、编队、育成方針与带书设定，不带道具；再设回数与「ループする」、核对体力后按「プロデュース開始」。消耗：体力 30×次数；开ループ时体力与リカバリーソーダ共 750。读数不符或画面未采样都停止。",
+            "option": [
+                "Auto核对剧本",
+                "Auto编队来源",
+                "Auto编队",
+                "Auto育成方針",
+                "Auto带书",
+                "Autoループ",
+                "Autoソーダ上限",
+                "Auto次数",
+                "Auto使用スキップ"
+            ]
+        }
+    ],
+    "option": {
+        "Autoループ": {
+            "type": "switch",
+            "label": "ループ",
+            "description": "开：「ループする」打开，オート1 重复 25 回。体力不够 750 时用リカバリーソーダ补足。消耗：体力与ソーダ共 750。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Loop": {
+                            "attach": {
+                                "loop": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Loop": {
+                            "attach": {
+                                "loop": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Autoソーダ上限": {
+            "type": "select",
+            "label": "ソーダ上限",
+            "description": "ソーダ最多补多少体力；还差更多就不开始。",
+            "default_case": "450",
+            "cases": [
+                {
+                    "name": "450",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.SodaCap": {
+                            "attach": {
+                                "soda_cap": 450
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "600",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.SodaCap": {
+                            "attach": {
+                                "soda_cap": 600
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "750",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.SodaCap": {
+                            "attach": {
+                                "soda_cap": 750
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Auto次数": {
+            "type": "select",
+            "label": "次数",
+            "description": "オート1 的プロデュース回数，每次运行最多 5。消耗：体力 30×次数。",
+            "default_case": "1",
+            "cases": [
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Runs": {
+                            "attach": {
+                                "runs": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Runs": {
+                            "attach": {
+                                "runs": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Runs": {
+                            "attach": {
+                                "runs": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Runs": {
+                            "attach": {
+                                "runs": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Runs": {
+                            "attach": {
+                                "runs": 5
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Auto使用スキップ": {
+            "type": "switch",
+            "label": "用スキップ完成（验证后再开）",
+            "description": "开：按「スキップ」（每日 5 次）而不是「プロデュース開始」。スキップ的消耗尚未验证，默认关。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Skip": {
+                            "attach": {
+                                "use_skip": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Skip": {
+                            "attach": {
+                                "use_skip": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Auto核对剧本": {
+            "type": "select",
+            "label": "剧本",
+            "description": "オート1 的剧本。S.T.E.P. 带 3 本ノウハウブック，其他剧本不带书。按目标词条：按ノウハウ页的目标，选 Auto 能拿到缺少词条的剧本；没有则 W.I.N.G.。",
+            "default_case": "W.I.N.G.",
+            "cases": [
+                {
+                    "name": "W.I.N.G.",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Scenario": {
+                            "attach": {
+                                "expect_scenario": "WING"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ファン感謝祭",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Scenario": {
+                            "attach": {
+                                "expect_scenario": "FANS"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "G.R.A.D.",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Scenario": {
+                            "attach": {
+                                "expect_scenario": "GRAD"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Landing Point",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Scenario": {
+                            "attach": {
+                                "expect_scenario": "LP"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "S.T.E.P.",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Scenario": {
+                            "attach": {
+                                "expect_scenario": "STEP"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "按目标词条",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Scenario": {
+                            "attach": {
+                                "expect_scenario": "TARGET"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Auto编队来源": {
+            "type": "select",
+            "label": "编队",
+            "description": "自动编队：先把 Maa 选的 P、4 张 S 与嘉宾写入下面的ユニット（覆盖原队伍），不消耗。指定ユニット：用ユニット现有队伍。",
+            "default_case": "自动编队",
+            "cases": [
+                {
+                    "name": "自动编队",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Team": {
+                            "attach": {
+                                "team": "auto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "指定ユニット",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Team": {
+                            "attach": {
+                                "team": "unit"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Auto编队": {
+            "type": "select",
+            "label": "ユニット",
+            "description": "Auto 用的ユニット（1–20）。自动编队会改写它。",
+            "default_case": "ユニット1",
+            "cases": [
+                {
+                    "name": "ユニット1",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット2",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット3",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット4",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット5",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット6",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 6
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット7",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 7
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット8",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 8
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット9",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 9
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット10",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 10
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット11",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 11
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット12",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 12
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット13",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 13
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット14",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 14
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット15",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 15
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット16",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 16
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット17",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 17
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット18",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 18
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット19",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 19
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット20",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Unit": {
+                            "attach": {
+                                "unit": 20
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Auto带书": {
+            "type": "select",
+            "label": "带书",
+            "description": "S.T.E.P. 带的 3 本：最近設定履歴、游戏里的プリセット1/2，或ノウハウ页保存的三本（只在选书第一屏找）。",
+            "default_case": "最近設定履歴",
+            "cases": [
+                {
+                    "name": "最近設定履歴",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Books": {
+                            "attach": {
+                                "books": "history"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "プリセット1",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Books": {
+                            "attach": {
+                                "books": "preset1"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "プリセット2",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Books": {
+                            "attach": {
+                                "books": "preset2"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ノウハウ页指定",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Books": {
+                            "attach": {
+                                "books": "target"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Auto育成方針": {
+            "type": "select",
+            "label": "育成方針",
+            "description": "自动：按 P 卡的特长；Balanced 或读不出时保持游戏里的方針。",
+            "default_case": "自动",
+            "cases": [
+                {
+                    "name": "自动",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Policy": {
+                            "attach": {
+                                "policy": "auto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Vocal",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Policy": {
+                            "attach": {
+                                "policy": "Vocal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Dance",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Policy": {
+                            "attach": {
+                                "policy": "Dance"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Visual",
+                    "pipeline_override": {
+                        "SC.WeeklyProduce.Config.Policy": {
+                            "attach": {
+                                "policy": "Visual"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

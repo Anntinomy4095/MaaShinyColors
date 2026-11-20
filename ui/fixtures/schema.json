@@ -1,0 +1,2993 @@
+{
+  "schema_version": 1,
+  "source": "assets/interface.json",
+  "interface": {
+    "name": "MaaShinyColors",
+    "label": "MaaShinyColors（开发监督版）",
+    "title": "MaaShinyColors v0.1.0",
+    "version": "0.1.0",
+    "interface_version": 2
+  },
+  "run_config": {
+    "default_preset": "daily",
+    "default_task_timeout_s": 2400.0,
+    "spend_flags": {
+      "allow_shop_spend": "shop-exchange-confirm",
+      "allow_training_spend": "training-start",
+      "allow_grade_spend": "grade-tension-confirm",
+      "allow_match_spend": "match-skip-confirm",
+      "allow_weekly_auto_spend": "weekly-auto-start",
+      "allow_collabo_spend": "collabo-tension-decide",
+      "allow_produce_spend": "wing-produce-start"
+    },
+    "fes_tickets": {
+      "enabled": false,
+      "max_per_run": 0
+    }
+  },
+  "tasks": [
+    {
+      "name": "Startup",
+      "label": "启动到首页",
+      "description": "从标题画面或任意已知画面回到首页：等待加载，关闭已知弹窗（登录奖励、ミッション達成、公告等）。未知画面、消耗确认和错误弹窗不点击，以失败结束。",
+      "entry": "SC.Startup.Entry",
+      "default_check": true,
+      "options": [],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    },
+    {
+      "name": "Shop",
+      "label": "マニー商店本日限定",
+      "description": "消耗：マニー。只看マニーショップ当天三张「本日限定」折扣卡，勾选的商品各买 1 个（默认只买 10 マニー 的跳过券与金训练券）。名称与价格须和当天目录一致，「交換確認」核对通过才兑换；对不上就不买。",
+      "entry": "SC.Shop.Entry",
+      "default_check": true,
+      "options": [
+        "商店跳过券",
+        "商店金训练券",
+        "商店余额保留",
+        "商店其他·ゴールドトレーニングチケット@283",
+        "商店其他·シルバートレーニングチケット@283",
+        "商店其他·始まりのメッセージカード@283",
+        "商店其他·モーニングコミュパン@283",
+        "商店其他·約束のトワレ@283",
+        "商店其他·秘密のメモ帳@50",
+        "商店其他·プチテンションアロマ(2個入り)@500",
+        "商店其他·流行雑誌@500",
+        "商店其他·ボーカル基礎知識本@500",
+        "商店其他·ダンス基礎知識本@500",
+        "商店其他·ビジュアル基礎知識本@500",
+        "商店其他·トラブル守り@1500",
+        "商店其他·約束のコロン@1500",
+        "商店其他·テンションアロマ(2個入り)@1500",
+        "商店其他·ヒーリングタルト(2個入り)@1500",
+        "商店其他·ヒーリングフルーツタルト(2個入り)@5000",
+        "商店其他·予定変更付箋@5000",
+        "商店其他·イルミネーションスターズのタオル@5000",
+        "商店其他·アンティーカのタオル@5000",
+        "商店其他·放課後クライマックスガールズのタオル@5000",
+        "商店其他·アルストロメリアのタオル@5000",
+        "商店其他·ストレイライトのタオル@5000",
+        "商店其他·ノクチルのタオル@5000",
+        "商店其他·シーズのタオル@5000",
+        "商店其他·コメティックのタオル@5000",
+        "商店兑换"
+      ],
+      "ui": {
+        "spend_flag": "allow_shop_spend",
+        "spend_action": "shop-exchange-confirm",
+        "spend_option": {
+          "key": "商店兑换",
+          "when": "Yes"
+        },
+        "migrated": true
+      }
+    },
+    {
+      "name": "Training",
+      "label": "S 卡训练（基础铜券×1）",
+      "description": "消耗：基础铜训练券 ×1。训练所选 S 卡：按卡身份在训练列表定位，核对材料只有铜券 ×1 后开始，再核验库存 −1 与等级或经验增长。未选卡取当前排序第一张可训练的 S 卡。",
+      "entry": "SC.Training.Entry",
+      "default_check": true,
+      "options": [
+        "训练卡",
+        "训练券",
+        "训练数量",
+        "训练使用铜券"
+      ],
+      "ui": {
+        "spend_flag": "allow_training_spend",
+        "spend_action": "training-start",
+        "spend_option": {
+          "key": "训练使用铜券",
+          "when": "Yes"
+        },
+        "migrated": true
+      }
+    },
+    {
+      "name": "MatchSkip",
+      "label": "Match Live",
+      "description": "先用所选编队打下一个未通关关卡推进（输了按设定重试），剩余 Fes 参加权跳过已通关的最新一关（与 Grade 共享，Grade 先打）。参加权每场后重新核对；结果不确定将暂停。",
+      "entry": "SC.Match.Entry",
+      "default_check": true,
+      "options": [
+        "Match推进",
+        "Match编队",
+        "Match失败重试",
+        "Match关卡",
+        "Match次数",
+        "Match参加权保留",
+        "Match回复券",
+        "Match回复券上限",
+        "Match只采样"
+      ],
+      "ui": {
+        "spend_flag": "allow_match_spend",
+        "spend_action": "match-skip-confirm",
+        "spend_option": {
+          "key": "Match只采样",
+          "when": "No"
+        },
+        "migrated": true
+      }
+    },
+    {
+      "name": "CollaboFes",
+      "label": "Collabo Fes",
+      "description": "从首页横幅进入 Collabo Fes，用所选编队打所选会场的 Hard。Live 中把自己的面板拖到第 2 位后出牌。消耗：每局コラボフェスパス 1；结果不确定将暂停。",
+      "entry": "SC.Collabo.Entry",
+      "default_check": false,
+      "options": [
+        "Collabo会场",
+        "Collabo满员时",
+        "Collabo局数",
+        "Collabo编队",
+        "Collabo等级",
+        "Collabo使用Pass"
+      ],
+      "ui": {
+        "spend_flag": "allow_collabo_spend",
+        "spend_action": "collabo-tension-decide",
+        "spend_option": {
+          "key": "Collabo使用Pass",
+          "when": "Yes"
+        },
+        "migrated": true
+      }
+    },
+    {
+      "name": "GradeFes",
+      "label": "Grade Fes／彩排",
+      "description": "按所选模式打设定的局数。消耗：1 个参加权/局。确认结算并回到 Fes 主页后才继续；结果不确定将暂停。",
+      "entry": "SC.Grade.Entry",
+      "default_check": false,
+      "options": [
+        "Grade模式",
+        "Grade难度",
+        "Grade每日次数",
+        "Grade一次消耗",
+        "Grade参加ユニット",
+        "Grade参加权保留",
+        "Grade回复券",
+        "Grade回复券上限",
+        "Grade采样每日上限",
+        "Grade自动演出",
+        "Grade倍速",
+        "Grade使用参加权"
+      ],
+      "ui": {
+        "spend_flag": "allow_grade_spend",
+        "spend_action": "grade-tension-confirm",
+        "spend_option": {
+          "key": "Grade使用参加权",
+          "when": "Yes"
+        },
+        "migrated": true
+      }
+    },
+    {
+      "name": "MissionStatus",
+      "label": "每日任务进度（只读）",
+      "description": "打开ミッション的デイリー页，读取达成数与各行进度（a/b、受け取る），不领取，读完返回首页。",
+      "entry": "SC.MissionStatus.Entry",
+      "default_check": true,
+      "options": [],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    },
+    {
+      "name": "ResourceRead",
+      "label": "只读取资源",
+      "description": "在首页读取マニー、体力、Fes 参加权（ジュエル只显示）。只关已知弹窗，不点其他按钮；放在「启动到首页」之后运行。",
+      "entry": "SC.ResourceRead.Entry",
+      "default_check": false,
+      "options": [],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    },
+    {
+      "name": "MissionsClaim",
+      "label": "每日任务奖励领取",
+      "description": "打开ミッション，デイリー和ウィークリー标签各读一次：有「受け取る」就按一次「一括受取」，核对奖励只有免费物品；再返回首页。领取不消耗资源；结果不确定将暂停，不重试。",
+      "entry": "SC.Missions.Entry",
+      "default_check": true,
+      "options": [
+        "任务奖励领取"
+      ],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    },
+    {
+      "name": "Business",
+      "label": "营业（收取并再营业）",
+      "description": "收取已完成的营业，在「獲得報酬」页按「再営業へ」，核对游戏预填的 12 小时队伍后按「決定」。不使用差し入れ、体力、ソーダ、ジュエル。出现错误（如 1012）或结果不确定：暂停，当天不重试。",
+      "entry": "SC.Business.Entry",
+      "default_check": true,
+      "options": [
+        "营业收取后",
+        "营业模式",
+        "营业一括派出",
+        "营业队伍",
+        "营业槽位数",
+        "营业内容"
+      ],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    },
+    {
+      "name": "PresentClaim",
+      "label": "礼物箱领取",
+      "description": "打开礼物箱，「一括受取」可按就按一次，不可按就跳过；按后以未领取件数减少或空箱核对，再返回首页。",
+      "entry": "SC.Present.Entry",
+      "default_check": true,
+      "options": [
+        "プレゼント领取"
+      ],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    },
+    {
+      "name": "WeeklyCheck",
+      "label": "周常 Produce×3 检查（只读）",
+      "description": "【只读，默认关闭】须事先手动打开ミッション页「ウィークリー」标签（导航点击未启用）。在同一帧读取「フェスアイドルを3人誕生させよう」的达成度 a/3、标签下的「あと…」剩余时间并与本机时钟核对周日 05:00 JST 周期，写入私有记录供 W.I.N.G. 的 weekly_remaining() 使用。未读到/行不可见/周期不符/临近重置 → 未知，不按 0、也不按 3 处理。不点击、不滚动、不领取。",
+      "entry": "SC.Weekly.Entry",
+      "default_check": false,
+      "options": [],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    },
+    {
+      "name": "AutoProduce",
+      "label": "W.I.N.G.",
+      "description": "按所选 P 偶像和编队打一局：W.I.N.G.（True End 或各季晋级线）或 say \"Halo\"（掘书线，每次 1 局），在「Produce」页上方选剧本。有进行中的一局先核对 P 偶像与编队，一致才接着打，否则停止；没有就开新局。消耗：每局体力 30，局数按「次数」（默认 1 局）。选推荐编队时开新局会改写所选ユニット。不用钻石和付费道具。在「Produce」页开始，普通任务队列不运行。",
+      "entry": "SC.Produce.Entry",
+      "default_check": false,
+      "options": [
+        "Produce剧本",
+        "Halo带书",
+        "Produce目标",
+        "Produce难度",
+        "Produce主属性",
+        "Produce编队方式",
+        "Produce编队槽位",
+        "Produce找编队",
+        "ProduceP卡",
+        "ProduceS卡1",
+        "ProduceS卡2",
+        "ProduceS卡3",
+        "ProduceS卡4",
+        "Produce客串",
+        "Produce次数",
+        "Produce休息阈值",
+        "Produce低分兜底",
+        "ProduceSP加点",
+        "Produce上限余量",
+        "Produce约定",
+        "Produce试镜出牌",
+        "Produce出牌风格",
+        "Produce限定试镜S1",
+        "Produce限定试镜S2",
+        "Produce限定试镜S3",
+        "Produce限定试镜S4",
+        "Produce事件选项",
+        "ProduceP道具",
+        "Produce大富豪",
+        "Produce改游戏设置",
+        "Produce终局清空SP",
+        "Produce报酬读取",
+        "Produce保护Lv5书",
+        "Produce报酬后OK",
+        "Produce自动锁书",
+        "Produce自动卖书",
+        "Produce卖书策略",
+        "Produce再抽选",
+        "Produce高级SP权重",
+        "Produce高级紧迫度",
+        "Produce高级兜底比例",
+        "Produce高级羁绊权重",
+        "Produce高级Auto门槛",
+        "Produce核对上次编队",
+        "Produce可开新局"
+      ],
+      "ui": {
+        "spend_flag": "allow_produce_spend",
+        "spend_action": "wing-produce-start",
+        "spend_option": {
+          "key": "Produce可开新局",
+          "when": "Yes"
+        },
+        "migrated": true
+      }
+    },
+    {
+      "name": "WeeklyProduce",
+      "label": "Auto Produce（周常）",
+      "description": "用游戏「オートスケジュール」的「オート1」开 Auto。オート1 每次进入都是空的：Maa 按所选剧本、编队、育成方針与带书设定，不带道具；再设回数与「ループする」、核对体力后按「プロデュース開始」。消耗：体力 30×次数；开ループ时体力与リカバリーソーダ共 750。读数不符或画面未采样都停止。",
+      "entry": "SC.WeeklyProduce.Entry",
+      "default_check": false,
+      "options": [
+        "Auto核对剧本",
+        "Auto编队来源",
+        "Auto编队",
+        "Auto育成方針",
+        "Auto带书",
+        "Autoループ",
+        "Autoソーダ上限",
+        "Auto次数",
+        "Auto使用スキップ",
+        "Auto开始消耗体力"
+      ],
+      "ui": {
+        "spend_flag": "allow_weekly_auto_spend",
+        "spend_action": "weekly-auto-start",
+        "spend_option": {
+          "key": "Auto开始消耗体力",
+          "when": "Yes"
+        },
+        "migrated": true
+      }
+    },
+    {
+      "name": "Diagnostics",
+      "label": "诊断（只读）",
+      "description": "环境自检后截图一次，用已知画面守卫判断当前画面（标题、加载、首页、各白名单弹窗与页面），截图保存到 dev_assets/private/run_logs/diagnostics/。不发送任何输入。",
+      "entry": "SC.Diagnostics.Entry",
+      "default_check": false,
+      "options": [],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    },
+    {
+      "name": "ProduceDryRun",
+      "label": "Produce 策略空跑（无操作）",
+      "description": "用内置样例运行一次可解释决策，不截图、不点击。",
+      "entry": "SC.Produce.DryRun",
+      "default_check": false,
+      "options": [
+        "Produce策略"
+      ],
+      "ui": {
+        "spend_flag": null,
+        "spend_action": null,
+        "spend_option": null,
+        "migrated": true
+      }
+    }
+  ],
+  "options": {
+    "商店余额保留": {
+      "key": "商店余额保留",
+      "type": "select",
+      "label": "购买后保留マニー",
+      "description": "购买后余额不能低于此值；选「不保留」只检查余额够不够。默认保留 10 万。",
+      "default_case": "10万",
+      "cases": [
+        {
+          "name": "不保留"
+        },
+        {
+          "name": "1万"
+        },
+        {
+          "name": "10万"
+        },
+        {
+          "name": "100万"
+        }
+      ]
+    },
+    "商店跳过券": {
+      "key": "商店跳过券",
+      "type": "switch",
+      "label": "スキップチケット",
+      "description": "本日限定折扣卡出现「スキップチケット」且价格正好 10 マニー时买 1 个（每天出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店金训练券": {
+      "key": "商店金训练券",
+      "type": "switch",
+      "label": "ゴールドトレーニングチケット",
+      "description": "本日限定折扣卡出现「ゴールドトレーニングチケット」且价格正好 10 マニー（98%OFF）时买 1 个（每天出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·ゴールドトレーニングチケット@283": {
+      "key": "商店其他·ゴールドトレーニングチケット@283",
+      "type": "switch",
+      "label": "其他商品：ゴールドトレーニングチケット 283",
+      "description": "本日限定折扣卡出现「ゴールドトレーニングチケット」且价格正好 283 マニー（71%OFF）时买 1 个（每月 9/14/25 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·シルバートレーニングチケット@283": {
+      "key": "商店其他·シルバートレーニングチケット@283",
+      "type": "switch",
+      "label": "其他商品：シルバートレーニングチケット 283",
+      "description": "本日限定折扣卡出现「シルバートレーニングチケット」且价格正好 283 マニー（43%OFF）时买 1 个（每月 2/12/21 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·始まりのメッセージカード@283": {
+      "key": "商店其他·始まりのメッセージカード@283",
+      "type": "switch",
+      "label": "其他商品：始まりのメッセージカード 283",
+      "description": "本日限定折扣卡出现「始まりのメッセージカード」且价格正好 283 マニー（97%OFF）时买 1 个（每月 3 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·モーニングコミュパン@283": {
+      "key": "商店其他·モーニングコミュパン@283",
+      "type": "switch",
+      "label": "其他商品：モーニングコミュパン 283",
+      "description": "本日限定折扣卡出现「モーニングコミュパン」且价格正好 283 マニー（98%OFF）时买 1 个（每月 15 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·約束のトワレ@283": {
+      "key": "商店其他·約束のトワレ@283",
+      "type": "switch",
+      "label": "其他商品：約束のトワレ 283",
+      "description": "本日限定折扣卡出现「約束のトワレ」且价格正好 283 マニー（97%OFF）时买 1 个（每月 29 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·秘密のメモ帳@50": {
+      "key": "商店其他·秘密のメモ帳@50",
+      "type": "switch",
+      "label": "其他商品：秘密のメモ帳 50",
+      "description": "本日限定折扣卡出现「秘密のメモ帳」且价格正好 50 マニー（50%OFF）时买 1 个（每月 31 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·プチテンションアロマ(2個入り)@500": {
+      "key": "商店其他·プチテンションアロマ(2個入り)@500",
+      "type": "switch",
+      "label": "其他商品：プチテンションアロマ(2個入り) 500",
+      "description": "本日限定折扣卡出现「プチテンションアロマ(2個入り)」且价格正好 500 マニー（50%OFF）时买 1 个（每月 6 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·流行雑誌@500": {
+      "key": "商店其他·流行雑誌@500",
+      "type": "switch",
+      "label": "其他商品：流行雑誌 500",
+      "description": "本日限定折扣卡出现「流行雑誌」且价格正好 500 マニー（50%OFF）时买 1 个（每月 8 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·ボーカル基礎知識本@500": {
+      "key": "商店其他·ボーカル基礎知識本@500",
+      "type": "switch",
+      "label": "其他商品：ボーカル基礎知識本 500",
+      "description": "本日限定折扣卡出现「ボーカル基礎知識本」且价格正好 500 マニー（50%OFF）时买 1 个（每月 26 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·ダンス基礎知識本@500": {
+      "key": "商店其他·ダンス基礎知識本@500",
+      "type": "switch",
+      "label": "其他商品：ダンス基礎知識本 500",
+      "description": "本日限定折扣卡出现「ダンス基礎知識本」且价格正好 500 マニー（50%OFF）时买 1 个（每月 27 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·ビジュアル基礎知識本@500": {
+      "key": "商店其他·ビジュアル基礎知識本@500",
+      "type": "switch",
+      "label": "其他商品：ビジュアル基礎知識本 500",
+      "description": "本日限定折扣卡出现「ビジュアル基礎知識本」且价格正好 500 マニー（50%OFF）时买 1 个（每月 28 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·トラブル守り@1500": {
+      "key": "商店其他·トラブル守り@1500",
+      "type": "switch",
+      "label": "其他商品：トラブル守り 1,500",
+      "description": "本日限定折扣卡出现「トラブル守り」且价格正好 1,500 マニー（50%OFF）时买 1 个（每月 5 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·約束のコロン@1500": {
+      "key": "商店其他·約束のコロン@1500",
+      "type": "switch",
+      "label": "其他商品：約束のコロン 1,500",
+      "description": "本日限定折扣卡出现「約束のコロン」且价格正好 1,500 マニー（50%OFF）时买 1 个（每月 11 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·テンションアロマ(2個入り)@1500": {
+      "key": "商店其他·テンションアロマ(2個入り)@1500",
+      "type": "switch",
+      "label": "其他商品：テンションアロマ(2個入り) 1,500",
+      "description": "本日限定折扣卡出现「テンションアロマ(2個入り)」且价格正好 1,500 マニー（50%OFF）时买 1 个（每月 18 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·ヒーリングタルト(2個入り)@1500": {
+      "key": "商店其他·ヒーリングタルト(2個入り)@1500",
+      "type": "switch",
+      "label": "其他商品：ヒーリングタルト(2個入り) 1,500",
+      "description": "本日限定折扣卡出现「ヒーリングタルト(2個入り)」且价格正好 1,500 マニー（50%OFF）时买 1 个（每月 20 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·ヒーリングフルーツタルト(2個入り)@5000": {
+      "key": "商店其他·ヒーリングフルーツタルト(2個入り)@5000",
+      "type": "switch",
+      "label": "其他商品：ヒーリングフルーツタルト(2個入り) 5,000",
+      "description": "本日限定折扣卡出现「ヒーリングフルーツタルト(2個入り)」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 17/24/30 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·予定変更付箋@5000": {
+      "key": "商店其他·予定変更付箋@5000",
+      "type": "switch",
+      "label": "其他商品：予定変更付箋 5,000",
+      "description": "本日限定折扣卡出现「予定変更付箋」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 23 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·イルミネーションスターズのタオル@5000": {
+      "key": "商店其他·イルミネーションスターズのタオル@5000",
+      "type": "switch",
+      "label": "其他商品：イルミネーションスターズのタオル 5,000",
+      "description": "本日限定折扣卡出现「イルミネーションスターズのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 1 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·アンティーカのタオル@5000": {
+      "key": "商店其他·アンティーカのタオル@5000",
+      "type": "switch",
+      "label": "其他商品：アンティーカのタオル 5,000",
+      "description": "本日限定折扣卡出现「アンティーカのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 4 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·放課後クライマックスガールズのタオル@5000": {
+      "key": "商店其他·放課後クライマックスガールズのタオル@5000",
+      "type": "switch",
+      "label": "其他商品：放課後クライマックスガールズのタオル 5,000",
+      "description": "本日限定折扣卡出现「放課後クライマックスガールズのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 7 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·アルストロメリアのタオル@5000": {
+      "key": "商店其他·アルストロメリアのタオル@5000",
+      "type": "switch",
+      "label": "其他商品：アルストロメリアのタオル 5,000",
+      "description": "本日限定折扣卡出现「アルストロメリアのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 10 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·ストレイライトのタオル@5000": {
+      "key": "商店其他·ストレイライトのタオル@5000",
+      "type": "switch",
+      "label": "其他商品：ストレイライトのタオル 5,000",
+      "description": "本日限定折扣卡出现「ストレイライトのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 13 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·ノクチルのタオル@5000": {
+      "key": "商店其他·ノクチルのタオル@5000",
+      "type": "switch",
+      "label": "其他商品：ノクチルのタオル 5,000",
+      "description": "本日限定折扣卡出现「ノクチルのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 16 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·シーズのタオル@5000": {
+      "key": "商店其他·シーズのタオル@5000",
+      "type": "switch",
+      "label": "其他商品：シーズのタオル 5,000",
+      "description": "本日限定折扣卡出现「シーズのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 19 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "商店其他·コメティックのタオル@5000": {
+      "key": "商店其他·コメティックのタオル@5000",
+      "type": "switch",
+      "label": "其他商品：コメティックのタオル 5,000",
+      "description": "本日限定折扣卡出现「コメティックのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 22 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "训练卡": {
+      "key": "训练卡",
+      "type": "input",
+      "label": "训练哪张 S 卡",
+      "description": "从「持有卡牌」选一张 S 卡；未选则取训练列表当前排序第一张可训练的 S 卡。识别不唯一或卡不在列表中就停止，不换别的卡。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "card",
+          "label": "卡 ID",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^(2\\d{9})?$"
+        }
+      ]
+    },
+    "训练券": {
+      "key": "训练券",
+      "type": "select",
+      "label": "训练券",
+      "description": "只用基础铜训练券（ブロンズトレーニングチケット）。",
+      "default_case": "ブロンズトレーニングチケット",
+      "cases": [
+        {
+          "name": "ブロンズトレーニングチケット"
+        }
+      ]
+    },
+    "训练数量": {
+      "key": "训练数量",
+      "type": "select",
+      "label": "数量",
+      "description": "每次 1 张。",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1"
+        }
+      ]
+    },
+    "Match推进": {
+      "key": "Match推进",
+      "type": "select",
+      "label": "推进",
+      "description": "推进后跳过：先打下一个未通关关卡（ライブ開始，每场消耗：Fes 参加权 1），打不过或参加权用完再跳过。只跳过：不打关卡。",
+      "default_case": "推进后跳过",
+      "cases": [
+        {
+          "name": "推进后跳过"
+        },
+        {
+          "name": "只跳过"
+        }
+      ]
+    },
+    "Match编队": {
+      "key": "Match编队",
+      "type": "select",
+      "label": "推进编队",
+      "description": "推进前切到这支フェスユニット；有空位时按「おまかせ編成」补满。",
+      "default_case": "当前编队",
+      "cases": [
+        {
+          "name": "当前编队"
+        },
+        {
+          "name": "ユニット1"
+        },
+        {
+          "name": "ユニット2"
+        },
+        {
+          "name": "ユニット3"
+        },
+        {
+          "name": "ユニット4"
+        },
+        {
+          "name": "ユニット5"
+        },
+        {
+          "name": "ユニット6"
+        },
+        {
+          "name": "ユニット7"
+        },
+        {
+          "name": "ユニット8"
+        },
+        {
+          "name": "ユニット9"
+        },
+        {
+          "name": "ユニット10"
+        }
+      ]
+    },
+    "Match失败重试": {
+      "key": "Match失败重试",
+      "type": "select",
+      "label": "输了重试",
+      "description": "同一关输了再打几次（输了不扣参加权，每场后核对）；用完就停止推进。",
+      "default_case": "3",
+      "cases": [
+        {
+          "name": "0"
+        },
+        {
+          "name": "1"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "5"
+        }
+      ]
+    },
+    "Match关卡": {
+      "key": "Match关卡",
+      "type": "select",
+      "label": "跳过哪一关",
+      "description": "默认「最新」：取跳过列表里最靠后的一关（已开放但还没通关的关卡不能跳过，会用它前面最新的可跳过关）；也可指定一关，指定关不能跳过就停止。按奖励属性选关（最新 Vo/Da/Vi）仅开发者选项，奖励表未核实前会停止。",
+      "default_case": "最新（全部关卡）",
+      "cases": [
+        {
+          "name": "最新Vo道具关卡"
+        },
+        {
+          "name": "最新Da道具关卡"
+        },
+        {
+          "name": "最新Vi道具关卡"
+        },
+        {
+          "name": "エリア1 ステージ1"
+        },
+        {
+          "name": "エリア1 ステージ2"
+        },
+        {
+          "name": "エリア1 ステージ3"
+        },
+        {
+          "name": "エリア2 ステージ4"
+        },
+        {
+          "name": "エリア2 ステージ5"
+        },
+        {
+          "name": "エリア2 ステージ6"
+        },
+        {
+          "name": "エリア3 ステージ7"
+        },
+        {
+          "name": "エリア3 ステージ8"
+        },
+        {
+          "name": "エリア3 ステージ9"
+        },
+        {
+          "name": "エリア4 ステージ10"
+        },
+        {
+          "name": "エリア4 ステージ11"
+        },
+        {
+          "name": "エリア4 ステージ12"
+        },
+        {
+          "name": "エリア5 ステージ13"
+        },
+        {
+          "name": "エリア5 ステージ14"
+        },
+        {
+          "name": "エリア5 ステージ15"
+        },
+        {
+          "name": "エリア6 ステージ16"
+        },
+        {
+          "name": "エリア6 ステージ17"
+        },
+        {
+          "name": "エリア6 ステージ18"
+        },
+        {
+          "name": "エリア7 ステージ19"
+        },
+        {
+          "name": "エリア7 ステージ20"
+        },
+        {
+          "name": "エリア7 ステージ21"
+        },
+        {
+          "name": "エリアEX ステージ22"
+        },
+        {
+          "name": "エリアEX ステージ23"
+        },
+        {
+          "name": "エリアEX ステージ24"
+        },
+        {
+          "name": "エリアEX ステージ25"
+        },
+        {
+          "name": "最新（全部关卡）"
+        }
+      ]
+    },
+    "Match次数": {
+      "key": "Match次数",
+      "type": "select",
+      "label": "跳过次数（Fes 参加权分配）",
+      "description": "每次跳过消耗 1 个 Fes 参加权（与 Grade 共享）。「全部用完」= Match 页读到的参加权 − 保留，每批最多 20；同日 Grade 先打。选数字时参加权不够就停止，不自动减少。",
+      "default_case": "全部用完",
+      "cases": [
+        {
+          "name": "全部用完"
+        },
+        {
+          "name": "20"
+        },
+        {
+          "name": "19"
+        },
+        {
+          "name": "18"
+        },
+        {
+          "name": "17"
+        },
+        {
+          "name": "16"
+        },
+        {
+          "name": "15"
+        },
+        {
+          "name": "14"
+        },
+        {
+          "name": "13"
+        },
+        {
+          "name": "12"
+        },
+        {
+          "name": "11"
+        },
+        {
+          "name": "10"
+        },
+        {
+          "name": "9"
+        },
+        {
+          "name": "8"
+        },
+        {
+          "name": "7"
+        },
+        {
+          "name": "6"
+        },
+        {
+          "name": "5"
+        },
+        {
+          "name": "4"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "1"
+        }
+      ]
+    },
+    "Match参加权保留": {
+      "key": "Match参加权保留",
+      "type": "select",
+      "label": "至少保留的フェス参加権",
+      "description": "跳过后至少剩下这么多参加权。",
+      "default_case": "0",
+      "cases": [
+        {
+          "name": "0"
+        },
+        {
+          "name": "1"
+        },
+        {
+          "name": "5"
+        },
+        {
+          "name": "10"
+        }
+      ]
+    },
+    "Match回复券": {
+      "key": "Match回复券",
+      "type": "switch",
+      "label": "参加权不足时使用回复券",
+      "description": "参加权回复券（参加権回復）与参加权分开计算。暂未开放：打开后开始前会被拒绝。永不使用ジュエル。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Match回复券上限": {
+      "key": "Match回复券上限",
+      "type": "select",
+      "label": "回复券每次最多",
+      "description": "每次运行最多使用几张回复券（只在上一项打开时有效）。",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        }
+      ]
+    },
+    "Match只采样": {
+      "key": "Match只采样",
+      "type": "switch",
+      "label": "只采样（不实际跳过）",
+      "description": "开启时只打开再取消スキップ弹窗并截图，不消耗参加权。默认关闭。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Collabo会场": {
+      "key": "Collabo会场",
+      "type": "select",
+      "label": "会场",
+      "description": "每局打这个会场。",
+      "default_case": "Vocal",
+      "cases": [
+        {
+          "name": "Vocal"
+        },
+        {
+          "name": "Dance"
+        },
+        {
+          "name": "Visual"
+        },
+        {
+          "name": "Center"
+        }
+      ]
+    },
+    "Collabo局数": {
+      "key": "Collabo局数",
+      "type": "select",
+      "label": "局数",
+      "description": "全部用完：开始时的コラボフェスパス全部用掉（最多 6）。选局数：Pass 不够时回首页等恢复再打。",
+      "default_case": "全部用完",
+      "cases": [
+        {
+          "name": "全部用完"
+        },
+        {
+          "name": "6"
+        },
+        {
+          "name": "5"
+        },
+        {
+          "name": "4"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "1"
+        }
+      ]
+    },
+    "Collabo编队": {
+      "key": "Collabo编队",
+      "type": "select",
+      "label": "编队",
+      "description": "",
+      "default_case": "ユニット1",
+      "cases": [
+        {
+          "name": "ユニット1"
+        },
+        {
+          "name": "ユニット2"
+        },
+        {
+          "name": "ユニット3"
+        },
+        {
+          "name": "ユニット4"
+        },
+        {
+          "name": "ユニット5"
+        },
+        {
+          "name": "ユニット6"
+        },
+        {
+          "name": "ユニット7"
+        },
+        {
+          "name": "ユニット8"
+        },
+        {
+          "name": "ユニット9"
+        },
+        {
+          "name": "ユニット10"
+        }
+      ]
+    },
+    "Collabo等级": {
+      "key": "Collabo等级",
+      "type": "select",
+      "label": "Hard 等级",
+      "description": "自动推关：打已开放的最高等级，输过的等级不再打。",
+      "default_case": "自动推关",
+      "cases": [
+        {
+          "name": "自动推关"
+        },
+        {
+          "name": "30"
+        },
+        {
+          "name": "29"
+        },
+        {
+          "name": "28"
+        },
+        {
+          "name": "27"
+        },
+        {
+          "name": "26"
+        },
+        {
+          "name": "25"
+        },
+        {
+          "name": "24"
+        },
+        {
+          "name": "23"
+        },
+        {
+          "name": "22"
+        },
+        {
+          "name": "21"
+        },
+        {
+          "name": "20"
+        },
+        {
+          "name": "19"
+        },
+        {
+          "name": "18"
+        },
+        {
+          "name": "17"
+        },
+        {
+          "name": "16"
+        },
+        {
+          "name": "15"
+        },
+        {
+          "name": "14"
+        },
+        {
+          "name": "13"
+        },
+        {
+          "name": "12"
+        },
+        {
+          "name": "11"
+        },
+        {
+          "name": "10"
+        },
+        {
+          "name": "9"
+        },
+        {
+          "name": "8"
+        },
+        {
+          "name": "7"
+        },
+        {
+          "name": "6"
+        },
+        {
+          "name": "5"
+        },
+        {
+          "name": "4"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "1"
+        }
+      ]
+    },
+    "Collabo满员时": {
+      "key": "Collabo满员时",
+      "type": "select",
+      "label": "满员换会场",
+      "description": "等待：只打所选会场，满员御礼时回首页等。改打：所选会场满员时打这个会场，所选会场重开后回去；两个会场的等级各自推。",
+      "default_case": "等待",
+      "cases": [
+        {
+          "name": "等待"
+        },
+        {
+          "name": "改打 Vocal"
+        },
+        {
+          "name": "改打 Dance"
+        },
+        {
+          "name": "改打 Visual"
+        },
+        {
+          "name": "改打 Center"
+        }
+      ]
+    },
+    "Grade模式": {
+      "key": "Grade模式",
+      "type": "select",
+      "label": "模式",
+      "description": "正式 Fes 和彩排共享参加权。彩排在选择难度时消耗参加权并开演。",
+      "default_case": "グレードフェス",
+      "cases": [
+        {
+          "name": "グレードフェス"
+        },
+        {
+          "name": "フェスリハーサル"
+        }
+      ]
+    },
+    "Grade难度": {
+      "key": "Grade难度",
+      "type": "select",
+      "label": "グレードフェス 难度",
+      "description": "得分倍率 Easy ×0.75 / Normal ×1.00 / Hard ×1.25；每局消耗 1 个参加权。",
+      "default_case": "Normal",
+      "cases": [
+        {
+          "name": "Easy"
+        },
+        {
+          "name": "Normal"
+        },
+        {
+          "name": "Hard"
+        }
+      ]
+    },
+    "Grade每日次数": {
+      "key": "Grade每日次数",
+      "type": "select",
+      "label": "每日局数（所选模式）",
+      "description": "每次运行打的局数。参加权与 Match 共享，Grade 先用。关闭自动演出时只开一局，之后由你操作。",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "4"
+        },
+        {
+          "name": "5"
+        },
+        {
+          "name": "6"
+        },
+        {
+          "name": "7"
+        },
+        {
+          "name": "8"
+        },
+        {
+          "name": "9"
+        },
+        {
+          "name": "10"
+        },
+        {
+          "name": "11"
+        },
+        {
+          "name": "12"
+        },
+        {
+          "name": "13"
+        },
+        {
+          "name": "14"
+        },
+        {
+          "name": "15"
+        },
+        {
+          "name": "16"
+        },
+        {
+          "name": "17"
+        },
+        {
+          "name": "18"
+        },
+        {
+          "name": "19"
+        },
+        {
+          "name": "20"
+        }
+      ]
+    },
+    "Grade一次消耗": {
+      "key": "Grade一次消耗",
+      "type": "select",
+      "label": "一次最多消耗（まとめて消費）",
+      "description": "每局消耗几个参加权（游戏的「まとめて消費」）。仅支持 1；2–5 暂不可用，开始前会被拒绝。",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "4"
+        },
+        {
+          "name": "5"
+        }
+      ]
+    },
+    "Grade参加ユニット": {
+      "key": "Grade参加ユニット",
+      "type": "input",
+      "label": "参加ユニット 绑定（编队评价值）",
+      "description": "仅正式 Grade Fes：填「参加ユニット」页的编队评价值（如 21801），开演前数字不一致就返回，不消耗。留空不核对；编队变化后需重填。彩排使用游戏当前编队，不核对评价值。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "score",
+          "label": "编队评价值",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^([0-9]{3,6})?$"
+        }
+      ]
+    },
+    "Grade参加权保留": {
+      "key": "Grade参加权保留",
+      "type": "select",
+      "label": "至少保留的フェス参加権",
+      "description": "打完后至少剩下这么多参加权（与 Match 共享）。",
+      "default_case": "0",
+      "cases": [
+        {
+          "name": "0"
+        },
+        {
+          "name": "1"
+        },
+        {
+          "name": "5"
+        },
+        {
+          "name": "10"
+        }
+      ]
+    },
+    "Grade回复券": {
+      "key": "Grade回复券",
+      "type": "switch",
+      "label": "参加权不足时使用回复券",
+      "description": "参加权回复券（参加権回復）与参加权分开计算。暂未开放：打开后开始前会被拒绝。永不使用ジュエル。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Grade回复券上限": {
+      "key": "Grade回复券上限",
+      "type": "select",
+      "label": "回复券每次最多",
+      "description": "每次运行最多使用几张回复券（只在上一项打开时有效）。",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        }
+      ]
+    },
+    "Grade采样每日上限": {
+      "key": "Grade采样每日上限",
+      "type": "select",
+      "label": "每日尝试上限（开发者）",
+      "description": "默认跟随每日局数。可设更低的上限；结果不明的局也占一次。旧档案中的明确上限仍保留。",
+      "default_case": "跟随每日局数",
+      "cases": [
+        {
+          "name": "跟随每日局数"
+        },
+        {
+          "name": "1"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "5"
+        },
+        {
+          "name": "10"
+        },
+        {
+          "name": "20"
+        }
+      ]
+    },
+    "Grade自动演出": {
+      "key": "Grade自动演出",
+      "type": "select",
+      "label": "ライブ開始 后自动演出（实验）",
+      "description": "开启：自动选卡、选审查员、按时机条并结算。关闭：开演后提醒你接手并停止后续任务；本局已消耗参加权。",
+      "default_case": "开启",
+      "cases": [
+        {
+          "name": "关闭"
+        },
+        {
+          "name": "开启"
+        }
+      ]
+    },
+    "Grade倍速": {
+      "key": "Grade倍速",
+      "type": "select",
+      "label": "演出中的倍速",
+      "description": "开启：显示「倍速OFF」时按一次。不改：不碰倍速按钮。",
+      "default_case": "开启",
+      "cases": [
+        {
+          "name": "开启"
+        },
+        {
+          "name": "保持"
+        }
+      ]
+    },
+    "任务奖励领取": {
+      "key": "任务奖励领取",
+      "type": "select",
+      "label": "任务奖励领取",
+      "description": "一括（默认）：デイリー和ウィークリー奖励各一次领完，顺带读进度（最上方未完成的一行）。仅デイリー：不切换周常标签。单项：只领每日登录奖励（开发者）。",
+      "default_case": "开启（デイリー一括）",
+      "cases": [
+        {
+          "name": "关闭"
+        },
+        {
+          "name": "开启（デイリー一括）"
+        },
+        {
+          "name": "开启（仅デイリー一括）"
+        },
+        {
+          "name": "开启（每日登录，单次）"
+        }
+      ]
+    },
+    "营业收取后": {
+      "key": "营业收取后",
+      "type": "select",
+      "label": "收取后",
+      "description": "再营业（默认）：按「再営業へ」，核对预填的 12 小时队伍后按「決定」。只收取：按「再営業へ」读取队伍后按 ← 返回，不派出。",
+      "default_case": "再营业（默认）",
+      "cases": [
+        {
+          "name": "再营业（默认）"
+        },
+        {
+          "name": "只收取"
+        }
+      ]
+    },
+    "营业模式": {
+      "key": "营业模式",
+      "type": "select",
+      "label": "营业模式",
+      "description": "bulk_default（默认）：一括完了 → WORK REPORT 逐份 Touch to Next → 一括営業 → 核验营业首页（无 CLEAR、无空槽、两键灰色）后返回首页；每个一括按钮每次最多 1 次，对话框/未知画面只采样不点击。sample：只进入营业首页采样并返回；sample_collect_one：在营业首页读槽位，只按第一个 CLEAR 槽位的「営業完了」一次（非消费，按前写 claim_intent），之后只读观察 ≤60 s 并存帧，出现 WORK REPORT（两帧读数一致）→ 记录 Exp/粉丝数并记为 claimed → 按「Touch to Next」一次 → 回到营业首页记录槽位并返回首页；该槽位不再 CLEAR 也记 claimed；否则 claim_uncertain（当天不重试）；任务开始时已是 WORK REPORT 也会接管（今天恰有一个不确定槽位时补记 claimed）；永不按一括完了；sample_dispatch_open：营业首页两帧都判定为空槽（无 CLEAR/営業完了、无计时/数字/营业名）时只点第一个空槽卡片一次，只读采样派出画面 ≤30 s 后按一次返回键（不可用则停止），不选择营业/队伍、不派出；collect_and_dispatch：收取已完成营业并派出 12 小时营业（已设计、未启用，当前以 needs_sampling 结束且不点击）。",
+      "default_case": "一括收放（默认）",
+      "cases": [
+        {
+          "name": "一括收放（默认）"
+        },
+        {
+          "name": "只采样"
+        },
+        {
+          "name": "采样并收取一个（sample_collect_one）"
+        },
+        {
+          "name": "采样派出页（sample_dispatch_open）"
+        },
+        {
+          "name": "收取并派出（未启用）"
+        }
+      ]
+    },
+    "营业一括派出": {
+      "key": "营业一括派出",
+      "type": "select",
+      "label": "一括営業（派出）",
+      "description": "默认关闭：只做一括完了与 WORK REPORT，空槽保留（collected_dispatch_disabled，成功）。“核对后派出”需同时填写“营业队伍”：按一次「一括営業」后只读取并核对确认画面（营业名、「12時間」、队伍名、无ジュエル/スタミナ/差し入れ/ソーダ/回復），本版本永不按确认；未填队伍 → team_not_configured。游戏若不经确认直接派出 → dispatched_binding_unverified（失败，当天不重试）。一括営業 尚无实机样本，首次只在监督下使用。",
+      "default_case": "关闭（只收取）",
+      "cases": [
+        {
+          "name": "关闭（只收取）"
+        },
+        {
+          "name": "核对后派出（需填写队伍）"
+        }
+      ]
+    },
+    "营业队伍": {
+      "key": "营业队伍",
+      "type": "input",
+      "label": "营业队伍（偶像名）",
+      "description": "开发者：只用于空槽「一括営業」。确认画面必须出现的偶像名，用「、」或「/」分隔；留空不派出。再营业不需要填写。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "team",
+          "label": "队伍/偶像名",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^.{0,40}$"
+        }
+      ]
+    },
+    "营业槽位数": {
+      "key": "营业槽位数",
+      "type": "select",
+      "label": "最多派出的空槽位数",
+      "description": "仅供“收取并派出（未启用）”设计使用；bulk_default 的一括営業 由游戏处理全部空槽，不使用此项。进行中的槽位永不覆盖；不会解锁槽位。",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        }
+      ]
+    },
+    "营业内容": {
+      "key": "营业内容",
+      "type": "select",
+      "label": "派出的营业",
+      "description": "派出的营业固定为 12 小时 雑誌インタビュー（核对后派出时，确认画面必须显示该营业与「12時間」）。差し入れ 固定关闭。",
+      "default_case": "雑誌インタビュー（12小时）",
+      "cases": [
+        {
+          "name": "雑誌インタビュー（12小时）"
+        }
+      ]
+    },
+    "プレゼント领取": {
+      "key": "プレゼント领取",
+      "type": "select",
+      "label": "领取",
+      "description": "",
+      "default_case": "开启",
+      "cases": [
+        {
+          "name": "关闭"
+        },
+        {
+          "name": "开启"
+        }
+      ]
+    },
+    "Produce剧本": {
+      "key": "Produce剧本",
+      "type": "select",
+      "label": "剧本",
+      "description": "W.I.N.G. 或 say \"Halo\"。say \"Halo\" 沿用这里的 P 偶像与编队，按「路线」打，每次 1 局。",
+      "default_case": "W.I.N.G.",
+      "cases": [
+        {
+          "name": "W.I.N.G."
+        },
+        {
+          "name": "say \"Halo\""
+        }
+      ]
+    },
+    "Halo带书": {
+      "key": "Halo带书",
+      "type": "select",
+      "label": "带书",
+      "description": "开局时放 1 本ノウハウブック：游戏的おまかせ編成、最新設定履歴、游戏内プリセット1/2，或ノウハウ页「设为 Halo 带书」的那本。",
+      "default_case": "おまかせ編成",
+      "cases": [
+        {
+          "name": "おまかせ編成"
+        },
+        {
+          "name": "設定履歴"
+        },
+        {
+          "name": "プリセット1"
+        },
+        {
+          "name": "プリセット2"
+        },
+        {
+          "name": "ノウハウ页指定"
+        }
+      ]
+    },
+    "Produce编队方式": {
+      "key": "Produce编队方式",
+      "type": "select",
+      "label": "编队",
+      "description": "编队来源：指定ユニット（可开「自动查找编队」），或推荐编队（Maa 从持有卡选 P 卡、S 卡和 Guest，开新局时改写所选ユニット）。开始后核对 P 和编队，不符就停止。",
+      "default_case": "指定编队",
+      "cases": [
+        {
+          "name": "指定编队"
+        },
+        {
+          "name": "自动编队"
+        }
+      ]
+    },
+    "Produce编队槽位": {
+      "key": "Produce编队槽位",
+      "type": "select",
+      "label": "ユニット",
+      "description": "ユニット1–20（默认ユニット1）。推荐编队时这个ユニット会被改写。",
+      "default_case": "unit1",
+      "cases": [
+        {
+          "name": "unit1"
+        },
+        {
+          "name": "unit2"
+        },
+        {
+          "name": "unit3"
+        },
+        {
+          "name": "unit4"
+        },
+        {
+          "name": "unit5"
+        },
+        {
+          "name": "unit6"
+        },
+        {
+          "name": "unit7"
+        },
+        {
+          "name": "unit8"
+        },
+        {
+          "name": "unit9"
+        },
+        {
+          "name": "unit10"
+        },
+        {
+          "name": "unit11"
+        },
+        {
+          "name": "unit12"
+        },
+        {
+          "name": "unit13"
+        },
+        {
+          "name": "unit14"
+        },
+        {
+          "name": "unit15"
+        },
+        {
+          "name": "unit16"
+        },
+        {
+          "name": "unit17"
+        },
+        {
+          "name": "unit18"
+        },
+        {
+          "name": "unit19"
+        },
+        {
+          "name": "unit20"
+        }
+      ]
+    },
+    "Produce找编队": {
+      "key": "Produce找编队",
+      "type": "switch",
+      "label": "自动查找编队",
+      "description": "指定ユニット时：开新局在ユニット1–20 里找含此 P 的编队（有上次读到的编队时找同一套），找不到就停止。推荐编队时不用。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "ProduceP卡": {
+      "key": "ProduceP卡",
+      "type": "input",
+      "label": "P 偶像",
+      "description": "必选，从持有 P 卡中选；推荐编队按这张 P 卡配 S 卡和 Guest。开局前核对编队最左格。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "card",
+          "label": "卡 ID",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^(1\\d{9})?$"
+        }
+      ]
+    },
+    "ProduceS卡1": {
+      "key": "ProduceS卡1",
+      "type": "input",
+      "label": "S 卡 1",
+      "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "card",
+          "label": "卡 ID",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^(2\\d{9})?$"
+        }
+      ]
+    },
+    "ProduceS卡2": {
+      "key": "ProduceS卡2",
+      "type": "input",
+      "label": "S 卡 2",
+      "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "card",
+          "label": "卡 ID",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^(2\\d{9})?$"
+        }
+      ]
+    },
+    "ProduceS卡3": {
+      "key": "ProduceS卡3",
+      "type": "input",
+      "label": "S 卡 3",
+      "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "card",
+          "label": "卡 ID",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^(2\\d{9})?$"
+        }
+      ]
+    },
+    "ProduceS卡4": {
+      "key": "ProduceS卡4",
+      "type": "input",
+      "label": "S 卡 4",
+      "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "card",
+          "label": "卡 ID",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^(2\\d{9})?$"
+        }
+      ]
+    },
+    "Produce客串": {
+      "key": "Produce客串",
+      "type": "input",
+      "label": "Guest",
+      "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+      "default_case": "",
+      "cases": [],
+      "inputs": [
+        {
+          "name": "card",
+          "label": "卡 ID",
+          "default": "",
+          "pipeline_type": "string",
+          "verify": "^(2\\d{9})?$"
+        }
+      ]
+    },
+    "Produce主属性": {
+      "key": "Produce主属性",
+      "type": "select",
+      "label": "主属性",
+      "description": "课程、试镜与编队推荐都按它安排。自动选择：跟随 P 偶像特长（Vocal→Vo、Dance→Da、Visual→Vi）。",
+      "default_case": "自动",
+      "cases": [
+        {
+          "name": "自动"
+        },
+        {
+          "name": "Vo"
+        },
+        {
+          "name": "Da"
+        },
+        {
+          "name": "Vi"
+        }
+      ]
+    },
+    "Produce难度": {
+      "key": "Produce难度",
+      "type": "select",
+      "label": "难度",
+      "description": "开新局时生效；True End 需要 Middle 或 Master。接着打进行中的一局时沿用原难度（继续窗口显示的难度不同则停止）。",
+      "default_case": "Middle",
+      "cases": [
+        {
+          "name": "Beginner"
+        },
+        {
+          "name": "Middle"
+        },
+        {
+          "name": "Master"
+        }
+      ]
+    },
+    "Produce目标": {
+      "key": "Produce目标",
+      "type": "select",
+      "label": "目标",
+      "description": "True End（默认）：按各季粉丝目标安排试镜，第 4 季冲到 50 万粉丝并争取 W.I.N.G. 优胜。各季晋级线：每季只追到晋级所需粉丝，第 4 季不追 50 万。周常 3 次用独立任务「Auto Produce·周常」。",
+      "default_case": "True End",
+      "cases": [
+        {
+          "name": "True End"
+        },
+        {
+          "name": "只过季门槛"
+        }
+      ]
+    },
+    "Produce次数": {
+      "key": "Produce次数",
+      "type": "select",
+      "label": "次数",
+      "description": "连续打几局，每局消耗体力 30。2 局以上需开启「读取后自动确认」；每局结束读新书，读到目标缺的条目就停。",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "4"
+        },
+        {
+          "name": "5"
+        }
+      ]
+    },
+    "Produce休息阈值": {
+      "key": "Produce休息阈值",
+      "type": "select",
+      "label": "失败率上限",
+      "description": "失败率（トラブル率）达到此值的课程和工作不选，改为休息、试镜或低失败率的工作。默认 10%。",
+      "default_case": "10%",
+      "cases": [
+        {
+          "name": "5%"
+        },
+        {
+          "name": "10%"
+        },
+        {
+          "name": "15%"
+        },
+        {
+          "name": "20%"
+        }
+      ]
+    },
+    "Produce低分兜底": {
+      "key": "Produce低分兜底",
+      "type": "select",
+      "label": "低收益时的选择",
+      "description": "最高分的课程/工作不到无 S 卡主属性课的 60% 时生效：无 S 卡训练（默认；失败率达到阈值、已到上限或不如休息时改休息）/ 休息 / 选择最高分行动。最高分已是休息或试镜时照常执行。",
+      "default_case": "主属性课",
+      "cases": [
+        {
+          "name": "主属性课"
+        },
+        {
+          "name": "休息"
+        },
+        {
+          "name": "不兜底"
+        }
+      ]
+    },
+    "ProduceSP加点": {
+      "key": "ProduceSP加点",
+      "type": "select",
+      "label": "SP 使用策略",
+      "description": "技能优先（默认）：P 卡技能与上限 → 主力 S 卡技能 → 主属性上限 → 其他 S 卡技能 → 被动。上限优先：主属性上限排到 S 卡技能前。暂不使用：SP 留着不用。手动设置：需要加点时停止运行，由你操作。",
+      "default_case": "技能优先",
+      "cases": [
+        {
+          "name": "技能优先"
+        },
+        {
+          "name": "上限优先"
+        },
+        {
+          "name": "不加点"
+        },
+        {
+          "name": "交给我"
+        }
+      ]
+    },
+    "Produce上限余量": {
+      "key": "Produce上限余量",
+      "type": "select",
+      "label": "上限学习阈值",
+      "description": "主属性离上限不超过此值时，SP 先提升主属性上限，再学主力 S 卡技能（无成长预测时只在此范围内学上限）。默认 100。",
+      "default_case": "100",
+      "cases": [
+        {
+          "name": "50"
+        },
+        {
+          "name": "100"
+        },
+        {
+          "name": "150"
+        },
+        {
+          "name": "200"
+        }
+      ]
+    },
+    "Produce约定": {
+      "key": "Produce约定",
+      "type": "select",
+      "label": "约定处理",
+      "description": "事件里的约定（「約束」）照常接受。中立（默认）：约定的课程只加一点分，其他行动照常评分。优先守约：约定的课程优先于其他课程与营业，需要的试镜仍优先。",
+      "default_case": "中立",
+      "cases": [
+        {
+          "name": "中立"
+        },
+        {
+          "name": "优先守约"
+        }
+      ]
+    },
+    "Produce限定试镜S1": {
+      "key": "Produce限定试镜S1",
+      "type": "switch",
+      "label": "S1 限定试镜（+4万）",
+      "description": "强化周第 1 季最终周的限定试镜。开（默认）：普通试镜已达本季目标、出场条件满足且胜率够时参加；不够就照常打普通试镜。关：不参加。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce限定试镜S2": {
+      "key": "Produce限定试镜S2",
+      "type": "switch",
+      "label": "S2 限定试镜（+10万）",
+      "description": "强化周第 2 季最终周的限定试镜。开（默认）：普通试镜已达本季目标、出场条件满足且胜率够时参加；不够就照常打普通试镜。关：不参加。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce限定试镜S3": {
+      "key": "Produce限定试镜S3",
+      "type": "switch",
+      "label": "S3 限定试镜（+5万）",
+      "description": "强化周第 3 季最终周的限定试镜。开（默认）：普通试镜已达本季目标、出场条件满足且胜率够时参加；不够就照常打普通试镜。关：不参加。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce限定试镜S4": {
+      "key": "Produce限定试镜S4",
+      "type": "switch",
+      "label": "S4 限定试镜（+25万）",
+      "description": "强化周第 4 季最终周的限定试镜。开（默认）：普通试镜已达本季目标、出场条件满足且胜率够时参加；不够就照常打普通试镜。关：不参加。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce试镜出牌": {
+      "key": "Produce试镜出牌",
+      "type": "select",
+      "label": "出牌方式",
+      "description": "工具策略（默认）：Maa 逐手出牌。游戏 Auto：预计合格率达到 Auto 门槛的普通试镜交给游戏 Auto；准决赛与决赛需要第 1 名，仍由 Maa 出牌。",
+      "default_case": "自研策略",
+      "cases": [
+        {
+          "name": "自研策略"
+        },
+        {
+          "name": "游戏 Auto"
+        }
+      ]
+    },
+    "Produce出牌风格": {
+      "key": "Produce出牌风格",
+      "type": "select",
+      "label": "出牌目标",
+      "description": "用于 Maa 自己出牌的试镜。主攻流行 1 位（默认）：预计能拿下流行 1 位的 Top Appeal 时优先攻击该审查员，拿稳后按期望星数出牌。平衡：不偏向某位审查员，每手按期望星数选择出牌与审查员。",
+      "default_case": "稳拿第一",
+      "cases": [
+        {
+          "name": "稳拿第一"
+        },
+        {
+          "name": "按属性"
+        }
+      ]
+    },
+    "Produce事件选项": {
+      "key": "Produce事件选项",
+      "type": "select",
+      "label": "事件默认选项",
+      "description": "コミュ出现选项时选这一项（默认第 1 项）；有「約束」选项时先接受约定。该事件没有这一项时停止。",
+      "default_case": "第 1 项",
+      "cases": [
+        {
+          "name": "第 1 项"
+        },
+        {
+          "name": "第 2 项"
+        },
+        {
+          "name": "第 3 项"
+        }
+      ]
+    },
+    "ProduceP道具": {
+      "key": "ProduceP道具",
+      "type": "select",
+      "label": "P 道具",
+      "description": "目前只支持不带。",
+      "default_case": "不带",
+      "cases": [
+        {
+          "name": "不带"
+        }
+      ]
+    },
+    "Produce大富豪": {
+      "key": "Produce大富豪",
+      "type": "select",
+      "label": "开局前大富豪",
+      "description": "开新局前从首页玩一局大富豪（每回合 パス），获得育成加成。自动：推荐编队评分偏低时才玩；指定ユニット没有评分，不玩。不消耗体力。",
+      "default_case": "自动",
+      "cases": [
+        {
+          "name": "关"
+        },
+        {
+          "name": "自动"
+        },
+        {
+          "name": "每次"
+        }
+      ]
+    },
+    "Produce改游戏设置": {
+      "key": "Produce改游戏设置",
+      "type": "switch",
+      "label": "自动改游戏设置",
+      "description": "开：第一次到 Produce 主页时把 オプション 的「未読イベント早送り解除」「警告ポップアップ」改为 OFF 并保存，之后保持；已是 OFF 不改，读数不符即停止。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce高级SP权重": {
+      "key": "Produce高级SP权重",
+      "type": "select",
+      "label": "SP 权重",
+      "description": "打分器：每 1 SP 折算的主属性点数（w_sp）。默认 1.0。",
+      "default_case": "1.0",
+      "cases": [
+        {
+          "name": "0.5"
+        },
+        {
+          "name": "1.0"
+        },
+        {
+          "name": "1.5"
+        }
+      ]
+    },
+    "Produce高级紧迫度": {
+      "key": "Produce高级紧迫度",
+      "type": "select",
+      "label": "试镜紧迫度",
+      "description": "打分器：临近粉丝期限时试镜加分的上限（urgency_max）。默认 3。",
+      "default_case": "3",
+      "cases": [
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "4"
+        }
+      ]
+    },
+    "Produce高级兜底比例": {
+      "key": "Produce高级兜底比例",
+      "type": "select",
+      "label": "兜底线",
+      "description": "「都不划算时」的兜底线 = 空房主属性课收益 × 此百分比（floor_ratio）。默认 60%。",
+      "default_case": "0.6",
+      "cases": [
+        {
+          "name": "0.4"
+        },
+        {
+          "name": "0.6"
+        },
+        {
+          "name": "0.8"
+        }
+      ]
+    },
+    "Produce高级羁绊权重": {
+      "key": "Produce高级羁绊权重",
+      "type": "select",
+      "label": "羁绊权重",
+      "description": "打分器：支援羁绊每点的价值（bond_beta，随周数衰减）。默认 0.5。",
+      "default_case": "0.5",
+      "cases": [
+        {
+          "name": "0.25"
+        },
+        {
+          "name": "0.5"
+        },
+        {
+          "name": "1.0"
+        }
+      ]
+    },
+    "Produce高级Auto门槛": {
+      "key": "Produce高级Auto门槛",
+      "type": "select",
+      "label": "Auto 门槛",
+      "description": "选择游戏 Auto 时，普通试镜交给 Auto 所需的最低估计合格率（auto_min_pass）。默认 97%。",
+      "default_case": "97%",
+      "cases": [
+        {
+          "name": "95%"
+        },
+        {
+          "name": "97%"
+        },
+        {
+          "name": "99%"
+        }
+      ]
+    },
+    "Produce终局清空SP": {
+      "key": "Produce终局清空SP",
+      "type": "switch",
+      "label": "结束前使用剩余 SP",
+      "description": "W.I.N.G. 准决赛/决赛前最后一次加点时，剩余 SP 用于上限（主属性优先，其次其他属性与 Me）和可满足条件的被动。默认关：剩余 SP 结束时作废。SP 使用策略为暂不使用或手动设置时不生效。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce报酬读取": {
+      "key": "Produce报酬读取",
+      "type": "switch",
+      "label": "读取结算奖励",
+      "description": "「獲得報酬」页：读取 Exスキル，再逐本点开ノウハウブック读取详情（只读点击），结果写入结算摘要。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce保护Lv5书": {
+      "key": "Produce保护Lv5书",
+      "type": "switch",
+      "label": "自动锁定 Lv5 书（暂不可用）",
+      "description": "暂不可用：游戏里的锁定（「保護」）按钮尚未实机核对，Maa 不会点击。结算摘要会列出含 Lv.5 的书，请在游戏里锁定。Maa 从不点「売却」。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce再抽选": {
+      "key": "Produce再抽选",
+      "type": "switch",
+      "label": "重新抽选（每次体力 30）",
+      "description": "「獲得報酬」的「再抽選」。消耗：体力 30/次。默认关；按钮尚未实机验证、动作表中禁用，开启也不会点击。有 Lv5 书、已保护或未读全时不用。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce报酬后OK": {
+      "key": "Produce报酬后OK",
+      "type": "switch",
+      "label": "读取后自动确认",
+      "description": "开（默认）：读取完成后按「獲得報酬」页的 OK，回首页再读新书的全部词条，同步到ノウハウ页；读取不完整时停在该页。关：停在该页，由你锁定或出售后按 OK。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce自动锁书": {
+      "key": "Produce自动锁书",
+      "type": "switch",
+      "label": "自动锁定新书",
+      "description": "W.I.N.G. 回到首页后读新书：想要的条目在书库中同等或更高 Lv 不足 3 本时锁定（「保護」）。锁定结果不确定将停止。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce自动卖书": {
+      "key": "Produce自动卖书",
+      "type": "switch",
+      "label": "自动卖书",
+      "description": "按「卖书策略」卖出新书，换取マニー；卖出后无法找回。已锁定、有マーク或详情未读完的书不卖。确认框待采样：目前只列出要卖的书，不点击。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Produce卖书策略": {
+      "key": "Produce卖书策略",
+      "type": "select",
+      "label": "卖书策略",
+      "description": "只卖没用的书：没有想要的条目，其余条目书库里都有同等或更高 Lv。库存够 3 本 / 有 1 本：想要的条目书库里已有这么多本同等或更高 Lv，其余条目同上。",
+      "default_case": "只卖没用的书",
+      "cases": [
+        {
+          "name": "只卖没用的书"
+        },
+        {
+          "name": "库存够3本就卖"
+        },
+        {
+          "name": "库存有1本就卖"
+        }
+      ]
+    },
+    "Autoループ": {
+      "key": "Autoループ",
+      "type": "switch",
+      "label": "ループ",
+      "description": "开：「ループする」打开，オート1 重复 25 回。体力不够 750 时用リカバリーソーダ补足。消耗：体力与ソーダ共 750。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Autoソーダ上限": {
+      "key": "Autoソーダ上限",
+      "type": "select",
+      "label": "ソーダ上限",
+      "description": "ソーダ最多补多少体力；还差更多就不开始。",
+      "default_case": "450",
+      "cases": [
+        {
+          "name": "450"
+        },
+        {
+          "name": "600"
+        },
+        {
+          "name": "750"
+        }
+      ]
+    },
+    "Auto次数": {
+      "key": "Auto次数",
+      "type": "select",
+      "label": "次数",
+      "description": "オート1 的プロデュース回数，每次运行最多 5。消耗：体力 30×次数。",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1"
+        },
+        {
+          "name": "2"
+        },
+        {
+          "name": "3"
+        },
+        {
+          "name": "4"
+        },
+        {
+          "name": "5"
+        }
+      ]
+    },
+    "Auto使用スキップ": {
+      "key": "Auto使用スキップ",
+      "type": "switch",
+      "label": "用スキップ完成（验证后再开）",
+      "description": "开：按「スキップ」（每日 5 次）而不是「プロデュース開始」。スキップ的消耗尚未验证，默认关。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ]
+    },
+    "Auto核对剧本": {
+      "key": "Auto核对剧本",
+      "type": "select",
+      "label": "剧本",
+      "description": "オート1 的剧本。S.T.E.P. 带 3 本ノウハウブック，其他剧本不带书。按目标词条：按ノウハウ页的目标，选 Auto 能拿到缺少词条的剧本；没有则 W.I.N.G.。",
+      "default_case": "W.I.N.G.",
+      "cases": [
+        {
+          "name": "W.I.N.G."
+        },
+        {
+          "name": "ファン感謝祭"
+        },
+        {
+          "name": "G.R.A.D."
+        },
+        {
+          "name": "Landing Point"
+        },
+        {
+          "name": "S.T.E.P."
+        },
+        {
+          "name": "按目标词条"
+        }
+      ]
+    },
+    "Auto编队来源": {
+      "key": "Auto编队来源",
+      "type": "select",
+      "label": "编队",
+      "description": "自动编队：先把 Maa 选的 P、4 张 S 与嘉宾写入下面的ユニット（覆盖原队伍），不消耗。指定ユニット：用ユニット现有队伍。",
+      "default_case": "自动编队",
+      "cases": [
+        {
+          "name": "自动编队"
+        },
+        {
+          "name": "指定ユニット"
+        }
+      ]
+    },
+    "Auto编队": {
+      "key": "Auto编队",
+      "type": "select",
+      "label": "ユニット",
+      "description": "Auto 用的ユニット（1–20）。自动编队会改写它。",
+      "default_case": "ユニット1",
+      "cases": [
+        {
+          "name": "ユニット1"
+        },
+        {
+          "name": "ユニット2"
+        },
+        {
+          "name": "ユニット3"
+        },
+        {
+          "name": "ユニット4"
+        },
+        {
+          "name": "ユニット5"
+        },
+        {
+          "name": "ユニット6"
+        },
+        {
+          "name": "ユニット7"
+        },
+        {
+          "name": "ユニット8"
+        },
+        {
+          "name": "ユニット9"
+        },
+        {
+          "name": "ユニット10"
+        },
+        {
+          "name": "ユニット11"
+        },
+        {
+          "name": "ユニット12"
+        },
+        {
+          "name": "ユニット13"
+        },
+        {
+          "name": "ユニット14"
+        },
+        {
+          "name": "ユニット15"
+        },
+        {
+          "name": "ユニット16"
+        },
+        {
+          "name": "ユニット17"
+        },
+        {
+          "name": "ユニット18"
+        },
+        {
+          "name": "ユニット19"
+        },
+        {
+          "name": "ユニット20"
+        }
+      ]
+    },
+    "Auto带书": {
+      "key": "Auto带书",
+      "type": "select",
+      "label": "带书",
+      "description": "S.T.E.P. 带的 3 本：最近設定履歴、游戏里的プリセット1/2，或ノウハウ页保存的三本（只在选书第一屏找）。",
+      "default_case": "最近設定履歴",
+      "cases": [
+        {
+          "name": "最近設定履歴"
+        },
+        {
+          "name": "プリセット1"
+        },
+        {
+          "name": "プリセット2"
+        },
+        {
+          "name": "ノウハウ页指定"
+        }
+      ]
+    },
+    "Auto育成方針": {
+      "key": "Auto育成方針",
+      "type": "select",
+      "label": "育成方針",
+      "description": "自动：按 P 卡的特长；Balanced 或读不出时保持游戏里的方針。",
+      "default_case": "自动",
+      "cases": [
+        {
+          "name": "自动"
+        },
+        {
+          "name": "Vocal"
+        },
+        {
+          "name": "Dance"
+        },
+        {
+          "name": "Visual"
+        }
+      ]
+    },
+    "Produce策略": {
+      "key": "Produce策略",
+      "type": "select",
+      "label": "Produce 策略",
+      "description": "只影响当前离线评分器；权重需要用真实剧本样本校准。",
+      "default_case": "均衡",
+      "cases": [
+        {
+          "name": "均衡"
+        },
+        {
+          "name": "属性优先"
+        },
+        {
+          "name": "稳健保体力"
+        }
+      ]
+    },
+    "商店兑换": {
+      "key": "商店兑换",
+      "type": "switch",
+      "label": "兑换",
+      "description": "关闭则只识别本日限定列表，不兑换。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ],
+      "ui_only": true
+    },
+    "训练使用铜券": {
+      "key": "训练使用铜券",
+      "type": "switch",
+      "label": "使用铜券",
+      "description": "关闭则只走到训练确认前，不消耗训练券。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ],
+      "ui_only": true
+    },
+    "Collabo使用Pass": {
+      "key": "Collabo使用Pass",
+      "type": "switch",
+      "label": "使用 Pass",
+      "description": "固定开启：勾选任务即同意。消耗：每局コラボフェスパス 1。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        }
+      ],
+      "ui_only": true
+    },
+    "Grade使用参加权": {
+      "key": "Grade使用参加权",
+      "type": "switch",
+      "label": "使用 Fes 参加权",
+      "description": "默认关闭：不开始演出，不消耗参加权。",
+      "default_case": "No",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ],
+      "ui_only": true
+    },
+    "Produce核对上次编队": {
+      "key": "Produce核对上次编队",
+      "type": "switch",
+      "label": "核对上次读到的 S/Guest",
+      "description": "开：开局前按上次读到的编队核对 S/Guest，不符就停。关：只核对 P，本次重新读取编队。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        },
+        {
+          "name": "No"
+        }
+      ],
+      "ui_only": true
+    },
+    "Produce可开新局": {
+      "key": "Produce可开新局",
+      "type": "switch",
+      "label": "没有进行中就开新局",
+      "description": "有进行中的一局：核对 P 偶像与编队，一致才接着打，否则停止。没有：开新局。消耗：每局体力 30（按「プロデュース開始」），局数按「次数」。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        }
+      ],
+      "ui_only": true
+    },
+    "Auto开始消耗体力": {
+      "key": "Auto开始消耗体力",
+      "type": "switch",
+      "label": "开始 Auto",
+      "description": "固定开启：勾选任务即同意。消耗：体力 30×次数。",
+      "default_case": "Yes",
+      "cases": [
+        {
+          "name": "Yes"
+        }
+      ],
+      "ui_only": true
+    }
+  },
+  "presets": [
+    {
+      "name": "daily",
+      "label": "日常（默认顺序）",
+      "description": "默认日常：勾选 启动 → 商店 → 训练 → Match Live → 任务奖励 → 营业（任务进度读取自动附带）；礼物箱、Grade Fes、Collabo Fes 按同一顺序列在方案里、默认不勾选。Match 与 Grade 共享フェス参加権，Match 默认「全部用完」、跳过最新一关。Shop 默认只买前两项。Business 收取后「再営業へ」→ 核对预填队伍 →「決定」。",
+      "task": [
+        {
+          "name": "Startup",
+          "enabled": true
+        },
+        {
+          "name": "PresentClaim",
+          "enabled": false,
+          "option": {
+            "プレゼント领取": "开启"
+          }
+        },
+        {
+          "name": "Shop",
+          "enabled": true
+        },
+        {
+          "name": "Training",
+          "enabled": true
+        },
+        {
+          "name": "GradeFes",
+          "enabled": false
+        },
+        {
+          "name": "MatchSkip",
+          "enabled": true,
+          "option": {
+            "Match只采样": "No",
+            "Match关卡": "最新（全部关卡）",
+            "Match次数": "全部用完"
+          }
+        },
+        {
+          "name": "MissionsClaim",
+          "enabled": true,
+          "option": {
+            "任务奖励领取": "开启（デイリー一括）"
+          }
+        },
+        {
+          "name": "Business",
+          "enabled": true,
+          "option": {
+            "营业收取后": "再营业（默认）"
+          }
+        },
+        {
+          "name": "MissionStatus",
+          "enabled": true
+        },
+        {
+          "name": "CollaboFes",
+          "enabled": false
+        }
+      ]
+    }
+  ]
+}

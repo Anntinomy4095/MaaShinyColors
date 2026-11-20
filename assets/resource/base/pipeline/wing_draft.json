@@ -1,0 +1,2249 @@
+{
+    "SC.Wing.Anchor.ModeHelp.Title": {
+        "recognition": "OCR",
+        "roi": [
+            80,
+            35,
+            290,
+            50
+        ],
+        "expected": [
+            "プロデュースモード"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ModeHelp.Table": {
+        "recognition": "OCR",
+        "roi": [
+            90,
+            115,
+            1080,
+            55
+        ],
+        "expected": [
+            "3つのプロデュースモード"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Popup.Close": {
+        "recognition": "OCR",
+        "roi": [
+            560,
+            565,
+            160,
+            85
+        ],
+        "expected": [
+            "^閉じ?る$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Help.Title": {
+        "recognition": "OCR",
+        "roi": [
+            30,
+            5,
+            130,
+            55
+        ],
+        "expected": [
+            "^ヘルプ$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Help.Item": {
+        "recognition": "OCR",
+        "roi": [
+            280,
+            200,
+            420,
+            500
+        ],
+        "expected": [
+            "プロデュース|オーディション|レッスン"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ItemHelp.Title": {
+        "recognition": "OCR",
+        "roi": [
+            85,
+            35,
+            350,
+            50
+        ],
+        "expected": [
+            "アイテム準備"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.AuditionHelp.Title": {
+        "recognition": "OCR",
+        "roi": [
+            85,
+            35,
+            220,
+            50
+        ],
+        "expected": [
+            "^オーディション$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Tutorial.Page": {
+        "recognition": "OCR",
+        "roi": [
+            1110,
+            65,
+            120,
+            65
+        ],
+        "expected": [
+            "^[1-7][/1l|]?[1-7]$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ProduceSelect.Title": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            10,
+            240,
+            50
+        ],
+        "expected": [
+            "プロデュース(選|遥|退)択"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ProduceSelect.Wing": {
+        "recognition": "OCR",
+        "roi": [
+            720,
+            280,
+            390,
+            45
+        ],
+        "expected": [
+            "Wonder.?Idol.?Nova"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ProduceSelect.Mode": {
+        "recognition": "OCR",
+        "roi": [
+            590,
+            340,
+            560,
+            65
+        ],
+        "expected": [
+            "ミドル"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Footer.Next": {
+        "recognition": "OCR",
+        "roi": [
+            1120,
+            625,
+            110,
+            70
+        ],
+        "expected": [
+            "^次(へ|入)$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.UnitSelect.Title": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            10,
+            200,
+            50
+        ],
+        "expected": [
+            "ユニット(編|網|通)成"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.UnitSelect.ProduceIdol": {
+        "recognition": "OCR",
+        "roi": [
+            20,
+            195,
+            170,
+            50
+        ],
+        "expected": [
+            "Produce ?Id"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.UnitSelect.SupportIdol": {
+        "recognition": "OCR",
+        "roi": [
+            530,
+            195,
+            170,
+            50
+        ],
+        "expected": [
+            "Support Idol"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.UnitSelect.IdolPanel": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Wing.Anchor.UnitSelect.ProduceIdol",
+            "SC.Wing.Anchor.UnitSelect.SupportIdol"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Anchor.UnitSelect.AutoForm": {
+        "recognition": "OCR",
+        "roi": [
+            870,
+            145,
+            180,
+            55
+        ],
+        "expected": [
+            "おまかせ"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.UnitSelect.SkillPanelButton": {
+        "recognition": "OCR",
+        "roi": [
+            890,
+            625,
+            170,
+            55
+        ],
+        "expected": [
+            "スキル(パ|バ)ネル"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.BonusList.Title": {
+        "recognition": "OCR",
+        "roi": [
+            290,
+            40,
+            390,
+            55
+        ],
+        "expected": [
+            "サ(ポ|ボ)ートスキル(ボ|ポ)ーナス"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ItemSelect.Title": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            10,
+            330,
+            50
+        ],
+        "expected": [
+            "アイテム準備"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ItemSelect.Limit": {
+        "recognition": "OCR",
+        "roi": [
+            200,
+            620,
+            460,
+            45
+        ],
+        "expected": [
+            "2つまで持って"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.StartConfirm.Title": {
+        "recognition": "OCR",
+        "roi": [
+            390,
+            80,
+            150,
+            130
+        ],
+        "expected": [
+            "使用確認"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.StartConfirm.Body": {
+        "recognition": "OCR",
+        "roi": [
+            360,
+            170,
+            580,
+            130
+        ],
+        "expected": [
+            "開始しますか"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.StartConfirm.Cancel": {
+        "recognition": "OCR",
+        "roi": [
+            455,
+            460,
+            165,
+            140
+        ],
+        "expected": [
+            "キャンセル"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Commu.FastForward": {
+        "recognition": "OCR",
+        "roi": [
+            1068,
+            648,
+            92,
+            48
+        ],
+        "expected": [
+            "^(ON|OFF)$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Commu.Skip": {
+        "recognition": "OCR",
+        "roi": [
+            1165,
+            25,
+            105,
+            75
+        ],
+        "expected": [
+            "SKIP"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Commu.OK": {
+        "recognition": "OCR",
+        "roi": [
+            1100,
+            615,
+            110,
+            75
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Commu.NamePlate": {
+        "recognition": "OCR",
+        "roi": [
+            240,
+            515,
+            230,
+            65
+        ],
+        "expected": [
+            "^[^\\d\\s,./:+*%]{2,8}$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Promise.Kept": {
+        "recognition": "OCR",
+        "roi": [
+            380,
+            495,
+            540,
+            135
+        ],
+        "expected": [
+            "約束を守った"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Hub.Title": {
+        "recognition": "OCR",
+        "roi": [
+            30,
+            5,
+            200,
+            55
+        ],
+        "expected": [
+            "^プロデュース$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Hub.Stamina": {
+        "recognition": "OCR",
+        "roi": [
+            945,
+            5,
+            65,
+            40
+        ],
+        "expected": [
+            "体力"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Hub.Rest": {
+        "recognition": "OCR",
+        "roi": [
+            370,
+            620,
+            150,
+            95
+        ],
+        "expected": [
+            "^休(む|芯|屯)$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Hub.Trend": {
+        "recognition": "OCR",
+        "roi": [
+            1035,
+            620,
+            230,
+            95
+        ],
+        "expected": [
+            "流行確認"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Hub.SemiFinal": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            600,
+            345,
+            100
+        ],
+        "expected": [
+            "準決勝ライブ"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Hub.Final": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            600,
+            345,
+            110
+        ],
+        "expected": [
+            "^決勝ライブ$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Hub.SeasonLeftBanner": {
+        "recognition": "OCR",
+        "roi": [
+            360,
+            330,
+            320,
+            120
+        ],
+        "expected": [
+            "残り"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Schedule.Title": {
+        "recognition": "OCR",
+        "roi": [
+            35,
+            10,
+            230,
+            50
+        ],
+        "expected": [
+            "ス.?ジュール(選|遥|退)択"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Schedule.LessonRoom": {
+        "recognition": "OCR",
+        "roi": [
+            270,
+            480,
+            990,
+            60
+        ],
+        "expected": [
+            "レッスン|ッスン|ラジオ|トーク|撮影"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Footer.Decide": {
+        "recognition": "OCR",
+        "roi": [
+            1125,
+            625,
+            105,
+            70
+        ],
+        "expected": [
+            "^(決|决)定$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Schedule.SupportSkill": {
+        "recognition": "OCR",
+        "roi": [
+            915,
+            620,
+            130,
+            80
+        ],
+        "expected": [
+            "サ(ポ|ボ)ート"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Audition.Header": {
+        "recognition": "OCR",
+        "roi": [
+            410,
+            100,
+            240,
+            60
+        ],
+        "expected": [
+            "^オーディション$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Audition.Condition": {
+        "recognition": "OCR",
+        "roi": [
+            825,
+            195,
+            110,
+            45
+        ],
+        "expected": [
+            "^出.(条|类)件?$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Audition.SpecialRule": {
+        "recognition": "OCR",
+        "roi": [
+            990,
+            205,
+            150,
+            70
+        ],
+        "expected": [
+            "特殊ルール"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Audition.ConditionOrSpecial": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Wing.Anchor.Audition.Condition",
+            "SC.Wing.Anchor.Audition.SpecialRule"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Footer.Review": {
+        "recognition": "OCR",
+        "roi": [
+            915,
+            630,
+            135,
+            60
+        ],
+        "expected": [
+            "振り返り"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Audition.LockedTitle": {
+        "recognition": "OCR",
+        "roi": [
+            670,
+            210,
+            180,
+            70
+        ],
+        "expected": [
+            "^出.(条|类)件$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Trend.Title": {
+        "recognition": "OCR",
+        "roi": [
+            300,
+            65,
+            220,
+            60
+        ],
+        "expected": [
+            "流行イメージ"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Trend.Rank": {
+        "recognition": "OCR",
+        "roi": [
+            850,
+            65,
+            250,
+            60
+        ],
+        "expected": [
+            "アイドルランク"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Rest.Title": {
+        "recognition": "OCR",
+        "roi": [
+            395,
+            230,
+            140,
+            55
+        ],
+        "expected": [
+            "休(憩|想)"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Rest.Body": {
+        "recognition": "OCR",
+        "roi": [
+            490,
+            320,
+            300,
+            45
+        ],
+        "expected": [
+            "(休|体)ませますか"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Dialog.Cancel": {
+        "recognition": "OCR",
+        "roi": [
+            455,
+            395,
+            165,
+            60
+        ],
+        "expected": [
+            "キャンセル"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Dialog.OK": {
+        "recognition": "OCR",
+        "roi": [
+            690,
+            395,
+            100,
+            62
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.LiveConfirm.Title": {
+        "recognition": "OCR",
+        "roi": [
+            395,
+            230,
+            140,
+            55
+        ],
+        "expected": [
+            "認画面"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.LiveConfirm.Body": {
+        "recognition": "OCR",
+        "roi": [
+            500,
+            320,
+            280,
+            45
+        ],
+        "expected": [
+            "ライブを開始しますか"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Review.Title": {
+        "recognition": "OCR",
+        "roi": [
+            35,
+            10,
+            135,
+            50
+        ],
+        "expected": [
+            "^振り返り$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Review.Owned": {
+        "recognition": "OCR",
+        "roi": [
+            135,
+            150,
+            170,
+            50
+        ],
+        "expected": [
+            "所持スキル"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Review.PassiveToggle": {
+        "recognition": "OCR",
+        "roi": [
+            55,
+            232,
+            265,
+            45
+        ],
+        "expected": [
+            "スキルの.{1,3}を有効"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.SkillPanel.Title": {
+        "recognition": "OCR",
+        "roi": [
+            35,
+            10,
+            190,
+            50
+        ],
+        "expected": [
+            "スキル(パ|バ)ネル"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.LearnConfirm.Title": {
+        "recognition": "OCR",
+        "roi": [
+            395,
+            130,
+            220,
+            60
+        ],
+        "expected": [
+            "スキル習得確認"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.LearnConfirm.Body": {
+        "recognition": "OCR",
+        "roi": [
+            400,
+            205,
+            470,
+            50
+        ],
+        "expected": [
+            "SPを\\d+消(費|费)"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ForgetSelect.Title": {
+        "recognition": "OCR",
+        "roi": [
+            300,
+            10,
+            700,
+            50
+        ],
+        "expected": [
+            "4つまで"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ReplaceConfirm.Title": {
+        "recognition": "OCR",
+        "roi": [
+            395,
+            15,
+            270,
+            55
+        ],
+        "expected": [
+            "スキル入れ替え確認"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ReplaceConfirm.Warning": {
+        "recognition": "OCR",
+        "roi": [
+            410,
+            535,
+            450,
+            50
+        ],
+        "expected": [
+            "再度習得できません"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Owned.LiveSkill": {
+        "recognition": "OCR",
+        "roi": [
+            540,
+            170,
+            190,
+            55
+        ],
+        "expected": [
+            "ライブスキル"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.UnitCheck.Title": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            10,
+            330,
+            50
+        ],
+        "expected": [
+            "[ユュ]ニット確"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.IdolDetail.Title": {
+        "recognition": "OCR",
+        "roi": [
+            45,
+            10,
+            320,
+            50
+        ],
+        "expected": [
+            "[プブ]ロデュースアイドル詳"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.IdolDetail.ExTab": {
+        "recognition": "OCR",
+        "roi": [
+            1135,
+            80,
+            110,
+            50
+        ],
+        "expected": [
+            "Exスキル"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.WeekCard.Until": {
+        "recognition": "OCR",
+        "roi": [
+            320,
+            345,
+            390,
+            80
+        ],
+        "expected": [
+            "シーズン[1-4]終了まで"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Live.Turn": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            125,
+            50
+        ],
+        "expected": [
+            "TURN"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Live.Auto": {
+        "recognition": "OCR",
+        "roi": [
+            1005,
+            35,
+            80,
+            40
+        ],
+        "expected": [
+            "^(ON|OFF)$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Live.Ready": {
+        "recognition": "OCR",
+        "roi": [
+            280,
+            260,
+            610,
+            200
+        ],
+        "expected": [
+            "Ready"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Live.SkillCutIn": {
+        "recognition": "OCR",
+        "roi": [
+            880,
+            545,
+            330,
+            90
+        ],
+        "expected": [
+            "Li[vy]e ?Sk"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.SupportSkill.CutIn": {
+        "recognition": "OCR",
+        "roi": [
+            120,
+            550,
+            430,
+            90
+        ],
+        "expected": [
+            "Sup[a-z]{1,5} ?[Ss]kill",
+            "Supnor",
+            "^u?pport ?Skill"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Live.OnAir": {
+        "recognition": "OCR",
+        "roi": [
+            55,
+            90,
+            110,
+            50
+        ],
+        "expected": [
+            "ON ?AIR"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Result.Judge": {
+        "recognition": "OCR",
+        "roi": [
+            255,
+            520,
+            130,
+            55
+        ],
+        "expected": [
+            "(審|密)(査|查)(員|员)"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Result.EntryList": {
+        "recognition": "OCR",
+        "roi": [
+            290,
+            0,
+            250,
+            720
+        ],
+        "expected": [
+            "エントリーNo"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Result.Pass": {
+        "recognition": "OCR",
+        "roi": [
+            380,
+            505,
+            520,
+            120
+        ],
+        "expected": [
+            "ション合格"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Commu.RankUpText": {
+        "recognition": "OCR",
+        "roi": [
+            245,
+            575,
+            520,
+            60
+        ],
+        "expected": [
+            "ランクアップです"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Commu.SeasonEndText": {
+        "recognition": "OCR",
+        "roi": [
+            245,
+            575,
+            520,
+            60
+        ],
+        "expected": [
+            "シーズン終了です"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Rank.Title": {
+        "recognition": "OCR",
+        "roi": [
+            520,
+            105,
+            260,
+            60
+        ],
+        "expected": [
+            "アイ(ド|ト)ルラン(ク|グ)"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Rank.Goal": {
+        "recognition": "OCR",
+        "roi": [
+            365,
+            590,
+            250,
+            50
+        ],
+        "expected": [
+            "ランクまで$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Wing.Qualified": {
+        "recognition": "OCR",
+        "roi": [
+            470,
+            415,
+            340,
+            75
+        ],
+        "expected": [
+            "出場(決|决)定"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Eval.Title": {
+        "recognition": "OCR",
+        "roi": [
+            200,
+            105,
+            330,
+            70
+        ],
+        "expected": [
+            "プロデュース評価"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Eval.FinalFans": {
+        "recognition": "OCR",
+        "roi": [
+            70,
+            390,
+            185,
+            50
+        ],
+        "expected": [
+            "最終ファン人数"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.FesBirth.Title": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            10,
+            260,
+            50
+        ],
+        "expected": [
+            "フェスアイドル(誕|提|驱)生"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.FesBirth.ConfirmTitle": {
+        "recognition": "OCR",
+        "roi": [
+            390,
+            155,
+            280,
+            60
+        ],
+        "expected": [
+            "フェスアイドル確認"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.FesBirth.ConfirmBody": {
+        "recognition": "OCR",
+        "roi": [
+            470,
+            240,
+            350,
+            45
+        ],
+        "expected": [
+            "誕生を行います"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.ClearReward.Title": {
+        "recognition": "OCR",
+        "roi": [
+            205,
+            35,
+            340,
+            60
+        ],
+        "expected": [
+            "[プブ]ロデュースクリア"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Reward.Title": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            10,
+            140,
+            50
+        ],
+        "expected": [
+            "得(報|超)酬"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Reward.KnowhowPrompt": {
+        "recognition": "OCR",
+        "roi": [
+            235,
+            320,
+            440,
+            55
+        ],
+        "expected": [
+            "ノウハウブックを(選|遥|退)"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Reward.StaminaLabel": {
+        "recognition": "OCR",
+        "roi": [
+            1135,
+            5,
+            120,
+            45
+        ],
+        "expected": [
+            "スタミナ"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Reward.RerollDanger": {
+        "recognition": "OCR",
+        "roi": [
+            905,
+            615,
+            175,
+            90
+        ],
+        "expected": [
+            "再抽"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.FesDetail.Title": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            10,
+            260,
+            50
+        ],
+        "expected": [
+            "フェスアイドル詳"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.FesDetail.TotalFans": {
+        "recognition": "OCR",
+        "roi": [
+            150,
+            630,
+            340,
+            50
+        ],
+        "expected": [
+            "計ファン人数"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Color.Choice.Left": {
+        "recognition": "ColorMatch",
+        "roi": [
+            110,
+            240,
+            250,
+            50
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 6000,
+        "method": 4,
+        "connected": false,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Color.Choice.Right": {
+        "recognition": "ColorMatch",
+        "roi": [
+            900,
+            240,
+            250,
+            50
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 6000,
+        "method": 4,
+        "connected": false,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Color.Hub.Undimmed": {
+        "recognition": "ColorMatch",
+        "roi": [
+            30,
+            10,
+            200,
+            45
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 3000,
+        "method": 4,
+        "connected": false,
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Color.Review.Undimmed": {
+        "recognition": "ColorMatch",
+        "roi": [
+            134,
+            160,
+            167,
+            41
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 1200,
+        "method": 4,
+        "connected": false,
+        "enabled": false
+    },
+    "SC.Wing.Read.StartConfirm.StaminaBefore": {
+        "recognition": "OCR",
+        "roi": [
+            570,
+            398,
+            100,
+            52
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^\\d{1,3}$"
+        ]
+    },
+    "SC.Wing.Read.StartConfirm.StaminaAfter": {
+        "recognition": "OCR",
+        "roi": [
+            708,
+            398,
+            100,
+            52
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^\\d{1,3}$"
+        ]
+    },
+    "SC.Wing.Read.Commu.FastForwardState": {
+        "recognition": "OCR",
+        "roi": [
+            1068,
+            648,
+            92,
+            48
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^(ON|OFF)$"
+        ]
+    },
+    "SC.Wing.Read.Commu.Speaker": {
+        "recognition": "OCR",
+        "roi": [
+            225,
+            522,
+            320,
+            58
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.Wing.Read.Commu.Text": {
+        "recognition": "OCR",
+        "roi": [
+            245,
+            570,
+            800,
+            90
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.Wing.Read.Choice.Left": {
+        "recognition": "OCR",
+        "roi": [
+            64,
+            157,
+            352,
+            180
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.Wing.Read.Choice.Center": {
+        "recognition": "OCR",
+        "roi": [
+            461,
+            44,
+            348,
+            181
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.Wing.Read.Choice.Right": {
+        "recognition": "OCR",
+        "roi": [
+            851,
+            157,
+            352,
+            183
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.Wing.Read.Choice.Countdown": {
+        "recognition": "OCR",
+        "roi": [
+            555,
+            295,
+            160,
+            170
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^[1-9]$"
+        ]
+    },
+    "SC.Wing.Read.Hub.Season": {
+        "recognition": "OCR",
+        "roi": [
+            315,
+            0,
+            130,
+            45
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^(シ[ーｰ]?[ズス]ン[1-4]|W\\.?I\\.?N\\.?G\\.?)$"
+        ],
+        "replace": [
+            [
+                "シ[ーｰ]?[ズス]ン",
+                "シーズン"
+            ]
+        ]
+    },
+    "SC.Wing.Read.Hub.Weeks": {
+        "recognition": "OCR",
+        "roi": [
+            478,
+            0,
+            70,
+            80
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^[1-8]$"
+        ]
+    },
+    "SC.Wing.Read.Hub.FansLeft": {
+        "recognition": "OCR",
+        "roi": [
+            790,
+            20,
+            160,
+            60
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^[\\d,]+人?$"
+        ]
+    },
+    "SC.Wing.Read.Schedule.Trouble": {
+        "recognition": "OCR",
+        "roi": [
+            1120,
+            170,
+            70,
+            65
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^\\d{1,2}$"
+        ]
+    },
+    "SC.Wing.Read.Schedule.Gains": {
+        "recognition": "OCR",
+        "roi": [
+            270,
+            325,
+            990,
+            50
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^\\+\\d+$"
+        ]
+    },
+    "SC.Wing.Read.Audition.Requirement": {
+        "recognition": "OCR",
+        "roi": [
+            860,
+            225,
+            230,
+            50
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "アイドルランク[A-F]"
+        ]
+    },
+    "SC.Wing.Read.Audition.Reward": {
+        "recognition": "OCR",
+        "roi": [
+            1030,
+            490,
+            180,
+            55
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^\\+?\\d{3,6}$"
+        ],
+        "replace": [
+            [
+                "^\\+",
+                ""
+            ]
+        ]
+    },
+    "SC.Wing.Read.Audition.Difficulty": {
+        "recognition": "OCR",
+        "roi": [
+            820,
+            275,
+            170,
+            50
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.Wing.Read.Trend.FansToGoal": {
+        "recognition": "OCR",
+        "roi": [
+            990,
+            575,
+            210,
+            60
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "あと[\\d,]+人"
+        ]
+    },
+    "SC.Wing.Read.Trend.Genres": {
+        "recognition": "OCR",
+        "roi": [
+            220,
+            225,
+            260,
+            160
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.Wing.Read.Review.SP": {
+        "recognition": "OCR",
+        "roi": [
+            225,
+            98,
+            85,
+            48
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^\\d{1,4}$"
+        ]
+    },
+    "SC.Wing.Read.Review.NodeName": {
+        "recognition": "OCR",
+        "roi": [
+            580,
+            550,
+            400,
+            50
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.Wing.Read.Review.NodeCost": {
+        "recognition": "OCR",
+        "roi": [
+            1188,
+            545,
+            70,
+            50
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^\\d{1,2}$"
+        ]
+    },
+    "SC.Wing.Read.Review.NodeButton": {
+        "recognition": "OCR",
+        "roi": [
+            1080,
+            615,
+            160,
+            65
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^(習得する|習得(済|济)み|未解放)$"
+        ]
+    },
+    "SC.Wing.Read.LearnConfirm.SP": {
+        "recognition": "OCR",
+        "roi": [
+            630,
+            398,
+            200,
+            50
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "\\d+"
+        ]
+    },
+    "SC.Wing.Read.Owned.Stats": {
+        "recognition": "OCR",
+        "roi": [
+            560,
+            85,
+            380,
+            85
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "\\d+/\\d+"
+        ]
+    },
+    "SC.Wing.Read.WeekCard.Weeks": {
+        "recognition": "OCR",
+        "roi": [
+            735,
+            300,
+            130,
+            140
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^[1-8]$"
+        ]
+    },
+    "SC.Wing.Read.Live.AutoState": {
+        "recognition": "OCR",
+        "roi": [
+            1005,
+            35,
+            80,
+            40
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^(ON|OFF)$"
+        ]
+    },
+    "SC.Wing.Read.Live.Speed": {
+        "recognition": "OCR",
+        "roi": [
+            1095,
+            35,
+            90,
+            40
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "倍速"
+        ]
+    },
+    "SC.Wing.Read.Rank.Fans": {
+        "recognition": "OCR",
+        "roi": [
+            770,
+            545,
+            140,
+            60
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^[\\d,]+人$"
+        ]
+    },
+    "SC.Wing.Read.Eval.FinalFansValue": {
+        "recognition": "OCR",
+        "roi": [
+            270,
+            390,
+            160,
+            55
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^[\\d,]+$"
+        ]
+    },
+    "SC.Wing.Read.FesBirth.SPLost": {
+        "recognition": "OCR",
+        "roi": [
+            690,
+            330,
+            90,
+            55
+        ],
+        "threshold": 0.3,
+        "enabled": false,
+        "expected": [
+            "^\\d{1,4}$"
+        ]
+    },
+    "SC.Wing.Screen.ModeHelp": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.ModeHelp.Title",
+            "SC.Wing.Anchor.ModeHelp.Table",
+            "SC.Wing.Anchor.Popup.Close"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.HelpList": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Help.Title",
+            "SC.Wing.Anchor.Help.Item"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.ItemHelp": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.ItemHelp.Title",
+            "SC.Wing.Anchor.Popup.Close"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.AuditionHelp": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.AuditionHelp.Title",
+            "SC.Wing.Anchor.Popup.Close"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Tutorial": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Tutorial.Page",
+            "SC.Wing.Anchor.Popup.Close"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.ProduceSelect": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.ProduceSelect.Title",
+            "SC.Wing.Anchor.ProduceSelect.Wing",
+            "SC.Wing.Anchor.ProduceSelect.Mode",
+            "SC.Wing.Anchor.Footer.Next"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.UnitSelect": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.UnitSelect.Title",
+            "SC.Wing.Anchor.UnitSelect.IdolPanel",
+            "SC.Wing.Anchor.UnitSelect.AutoForm",
+            "SC.Wing.Anchor.UnitSelect.SkillPanelButton",
+            "SC.Wing.Anchor.Footer.Next"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.BonusList": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.BonusList.Title",
+            "SC.Wing.Anchor.Popup.Close"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.ItemSelect": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.ItemSelect.Title",
+            "SC.Wing.Anchor.ItemSelect.Limit",
+            "SC.Wing.Anchor.Footer.Decide"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.StartConfirm": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.StartConfirm.Title",
+            "SC.Wing.Anchor.StartConfirm.Body",
+            "SC.Wing.Anchor.StartConfirm.Cancel"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Commu": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Commu.FastForward"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Choice": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Color.Choice.Left",
+            "SC.Wing.Anchor.Color.Choice.Right",
+            "SC.Wing.Anchor.Commu.FastForward",
+            "SC.Wing.Anchor.Choice.LeftText"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.PromiseKept": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Promise.Kept",
+            "SC.Wing.Anchor.Commu.FastForward"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Hub": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Hub.Title",
+            "SC.Wing.Anchor.Hub.Stamina",
+            "SC.Wing.Anchor.Hub.Rest",
+            "SC.Wing.Anchor.Hub.Trend",
+            "SC.Wing.Anchor.Color.Hub.Undimmed"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.HubSemiFinal": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Hub.Title",
+            "SC.Wing.Anchor.Hub.Stamina",
+            "SC.Wing.Anchor.Hub.SemiFinal",
+            "SC.Wing.Anchor.Hub.Trend",
+            "SC.Wing.Anchor.Color.Hub.Undimmed"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.HubFinal": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Hub.Title",
+            "SC.Wing.Anchor.Hub.Stamina",
+            "SC.Wing.Anchor.Hub.Final",
+            "SC.Wing.Anchor.Hub.Trend",
+            "SC.Wing.Anchor.Color.Hub.Undimmed"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Schedule": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Schedule.Title",
+            "SC.Wing.Anchor.Schedule.LessonRoom",
+            "SC.Wing.Anchor.Footer.Decide"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.AuditionTab": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Schedule.Title",
+            "SC.Wing.Anchor.Audition.Header",
+            "SC.Wing.Anchor.Audition.ConditionOrSpecial",
+            "SC.Wing.Anchor.Footer.Review",
+            "SC.Wing.Anchor.Footer.Decide"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.AuditionLocked": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Schedule.Title",
+            "SC.Wing.Anchor.Audition.Header",
+            "SC.Wing.Anchor.Audition.LockedTitle"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Trend": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Trend.Title",
+            "SC.Wing.Anchor.Trend.Rank"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.RestConfirm": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Rest.Title",
+            "SC.Wing.Anchor.Rest.Body",
+            "SC.Wing.Anchor.Dialog.Cancel",
+            "SC.Wing.Anchor.Dialog.OK"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.LiveConfirm": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.LiveConfirm.Title",
+            "SC.Wing.Anchor.LiveConfirm.Body",
+            "SC.Wing.Anchor.Dialog.Cancel",
+            "SC.Wing.Anchor.Dialog.OK"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Review": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Review.Title",
+            "SC.Wing.Anchor.Review.Owned",
+            "SC.Wing.Anchor.Review.PassiveToggle",
+            "SC.Wing.Anchor.Color.Review.Undimmed"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.SkillPanelReadOnly": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.SkillPanel.Title"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.LearnConfirm": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.LearnConfirm.Title",
+            "SC.Wing.Anchor.LearnConfirm.Body"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.ForgetSelect": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.ForgetSelect.Title",
+            "SC.Wing.Anchor.Review.Title"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.ReplaceConfirm": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.ReplaceConfirm.Title",
+            "SC.Wing.Anchor.ReplaceConfirm.Warning"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Owned": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Owned.LiveSkill",
+            "SC.Wing.Anchor.Review.Title"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.UnitCheck": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.UnitCheck.Title",
+            "SC.Wing.Anchor.UnitSelect.SkillPanelButton"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.IdolDetail": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.IdolDetail.Title",
+            "SC.Wing.Anchor.IdolDetail.ExTab"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.WeekCard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.WeekCard.Until"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Live": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Live.Turn",
+            "SC.Wing.Anchor.Live.Auto"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.LiveSkillCutIn": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Live.SkillCutIn"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.SupportSkillCutIn": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.SupportSkill.CutIn"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.OnAir": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Live.OnAir"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.ResultJudge": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Result.Judge"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.ResultList": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Result.EntryList"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.AuditionPass": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Result.Pass"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.PassCommu": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Commu.OK",
+            "SC.Wing.Anchor.Commu.NamePlate"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.RankUpCommu": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Commu.RankUpText",
+            "SC.Wing.Anchor.Commu.OK"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.SeasonEndCommu": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Commu.SeasonEndText",
+            "SC.Wing.Anchor.Commu.OK"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.RankPyramid": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Rank.Title",
+            "SC.Wing.Anchor.Rank.Goal"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.WingQualified": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Wing.Qualified"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Evaluation": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Eval.Title",
+            "SC.Wing.Anchor.Eval.FinalFans",
+            "SC.Wing.Anchor.Footer.Next"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.FesBirth": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.FesBirth.Title",
+            "SC.Wing.Anchor.Footer.Review"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.FesBirthConfirm": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.FesBirth.ConfirmTitle",
+            "SC.Wing.Anchor.FesBirth.ConfirmBody"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.ClearReward": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.ClearReward.Title"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.Reward": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.Reward.Title",
+            "SC.Wing.Anchor.Reward.KnowhowPrompt",
+            "SC.Wing.Anchor.Reward.StaminaLabel"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Screen.FesDetail": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Wing.Anchor.FesDetail.Title",
+            "SC.Wing.Anchor.FesDetail.TotalFans"
+        ],
+        "enabled": false
+    },
+    "SC.Wing.Anchor.Choice.LeftText": {
+        "recognition": "OCR",
+        "roi": [
+            64,
+            157,
+            352,
+            180
+        ],
+        "expected": [
+            "\\S{3,}"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    }
+}

@@ -1,0 +1,1527 @@
+{
+    "SC.Collabo.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Collabo.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.Collabo.Config.Stage",
+                "SC.Collabo.Config.Count",
+                "SC.Collabo.Config.Unit",
+                "SC.Collabo.Config.Level",
+                "SC.Collabo.Config.Backup"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Collabo.Main"
+        ],
+        "on_error": [
+            "SC.Collabo.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Collabo Fes：读取设置；每局消耗コラボフェスパス 1，结果不确定将暂停。"
+        }
+    },
+    "SC.Collabo.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "SC.Collabo.Halt",
+            "SC.Collabo.Done",
+            "SC.Collabo.Observe",
+            "[JumpBack]SC.Collabo.Do.Banner",
+            "[JumpBack]SC.Collabo.Do.BannerNext",
+            "[JumpBack]SC.Collabo.Do.WrongEventBack",
+            "[JumpBack]SC.Collabo.Do.EventBack",
+            "[JumpBack]SC.Collabo.Do.DifficultyBack",
+            "[JumpBack]SC.Collabo.Do.UnitBack",
+            "[JumpBack]SC.Collabo.Do.StageVocal",
+            "[JumpBack]SC.Collabo.Do.StageDance",
+            "[JumpBack]SC.Collabo.Do.StageVisual",
+            "[JumpBack]SC.Collabo.Do.StageCenter",
+            "[JumpBack]SC.Collabo.Do.Hard",
+            "[JumpBack]SC.Collabo.Do.LevelPlus",
+            "[JumpBack]SC.Collabo.Do.LevelMinus",
+            "[JumpBack]SC.Collabo.Do.LevelOk",
+            "[JumpBack]SC.Collabo.Do.UnitTab1",
+            "[JumpBack]SC.Collabo.Do.UnitTab2",
+            "[JumpBack]SC.Collabo.Do.UnitTab3",
+            "[JumpBack]SC.Collabo.Do.UnitTab4",
+            "[JumpBack]SC.Collabo.Do.UnitTab5",
+            "[JumpBack]SC.Collabo.Do.UnitTab6",
+            "[JumpBack]SC.Collabo.Do.UnitTab7",
+            "[JumpBack]SC.Collabo.Do.UnitTab8",
+            "[JumpBack]SC.Collabo.Do.UnitTab9",
+            "[JumpBack]SC.Collabo.Do.UnitTab10",
+            "[JumpBack]SC.Collabo.Do.UnitLive",
+            "[JumpBack]SC.Collabo.Do.Tension",
+            "[JumpBack]SC.Collabo.Do.LiveStart",
+            "[JumpBack]SC.Collabo.Do.Skill",
+            "[JumpBack]SC.Collabo.Do.PanelConfirm",
+            "[JumpBack]SC.Collabo.Do.FullClose",
+            "[JumpBack]SC.Collabo.Do.ReportOk",
+            "[JumpBack]SC.Collabo.Do.DragSecond",
+            "[JumpBack]SC.Collabo.Idle",
+            "[JumpBack]SC.Collabo.Wait"
+        ],
+        "on_error": [
+            "SC.Collabo.Abort"
+        ]
+    },
+    "SC.Collabo.Config.Stage": {
+        "recognition": "DirectHit",
+        "attach": {
+            "stage": "vocal"
+        }
+    },
+    "SC.Collabo.Config.Count": {
+        "recognition": "DirectHit",
+        "attach": {
+            "count": "all"
+        }
+    },
+    "SC.Collabo.Config.Unit": {
+        "recognition": "DirectHit",
+        "attach": {
+            "unit": 1
+        }
+    },
+    "SC.Collabo.Config.Level": {
+        "recognition": "DirectHit",
+        "attach": {
+            "level": "auto"
+        }
+    },
+    "SC.Collabo.Config.Backup": {
+        "recognition": "DirectHit",
+        "attach": {
+            "backup": ""
+        }
+    },
+    "SC.Collabo.Home.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ]
+    },
+    "SC.Collabo.Anchor.EventPass": {
+        "recognition": "OCR",
+        "roi": [
+            970,
+            615,
+            215,
+            40
+        ],
+        "expected": [
+            "コラボフェスパス"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Collabo.Event.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.EventPass"
+        ]
+    },
+    "SC.Collabo.Anchor.Deadline": {
+        "recognition": "OCR",
+        "roi": [
+            20,
+            140,
+            330,
+            80
+        ],
+        "expected": [
+            "開催期限"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Collabo.OtherEvent.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.Deadline"
+        ]
+    },
+    "SC.Collabo.Anchor.Difficulty": {
+        "recognition": "OCR",
+        "roi": [
+            60,
+            30,
+            600,
+            58
+        ],
+        "expected": [
+            "難易度とレベル"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Collabo.Difficulty.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.Difficulty"
+        ]
+    },
+    "SC.Collabo.Anchor.Unit": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            12,
+            320,
+            45
+        ],
+        "expected": [
+            "ユニット編成"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Collabo.Unit.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.Unit"
+        ]
+    },
+    "SC.Collabo.Anchor.Tension": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            12,
+            180,
+            45
+        ],
+        "expected": [
+            "参加ユニット"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Collabo.Tension.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.Tension"
+        ]
+    },
+    "SC.Collabo.Anchor.Turn": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            180,
+            48
+        ],
+        "expected": [
+            "^TURN"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Collabo.Battle.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.Turn"
+        ]
+    },
+    "SC.Collabo.Anchor.Report": {
+        "recognition": "OCR",
+        "roi": [
+            410,
+            5,
+            455,
+            80
+        ],
+        "expected": [
+            "LIVE ?REPORT"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Collabo.Report.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.Report"
+        ]
+    },
+    "SC.Collabo.Anchor.FullPopup": {
+        "recognition": "OCR",
+        "roi": [
+            380,
+            280,
+            520,
+            80
+        ],
+        "expected": [
+            "最高潮"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Collabo.FullPopup.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.FullPopup"
+        ]
+    },
+    "SC.Collabo.State.Active": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.State",
+        "custom_recognition_param": {
+            "is": "active"
+        }
+    },
+    "SC.Collabo.State.Halted": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        }
+    },
+    "SC.Collabo.Observe": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "observe"
+        }
+    },
+    "SC.Collabo.Wait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "wait"
+        },
+        "action": "DoNothing",
+        "pre_delay": 0,
+        "post_delay": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "Collabo：画面切换中或 Live 进行中，再截一帧。"
+        }
+    },
+    "SC.Collabo.Idle": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "idle"
+        },
+        "action": "DoNothing",
+        "pre_delay": 0,
+        "post_delay": 15000,
+        "focus": {
+            "Node.Recognition.Succeeded": "Collabo：满员或等 Pass 恢复，在首页等待后再进活动页。"
+        }
+    },
+    "SC.Collabo.Halt": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        },
+        "action": "Custom",
+        "custom_action": "SC.Collabo.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Collabo：结果不确定，停止（不再点击）。"
+        }
+    },
+    "SC.Collabo.Done": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Ended",
+        "action": "Custom",
+        "custom_action": "SC.Collabo.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Collabo：已回首页，写出报告。"
+        }
+    },
+    "SC.Collabo.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Collabo.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Collabo：未知画面/超时，不再点击，本任务失败。"
+        }
+    },
+    "SC.Collabo.Failed": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Collabo.Failed",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 3,
+        "next": [
+            "SC.Collabo.Main"
+        ],
+        "on_error": [
+            "SC.Collabo.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Collabo：点击失败，结束（不重点）。"
+        }
+    },
+    "SC.Collabo.TensionError": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Collabo.TensionError",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "next": [
+            "SC.Collabo.Main"
+        ],
+        "on_error": [
+            "SC.Collabo.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "テンション決定 点击失败：未发送则结束；结果不确定将暂停。"
+        }
+    },
+    "SC.Collabo.Sent": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.Collabo.Home.Guard",
+            "SC.Collabo.Event.Guard",
+            "SC.Collabo.OtherEvent.Guard",
+            "SC.Collabo.Difficulty.Guard",
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Tension.Guard",
+            "SC.Collabo.Battle.Guard",
+            "SC.Collabo.Report.Guard",
+            "SC.Collabo.FullPopup.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 20000,
+        "on_error": [
+            "SC.Collabo.Main"
+        ]
+    },
+    "SC.Collabo.Want.Banner": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "banner"
+        }
+    },
+    "SC.Collabo.Do.Banner": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Home.Guard",
+            "SC.Collabo.Want.Banner"
+        ],
+        "action": "Click",
+        "target": [
+            1015,
+            445,
+            215,
+            95
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页：横幅是 COLLABO FES，点开活动。"
+        }
+    },
+    "SC.Collabo.Want.BannerNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "banner_next"
+        }
+    },
+    "SC.Collabo.Do.BannerNext": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Home.Guard",
+            "SC.Collabo.Want.BannerNext"
+        ],
+        "action": "Click",
+        "target": [
+            1232,
+            462,
+            36,
+            44
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页：横幅不是 COLLABO FES，点 › 翻页。"
+        }
+    },
+    "SC.Collabo.Want.WrongEventBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "wrong_event_back"
+        }
+    },
+    "SC.Collabo.Do.WrongEventBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.OtherEvent.Guard",
+            "SC.Collabo.Want.WrongEventBack"
+        ],
+        "action": "Click",
+        "target": [
+            24,
+            630,
+            68,
+            62
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "横幅换页点进了别的活动：返回首页。"
+        }
+    },
+    "SC.Collabo.Want.EventBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "event_back"
+        }
+    },
+    "SC.Collabo.Do.EventBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Event.Guard",
+            "SC.Collabo.Want.EventBack"
+        ],
+        "action": "Click",
+        "target": [
+            24,
+            630,
+            68,
+            62
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Collabo 活动页：结束，返回首页。"
+        }
+    },
+    "SC.Collabo.Want.DifficultyBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "difficulty_back"
+        }
+    },
+    "SC.Collabo.Do.DifficultyBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Difficulty.Guard",
+            "SC.Collabo.Want.DifficultyBack"
+        ],
+        "action": "Click",
+        "target": [
+            24,
+            630,
+            68,
+            62
+        ],
+        "pre_delay": 0,
+        "post_delay": 1200,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度页：返回活动页。"
+        }
+    },
+    "SC.Collabo.Want.UnitBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_back"
+        }
+    },
+    "SC.Collabo.Do.UnitBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitBack"
+        ],
+        "action": "Click",
+        "target": [
+            24,
+            630,
+            68,
+            62
+        ],
+        "pre_delay": 0,
+        "post_delay": 1200,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：返回难度页。"
+        }
+    },
+    "SC.Collabo.Want.StageVocal": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "stage_vocal"
+        }
+    },
+    "SC.Collabo.Do.StageVocal": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Event.Guard",
+            "SC.Collabo.Want.StageVocal"
+        ],
+        "action": "Click",
+        "target": [
+            1125,
+            280,
+            117,
+            82
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "活动页：点 Vocal Stage。"
+        }
+    },
+    "SC.Collabo.Want.StageDance": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "stage_dance"
+        }
+    },
+    "SC.Collabo.Do.StageDance": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Event.Guard",
+            "SC.Collabo.Want.StageDance"
+        ],
+        "action": "Click",
+        "target": [
+            345,
+            247,
+            103,
+            78
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "活动页：点 Dance Stage。"
+        }
+    },
+    "SC.Collabo.Want.StageVisual": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "stage_visual"
+        }
+    },
+    "SC.Collabo.Do.StageVisual": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Event.Guard",
+            "SC.Collabo.Want.StageVisual"
+        ],
+        "action": "Click",
+        "target": [
+            873,
+            86,
+            107,
+            83
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "活动页：点 Visual Stage。"
+        }
+    },
+    "SC.Collabo.Want.StageCenter": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "stage_center"
+        }
+    },
+    "SC.Collabo.Do.StageCenter": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Event.Guard",
+            "SC.Collabo.Want.StageCenter"
+        ],
+        "action": "Click",
+        "target": [
+            682,
+            350,
+            115,
+            77
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "活动页：点 Center Stage。"
+        }
+    },
+    "SC.Collabo.Want.Hard": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "hard"
+        }
+    },
+    "SC.Collabo.Do.Hard": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Difficulty.Guard",
+            "SC.Collabo.Want.Hard"
+        ],
+        "action": "Click",
+        "target": [
+            870,
+            330,
+            280,
+            100
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度页：选 Hard。"
+        }
+    },
+    "SC.Collabo.Want.LevelPlus": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "level_plus"
+        }
+    },
+    "SC.Collabo.Do.LevelPlus": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Difficulty.Guard",
+            "SC.Collabo.Want.LevelPlus"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            350,
+            52,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度页：Lv ＋1。"
+        }
+    },
+    "SC.Collabo.Want.LevelMinus": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "level_minus"
+        }
+    },
+    "SC.Collabo.Do.LevelMinus": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Difficulty.Guard",
+            "SC.Collabo.Want.LevelMinus"
+        ],
+        "action": "Click",
+        "target": [
+            868,
+            350,
+            50,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度页：Lv −1。"
+        }
+    },
+    "SC.Collabo.Want.LevelOk": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "level_ok"
+        }
+    },
+    "SC.Collabo.Do.LevelOk": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Difficulty.Guard",
+            "SC.Collabo.Want.LevelOk"
+        ],
+        "action": "Click",
+        "target": [
+            960,
+            450,
+            100,
+            80
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度页：Lv 已核对，点 OK。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_1"
+        }
+    },
+    "SC.Collabo.Do.UnitTab1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab1"
+        ],
+        "action": "Click",
+        "target": [
+            30,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット1。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_2"
+        }
+    },
+    "SC.Collabo.Do.UnitTab2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab2"
+        ],
+        "action": "Click",
+        "target": [
+            142,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット2。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_3"
+        }
+    },
+    "SC.Collabo.Do.UnitTab3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab3"
+        ],
+        "action": "Click",
+        "target": [
+            255,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット3。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_4"
+        }
+    },
+    "SC.Collabo.Do.UnitTab4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab4"
+        ],
+        "action": "Click",
+        "target": [
+            368,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット4。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_5"
+        }
+    },
+    "SC.Collabo.Do.UnitTab5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab5"
+        ],
+        "action": "Click",
+        "target": [
+            480,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット5。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_6"
+        }
+    },
+    "SC.Collabo.Do.UnitTab6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab6"
+        ],
+        "action": "Click",
+        "target": [
+            592,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット6。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_7"
+        }
+    },
+    "SC.Collabo.Do.UnitTab7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab7"
+        ],
+        "action": "Click",
+        "target": [
+            705,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット7。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab8": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_8"
+        }
+    },
+    "SC.Collabo.Do.UnitTab8": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab8"
+        ],
+        "action": "Click",
+        "target": [
+            818,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット8。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab9": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_9"
+        }
+    },
+    "SC.Collabo.Do.UnitTab9": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab9"
+        ],
+        "action": "Click",
+        "target": [
+            930,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット9。"
+        }
+    },
+    "SC.Collabo.Want.UnitTab10": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_10"
+        }
+    },
+    "SC.Collabo.Do.UnitTab10": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitTab10"
+        ],
+        "action": "Click",
+        "target": [
+            1042,
+            84,
+            88,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：切到ユニット10。"
+        }
+    },
+    "SC.Collabo.Want.UnitLive": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "unit_live"
+        }
+    },
+    "SC.Collabo.Do.UnitLive": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Unit.Guard",
+            "SC.Collabo.Want.UnitLive"
+        ],
+        "action": "Click",
+        "target": [
+            1105,
+            622,
+            150,
+            48
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "编队页：编队已核对，点「ライブへ」。"
+        }
+    },
+    "SC.Collabo.Want.Tension": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "tension"
+        }
+    },
+    "SC.Collabo.Do.Tension": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Tension.Guard",
+            "SC.Collabo.Want.Tension"
+        ],
+        "action": "Click",
+        "target": [
+            1100,
+            624,
+            150,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 2500,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.TensionError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "参加ユニット：点「テンション決定」。消耗：コラボフェスパス 1。"
+        }
+    },
+    "SC.Collabo.Want.LiveStart": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "live_start"
+        }
+    },
+    "SC.Collabo.Do.LiveStart": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Tension.Guard",
+            "SC.Collabo.Want.LiveStart"
+        ],
+        "action": "Click",
+        "target": [
+            1100,
+            624,
+            150,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 2000,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "参加ユニット：点「ライブ開始」。"
+        }
+    },
+    "SC.Collabo.Want.Skill": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "skill"
+        }
+    },
+    "SC.Collabo.Do.Skill": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Battle.Guard",
+            "SC.Collabo.Want.Skill"
+        ],
+        "action": "Click",
+        "target": [
+            330,
+            625,
+            170,
+            75
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Live：选第一张技能。"
+        }
+    },
+    "SC.Collabo.Want.PanelConfirm": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "panel_confirm"
+        }
+    },
+    "SC.Collabo.Do.PanelConfirm": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Battle.Guard",
+            "SC.Collabo.Want.PanelConfirm"
+        ],
+        "action": "Click",
+        "target": [
+            1010,
+            180,
+            250,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Live：点第 2 位的自己面板（决定出手）。"
+        }
+    },
+    "SC.Collabo.Want.FullClose": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "full_close"
+        }
+    },
+    "SC.Collabo.Do.FullClose": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.FullPopup.Guard",
+            "SC.Collabo.Want.FullClose"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            428,
+            165,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 1200,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "满员提示「盛り上がりが最高潮に達しました」：点閉じる，回活动页等待。"
+        }
+    },
+    "SC.Collabo.Want.ReportOk": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "report_ok"
+        }
+    },
+    "SC.Collabo.Do.ReportOk": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Report.Guard",
+            "SC.Collabo.Want.ReportOk"
+        ],
+        "action": "Click",
+        "target": [
+            1105,
+            628,
+            145,
+            62
+        ],
+        "pre_delay": 0,
+        "post_delay": 2000,
+        "max_hit": 400,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "LIVE REPORT：已读结果，点 OK。"
+        }
+    },
+    "SC.Collabo.Want.DragSecond": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Collabo.Check",
+        "custom_recognition_param": {
+            "stage": "drag_second"
+        }
+    },
+    "SC.Collabo.Do.DragSecond": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Battle.Guard",
+            "SC.Collabo.Want.DragSecond"
+        ],
+        "box_index": 1,
+        "action": "Swipe",
+        "begin": true,
+        "end": [
+            1060,
+            190,
+            150,
+            40
+        ],
+        "duration": 450,
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 200,
+        "timeout": 10000,
+        "next": [
+            "SC.Collabo.Sent"
+        ],
+        "on_error": [
+            "SC.Collabo.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Live：把自己的面板拖到第 2 位。"
+        }
+    }
+}

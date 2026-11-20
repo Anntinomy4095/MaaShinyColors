@@ -1,0 +1,1030 @@
+{
+ "source": "wikiwiki.jp/shinycolors (read 2026-11-01)",
+ "entries": [
+  {
+   "entry": "思い出(ノウハウ)++",
+   "match": "exact",
+   "scenarios": [
+    "WING",
+    "FANS",
+    "GRAD",
+    "LP",
+    "STEP",
+    "HALO"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "prefer": [
+    "LP",
+    "FANS"
+   ]
+  },
+  {
+   "entry": "思い出(ノウハウ)+",
+   "match": "exact",
+   "scenarios": [
+    "WING",
+    "FANS",
+    "GRAD",
+    "LP",
+    "STEP",
+    "HALO"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "prefer": [
+    "LP",
+    "FANS"
+   ]
+  },
+  {
+   "entry": "施設効率相談",
+   "match": "exact",
+   "scenarios": [
+    "HALO"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "high"
+  },
+  {
+   "entry": "施設効率相談+",
+   "match": "exact",
+   "scenarios": [
+    "HALO"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "high"
+  },
+  {
+   "entry": "アイドル(",
+   "match": "prefix",
+   "scenarios": [
+    "HALO"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "high"
+  },
+  {
+   "entry": "パッシブスキル延長",
+   "match": "prefix",
+   "scenarios": [
+    "HALO"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "high"
+  },
+  {
+   "entry": "アピールUP(思い出高)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "アピールUP(思い出低)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "アピールUP(思い出高&低)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 4,
+    "ALL": 2
+   }
+  },
+  {
+   "entry": "スロースターター",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 3,
+    "Me": 3
+   }
+  },
+  {
+   "entry": "スタートダッシュ",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Da": 3,
+    "Vi": 3
+   }
+  },
+  {
+   "entry": "〇〇との絆",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": false,
+   "confidence": "low"
+  },
+  {
+   "entry": "人気者",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low"
+  },
+  {
+   "entry": "物静か",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low"
+  },
+  {
+   "entry": "昂揚",
+   "match": "prefix",
+   "scenarios": [
+    "GRAD",
+    "HALO"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low",
+   "hirameki": {
+    "Me": 6,
+    "ALL": 2
+   }
+  },
+  {
+   "entry": "メンタリスト",
+   "match": "prefix",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 6,
+    "ALL": 3
+   }
+  },
+  {
+   "entry": "一致団結",
+   "match": "prefix",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 2,
+    "Da": 2,
+    "Vi": 2,
+    "Me": 2,
+    "ALL": 2
+   }
+  },
+  {
+   "entry": "タフネス",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 6,
+    "ALL": 3
+   }
+  },
+  {
+   "entry": "ロマンチスト",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 2,
+    "Da": 2,
+    "Vi": 2,
+    "ALL": 2
+   }
+  },
+  {
+   "entry": "パーフェクトリィ",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 2,
+    "Da": 2,
+    "Vi": 2,
+    "ALL": 1
+   }
+  },
+  {
+   "entry": "基礎能力値UP(+6%)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "ALL": 3
+   }
+  },
+  {
+   "entry": "越える絆",
+   "match": "prefix",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 1,
+    "ALL": 3
+   }
+  },
+  {
+   "entry": "スペシャリスト(Center)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 1
+   }
+  },
+  {
+   "entry": "スペシャリスト",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 1,
+    "ALL": 1
+   }
+  },
+  {
+   "entry": "スペシャリスト(ボーカル)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 5,
+    "ALL": 3
+   }
+  },
+  {
+   "entry": "スペシャリスト(ダンス)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Da": 5,
+    "ALL": 3
+   }
+  },
+  {
+   "entry": "スペシャリスト(ビジュアル)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vi": 5,
+    "ALL": 3
+   }
+  },
+  {
+   "entry": "ロールモデル",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 1,
+    "ALL": 2
+   }
+  },
+  {
+   "entry": "エース(ボーカル)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 6,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "エース(ダンス)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Da": 6,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "エース(ビジュアル)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vi": 6,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "気力充填(Leader)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 4,
+    "ALL": 2
+   }
+  },
+  {
+   "entry": "スパート",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 5
+   }
+  },
+  {
+   "entry": "クイックスタート",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 5
+   }
+  },
+  {
+   "entry": "Leader適正◯",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 4
+   }
+  },
+  {
+   "entry": "Leader適正◎",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 6
+   }
+  },
+  {
+   "entry": "Vocal適正◯",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 4
+   }
+  },
+  {
+   "entry": "Vocal適正◎",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 4,
+    "Da": 1,
+    "Vi": 1
+   }
+  },
+  {
+   "entry": "Center適正◯",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 1
+   }
+  },
+  {
+   "entry": "Center適正◎",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "Dance適正◯",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Da": 4
+   }
+  },
+  {
+   "entry": "Dance適正◎",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 4,
+    "Vi": 1
+   }
+  },
+  {
+   "entry": "Visual適正◯",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vi": 4
+   }
+  },
+  {
+   "entry": "Visual適正◎",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 4
+   }
+  },
+  {
+   "entry": "オールラウンダー◯",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 1,
+    "ALL": 1
+   }
+  },
+  {
+   "entry": "オールラウンダー◎",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 1,
+    "Da": 1,
+    "Vi": 1,
+    "Me": 1,
+    "ALL": 2
+   }
+  },
+  {
+   "entry": "Vocal上限+",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 3
+   }
+  },
+  {
+   "entry": "Vocal上限++",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 5
+   }
+  },
+  {
+   "entry": "Vocal上限+++",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vo": 8
+   }
+  },
+  {
+   "entry": "Dance上限+",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Da": 3
+   }
+  },
+  {
+   "entry": "Dance上限++",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Da": 5
+   }
+  },
+  {
+   "entry": "Dance上限+++",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Da": 8
+   }
+  },
+  {
+   "entry": "Visual上限+",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vi": 3
+   }
+  },
+  {
+   "entry": "Visual上限++",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vi": 5
+   }
+  },
+  {
+   "entry": "Visual上限+++",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Vi": 8
+   }
+  },
+  {
+   "entry": "メンタル上限+",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 3
+   }
+  },
+  {
+   "entry": "メンタル上限++",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 5
+   }
+  },
+  {
+   "entry": "メンタル上限+++",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": false,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 8
+   }
+  },
+  {
+   "entry": "ボーカルマスター",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low",
+   "hirameki": {
+    "Vo": 6,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "ダンスマスター",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low",
+   "hirameki": {
+    "Da": 6,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "ビジュアルマスター",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low",
+   "hirameki": {
+    "Vi": 6,
+    "Me": 2
+   }
+  },
+  {
+   "entry": "除去：メランコリー1",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium"
+  },
+  {
+   "entry": "除去：メランコリー2",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium"
+  },
+  {
+   "entry": "除去：リラックス1",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium"
+  },
+  {
+   "entry": "除去：リラックス2",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium"
+  },
+  {
+   "entry": "メンタル回復量+",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium",
+   "hirameki": {
+    "Me": 5
+   }
+  },
+  {
+   "entry": "メンタル回復量-",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium"
+  },
+  {
+   "entry": "注目の的",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low"
+  },
+  {
+   "entry": "ひかえめ",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": true,
+   "confidence": "low"
+  },
+  {
+   "entry": "打たれ強い",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium"
+  },
+  {
+   "entry": "打たれ弱い",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": true,
+   "transferable": true,
+   "confidence": "medium"
+  },
+  {
+   "entry": "思い出++(G.R.A.D.)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": false,
+   "confidence": "low"
+  },
+  {
+   "entry": "思い出+(G.R.A.D.)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": false,
+   "confidence": "low"
+  },
+  {
+   "entry": "思い出-(G.R.A.D.)",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": false,
+   "confidence": "low"
+  },
+  {
+   "entry": "G.R.A.D.予選",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": false,
+   "confidence": "low"
+  },
+  {
+   "entry": "G.R.A.D.敗者復活",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": false,
+   "confidence": "low"
+  },
+  {
+   "entry": "G.R.A.D.決勝",
+   "match": "exact",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": false,
+   "confidence": "low"
+  },
+  {
+   "entry": "G.R.A.D.(",
+   "match": "prefix",
+   "scenarios": [
+    "GRAD"
+   ],
+   "auto": null,
+   "transferable": false,
+   "confidence": "low"
+  }
+ ]
+}

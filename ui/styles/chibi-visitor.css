@@ -1,0 +1,130 @@
+.chibi-visitor {
+  position: fixed;
+  z-index: 8;
+  pointer-events: none;
+  user-select: none;
+}
+
+.chibi-drag {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+  touch-action: none;
+  cursor: grab;
+}
+
+.chibi-drag.dragging { cursor: grabbing; }
+.chibi-drag:focus-visible { outline: 2px solid var(--sc-primary); }
+
+.chibi-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.chibi-controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: var(--sp-1);
+  opacity: 0;
+}
+
+.chibi-control {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--sc-line);
+  border-radius: 50%;
+  background: var(--sc-surface);
+  color: var(--sc-text);
+  cursor: pointer;
+}
+
+.chibi-control:disabled { opacity: .55; cursor: default; }
+.chibi-control:hover { background: var(--sc-paper); }
+.chibi-control:focus-visible { outline: 2px solid var(--sc-primary); }
+
+.chibi-visitor:hover .chibi-controls,
+.chibi-visitor:focus-within .chibi-controls,
+.chibi-visitor:has(.chibi-settings:popover-open) .chibi-controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (hover: none) {
+  .chibi-controls {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.chibi-settings {
+  inset: auto;
+  margin: 0;
+  box-sizing: border-box;
+  width: min(176px, calc(100vw - 8px));
+  max-height: calc(100vh - 8px);
+  color: var(--sc-text);
+  overflow: auto;
+  pointer-events: auto;
+}
+
+.chibi-settings .chibi-switch {
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px var(--sp-3);
+  font-size: var(--fs-13);
+}
+
+.chibi-switch:hover, .chibi-switch:focus-visible { background: var(--sc-surface-2); }
+
+.chibi-settings.chibi-picker {
+  width: min(240px, calc(100vw - 8px));
+  padding: var(--sp-2);
+}
+
+.chibi-avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-1);
+}
+
+.chibi-avatar {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  min-width: 0;
+  padding: 3px 0;
+  border: 1px solid var(--sc-line);
+  border-radius: var(--r-s);
+  background: var(--sc-surface);
+  color: var(--sc-text);
+  font: inherit;
+  font-size: var(--fs-11);
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.chibi-avatar:hover, .chibi-avatar:focus-visible { background: var(--sc-surface-2); }
+.chibi-avatar[aria-pressed="true"] { border-color: var(--sc-primary-strong); }
+.chibi-avatar-art { width: 52px; height: 52px; max-width: 100%; }
+.chibi-avatar-art img { max-width: 100%; object-fit: contain; }
+
+.chibi-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--sp-1);
+}
+
+.chibi-page-previous .icon { transform: rotate(90deg); }
+.chibi-page-next .icon { transform: rotate(-90deg); }

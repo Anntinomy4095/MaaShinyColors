@@ -1,0 +1,1807 @@
+{
+    "SC.Business.Anchor.Home.Label": {
+        "recognition": "TemplateMatch",
+        "template": "native/home/business_label.png",
+        "roi": [
+            768,
+            640,
+            70,
+            60
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.BackKey": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.FesMain.Back",
+            "SC.Common.Anchor.ShopList.Back"
+        ]
+    },
+    "SC.Business.BackKey.Ready": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Anchor.BackKey",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Business.Anchor.Top.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_top/title.png",
+        "roi": [
+            46,
+            18,
+            64,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Top.Talk": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_top/talk.png",
+        "roi": [
+            984,
+            25,
+            180,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Top.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Anchor.Top.Title",
+            "SC.Business.Anchor.Top.Talk",
+            "SC.Business.BackKey.Ready"
+        ]
+    },
+    "SC.Business.Anchor.Slot1.Clear": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_top/clear.png",
+        "roi": [
+            393,
+            91,
+            99,
+            68
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Slot1.Label": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_top/complete_label.png",
+        "roi": [
+            244,
+            508,
+            132,
+            50
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Color.Slot1.Pink": {
+        "recognition": "ColorMatch",
+        "roi": [
+            230,
+            512,
+            158,
+            56
+        ],
+        "lower": [
+            200,
+            0,
+            120
+        ],
+        "upper": [
+            255,
+            150,
+            255
+        ],
+        "count": 5000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Business.Anchor.Slot2.Clear": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_top/clear.png",
+        "roi": [
+            774,
+            91,
+            99,
+            68
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Slot2.Label": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_top/complete_label.png",
+        "roi": [
+            625,
+            508,
+            132,
+            50
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Color.Slot2.Pink": {
+        "recognition": "ColorMatch",
+        "roi": [
+            611,
+            512,
+            158,
+            56
+        ],
+        "lower": [
+            200,
+            0,
+            120
+        ],
+        "upper": [
+            255,
+            150,
+            255
+        ],
+        "count": 5000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Business.Anchor.Slot3.Clear": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_top/clear.png",
+        "roi": [
+            1155,
+            91,
+            99,
+            68
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Slot3.Label": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_top/complete_label.png",
+        "roi": [
+            1006,
+            508,
+            132,
+            50
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Color.Slot3.Pink": {
+        "recognition": "ColorMatch",
+        "roi": [
+            992,
+            512,
+            158,
+            56
+        ],
+        "lower": [
+            200,
+            0,
+            120
+        ],
+        "upper": [
+            255,
+            150,
+            255
+        ],
+        "count": 5000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Business.Color.BulkComplete.Pink": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1095,
+            630,
+            150,
+            62
+        ],
+        "lower": [
+            200,
+            0,
+            120
+        ],
+        "upper": [
+            255,
+            150,
+            255
+        ],
+        "count": 4500,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Business.Color.BulkComplete.Dim": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1095,
+            630,
+            150,
+            62
+        ],
+        "lower": [
+            120,
+            40,
+            80
+        ],
+        "upper": [
+            185,
+            135,
+            160
+        ],
+        "count": 6000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Business.Color.BulkDispatch.White": {
+        "recognition": "ColorMatch",
+        "roi": [
+            898,
+            630,
+            152,
+            62
+        ],
+        "lower": [
+            210,
+            210,
+            220
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 4000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Business.Color.BulkDispatch.Grey": {
+        "recognition": "ColorMatch",
+        "roi": [
+            898,
+            630,
+            152,
+            62
+        ],
+        "lower": [
+            100,
+            100,
+            105
+        ],
+        "upper": [
+            160,
+            160,
+            170
+        ],
+        "count": 6000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Business.Anchor.Report.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_report/title.png",
+        "roi": [
+            394,
+            12,
+            482,
+            64
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Report.Clear": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_report/clear.png",
+        "roi": [
+            97,
+            118,
+            106,
+            68
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Report.Labels": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_report/stat_labels.png",
+        "roi": [
+            694,
+            134,
+            202,
+            82
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Report.TouchNext": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_report/touch_next.png",
+        "roi": [
+            449,
+            632,
+            377,
+            58
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Report.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Anchor.Report.Title",
+            "SC.Business.Anchor.Report.Clear",
+            "SC.Business.Anchor.Report.Labels",
+            "SC.Business.Anchor.Report.TouchNext"
+        ]
+    },
+    "SC.Business.Anchor.Report.NextButton": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_report/next_button.png",
+        "roi": [
+            1142,
+            642,
+            74,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Report.Paged": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Anchor.Report.Title",
+            "SC.Business.Anchor.Report.Clear",
+            "SC.Business.Anchor.Report.Labels",
+            "SC.Business.Anchor.Report.NextButton"
+        ]
+    },
+    "SC.Business.Report.Gift": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Anchor.Report.Title",
+            "SC.Business.Anchor.Report.NextButton"
+        ]
+    },
+    "SC.Business.Report.AnyPage": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Business.Report.Paged",
+            "SC.Business.Report.Gift"
+        ]
+    },
+    "SC.Business.Anchor.Reward.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_reward/title.png",
+        "roi": [
+            40,
+            28,
+            140,
+            56
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Reward.ExTab": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_reward/ex_tab.png",
+        "roi": [
+            30,
+            112,
+            160,
+            64
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Reward.Ok": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_reward/ok.png",
+        "roi": [
+            935,
+            640,
+            100,
+            70
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Reward.Redispatch": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_reward/redispatch.png",
+        "roi": [
+            1100,
+            640,
+            158,
+            70
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Reward.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Anchor.Reward.Title",
+            "SC.Business.Anchor.Reward.ExTab",
+            "SC.Business.Anchor.Reward.Ok",
+            "SC.Business.Anchor.Reward.Redispatch"
+        ]
+    },
+    "SC.Business.Anchor.Select.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_select/title.png",
+        "roi": [
+            40,
+            12,
+            230,
+            56
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Anchor.Select.Decide": {
+        "recognition": "TemplateMatch",
+        "template": "native/business_select/decide.png",
+        "roi": [
+            1130,
+            630,
+            100,
+            70
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Business.Select.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Anchor.Select.Title",
+            "SC.Business.Anchor.Select.Decide"
+        ]
+    },
+    "SC.Business.State.Fresh": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "fresh"
+        }
+    },
+    "SC.Business.State.Finished": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        }
+    },
+    "SC.Business.Plan.Open": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "open"
+        }
+    },
+    "SC.Business.Plan.Claim1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "claim",
+            "slot": 1
+        }
+    },
+    "SC.Business.Plan.Claim2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "claim",
+            "slot": 2
+        }
+    },
+    "SC.Business.Plan.Claim3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "claim",
+            "slot": 3
+        }
+    },
+    "SC.Business.Plan.ReportNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "report_next"
+        }
+    },
+    "SC.Business.Plan.Open1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "open_slot",
+            "slot": 1
+        }
+    },
+    "SC.Business.Plan.Open2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "open_slot",
+            "slot": 2
+        }
+    },
+    "SC.Business.Plan.Open3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "open_slot",
+            "slot": 3
+        }
+    },
+    "SC.Business.Plan.BulkComplete": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "bulk_complete"
+        }
+    },
+    "SC.Business.Plan.BulkDispatch": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "bulk_dispatch"
+        }
+    },
+    "SC.Business.Plan.BulkReportNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "bulk_report_next"
+        }
+    },
+    "SC.Business.Plan.PageNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "page_next"
+        }
+    },
+    "SC.Business.Plan.RewardRedispatch": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "reward_redispatch"
+        }
+    },
+    "SC.Business.Plan.SelectDecide": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "select_decide"
+        }
+    },
+    "SC.Business.Plan.SelectBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Plan",
+        "custom_recognition_param": {
+            "step": "select_back"
+        }
+    },
+    "SC.Business.Check.DispatchBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "dispatch_back"
+        }
+    },
+    "SC.Business.Dispatch.Page": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "dispatch_page"
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "派出（営業先選択）页正向证据成立。尚无原生样本：当前永不成立，DispatchBack 不会在未知页面按返回键。"
+        }
+    },
+    "SC.Business.Check.Return": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "return"
+        }
+    },
+    "SC.Business.Config.Mode": {
+        "recognition": "DirectHit",
+        "attach": {
+            "mode": "bulk_default"
+        }
+    },
+    "SC.Business.Config.Slots": {
+        "recognition": "DirectHit",
+        "attach": {
+            "slots": 1
+        }
+    },
+    "SC.Business.Config.Target": {
+        "recognition": "DirectHit",
+        "attach": {
+            "business": "雑誌インタビュー",
+            "duration_hours": 12,
+            "gift": false
+        }
+    },
+    "SC.Business.Config.Team": {
+        "recognition": "DirectHit",
+        "attach": {
+            "team": ""
+        }
+    },
+    "SC.Business.Config.Dispatch": {
+        "recognition": "DirectHit",
+        "attach": {
+            "bulk_dispatch": "off"
+        }
+    },
+    "SC.Business.Config.Redispatch": {
+        "recognition": "DirectHit",
+        "attach": {
+            "redispatch": "decide"
+        }
+    },
+    "SC.Business.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Business.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.Business.Config.Mode",
+                "SC.Business.Config.Slots",
+                "SC.Business.Config.Target",
+                "SC.Business.Config.Team",
+                "SC.Business.Config.Dispatch",
+                "SC.Business.Config.Redispatch"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Business.Main"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "营业（B6e）：读取配置。默认 bulk_default：首页 → 「営業」→ 营业首页两帧一致 → 有 CLEAR 则「一括完了」→ 逐份 WORK REPORT 读数并 Touch to Next → 有空槽时：一括営業 默认关闭（空槽保留，collected_dispatch_disabled）；「核对后派出」+ 队伍才按一次并只核对确认文字、永不确认 → 返回首页；未知画面或对话框只记录不点击。其他模式：sample / sample_collect_one / sample_dispatch_open；collect_and_dispatch 尚未启用。"
+        }
+    },
+    "SC.Business.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 60000,
+        "next": [
+            "SC.Business.Halt",
+            "SC.Business.Finish",
+            "[JumpBack]SC.Business.Concluded",
+            "[JumpBack]SC.Business.LeftHome",
+            "[JumpBack]SC.Business.Error",
+            "[JumpBack]SC.Business.Sample",
+            "[JumpBack]SC.Business.ReportTakeover",
+            "[JumpBack]SC.Business.TopTakeover",
+            "[JumpBack]SC.Business.TopWait",
+            "[JumpBack]SC.Business.Claim.Slot1",
+            "[JumpBack]SC.Business.Claim.Slot2",
+            "[JumpBack]SC.Business.Claim.Slot3",
+            "[JumpBack]SC.Business.Open.Slot1",
+            "[JumpBack]SC.Business.Open.Slot2",
+            "[JumpBack]SC.Business.Open.Slot3",
+            "[JumpBack]SC.Business.Bulk.Complete",
+            "[JumpBack]SC.Business.Bulk.Dispatch",
+            "[JumpBack]SC.Business.Observe",
+            "[JumpBack]SC.Business.ReportWait",
+            "[JumpBack]SC.Business.Report.Next",
+            "[JumpBack]SC.Business.AfterReport",
+            "[JumpBack]SC.Business.DispatchObserve",
+            "[JumpBack]SC.Business.DispatchBack",
+            "[JumpBack]SC.Business.DispatchReturned",
+            "[JumpBack]SC.Business.BulkObserve",
+            "[JumpBack]SC.Business.BulkReportWait",
+            "[JumpBack]SC.Business.Bulk.ReportNext",
+            "[JumpBack]SC.Business.Report.PageNext",
+            "[JumpBack]SC.Business.PostObserve",
+            "[JumpBack]SC.Business.RewardWait",
+            "[JumpBack]SC.Business.Reward.Redispatch",
+            "[JumpBack]SC.Business.SelectWait",
+            "[JumpBack]SC.Business.Select.Decide",
+            "[JumpBack]SC.Business.Select.Back",
+            "[JumpBack]SC.Business.Observe.Popup",
+            "[JumpBack]SC.Business.Hold",
+            "[JumpBack]SC.Business.Return",
+            "SC.Business.ReturnBlocked",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "SC.Resource.Observe.Home",
+            "[JumpBack]SC.Business.AtHome",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "营业：按当前画面与阶段判断下一步（停止 → 已回首页 → 错误对话框 → 采样中 → WORK REPORT 接管 → 营业首页读槽位 → 收取一个 / 打开空槽 → 只读观察 → WORK REPORT 读数与 Touch to Next → 派出画面采样与返回 → 返回键 → 首页 → 已知页面返回）。"
+        }
+    },
+    "SC.Business.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Business.State.Fresh"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Business.HomeClean"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ]
+    },
+    "SC.Business.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Business.OpenBusiness"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页干净（与 SC.Common.HomeClean 相同的外来锚点清单）。"
+        }
+    },
+    "SC.Business.OpenBusiness": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Business.Anchor.Home.Label",
+            "SC.Business.Plan.Open"
+        ],
+        "action": "Click",
+        "target": [
+            747,
+            658,
+            28,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Opened"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页：底栏「営業」按钮（非消费；每次任务最多 1 次），点击前先存一帧首页。"
+        }
+    },
+    "SC.Business.Opened": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Business.LeftHome",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Business.LeftHome": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "left_home"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "已离开首页：开始只读采样。"
+        }
+    },
+    "SC.Business.Sample": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "sample"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "营业画面：只读存帧（不点击）。"
+        }
+    },
+    "SC.Business.Error": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "error"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "错误对话框（エラー / 1012）：不点击，任务以 business_error_uncertain 失败；已按下的收取记为 claim_uncertain。"
+        }
+    },
+    "SC.Business.TopWait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "top"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "sample_collect_one：等待营业首页（标题+トーク/コミュ+返回键未变暗）并两帧一致读取槽位（只读）。"
+        }
+    },
+    "SC.Business.Claim.Slot1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Top.Guard",
+            "SC.Business.Plan.Claim1"
+        ],
+        "action": "Click",
+        "target": [
+            245,
+            518,
+            130,
+            44
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Claim.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "sample_collect_one：首个 CLEAR 槽位为第 1 槽，已写 claim_intent，按其「営業完了」一次（非消费；永不按一括完了）。"
+        }
+    },
+    "SC.Business.Claim.Slot2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Top.Guard",
+            "SC.Business.Plan.Claim2"
+        ],
+        "action": "Click",
+        "target": [
+            726,
+            544,
+            42,
+            24
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Claim.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "sample_collect_one：首个 CLEAR 槽位为第 2 槽，已写 claim_intent，按其「営業完了」一次（非消费；永不按一括完了）。"
+        }
+    },
+    "SC.Business.Claim.Slot3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Top.Guard",
+            "SC.Business.Plan.Claim3"
+        ],
+        "action": "Click",
+        "target": [
+            1112,
+            512,
+            18,
+            33
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Claim.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "sample_collect_one：首个 CLEAR 槽位为第 3 槽，已写 claim_intent，按其「営業完了」一次（非消费；永不按一括完了）。"
+        }
+    },
+    "SC.Business.Claim.Sent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "claim_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "「営業完了」已发送（claim_intent 已写）：转入只读观察。"
+        }
+    },
+    "SC.Business.Observe": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "observe"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "收取后只读观察（≤60 s 存帧）：营业首页该槽位不再 CLEAR → claimed；否则 claim_uncertain，不重试。"
+        }
+    },
+    "SC.Business.Observe.Popup": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "observe_popup"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Popup.Reward.Close",
+            "SC.Popup.MissionCompleted.Close",
+            "SC.Business.Abort"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "收取后出现白名单弹窗（報酬受け取り / ミッション達成）：只用既有关闭节点。"
+        }
+    },
+    "SC.Business.ReportTakeover": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "report_takeover"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "focus": {
+            "Node.Recognition.Succeeded": "B6d：任务开始时画面已是 WORK REPORT（本次未点击过）：sample → work_report_on_screen 停止；sample_collect_one / sample_dispatch_open → 先只读两帧读取再按 Touch to Next（接管）。"
+        }
+    },
+    "SC.Business.TopTakeover": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "top_takeover"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "focus": {
+            "Node.Recognition.Succeeded": "B6g：任务开始时画面已是营业首页（未点击过）：bulk_default / 收取 / 派出采样模式直接两帧读取营业首页。"
+        }
+    },
+    "SC.Business.ReportWait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "report"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "WORK REPORT（标题+CLEAR!+総獲得 标签+Touch to Next）：两帧读数一致后写 work_report + claimed（只读）。"
+        }
+    },
+    "SC.Business.Report.Next": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Report.Guard",
+            "SC.Business.Plan.ReportNext"
+        ],
+        "action": "Click",
+        "target": [
+            558,
+            657,
+            99,
+            10
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Report.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "WORK REPORT：按「Touch to Next」字样一次（非消费；远离 詳細 按钮）。"
+        }
+    },
+    "SC.Business.Report.Sent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "report_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "「Touch to Next」已发送：转入只读观察（≤60 s）。"
+        }
+    },
+    "SC.Business.AfterReport": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "after_report"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "Touch to Next 之后只读观察：回到营业首页（两帧一致）→ 记录槽位；仍在报告 ≥8 s → report_next_no_effect。"
+        }
+    },
+    "SC.Business.Open.Slot1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Top.Guard",
+            "SC.Business.Plan.Open1"
+        ],
+        "action": "Click",
+        "target": [
+            270,
+            180,
+            120,
+            140
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Open.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "sample_dispatch_open：第 1 槽两帧判定为空槽（无 CLEAR/営業完了、无计时/数字/营业名），按其卡片中部一次（非消费）。"
+        }
+    },
+    "SC.Business.Open.Slot2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Top.Guard",
+            "SC.Business.Plan.Open2"
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            180,
+            200,
+            140
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Open.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "sample_dispatch_open：第 2 槽两帧判定为空槽（无 CLEAR/営業完了、无计时/数字/营业名），按其卡片中部一次（非消费）。"
+        }
+    },
+    "SC.Business.Open.Slot3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Top.Guard",
+            "SC.Business.Plan.Open3"
+        ],
+        "action": "Click",
+        "target": [
+            915,
+            180,
+            200,
+            130
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Open.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "sample_dispatch_open：第 3 槽两帧判定为空槽（无 CLEAR/営業完了、无计时/数字/营业名），按其卡片中部一次（非消费）。"
+        }
+    },
+    "SC.Business.Open.Sent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "dispatch_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "空槽已点击：转入派出画面只读观察（≤30 s）。"
+        }
+    },
+    "SC.Business.DispatchObserve": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "dispatch"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "派出画面只读存帧；≥8 s 且正向派出页证据（Dispatch.Page，尚无样本时永不成立）≥2 帧、返回键可见未变暗 → 按一次返回；否则 30 s 停止（dispatch_not_returned）。"
+        }
+    },
+    "SC.Business.DispatchBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.BackKey.Ready",
+            "SC.Business.Dispatch.Page",
+            "SC.Business.Check.DispatchBack"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.DispatchBack.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "派出画面采样完成：正向派出页证据成立、左下返回键可见未变暗，按一次（非消费，不选择任何营业/队伍）。"
+        }
+    },
+    "SC.Business.DispatchBack.Sent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "dispatch_returning"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "派出画面返回键已发送：等待营业首页或首页。"
+        }
+    },
+    "SC.Business.DispatchReturned": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "dispatch_returned"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "派出画面返回后：营业首页 → 记录槽位并返回首页；首页 → dispatch_sampled；15 s 无结果 → 停止。"
+        }
+    },
+    "SC.Business.Bulk.Complete": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Top.Guard",
+            "SC.Business.Color.BulkComplete.Pink",
+            "SC.Business.Plan.BulkComplete"
+        ],
+        "action": "Click",
+        "target": [
+            1096,
+            625,
+            34,
+            10
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Bulk.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Bulk.Refused",
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "bulk_default：营业首页两帧一致且有 CLEAR 槽位、「一括完了」为粉色，已写 bulk_intent，按「一括完了」一次（非消费；每次任务最多 1 次）。"
+        }
+    },
+    "SC.Business.Bulk.Dispatch": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Top.Guard",
+            "SC.Business.Color.BulkDispatch.White",
+            "SC.Business.Plan.BulkDispatch"
+        ],
+        "action": "Click",
+        "target": [
+            900,
+            626,
+            104,
+            33
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Bulk.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Bulk.Refused",
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "bulk_default：营业首页两帧一致、无 CLEAR 且有空槽（未選択/営業先選択）、「一括営業」为白色，已写 bulk_intent，按「一括営業」一次（非消费；每次任务最多 1 次）。"
+        }
+    },
+    "SC.Business.Bulk.Sent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "bulk_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "一括 按钮已发送（bulk_intent 已写）：转入只读观察。"
+        }
+    },
+    "SC.Business.BulkObserve": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "bulk_observe"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "一括 按下后只读观察（≤30 s 存帧）：WORK REPORT → 读数；营业首页 → 两帧重读；其他画面/对话框只记录文字，不点击，超时 needs_sampling。"
+        }
+    },
+    "SC.Business.BulkReportWait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "bulk_report"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "一括完了 后的 WORK REPORT：两帧读数一致后写 work_report（bulk），再按 Touch to Next。"
+        }
+    },
+    "SC.Business.Bulk.ReportNext": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Report.Guard",
+            "SC.Business.Plan.BulkReportNext"
+        ],
+        "action": "Click",
+        "target": [
+            558,
+            657,
+            99,
+            10
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 4,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Bulk.ReportSent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "bulk_default：WORK REPORT 读数已记录，按「Touch to Next」一次（非消费；每次任务最多 4 次）。"
+        }
+    },
+    "SC.Business.Bulk.ReportSent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "bulk_report_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "「Touch to Next」已发送（一括）：等待下一份报告或营业首页。"
+        }
+    },
+    "SC.Business.Bulk.Refused": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "bulk_refused"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "focus": {
+            "Node.Recognition.Succeeded": "B6g：一括 按钮被控制器在发送前拒绝（截图绑定变化，未发送）：记录 bulk_refused，重新两帧读取营业首页后再按（同一次任务最多重试 2 次）。"
+        }
+    },
+    "SC.Business.Report.PageNext": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Report.AnyPage",
+            "SC.Business.Plan.PageNext"
+        ],
+        "action": "Click",
+        "target": [
+            1141,
+            690,
+            35,
+            9
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Report.PageSent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "B6f：分页 WORK REPORT 最后画面（无 Touch to Next、右下粉色「次へ」）两帧读数一致，按「次へ」下缘一次（非消费；永不按左右箭头或 詳細）。2026-10-10：同一动作也用于「ファンからのプレゼント」页（标题 + 次へ 模板 + Agent 横幅 OCR，两帧稳定后）。"
+        }
+    },
+    "SC.Business.Report.PageSent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "page_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "「次へ」已发送：等待营业首页（只读）。"
+        }
+    },
+    "SC.Business.PostObserve": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "post_observe"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "獲得報酬 OK / 決定 / ← 之后的只读观察（≤30 s）：下一页 → 交给对应读取节点；首页 / 营业首页 → 核对并结论；其他画面只记录文字，不点击。"
+        }
+    },
+    "SC.Business.RewardWait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "reward"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "2026-10-10 獲得報酬 页（Exスキル 列表 + OK + 再営业へ）：两帧稳定后记录可见的 Ex 技能条目（P/S、偶像、效果文字；不滚动，标记 partial），再按「再営業へ」。"
+        }
+    },
+    "SC.Business.Reward.Redispatch": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Reward.Guard",
+            "SC.Business.Plan.RewardRedispatch"
+        ],
+        "action": "Click",
+        "target": [1145, 664, 85, 34],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Reward.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "2026-10-11 用户指示：獲得報酬 页读数已记录，按右下角粉色「再営業へ」一次，继续到 営業アイドル選択（非消费）。动作 business-reward-redispatch 的矩形取自 2026-10-10 12:12 单帧，按钮下缘条带，尚未实机验证。"
+        }
+    },
+    "SC.Business.Reward.Sent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "reward_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "再営業へ 已发送：只读等待 営業アイドル選択 页（或营业首页）。"
+        }
+    },
+    "SC.Business.SelectWait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "select"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "営業アイドル選択 页（3 个预填 12 小时槽位 + 決定）：两帧稳定后核对绑定（3 槽 / 营业名 / 所要時間 12時間00分 / 每槽 5 人已填 / 无资源词），再决定按 決定 或 ←。"
+        }
+    },
+    "SC.Business.Select.Decide": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Select.Guard",
+            "SC.Business.Plan.SelectDecide"
+        ],
+        "action": "Click",
+        "target": [1145, 650, 85, 34],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Select.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "2026-10-10：绑定核对通过且已写 bulk_intent(dispatch)，只按 決定 一次（派出预填的 3 个 12 小时槽位；不消耗资源）。动作 business-dispatch-decide 的矩形由 2026-10-10 12:15 单帧推得，尚未实机验证。"
+        }
+    },
+    "SC.Business.Select.Sent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "select_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "決定 已发送：只读等待首页或营业首页。"
+        }
+    },
+    "SC.Business.Select.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.Select.Guard",
+            "SC.Business.BackKey.Ready",
+            "SC.Business.Plan.SelectBack"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Select.BackSent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "営業アイドル選択 页绑定未通过（或设置为不决定）：按左下 ← 一次离开，不按 決定（非消费）。"
+        }
+    },
+    "SC.Business.Select.BackSent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "select_back_sent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "← 已发送：等待营业首页或首页。"
+        }
+    },
+    "SC.Business.Hold": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "hold"
+        },
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 400,
+        "focus": {
+            "Node.Recognition.Succeeded": "sample_collect_one / sample_dispatch_open 在营业画面上：不走弹窗关闭或返回导航，等待下一帧。"
+        }
+    },
+    "SC.Business.Return": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Business.BackKey.Ready",
+            "SC.Business.Check.Return"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Business.Return.Sent"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "采样完成：非首页且左下返回键可见、未变暗，按一次返回（非消费）。"
+        }
+    },
+    "SC.Business.Return.Sent": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.EventFanReward.Guard",
+            "SC.Popup.Birthday.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Business.ReturnBlocked": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "return_blocked"
+        },
+        "action": "Custom",
+        "custom_action": "SC.Business.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "采样完成但返回键不可用（弹窗/未知布局）：不点击，结束任务（帧已保存）。"
+        }
+    },
+    "SC.Business.Concluded": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.Check",
+        "custom_recognition_param": {
+            "stage": "returned"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "返回后已识别首页：结论 sampled。"
+        }
+    },
+    "SC.Business.Finish": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Business.State.Finished"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Business.FinishClean",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait"
+        ],
+        "on_error": [
+            "SC.Business.Abort"
+        ]
+    },
+    "SC.Business.FinishClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "action": "Custom",
+        "custom_action": "SC.Business.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "on_error": [
+            "SC.Business.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "已回到干净首页：写出营业报告并结束任务。"
+        }
+    },
+    "SC.Business.Halt": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Business.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        },
+        "action": "Custom",
+        "custom_action": "SC.Business.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "营业：结论要求立即停止（needs_sampling / 未返回 / 结果不明），不再点击，本任务失败。"
+        }
+    },
+    "SC.Business.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Business.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "营业：未知画面/超时，不再点击，本任务失败（下一任务照常）。"
+        }
+    }
+}

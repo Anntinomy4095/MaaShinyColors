@@ -1,0 +1,178 @@
+{
+    "SC.Startup.Anchor.TouchToStart": {
+        "recognition": "TemplateMatch",
+        "template": "native/start_screen/touch_to_start.png",
+        "roi": [430, 604, 425, 52],
+        "threshold": 0.95
+    },
+    "SC.Startup.Anchor.Publisher": {
+        "recognition": "TemplateMatch",
+        "template": "native/start_screen/publisher.png",
+        "roi": [1046, 24, 212, 36],
+        "threshold": 0.95
+    },
+    "SC.Startup.StartScreen.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Startup.Anchor.TouchToStart",
+            "SC.Startup.Anchor.Publisher"
+        ]
+    },
+    "SC.Startup.Entry": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]SC.Loading.Wait",
+            "[JumpBack]SC.Startup.TouchToStart",
+            "SC.Startup.GoHome"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "启动：标题画面 TOUCH TO START → 白名单弹窗 → 干净首页。"
+        }
+    },
+    "SC.Startup.GoHome": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 90000,
+        "next": [
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "[JumpBack]SC.Startup.TouchToStart",
+            "[JumpBack]SC.Startup.CollaboReport.Close",
+            "SC.Common.HomeReached",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Common.Stop.GachaAnnouncement",
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "启动：宿主刚开时标题画面可能还没出来，等它出现再点 TOUCH TO START，然后回首页（最多等 90 秒）。"
+        }
+    },
+    "SC.Startup.Anchor.CollaboAward": {
+        "doc": "Collabo LIVE REPORT 右侧横幅「コラボフェス賞」（Grade/Match 的 LIVE REPORT 没有）。",
+        "recognition": "OCR",
+        "roi": [
+            760,
+            135,
+            380,
+            75
+        ],
+        "expected": [
+            "コラボフェス"
+        ],
+        "threshold": 0.6
+    },
+    "SC.Startup.Anchor.CollaboReportOk": {
+        "recognition": "OCR",
+        "roi": [
+            1095,
+            620,
+            165,
+            78
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.6
+    },
+    "SC.Startup.CollaboReport.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Collabo.Anchor.Report",
+            "SC.Startup.Anchor.CollaboAward",
+            "SC.Startup.Anchor.CollaboReportOk"
+        ],
+        "action": "Click",
+        "target": [
+            1105,
+            628,
+            145,
+            62
+        ],
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Startup.CollaboReport.Closed"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "启动：上次 Collabo 的 LIVE REPORT 还开着，点 OK 关闭后回首页（结果不计入）。"
+        }
+    },
+    "SC.Startup.CollaboReport.Closed": {
+        "doc": "OK 之后落到 Collabo 页面（活动/难度/编队）、首页或读取中才算关闭；随后回到启动的回首页循环（SC.Nav.Collabo*.Back）。",
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.CollaboEvent.Guard",
+            "SC.Nav.CollaboDifficulty.Guard",
+            "SC.Nav.CollaboUnit.Guard",
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Common.FailTask"
+        ]
+    },
+    "SC.Startup.TouchToStart": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Startup.Anchor.TouchToStart",
+            "SC.Startup.Anchor.Publisher"
+        ],
+        "action": "Click",
+        "target": [
+            725,
+            604,
+            130,
+            52
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 60000,
+        "next": [
+            "SC.Startup.Started"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "标题画面：点击 TOUCH TO START（每次任务最多 1 次）。"
+        }
+    },
+    "SC.Startup.Started": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.EventFanReward.Guard",
+            "SC.Popup.Birthday.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Common.Home.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}

@@ -1,0 +1,153 @@
+{
+    "samples":  [
+                    {
+                        "expected":  {
+                                         "SC.Produce.TurnsToExam":  "3",
+                                         "SC.Produce.Turn":  "8",
+                                         "SC.Produce.MaxStamina":  "100",
+                                         "SC.Produce.Visual":  "220",
+                                         "SC.Produce.Vocal":  "260",
+                                         "SC.Produce.Dance":  "310",
+                                         "SC.Produce.Stamina":  "42"
+                                     },
+                        "id":  "positive",
+                        "image":  "positive.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Produce.TurnsToExam":  null,
+                                         "SC.Produce.Turn":  null,
+                                         "SC.Produce.MaxStamina":  null,
+                                         "SC.Produce.Visual":  null,
+                                         "SC.Produce.Vocal":  null,
+                                         "SC.Produce.Dance":  null,
+                                         "SC.Produce.Stamina":  null
+                                     },
+                        "id":  "blank",
+                        "image":  "blank.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Produce.TurnsToExam":  "3",
+                                         "SC.Produce.Turn":  null,
+                                         "SC.Produce.MaxStamina":  "100",
+                                         "SC.Produce.Visual":  "220",
+                                         "SC.Produce.Vocal":  "260",
+                                         "SC.Produce.Dance":  "310",
+                                         "SC.Produce.Stamina":  "42"
+                                     },
+                        "id":  "nonnumeric",
+                        "image":  "nonnumeric.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Produce.TurnsToExam":  "3",
+                                         "SC.Produce.Turn":  null,
+                                         "SC.Produce.MaxStamina":  "100",
+                                         "SC.Produce.Visual":  "220",
+                                         "SC.Produce.Vocal":  "260",
+                                         "SC.Produce.Dance":  "310",
+                                         "SC.Produce.Stamina":  "42"
+                                     },
+                        "id":  "ambiguous",
+                        "image":  "ambiguous.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Produce.TurnsToExam":  "3",
+                                         "SC.Produce.Turn":  null,
+                                         "SC.Produce.MaxStamina":  "100",
+                                         "SC.Produce.Visual":  "220",
+                                         "SC.Produce.Vocal":  "260",
+                                         "SC.Produce.Dance":  "310",
+                                         "SC.Produce.Stamina":  "42"
+                                     },
+                        "id":  "hard_negative_arial8",
+                        "image":  "hard_negative_arial8.png"
+                    }
+                ],
+    "version":  1,
+    "fields":  [
+                   {
+                       "expected":  "^[0-9]+$",
+                       "threshold":  0.95,
+                       "name":  "SC.Produce.Turn",
+                       "roi":  [
+                                   60,
+                                   100,
+                                   240,
+                                   150
+                               ]
+                   },
+                   {
+                       "expected":  "^[0-9]+$",
+                       "threshold":  0.95,
+                       "name":  "SC.Produce.TurnsToExam",
+                       "roi":  [
+                                   360,
+                                   100,
+                                   240,
+                                   150
+                               ]
+                   },
+                   {
+                       "expected":  "^[0-9]+$",
+                       "threshold":  0.95,
+                       "name":  "SC.Produce.Stamina",
+                       "roi":  [
+                                   660,
+                                   100,
+                                   240,
+                                   150
+                               ]
+                   },
+                   {
+                       "expected":  "^[0-9]+$",
+                       "threshold":  0.95,
+                       "name":  "SC.Produce.MaxStamina",
+                       "roi":  [
+                                   960,
+                                   100,
+                                   240,
+                                   150
+                               ]
+                   },
+                   {
+                       "expected":  "^[0-9]+$",
+                       "threshold":  0.95,
+                       "name":  "SC.Produce.Vocal",
+                       "roi":  [
+                                   60,
+                                   400,
+                                   240,
+                                   150
+                               ]
+                   },
+                   {
+                       "expected":  "^[0-9]+$",
+                       "threshold":  0.95,
+                       "name":  "SC.Produce.Dance",
+                       "roi":  [
+                                   360,
+                                   400,
+                                   240,
+                                   150
+                               ]
+                   },
+                   {
+                       "expected":  "^[0-9]+$",
+                       "threshold":  0.95,
+                       "name":  "SC.Produce.Visual",
+                       "roi":  [
+                                   660,
+                                   400,
+                                   240,
+                                   150
+                               ]
+                   }
+               ],
+    "canvas":  [
+                   1280,
+                   720
+               ]
+}

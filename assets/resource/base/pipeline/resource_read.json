@@ -1,0 +1,68 @@
+{
+    "SC.ResourceRead.Entry": {
+        "doc": "「只读取资源」（2026-10-26，角色扮演 D6/A8）：在干净首页读一次マニー/体力/フェス参加権（ジュエル只显示），本任务没有自己的点击。已知弹窗与加载交给共用节点，其他画面超时失败。",
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 20000,
+        "next": [
+            "SC.ResourceRead.Read",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait"
+        ],
+        "on_error": [
+            "SC.ResourceRead.NotHome"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "只读取资源：在首页读取マニー、体力、Fes 参加权；只关已知弹窗。"
+        }
+    },
+    "SC.ResourceRead.Read": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.ResourceRead.Home",
+        "action": "Custom",
+        "custom_action": "SC.ResourceRead.Report",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.ResourceRead.Done"
+        ],
+        "on_error": [
+            "SC.ResourceRead.Unreadable"
+        ]
+    },
+    "SC.ResourceRead.Done": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "资源已读取。"
+        }
+    },
+    "SC.ResourceRead.NotHome": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {
+            "reason": "resource_read_not_home"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "没有回到干净的首页：不读取，结束。"
+        }
+    },
+    "SC.ResourceRead.Unreadable": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {
+            "reason": "resource_read_unreadable"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "首页数字读不清：已读到的照常保存，其余不猜。"
+        }
+    }
+}

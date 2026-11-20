@@ -1,0 +1,1534 @@
+{
+  "protocol_version": 1,
+  "description": "UI 面板与宿主之间的 postMessage JSON 命令白名单 v1。UI 只是表现层：任何命令都不能开启实机输入、修改 project_policy.json 或授予消费权限。",
+  "source": {
+    "scheme": "https",
+    "host": "maa-ui.test",
+    "path": "/index.html"
+  },
+  "limits": {
+    "max_message_bytes": 65536,
+    "max_messages_per_second": 20
+  },
+  "envelope": {
+    "request": {
+      "type": "object",
+      "required": [
+        "v",
+        "id",
+        "cmd",
+        "params"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "v": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9-]{1,40}$"
+        },
+        "cmd": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object"
+        }
+      }
+    },
+    "response": {
+      "type": "object",
+      "required": [
+        "v",
+        "id",
+        "ok"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "v": {
+          "const": 1
+        },
+        "id": {
+          "type": "string"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "result": {
+          "type": "object"
+        },
+        "error": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": [
+        "v",
+        "event",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "v": {
+          "const": 1
+        },
+        "event": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "commands": {
+    "ui.ready": {
+      "description": "页面加载完成的握手；宿主回复协议版本与运行环境。",
+      "params": {
+        "type": "object",
+        "required": [
+          "protocol_version"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "protocol_version": {
+            "const": 1
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "protocol_version",
+          "host"
+        ],
+        "properties": {
+          "protocol_version": {
+            "const": 1
+          },
+          "host": {
+            "type": "string",
+            "enum": [
+              "browser_host",
+              "ui_preview"
+            ]
+          }
+        }
+      }
+    },
+    "schema.get": {
+      "description": "读取 tools/ui_schema.py 导出的任务 Schema 与 ui/annotations.json。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "schema",
+          "annotations"
+        ],
+        "properties": {
+          "schema": {
+            "type": "object"
+          },
+          "annotations": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "policy.get": {
+      "description": "只读读取 project_policy.json 的展示摘要（安全页），另含持有卡扫描就绪信号 card_scan_ready/card_scan_reason（宿主内嵌动作表全部 card-scan 动作启用且 card_scan.json 入口节点启用时为真）与 ノウハウ扫描就绪信号 knowhow_scan_ready/knowhow_scan_reason（全部 knowhow-scan 动作启用且 knowhow_scan.json 入口节点启用时为真）。只用于显示，不构成任何输入或消费授权，页面无法写入策略或动作表。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "policy"
+        ],
+        "properties": {
+          "policy": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "profile.get": {
+      "description": "读取本地 UI 档案（任务顺序、启用、选项、界面偏好、日常手动勾选）。不包含任何实机或消费授权。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "profile"
+        ],
+        "properties": {
+          "profile": {
+            "$ref": "#/definitions/profile"
+          }
+        }
+      }
+    },
+    "profile.save": {
+      "description": "原子保存 UI 档案到 dev_assets/private/ui/profile.json。宿主拒绝未知字段。",
+      "params": {
+        "type": "object",
+        "required": [
+          "profile"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "profile": {
+            "$ref": "#/definitions/profile"
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "saved"
+        ],
+        "properties": {
+          "saved": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "run.start": {
+      "description": "启动 run_tasks（宿主经 tools/ui_engine.py 启动子进程，带私有 --events 与 --stop-file）。read_only / offline_replay 不点击、不消耗、不传任何消耗或实机参数。supervised_wing：只勾选 W.I.N.G. 且 confirmed=true（页面已弹出确认框）时，宿主以与命令行相同的监督单任务方式运行 Wing（ui_engine --wing → run_tasks --live --supervised-task，tools/ui_wing.py 生成配置，≤200 次点击、60 分钟、一段）；宿主另需 --enable-pipeline-input、宿主守卫、无扫描/代理/其他程序操作。allow_produce_spend 只有在宿主按已保存档案重新推导出（「开新一局（体力 30）」=开）且页面本次也请求时才转发（--allow-produce-spend）。spend_flags 由各任务自身的消耗选项推导（tools/ui_schema.spend_flags_for_profile），宿主按档案重新推导并核对；每次消耗点击仍需逐帧一次性授权。supervised_daily（ANN-17，2026-10-11，界面普通「开始」）：confirmed=true（页面确认框已列出会消耗的任务）、未勾选 W.I.N.G.、与 W.I.N.G. 相同的宿主门禁；宿主以 ui_engine --daily → run_tasks --live --supervised-sequence 按方案顺序一轮运行勾选任务，每个任务各自的动作族、点击上限，且只在本任务运行时放行它自己的消耗动作；消耗动作只来自勾选任务自身的消耗选项，页面请求的 spend_flags 不得多于宿主按已保存档案推导的结果。",
+      "params": {
+        "type": "object",
+        "required": [
+          "mode",
+          "config",
+          "spend_flags"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "read_only",
+              "offline_replay",
+              "supervised_wing",
+              "supervised_daily"
+            ]
+          },
+          "confirmed": {
+            "type": "boolean",
+            "description": "supervised_wing / supervised_daily 必须为 true：页面已弹出确认框（实机点击；列出会消耗的任务，W.I.N.G. 开新一局时含体力 30）"
+          },
+          "config": {
+            "$ref": "#/definitions/run_config"
+          },
+          "frames_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$",
+            "description": "离线帧目录的不透明 ID，绝不是路径"
+          },
+          "spend_flags": {
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 6,
+            "items": {
+              "type": "string",
+              "enum": [
+                "allow_shop_spend",
+                "allow_training_spend",
+                "allow_grade_spend",
+                "allow_match_spend",
+                "allow_weekly_auto_spend",
+                "allow_collabo_spend",
+                "allow_produce_spend"
+              ]
+            }
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "run_id"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "run.stop": {
+      "description": "请求停止当前运行：宿主写入该次运行的停止文件（run_tasks 锁存整轮停止）。cooperative = 当前任务按中断结算，宽限期内未退出则终止进程并标为不确定；emergency = 缩短宽限期，该次运行一律标为结果不确定。",
+      "params": {
+        "type": "object",
+        "required": [
+          "kind"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "cooperative",
+              "emergency"
+            ]
+          },
+          "run_id": {
+            "type": "string"
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "dev.action_table": {
+      "description": "开发者「重新载入动作表」（需档案 prefs.developer=true）：宿主重新读取并校验 assets/input/pipeline_actions.json（结构、画布与矩形、消费/启用标记、节点唯一且存在于 Pipeline JSON），全部通过才原子替换；同时重建 Pipeline 输入端点（新令牌/端口/消费密钥，会话文件写入新 action_table_sha256）并作废帧许可。界面运行、扫描或 60 秒内有 Pipeline 请求（监督运行）时拒绝；任何校验错误都保留旧表。不发送输入，不改 project_policy.json。",
+      "params": {
+        "type": "object",
+        "required": [
+          "op"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "op": {
+            "type": "string",
+            "enum": [
+              "reload"
+            ]
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "game.data.clear": {
+      "description": "设置 → 关于数据「清理游戏缓存」/「清除登录信息」：宿主对游戏 WebView2 档案调用 CoreWebView2Profile.ClearBrowsingDataAsync。kind=cache 仅清 DiskCache 磁盘缓存，保留 cookies 和站点存储，不退出登录；kind=login 用 AllSite 清除 cookies 与站点存储，须 confirmed=true（界面已弹出确认框）。任务、持有卡扫描或书库扫描运行时拒绝。accepted 只表示开始，busy/last 报告实际完成结果；清除成功后宿主重新载入游戏页。只清除、从不读取内容；不发送输入，不改 project_policy.json。",
+      "params": {
+        "type": "object",
+        "required": [
+          "kind"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "cache",
+              "login"
+            ]
+          },
+          "confirmed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "game.audio.set": {
+      "description": "设置 →「静音游戏」：宿主设置游戏 WebView 的 CoreWebView2.IsMuted，并把选择保存在宿主自己的设置里（重启后保持）。只影响本机声音，不发送输入。",
+      "params": {
+        "type": "object",
+        "required": [
+          "muted"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "muted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          },
+          "muted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "cards.library.update": {
+      "description": "用户点击后更新公开卡资料及缺失卡图。宿主固定运行增量工具，首次空库自动分批完成；不连接游戏，不修改持有卡、Lv、凸数或编队。进度见 status.update.card_library。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "cards.library.stop": {
+      "description": "停止本次公开卡资料更新，保留已经启用的资料批次。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "stopped"
+        ],
+        "properties": {
+          "stopped": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "team.propose": {
+      "description": "「重新生成推荐」：宿主在本机运行离线推荐（tools/auto_team_propose.py），p_card 为所选 P 卡，或 auto（推荐编队：Maa 在可计算的持有 P 卡中选评分最高的一队）；primary 为主属性，或 auto（每张 P 卡按其特长）；按持有卡与 Lv/凸 重新计算并改写本地 team-proposal.js。只读本地文件：不取帧、不发送输入、不联网，也不是运行授权。进度见 status.update.team_propose。",
+      "params": {
+        "type": "object",
+        "required": [
+          "p_card",
+          "primary"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "p_card": {
+            "type": "string",
+            "pattern": "^(1[0-9]{9}|auto)$"
+          },
+          "primary": {
+            "enum": [
+              "Vo",
+              "Da",
+              "Vi",
+              "auto"
+            ]
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "window.background": {
+      "description": "设置 → 窗口：「后台运行」开关与「现在隐藏」。宿主把开关保存在自己的设置里（默认关闭），开启时最小化按钮与任务栏最小化改为隐藏窗口（DWM cloak 或移出屏幕），游戏继续渲染、截图与输入；op=hide 立即隐藏，从托盘图标还原。开关立即生效。只做窗口处理，不发送输入、不取帧。",
+      "params": {
+        "type": "object",
+        "required": [
+          "op"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "op": {
+            "enum": [
+              "set",
+              "hide"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "window.layout": {
+      "description": "设置 → 外观「面板位置」（2026-10-16；detached 2026-10-25）：panel_side=right/left 把控制面板放到游戏画面右侧或左侧，detached 把面板放进单独的窗口（游戏窗口只剩游戏画面；关闭面板窗口即放回右侧，退出程序仍关游戏窗口）。宿主保存在自己的窗口设置里并立即重新布局；游戏画面仍为 1280x720 画布，截图与输入坐标不变。只做窗口布局，不发送输入、不取帧。",
+      "params": {
+        "type": "object",
+        "required": [
+          "panel_side"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "panel_side": {
+            "enum": [
+              "right",
+              "left",
+              "detached"
+            ]
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          },
+          "panel_side": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "storage.status": {
+      "description": "设置 → 存储：返回 dev_assets/private 本机数据按分类的占用（缓存结果）。refresh=true 或缓存超过 5 分钟时宿主在后台重新计算（state=scanning，界面显示「计算中…」）。只读，不含路径。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "refresh": {
+            "type": "boolean"
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "storage"
+        ],
+        "properties": {
+          "storage": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "storage.clean": {
+      "description": "设置 → 存储「清理」：删除一个分类（samples 截图样本 / logs 运行记录 / cache 手牌识别）中宿主认可的文件，须 confirmed=true（界面已弹出确认框）。只删 dev_assets/private 内的已分类文件，从不进入或删除符号链接/联接；设置、档案、游戏登录（WebView2）、扫描记录、W.I.N.G. 记忆/设置/消耗账本、读数、各类账本与策略文件从不删除；运行记录保留最近 48 小时。任务运行或扫描期间拒绝。结果见 status.update storage.last。页面不能提供路径。",
+      "params": {
+        "type": "object",
+        "required": [
+          "category",
+          "confirmed"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "enum": [
+              "samples",
+              "logs",
+              "cache"
+            ]
+          },
+          "confirmed": {
+            "const": true
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "storage.auto": {
+      "description": "设置 → 存储「自动清理」：宿主把开关与保留天数（7/14/30）保存在自己的设置里（默认关闭）。开启后宿主在启动时和每次运行结束后，删除超过保留天数的已分类文件（规则同 storage.clean；cache 手牌识别不自动删除）。",
+      "params": {
+        "type": "object",
+        "required": [
+          "enabled",
+          "days"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "days": {
+            "enum": [
+              7,
+              14,
+              30
+            ]
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "days": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "app.support": {
+      "description": "设置 → 关于 / 问题反馈 / 更新 / 通知 / 快捷键。op=info 返回版本、构建、项目地址、第三方许可；open_logs 在资源管理器打开本机运行记录目录；open_guide 在资源管理器中选中使用说明（README.md）；issue_report 把最近的文字记录（运行记录、输入日志、W.I.N.G. 决策、设置；本机路径与用户名已替换）和最近 10 张失败截图（failures/）（不含登录信息、游戏素材）打包到 dev_assets/private/issue-reports/ 并在资源管理器中选中，不上传；open_link（repo/issues/releases）用默认浏览器打开 interface.json github 仓库页面；update_check（channel stable/beta）只读取该仓库的 GitHub Releases 并比较版本，不下载、不安装，结果见 status.update support.update；notify_test 显示一条系统通知；hotkey（enabled）开关全局紧急停止热键 Ctrl+Alt+Shift+S（只停止运行中的任务，不开始任何任务）。页面不能提供路径或网址。",
+      "params": {
+        "type": "object",
+        "required": [
+          "op"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "op": {
+            "enum": [
+              "info",
+              "open_logs",
+              "open_guide",
+              "issue_report",
+              "open_link",
+              "update_check",
+              "notify_test",
+              "hotkey"
+            ]
+          },
+          "link": {
+            "enum": [
+              "repo",
+              "issues",
+              "releases"
+            ]
+          },
+          "channel": {
+            "enum": [
+              "stable",
+              "beta"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "cards.scan.start": {
+      "description": "「扫描持有卡」：页面确认（confirmed 必须为 true）后，宿主以与命令行相同的监督单任务方式启动 CardScan（.venv python tools/run_tasks.py --live --supervised-task，宿主生成的私有配置：S/P 两个标签、每标签 ≤80 次滚动、≤400 帧、166 次点击上限、50 分钟会话、allow_spend 为空，只点动作表中非消费的导航/滚动动作）。页面不能提供路径、选项或预算。宿主逐项复核：以 --enable-pipeline-input 启动、card_scan_ready、宿主守卫、无识别运行、无 A 级代理、无其他程序正在操作；同一时间只允许一个扫描。完成后只写出 owned-levels.js / inventory-scan.js，不改用户档案。",
+      "params": {
+        "type": "object",
+        "required": [
+          "confirmed"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "confirmed": {
+            "const": true
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "cards.scan.stop": {
+      "description": "停止「扫描持有卡」：宿主写入扫描的停止文件（锁存，扫描回到首页后结束）；宽限期内未退出则终止进程并标为结果不确定。始终接受。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "cards.scan.status": {
+      "description": "只读：扫描持有卡的当前状态（同 status.update 的 card_scan）。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "card_scan"
+        ],
+        "properties": {
+          "card_scan": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "knowhow.scan.start": {
+      "description": "扫描ノウハウ：mode=calibrate只校准滚动；mode=scan读取整个书库及详情，分段自动接续，结束恢复原排序；mode=newest按獲得順补读最新 count（1–10）本。页面只选择模式（与补读本数），不提供路径或预算。结果写入knowhow.js，不操作保護、マーク或売却。",
+      "params": {
+        "type": "object",
+        "required": [
+          "confirmed",
+          "mode"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "confirmed": {
+            "const": true
+          },
+          "mode": {
+            "enum": [
+              "calibrate",
+              "scan",
+              "newest"
+            ]
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "knowhow.scan.stop": {
+      "description": "停止「扫描ノウハウ」：宿主写入停止文件（锁存）；宽限期内未退出则终止进程并标为结果不确定。始终接受。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "knowhow.scan.status": {
+      "description": "只读：扫描ノウハウ的当前状态（同 status.update 的 knowhow_scan）。",
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "knowhow_scan"
+        ],
+        "properties": {
+          "knowhow_scan": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "status.subscribe": {
+      "description": "订阅宿主状态（每秒一次 status.update 事件）。宿主进程内读取 status，永不截图。",
+      "params": {
+        "type": "object",
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "subscribed"
+        ],
+        "properties": {
+          "subscribed": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "log.subscribe": {
+      "description": "订阅运行日志（log.append 与 run.update 事件）。缩略图只引用已保存诊断帧的不透明 ID。",
+      "params": {
+        "type": "object",
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "since": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "result": {
+        "type": "object",
+        "required": [
+          "subscribed"
+        ],
+        "properties": {
+          "subscribed": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "events": {
+    "status.update": {
+      "description": "宿主状态快照。",
+      "data": {
+        "type": "object",
+        "properties": {
+          "connected": {
+            "type": "boolean"
+          },
+          "hide_mode": {
+            "type": "string"
+          },
+          "frame_age_ms": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "capture_seq": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "manual_click_seq": {
+            "type": "integer",
+            "description": "宿主转发的玩家手动点击序号；用于判断分段扫描间游戏是否被手动操作。"
+          },
+          "desktop_locked": {
+            "type": "boolean"
+          },
+          "host_guard_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "pipeline_input_enabled": {
+            "type": "boolean"
+          },
+          "recognition_ready": {
+            "type": "boolean",
+            "description": "识别模板已安装（安装包的 assets/resource/recognition 或本机 dev_assets/private/resource_native 有 manifest.json）。false 时所有页面检查都会失败，界面提示重新解压完整安装包。"
+          },
+          "clicks_this_run": {
+            "type": "integer"
+          },
+          "external_run": {
+            "type": "boolean",
+            "description": "面板外（命令行）启动的 Maa 运行正在点击；紧急停止对它可用：宿主拒绝其后续点击（emergency_stop），该运行停止 60 秒后或面板开始新运行时解除。"
+          },
+          "action_table": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "宿主当前动作表：sha256 / source / actions / enabled / consuming / loaded_at / last_reload（ok / reason / at / previous_sha256 / sha256）"
+          },
+          "card_scan": {
+            "type": "object",
+            "description": "扫描持有卡状态：state（idle/running/stopping/finished）/ blocker（不能开始的原因代码或 null）/ tab / scrolls / frames / elapsed_s；结束后另含 outcome（scanned/partial/stopped/failed/uncertain）/ reason / cards / imported / tabs / finished_seq。不含路径或截图。"
+          },
+          "knowhow_scan": {
+            "type": "object",
+            "description": "扫描ノウハウ状态：state（idle/running/stopping/finished）/ mode（calibrate/scan/newest）/ count（newest 的预计补读本数，实际按所持数）/ modes（宿主支持的模式）/ blocker / scrolls / books / frames / elapsed_s；结束后另含 outcome（calibrated/scanned/newest_read/library_up_to_date/needs_full_scan/partial/stopped/failed/uncertain）/ reason / scan_ready / grid_step_px / grid_step_rows / detail_step_px / books_read / grid_count / grid_complete / needs_review / imported / frames_folder（私有帧目录名，不含完整路径）/ finished_seq。不含截图。"
+          },
+          "run_live": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "运行中实时状态（run_tasks 写入的 dev_assets/private/live-status/current.json，宿主读取后转发，另加 age_s = 文件距今秒数）：version / run_id / state（starting/running/stopping/finished）/ outcome / outcome_text / started_at / updated_at / elapsed_s / tasks[{name,label,state,text}] / current / step（一句中文）/ progress / clicks{used,cap} / last_frame_at / wing（season / weeks_left / stats / sp / fans / fans_left / stamina / decision / events / live）。只供显示，不含路径、截图或节点名；≤ 48 KiB。"
+          },
+          "game_data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "游戏 WebView2 本机状态：muted（是否静音）/ clear_supported（仅 true 时游戏已就绪并支持清理）/ cache_bytes / profile_bytes（数据大小，未知为 null）/ busy（正在清理）/ last（op / ok / reason / at）。缺少该对象时静音不可用；清理不能根据静音能力推断。不含路径、cookie 内容或账号信息。"
+          },
+          "window_background": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "后台运行状态（游戏宿主才有）：supported / enabled（开关或启动参数）/ forced（--background-keepalive 强制开启）/ args_active（浏览器后台参数是否已在本次启动生效）/ hide_mode（none/cloaked/offscreen）。"
+          },
+          "storage": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "存储状态（游戏宿主才有）：state（idle/scanning/cleaning）/ scanned_at / categories[{key（samples/logs/cache）,bytes,files,cleanable_bytes,cleanable_files}] / other_bytes（其他，不清理）/ total_bytes / auto{enabled,days} / blocker（不能清理的原因代码，null=可清理）/ last{op（clean/prune）,category,ok,freed_bytes,files,failed,days,at}。不含路径。"
+          },
+          "card_library": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "公开卡资料更新：supported/state/phase/updated_cards/total_cards/finished_seq/error/last。last只含最近更新摘要和张数，不含路径、个人持有或登录资料。"
+          },
+          "game_assets": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "本机展示数据同步：seq（复制次数）/ modules（文件名→版本号，只含 knowhow.js 等固定文件名）。仓库 ui/game-assets 里的文件被宿主以外的扫描或工具改写后，宿主复制到面板目录并加版本，页面据此重读。不含路径。"
+          },
+          "team_propose": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "「重新生成推荐」状态（U05）：state（idle/running/done/failed）/ error（短代码）/ p_card / finished_at / generation（每次开始加一）/ progress（运行中：{done, total}，每比较一张 P 卡加一，最后一步为练级提示；未报告时为 null）。只读，不含路径。"
+          },
+          "support": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "设置支持状态：hotkey（enabled / registered / supported）、update（state idle/checking/done/failed，channel、current、latest、newer、published_at、reason、checked_at）、last_report（最近问题包文件名，非路径）。"
+          },
+          "window_layout": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "游戏窗口布局：panel_side（right/left/detached，控制面板在游戏画面哪一侧或独立窗口）、supported。旧宿主没有此字段，界面置灰「面板位置」。"
+          }
+        }
+      }
+    },
+    "log.append": {
+      "description": "一条日志。",
+      "data": {
+        "type": "object",
+        "required": [
+          "seq",
+          "ts",
+          "level",
+          "text"
+        ],
+        "properties": {
+          "seq": {
+            "type": "integer"
+          },
+          "ts": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "debug",
+              "info",
+              "warn",
+              "error"
+            ]
+          },
+          "task": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "frame_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "run.update": {
+      "description": "运行或单个任务的状态变化。成功只来自运行摘要，不以进程退出码代替。",
+      "data": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "state"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "starting",
+              "running",
+              "stopping",
+              "finished"
+            ]
+          },
+          "task": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "$ref": "#/definitions/task_status"
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "succeeded",
+              "failed",
+              "stopped",
+              "uncertain",
+              "refused"
+            ],
+            "description": "仅 finished：整轮结论，来自运行事件与摘要（两者一致才算成功），引擎异常退出或被终止为 uncertain。"
+          }
+        }
+      }
+    },
+    "readings.update": {
+      "description": "运行事件中的一条已过滤读数（run_tasks readings 事件）；只含布尔、非负整数、短标识符，不含路径或截图。",
+      "data": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "kind",
+          "readings"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "task": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "read_only",
+              "offline_replay",
+              "supervised_daily",
+              "supervised_wing"
+            ]
+          },
+          "readings": {
+            "type": "object"
+          },
+          "ts": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "run.history": {
+      "description": "最近的界面运行记录（宿主保存在私有运行目录的结论，不含路径）；日常清单与历史表由此推导。",
+      "data": {
+        "type": "object",
+        "required": [
+          "runs"
+        ],
+        "properties": {
+          "runs": {
+            "type": "array",
+            "maxItems": 20,
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "task_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "succeeded",
+        "skipped",
+        "failed",
+        "uncertain",
+        "guard_refused",
+        "takeover"
+      ]
+    },
+    "run_config": {
+      "type": "object",
+      "required": [
+        "tasks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "tasks": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "option": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "task_timeout_s": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 3600
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "required": [
+        "schema_version"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "preset": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tasks": {
+          "$ref": "#/definitions/run_config/properties/tasks"
+        },
+        "removed_tasks": {
+          "type": "array",
+          "description": "不在当前方案中的任务名（「添加任务」可加回）。只用于显示；宿主把这些任务的 enabled 清为 false，它们不会运行，也不推导消耗。",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^.{1,64}$"
+          }
+        },
+        "prefs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "theme": {
+              "type": "string",
+              "enum": [
+                "system",
+                "light",
+                "dark"
+              ]
+            },
+            "notify": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "boolean"
+              }
+            },
+            "update_channel": {
+              "type": "string",
+              "enum": [
+                "stable",
+                "beta"
+              ],
+              "description": "设置 → 更新：只影响检查更新时比较哪类发布"
+            },
+            "accent": {
+              "type": "string",
+              "enum": [
+                "pink",
+                "sky",
+                "violet",
+                "teal"
+              ],
+              "description": "设置 → 外观 主题色（仅显示）"
+            },
+            "font_size": {
+              "type": "string",
+              "enum": [
+                "small",
+                "normal",
+                "large",
+                "xlarge"
+              ],
+              "description": "设置 → 外观 字号（仅显示）"
+            },
+            "density": {
+              "type": "string",
+              "enum": [
+                "normal",
+                "compact"
+              ],
+              "description": "设置 → 外观 间距（仅显示）"
+            },
+            "reduce_motion": {
+              "type": "boolean",
+              "description": "设置 → 外观 减少动画（仅显示）"
+            },
+            "hide_chibi_visitor": {
+              "type": "boolean",
+              "description": "隐藏偶像访客"
+            },
+            "reduce_chibi_motion": {
+              "type": "boolean",
+              "description": "减少偶像访客动画"
+            },
+            "developer": {
+              "type": "boolean",
+              "description": "开发者选项：显示未完成/诊断任务、开发选项与离线回放；不授予任何权限"
+            },
+            "owned_cards": {
+              "type": "object",
+              "description": "持有卡牌（仅显示偏好，筛选 Produce 编队弹窗；不授予任何权限）。Wiki 卡 ID：P 卡 1 开头、S 卡 2 开头，各 10 位。",
+              "additionalProperties": false,
+              "properties": {
+                "p": {
+                  "type": "array",
+                  "maxItems": 2000,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^1[0-9]{9}$"
+                  }
+                },
+                "s": {
+                  "type": "array",
+                  "maxItems": 2000,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^2[0-9]{9}$"
+                  }
+                },
+                "details": {
+                  "type": "object",
+                  "description": "可选：每张持有卡的 Lv 与凸数（键为上面列表中的卡 ID；缺少字段 = 未知）。只用于自动编队推荐，不授予任何权限。宿主另外丢弃不在 p/s 列表中的键。",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "level": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100
+                      },
+                      "limit_break": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "knowhow_wanted": {
+              "type": "array",
+              "description": "ノウハウ 页登记的「想要的ノウハウ」（仅显示/匹配偏好；Maa 只在本地标注哪些书满足，不授予任何权限，永不出售/保護/マーク）。名称不含控制字符、路径或引号字符。",
+              "maxItems": 64,
+              "items": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "pattern": "^[^\\u0000-\\u001f/\\\\:<>\"'`]{1,40}$"
+                  },
+                  "match": {
+                    "type": "string",
+                    "enum": [
+                      "exact",
+                      "prefix",
+                      "contains"
+                    ]
+                  },
+                  "min_level": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 6
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "enum": [
+                      "halo",
+                      "step",
+                      "any"
+                    ]
+                  },
+                  "position": {
+                    "type": "string",
+                    "enum": [
+                      "center",
+                      "leader",
+                      "vocal",
+                      "dance",
+                      "visual"
+                    ]
+                  }
+                }
+              }
+            },
+            "auto_step_books": {
+              "type": "array",
+              "description": "ノウハウ 页「设为 Auto 带书」保存的三本 S.T.E.P. 书（书名与 Vo/Da/Vi/Me、評価値）；带书选「ノウハウ页指定」时，Maa 在选书第一屏按評価値找书并核对书名与属性。",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "vo",
+                  "da",
+                  "vi",
+                  "me",
+                  "eval"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "maxLength": 60,
+                    "pattern": "^[^\\u0000-\\u001f/\\\\:<>\"'`]{1,60}$"
+                  },
+                  "vo": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  },
+                  "da": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  },
+                  "vi": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  },
+                  "me": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  },
+                  "eval": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  }
+                }
+              }
+            },
+            "halo_book": {
+              "type": "array",
+              "description": "ノウハウ 页「设为 Halo 带书」保存的一本书（书名与 Vo/Da/Vi/Me、評価値）；say \"Halo\" 带书选「ノウハウ页指定」时，Maa 在选书第一屏按評価値找书并核对书名与属性。",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "vo",
+                  "da",
+                  "vi",
+                  "me",
+                  "eval"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "maxLength": 60,
+                    "pattern": "^[^\\u0000-\\u001f/\\\\:<>\"'`]{1,60}$"
+                  },
+                  "vo": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  },
+                  "da": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  },
+                  "vi": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  },
+                  "me": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  },
+                  "eval": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "daily_manual": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

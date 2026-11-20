@@ -1,0 +1,31 @@
+{
+    "candidates":  [
+                       {
+                           "gains":  {
+                                         "visual":  38
+                                     },
+                           "confidence":  1,
+                           "stamina_cost":  18,
+                           "id":  "visual_lesson",
+                           "category":  "lesson",
+                           "risk":  0.08,
+                           "label":  "Visual lesson",
+                           "available":  true
+                       },
+                       {
+                           "id":  "rest",
+                           "label":  "Rest",
+                           "available":  true,
+                           "confidence":  1,
+                           "category":  "recovery",
+                           "stamina_recovery":  36
+                       }
+                   ],
+    "image_sha256":  "669d910e1ffe1d69c580fd96310fc0c61dd9d9cbf175d2adba8ea061438ce5ee",
+    "scene_confirmed":  true,
+    "targets":  {
+                    "dance":  500,
+                    "vocal":  500,
+                    "visual":  500
+                }
+}

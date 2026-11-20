@@ -1,0 +1,1000 @@
+{
+  "SC.Shop.Home.ShopLabel": {
+    "recognition": "TemplateMatch",
+    "template": "Home-ShopLabel.png",
+    "roi": [
+      35,
+      276,
+      56,
+      17
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Home.MenuLabel": {
+    "recognition": "TemplateMatch",
+    "template": "Home-MenuLabel.png",
+    "roi": [
+      33,
+      348,
+      60,
+      24
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Home.PresentLabel": {
+    "recognition": "TemplateMatch",
+    "template": "Home-PresentLabel.png",
+    "roi": [
+      30,
+      193,
+      66,
+      18
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Home.FesText": {
+    "recognition": "TemplateMatch",
+    "template": "Home-FesText.png",
+    "roi": [
+      1150,
+      645,
+      80,
+      25
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Home.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Home.ShopLabel",
+      "SC.Shop.Home.MenuLabel",
+      "SC.Shop.Home.PresentLabel",
+      "SC.Shop.Home.FesText"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Home.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Shop.Home.Guard",
+      "SC.Shop.Home.Unknown"
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Home.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Shop.Home.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Premium.Title": {
+    "recognition": "TemplateMatch",
+    "template": "Premium-Title.png",
+    "roi": [
+      6,
+      16,
+      150,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Premium.PremiumSelected": {
+    "recognition": "TemplateMatch",
+    "template": "Premium-PremiumSelected.png",
+    "roi": [
+      20,
+      92,
+      128,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Premium.MoneyIdle": {
+    "recognition": "TemplateMatch",
+    "template": "Premium-MoneyIdle.png",
+    "roi": [
+      440,
+      90,
+      112,
+      42
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Premium.NewbieSubtab": {
+    "recognition": "TemplateMatch",
+    "template": "Premium-NewbieSubtab.png",
+    "roi": [
+      40,
+      165,
+      172,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Premium.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Premium.Title",
+      "SC.Shop.Premium.PremiumSelected",
+      "SC.Shop.Premium.MoneyIdle",
+      "SC.Shop.Premium.NewbieSubtab"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Premium.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Shop.Premium.Guard",
+      "SC.Shop.Premium.Unknown"
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Premium.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Shop.Premium.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Title": {
+    "recognition": "TemplateMatch",
+    "template": "List-Title.png",
+    "roi": [
+      6,
+      16,
+      150,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.MoneySelected": {
+    "recognition": "TemplateMatch",
+    "template": "List-MoneySelected.png",
+    "roi": [
+      440,
+      90,
+      112,
+      42
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.MoneyIcon": {
+    "recognition": "TemplateMatch",
+    "template": "List-MoneyIcon.png",
+    "roi": [
+      958,
+      22,
+      40,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.AllSelected": {
+    "recognition": "TemplateMatch",
+    "template": "List-AllSelected.png",
+    "roi": [
+      40,
+      165,
+      172,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Back": {
+    "recognition": "TemplateMatch",
+    "template": "List-Back.png",
+    "roi": [
+      20,
+      628,
+      74,
+      66
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Banner1": {
+    "recognition": "TemplateMatch",
+    "template": "List-Banner1.png",
+    "roi": [
+      118,
+      228,
+      102,
+      30
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Banner2": {
+    "recognition": "TemplateMatch",
+    "template": "List-Banner2.png",
+    "roi": [
+      388,
+      228,
+      102,
+      30
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Banner3": {
+    "recognition": "TemplateMatch",
+    "template": "List-Banner3.png",
+    "roi": [
+      658,
+      228,
+      102,
+      30
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.LimitLabel1": {
+    "recognition": "TemplateMatch",
+    "template": "List-LimitLabel1.png",
+    "roi": [
+      60,
+      516,
+      126,
+      28
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.LimitLabel2": {
+    "recognition": "TemplateMatch",
+    "template": "List-LimitLabel2.png",
+    "roi": [
+      330,
+      516,
+      126,
+      28
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.LimitLabel3": {
+    "recognition": "TemplateMatch",
+    "template": "List-LimitLabel3.png",
+    "roi": [
+      600,
+      516,
+      126,
+      28
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Coin1": {
+    "recognition": "TemplateMatch",
+    "template": "List-Coin1.png",
+    "roi": [
+      94,
+      598,
+      20,
+      20
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Coin2": {
+    "recognition": "TemplateMatch",
+    "template": "List-Coin2.png",
+    "roi": [
+      364,
+      598,
+      20,
+      20
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Coin3": {
+    "recognition": "TemplateMatch",
+    "template": "List-Coin3.png",
+    "roi": [
+      634,
+      598,
+      20,
+      20
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.List.Title",
+      "SC.Shop.List.MoneySelected",
+      "SC.Shop.List.MoneyIcon",
+      "SC.Shop.List.AllSelected",
+      "SC.Shop.List.Back"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Shop.List.Guard",
+      "SC.Shop.List.Unknown"
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Shop.List.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Title": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Title.png",
+    "roi": [
+      360,
+      40,
+      162,
+      36
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Prompt": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Prompt.png",
+    "roi": [
+      410,
+      132,
+      460,
+      56
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Labels": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Labels.png",
+    "roi": [
+      412,
+      352,
+      170,
+      182
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Controls": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Controls.png",
+    "roi": [
+      640,
+      340,
+      190,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Cancel": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Cancel.png",
+    "roi": [
+      457,
+      587,
+      167,
+      79
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Exchange": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Exchange.png",
+    "roi": [
+      657,
+      587,
+      167,
+      79
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Confirm.Title",
+      "SC.Shop.Confirm.Prompt",
+      "SC.Shop.Confirm.Labels",
+      "SC.Shop.Confirm.Controls",
+      "SC.Shop.Confirm.Cancel",
+      "SC.Shop.Confirm.Exchange"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Shop.Confirm.Guard",
+      "SC.Shop.Confirm.Unknown"
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Confirm.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Shop.Confirm.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Result.Title": {
+    "recognition": "TemplateMatch",
+    "template": "Result-Title.png",
+    "roi": [
+      360,
+      170,
+      162,
+      36
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Result.Labels": {
+    "recognition": "TemplateMatch",
+    "template": "Result-Labels.png",
+    "roi": [
+      405,
+      343,
+      170,
+      72
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Result.Close": {
+    "recognition": "TemplateMatch",
+    "template": "Result-Close.png",
+    "roi": [
+      557,
+      457,
+      167,
+      80
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Result.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Result.Title",
+      "SC.Shop.Result.Labels",
+      "SC.Shop.Result.Close"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Result.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Shop.Result.Guard",
+      "SC.Shop.Result.Unknown"
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Result.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Shop.Result.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.ButtonEnabled1": {
+    "recognition": "ColorMatch",
+    "roi": [
+      140,
+      634,
+      60,
+      8
+    ],
+    "lower": [
+      230,
+      120,
+      0
+    ],
+    "upper": [
+      255,
+      235,
+      90
+    ],
+    "count": 400,
+    "method": 4,
+    "connected": false,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.ButtonEnabled2": {
+    "recognition": "ColorMatch",
+    "roi": [
+      410,
+      634,
+      60,
+      8
+    ],
+    "lower": [
+      230,
+      120,
+      0
+    ],
+    "upper": [
+      255,
+      235,
+      90
+    ],
+    "count": 400,
+    "method": 4,
+    "connected": false,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.List.ButtonEnabled3": {
+    "recognition": "ColorMatch",
+    "roi": [
+      680,
+      634,
+      60,
+      8
+    ],
+    "lower": [
+      230,
+      120,
+      0
+    ],
+    "upper": [
+      255,
+      235,
+      90
+    ],
+    "count": 400,
+    "method": 4,
+    "connected": false,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.home-shop": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Home.ShopLabel",
+      "SC.Shop.Home.MenuLabel",
+      "SC.Shop.Home.PresentLabel",
+      "SC.Shop.Home.FesText"
+    ],
+    "action": "Click",
+    "target": [
+      62,
+      282,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-money-tab": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Premium.Title",
+      "SC.Shop.Premium.PremiumSelected",
+      "SC.Shop.Premium.MoneyIdle",
+      "SC.Shop.Premium.NewbieSubtab"
+    ],
+    "action": "Click",
+    "target": [
+      495,
+      110,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-back": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.List.Title",
+      "SC.Shop.List.MoneySelected",
+      "SC.Shop.List.MoneyIcon",
+      "SC.Shop.List.AllSelected",
+      "SC.Shop.List.Back"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-exchange-cancel": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Confirm.Title",
+      "SC.Shop.Confirm.Prompt",
+      "SC.Shop.Confirm.Labels",
+      "SC.Shop.Confirm.Controls",
+      "SC.Shop.Confirm.Cancel",
+      "SC.Shop.Confirm.Exchange"
+    ],
+    "action": "Click",
+    "target": [
+      540,
+      626,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-offer-open-1": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.List.Title",
+      "SC.Shop.List.MoneySelected",
+      "SC.Shop.List.MoneyIcon",
+      "SC.Shop.List.AllSelected",
+      "SC.Shop.List.Back",
+      "SC.Shop.List.Banner1",
+      "SC.Shop.List.LimitLabel1",
+      "SC.Shop.List.Coin1",
+      "SC.Shop.List.ButtonEnabled1"
+    ],
+    "action": "Click",
+    "target": [
+      166,
+      607,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-offer-open-2": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.List.Title",
+      "SC.Shop.List.MoneySelected",
+      "SC.Shop.List.MoneyIcon",
+      "SC.Shop.List.AllSelected",
+      "SC.Shop.List.Back",
+      "SC.Shop.List.Banner2",
+      "SC.Shop.List.LimitLabel2",
+      "SC.Shop.List.Coin2",
+      "SC.Shop.List.ButtonEnabled2"
+    ],
+    "action": "Click",
+    "target": [
+      436,
+      607,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-offer-open-3": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.List.Title",
+      "SC.Shop.List.MoneySelected",
+      "SC.Shop.List.MoneyIcon",
+      "SC.Shop.List.AllSelected",
+      "SC.Shop.List.Back",
+      "SC.Shop.List.Banner3",
+      "SC.Shop.List.LimitLabel3",
+      "SC.Shop.List.Coin3",
+      "SC.Shop.List.ButtonEnabled3"
+    ],
+    "action": "Click",
+    "target": [
+      706,
+      607,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-exchange-confirm-1": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Confirm.Title",
+      "SC.Shop.Confirm.Prompt",
+      "SC.Shop.Confirm.Labels",
+      "SC.Shop.Confirm.Controls",
+      "SC.Shop.Confirm.Cancel",
+      "SC.Shop.Confirm.Exchange"
+    ],
+    "action": "Click",
+    "target": [
+      740,
+      626,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-exchange-confirm-2": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Confirm.Title",
+      "SC.Shop.Confirm.Prompt",
+      "SC.Shop.Confirm.Labels",
+      "SC.Shop.Confirm.Controls",
+      "SC.Shop.Confirm.Cancel",
+      "SC.Shop.Confirm.Exchange"
+    ],
+    "action": "Click",
+    "target": [
+      740,
+      626,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-exchange-confirm-3": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Confirm.Title",
+      "SC.Shop.Confirm.Prompt",
+      "SC.Shop.Confirm.Labels",
+      "SC.Shop.Confirm.Controls",
+      "SC.Shop.Confirm.Cancel",
+      "SC.Shop.Confirm.Exchange"
+    ],
+    "action": "Click",
+    "target": [
+      740,
+      626,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Action.shop-result-close": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Shop.Result.Title",
+      "SC.Shop.Result.Labels",
+      "SC.Shop.Result.Close"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      497,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Shop.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Shop.Error": {
+    "recognition": "DirectHit",
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  }
+}

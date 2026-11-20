@@ -1,0 +1,120 @@
+{
+    "SC.Weekly.Entry": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 20000,
+        "next": [
+            "SC.Weekly.Read",
+            "[JumpBack]SC.Loading.Wait"
+        ],
+        "on_error": [
+            "SC.Weekly.Stop.NotOnWeekly"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "周常检查（只读）：须已在ミッション页ウィークリー标签；不点击、不滚动。"
+        }
+    },
+    "SC.Weekly.Guard.TabText": {
+        "recognition": "OCR",
+        "roi": [
+            22,
+            175,
+            163,
+            40
+        ],
+        "expected": [
+            "ウィークリー",
+            "ウイークリー"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Weekly.Read": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Mission.Title",
+            "SC.Common.Anchor.Mission.Return",
+            "SC.Common.Color.BackUndimmed",
+            "SC.Weekly.Guard.TabText"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Weekly.Read",
+        "custom_action_param": {
+            "list_node": "SC.Weekly.ListOCR",
+            "timer_node": "SC.Weekly.TimerOCR",
+            "overlay_node": "SC.Weekly.Overlay"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "on_error": [
+            "SC.Weekly.Stop.Unknown"
+        ],
+        "focus": {
+            "Node.Action.Starting": "读取「フェスアイドルを3人誕生させよう」a/3 与周常剩余时间（同一帧），未知不按 0。"
+        }
+    },
+    "SC.Weekly.ListOCR": {
+        "recognition": "OCR",
+        "roi": [
+            255,
+            100,
+            975,
+            500
+        ],
+        "threshold": 0.3
+    },
+    "SC.Weekly.TimerOCR": {
+        "recognition": "OCR",
+        "roi": [
+            26,
+            205,
+            160,
+            32
+        ],
+        "threshold": 0.3
+    },
+    "SC.Weekly.Overlay": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide"
+        ]
+    },
+    "SC.Weekly.Stop.NotOnWeekly": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {
+            "reason": "weekly_tab_not_open:navigation_clicks_disabled"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Weekly.Stop.Unknown": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {
+            "reason": "weekly_count_unknown"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}

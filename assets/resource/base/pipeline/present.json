@@ -1,0 +1,963 @@
+{
+    "SC.Present.Entry": {
+        "recognition": "DirectHit",
+        "next": [
+            "SC.Present.Start"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Present.Config": {
+        "recognition": "DirectHit",
+        "attach": {
+            "enabled": false
+        }
+    },
+    "SC.Present.Start": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.Present.Config"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Present.Route"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Begin"
+        ],
+        "focus": {
+            "Node.Action.Starting": "礼物箱：读取设置，每日最多免费一括领取一次。"
+        }
+    },
+    "SC.Present.Route": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 30000,
+        "next": [
+            "SC.Present.Page",
+            "SC.Present.UnclaimedTab",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "SC.Present.AtHome",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Route"
+        ]
+    },
+    "SC.Present.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Present.HomeClean"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Home"
+        ]
+    },
+    "SC.Present.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Present.OpenIntent"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Home"
+        ]
+    },
+    "SC.Present.OpenIntent": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            28,
+            162,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Present.Opened"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Home"
+        ]
+    },
+    "SC.Present.Opened": {
+        "doc": "OpenIntent 点击后的正向后置守卫：礼物箱页（标题+返回键未变暗+任一标签粉字；受け取り済页没有页脚，故不用页脚）或加载中才回到 Route；10 s 内都不是 → Stop.Open，不重试点击。",
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "And",
+                "all_of": [
+                    "SC.Present.Guard.Title",
+                    "SC.Common.Color.BackUndimmed",
+                    {
+                        "recognition": "Or",
+                        "any_of": [
+                            "SC.Present.Color.UnclaimedTab",
+                            "SC.Present.Color.ReceivedTab"
+                        ]
+                    }
+                ]
+            },
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "next": [
+            "SC.Present.Route"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Open"
+        ]
+    },
+    "SC.Present.Stop.Open": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "open"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Present.Guard.Title": {
+        "recognition": "OCR",
+        "roi": [
+            38,
+            10,
+            220,
+            52
+        ],
+        "expected": [
+            "プレゼント"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Guard.Footer": {
+        "recognition": "OCR",
+        "roi": [
+            285,
+            628,
+            480,
+            62
+        ],
+        "expected": [
+            "期限が切れたプレゼントは自動的に削除",
+            "受け取れるプレゼントは100件まで"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Color.UnclaimedTab": {
+        "recognition": "ColorMatch",
+        "roi": [
+            28,
+            100,
+            150,
+            48
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 400,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Present.Guard.Bulk": {
+        "recognition": "OCR",
+        "roi": [
+            1095,
+            622,
+            165,
+            80
+        ],
+        "expected": [
+            "一括受取",
+            "一括受け取り"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Guard.Dialog": {
+        "recognition": "OCR",
+        "roi": [
+            300,
+            120,
+            680,
+            480
+        ],
+        "expected": [
+            "受け取り",
+            "受取",
+            "上限",
+            "エラー",
+            "受け取れ"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.PageOCR": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.DialogOCR": {
+        "recognition": "OCR",
+        "roi": [
+            300,
+            120,
+            680,
+            480
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Overlay": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide"
+        ]
+    },
+    "SC.Present.Page": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Color.UnclaimedTab",
+            "SC.Present.Guard.Footer",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Present.Decide",
+        "custom_action_param": {
+            "page_node": "SC.Present.PageOCR",
+            "overlay_node": "SC.Present.Overlay"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Present.ScrollDown",
+            "SC.Present.ClaimIntent"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Decide"
+        ],
+        "focus": {
+            "Node.Action.Starting": "读取プレゼント页（同一帧 OCR + 一括受取颜色）：一括受取可按就领取，不可按就跳过。"
+        }
+    },
+    "SC.Present.ClaimIntent": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Color.UnclaimedTab",
+            "SC.Present.Guard.Footer",
+            "SC.Present.Guard.Bulk",
+            "SC.Common.Color.BackUndimmed",
+            "SC.Present.Ready.intent"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Present.Intent",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Present.BulkClick"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Intent"
+        ],
+        "focus": {
+            "Node.Action.Starting": "记录领取前的完整列表，再按一次一括受取。"
+        }
+    },
+    "SC.Present.Result": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Present.Guard.ResultBody",
+            "SC.Present.Guard.ResultError"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Present.Result",
+        "custom_action_param": {
+            "dialog_node": "SC.Present.DialogOCR"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "next": [
+            "SC.Present.ResultClose"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Result"
+        ]
+    },
+    "SC.Present.ResultClose": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Guard.ResultBody",
+            "SC.Present.Guard.ResultOK",
+            "SC.Present.Color.ResultOK",
+            "SC.Present.Ready.close"
+        ],
+        "action": "Click",
+        "target": [
+            561,
+            502,
+            158,
+            72
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Present.Confirm"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Confirm"
+        ]
+    },
+    "SC.Present.Confirm": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Color.UnclaimedTab",
+            "SC.Present.Guard.Footer",
+            "SC.Common.Color.BackUndimmed",
+            "SC.Present.Ready.settled"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Present.Confirm",
+        "custom_action_param": {
+            "page_node": "SC.Present.PageOCR"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "next": [
+            "SC.Present.Done"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Confirm"
+        ]
+    },
+    "SC.Present.Done": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Present.Return"
+        ]
+    },
+    "SC.Present.Stop.Begin": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "begin"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Present.Stop.Route": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "route"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Present.Stop.Home": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "home"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Present.Stop.Decide": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "decide"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Present.Return"
+        ]
+    },
+    "SC.Present.Stop.Intent": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "intent"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Present.Stop.Result": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "result"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Present.Stop.Confirm": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "confirm"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Present.Color.ReceivedTab": {
+        "recognition": "ColorMatch",
+        "roi": [
+            24,
+            205,
+            155,
+            52
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 400,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Present.UnclaimedTab": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Color.ReceivedTab",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            32,
+            106,
+            130,
+            34
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Present.Page"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Route"
+        ]
+    },
+    "SC.Present.Ready.bulk": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Present.Ready",
+        "custom_recognition_param": {
+            "stage": "bulk"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ]
+    },
+    "SC.Present.Ready.confirmation": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Present.Ready",
+        "custom_recognition_param": {
+            "stage": "confirmation"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ]
+    },
+    "SC.Present.Ready.settled": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Present.Ready",
+        "custom_recognition_param": {
+            "stage": "settled"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ]
+    },
+    "SC.Present.Ready.close": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Present.Ready",
+        "custom_recognition_param": {
+            "stage": "close"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ]
+    },
+    "SC.Present.Guard.ResultError": {
+        "recognition": "OCR",
+        "roi": [
+            300,
+            120,
+            680,
+            480
+        ],
+        "expected": [
+            "所持上限",
+            "受け取れません",
+            "エラー"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.CountOCR": {
+        "recognition": "OCR",
+        "roi": [
+            990,
+            566,
+            272,
+            42
+        ],
+        "only_rec": false,
+        "expected": []
+    },
+    "SC.Present.BulkClick": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Color.UnclaimedTab",
+            "SC.Present.Guard.Footer",
+            "SC.Common.Color.BackUndimmed",
+            "SC.Present.Guard.Bulk",
+            "SC.Present.Ready.bulk"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            650,
+            130,
+            38
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Present.ConfirmClick"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Intent"
+        ]
+    },
+    "SC.Present.Guard.ConfirmTitle": {
+        "recognition": "OCR",
+        "roi": [
+            390,
+            200,
+            400,
+            60
+        ],
+        "expected": [
+            "プレゼント[一ー]括受け取り"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Guard.ConfirmBody": {
+        "recognition": "OCR",
+        "roi": [
+            390,
+            287,
+            520,
+            56
+        ],
+        "expected": [
+            "プレゼントを新しいものから"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Guard.ConfirmQuestion": {
+        "recognition": "OCR",
+        "roi": [
+            460,
+            356,
+            380,
+            42
+        ],
+        "expected": [
+            "よろしいですか"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Guard.ConfirmOK": {
+        "recognition": "OCR",
+        "roi": [
+            661,
+            419,
+            158,
+            72
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Color.ConfirmOK": {
+        "recognition": "ColorMatch",
+        "roi": [
+            661,
+            419,
+            158,
+            72
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 2000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Present.ConfirmClick": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Guard.ConfirmTitle",
+            "SC.Present.Guard.ConfirmBody",
+            "SC.Present.Guard.ConfirmQuestion",
+            "SC.Present.Guard.ConfirmOK",
+            "SC.Present.Color.ConfirmOK",
+            "SC.Present.Ready.confirmation"
+        ],
+        "action": "Click",
+        "target": [
+            661,
+            419,
+            158,
+            72
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Present.Result"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Result"
+        ]
+    },
+    "SC.Present.Guard.ResultBody": {
+        "recognition": "OCR",
+        "roi": [
+            430,
+            194,
+            425,
+            60
+        ],
+        "expected": [
+            "以下のプレゼントを受け取りました"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Guard.ResultOK": {
+        "recognition": "OCR",
+        "roi": [
+            561,
+            502,
+            158,
+            72
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Present.Color.ResultOK": {
+        "recognition": "ColorMatch",
+        "roi": [
+            561,
+            502,
+            158,
+            72
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 2000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Present.Return": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Guard.Footer",
+            "SC.Common.Color.BackUndimmed",
+            {
+                "recognition": "Or",
+                "any_of": [
+                    "SC.Present.Color.UnclaimedTab",
+                    "SC.Present.Color.ReceivedTab"
+                ]
+            }
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Common.HomeReached"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ]
+    },
+    "SC.Present.Ready.intent": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Present.Ready",
+        "custom_recognition_param": {
+            "stage": "intent"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ]
+    },
+    "SC.Present.Ready.scroll": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Present.Ready",
+        "custom_recognition_param": {
+            "stage": "scroll"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ]
+    },
+    "SC.Present.ScrollDown": {
+        "doc": "2026-10-10：未受取超过一屏时有界滚轮读取全部行（present-list-scroll-down，滚轮 -60，无按键；动作表中预留禁用，需监督实机校准后启用）。post_delay 5000：宿主每动作每分钟上限 12 次。只在 Agent 判定需要更多行（scanning）时命中；步数受「max_scroll_steps」限制。",
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Color.UnclaimedTab",
+            "SC.Present.Guard.Footer",
+            "SC.Common.Color.BackUndimmed",
+            "SC.Present.Ready.scroll"
+        ],
+        "action": "Click",
+        "target": [
+            560,
+            300,
+            120,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 5000,
+        "max_hit": 60,
+        "timeout": 5000,
+        "next": [
+            "SC.Present.Scanned"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Scan"
+        ],
+        "focus": {
+            "Node.Action.Starting": "礼物箱：本屏已读完，列表向下滚动一格继续读取（不领取）。"
+        }
+    },
+    "SC.Present.Scanned": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Present.Guard.Title",
+            "SC.Present.Color.UnclaimedTab",
+            "SC.Present.Guard.Footer",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Present.Scan",
+        "custom_action_param": {
+            "page_node": "SC.Present.PageOCR",
+            "overlay_node": "SC.Present.Overlay"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "next": [
+            "SC.Present.ScrollDown",
+            "SC.Present.ClaimIntent"
+        ],
+        "on_error": [
+            "SC.Present.Stop.Scan"
+        ],
+        "focus": {
+            "Node.Action.Starting": "礼物箱：滚动后在新帧上续读（至少一行重叠、滚动条下移、件数不变），读完全部行后再判断一括领取。"
+        }
+    },
+    "SC.Present.Stop.Scan": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Present.Stop",
+        "custom_action_param": {
+            "reason": "scan"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Present.Return"
+        ]
+    }
+}

@@ -1,0 +1,141 @@
+{
+  "fixture": "synthetic",
+  "note": "合成演示数据：不来自任何真实运行、账号或截图，只用于浏览器预览与测试。",
+  "host": {
+    "connected": true,
+    "host": "ui_preview",
+    "hide_mode": "none",
+    "frame_age_ms": 420,
+    "capture_seq": 1024,
+    "desktop_locked": false,
+    "host_guard_reason": null,
+    "pipeline_input_enabled": false,
+    "background_keepalive": false,
+    "viewport": [1280, 720],
+    "clicks_this_run": 0,
+    "storage": {"state": "idle", "scanned_at": "2026-10-14T03:00:00Z", "categories": [
+      {"key": "samples", "bytes": 1350565888, "files": 5210, "cleanable_bytes": 1350565888, "cleanable_files": 5210},
+      {"key": "videos", "bytes": 2254438400, "files": 24, "cleanable_bytes": 2254438400, "cleanable_files": 24},
+      {"key": "logs", "bytes": 48234496, "files": 310, "cleanable_bytes": 39845888, "cleanable_files": 262}],
+      "other_bytes": 641728512, "total_bytes": 4294967296, "auto": {"enabled": false, "days": 14}, "blocker": null, "last": null}
+  },
+  "policy": {
+    "live_input_enabled": true,
+    "risk_acceptance_reference": "docs/SAFETY.md#adr-011",
+    "risk_reference_resolvable": true,
+    "premium_currency_allowed": false,
+    "paid_items_allowed": false,
+    "other_inventory_allowed": false,
+    "stamina_items_enabled": false,
+    "fes_tickets_enabled": false
+  },
+  "live_entry": {
+    "reopened": false,
+    "reason": "B6i：当前生产 Pipeline 实时入口已停止，等待重新开放。"
+  },
+  "mock_outcomes": {
+    "Startup": {"status": "succeeded", "reason": "已到达首页"},
+    "Shop": {"status": "skipped", "reason": "实机未开放，未兑换"},
+    "Training": {"status": "skipped", "reason": "实机未开放，未训练"},
+    "MatchSkip": {"status": "uncertain", "reason": "采样不足，请核对"},
+    "GradeFes": {"status": "guard_refused", "reason": "画面尺寸变化"},
+    "MissionStatus": {"status": "succeeded", "reason": "达成 3/7"},
+    "MissionsClaim": {"status": "failed", "reason": "未迁移"},
+    "Business": {"status": "takeover", "reason": "未知画面"},
+    "AutoProduce": {"status": "failed", "reason": "未迁移"},
+    "Diagnostics": {"status": "succeeded", "reason": "已识别：首页"},
+    "ProduceDryRun": {"status": "succeeded", "reason": "空跑完成"}
+  },
+  "runs": [
+    {
+      "id": "demo-0003",
+      "started_at": "2026-10-04T08:12:05+10:00",
+      "mode": "read_only",
+      "tasks": [
+        {"name": "Startup", "status": "succeeded", "reason": "已到达首页"},
+        {"name": "Shop", "status": "skipped", "reason": "实机未开放，未兑换"},
+        {"name": "MatchSkip", "status": "uncertain", "reason": "合成示例：采样帧不足"},
+        {"name": "MissionStatus", "status": "succeeded", "reason": "达成 3/7"}
+      ]
+    },
+    {
+      "id": "demo-0002",
+      "started_at": "2026-10-03T21:40:11+10:00",
+      "mode": "offline_replay",
+      "tasks": [
+        {"name": "Startup", "status": "succeeded", "reason": "已到达首页"},
+        {"name": "Training", "status": "guard_refused", "reason": "画面许可已过期，点击未发送"}
+      ]
+    },
+    {
+      "id": "demo-0001",
+      "started_at": "2026-10-03T09:02:40+10:00",
+      "mode": "read_only",
+      "tasks": [
+        {"name": "Diagnostics", "status": "succeeded", "reason": "已识别：首页"}
+      ]
+    }
+  ],
+  "logs": [
+    {"seq": 1, "ts": "2026-10-04T08:12:05+10:00", "level": "info", "task": null, "kind": "run", "text": "运行 demo-0003 开始：4 个任务"},
+    {"seq": 2, "ts": "2026-10-04T08:12:06+10:00", "level": "info", "task": "Startup", "kind": "task_start", "text": "启动 开始"},
+    {"seq": 3, "ts": "2026-10-04T08:12:07+10:00", "level": "debug", "task": "Startup", "kind": "node", "text": "SC.Startup.Entry → SC.Common.HomeReached"},
+    {"seq": 4, "ts": "2026-10-04T08:12:09+10:00", "level": "info", "task": "Startup", "kind": "task_end", "text": "启动 成功：已到达首页"},
+    {"seq": 5, "ts": "2026-10-04T08:12:10+10:00", "level": "info", "task": "Shop", "kind": "task_start", "text": "商店 开始"},
+    {"seq": 6, "ts": "2026-10-04T08:12:12+10:00", "level": "debug", "task": "Shop", "kind": "node", "text": "SC.Shop.Main：读到本日限定 3 项（合成）"},
+    {"seq": 7, "ts": "2026-10-04T08:12:13+10:00", "level": "warn", "task": "Shop", "kind": "refused", "text": "点击被拒：实机未开放（未发送）"},
+    {"seq": 8, "ts": "2026-10-04T08:12:13+10:00", "level": "info", "task": "Shop", "kind": "task_end", "text": "商店 跳过：实机未开放"},
+    {"seq": 9, "ts": "2026-10-04T08:12:14+10:00", "level": "info", "task": "MatchSkip", "kind": "task_start", "text": "Match Live 开始（只采样）"},
+    {"seq": 10, "ts": "2026-10-04T08:12:18+10:00", "level": "info", "task": "MatchSkip", "kind": "reading", "text": "Fes 参加权 14 / 20（合成）"},
+    {"seq": 11, "ts": "2026-10-04T08:12:25+10:00", "level": "warn", "task": "MatchSkip", "kind": "uncertain", "text": "采样不足，结果不确定（合成）"},
+    {"seq": 12, "ts": "2026-10-04T08:12:25+10:00", "level": "info", "task": "MatchSkip", "kind": "task_end", "text": "Match Live 不确定"},
+    {"seq": 13, "ts": "2026-10-04T08:12:26+10:00", "level": "info", "task": "MissionStatus", "kind": "task_start", "text": "每日任务 开始"},
+    {"seq": 14, "ts": "2026-10-04T08:12:31+10:00", "level": "info", "task": "MissionStatus", "kind": "reading", "text": "任务达成 3 / 7（合成）"},
+    {"seq": 15, "ts": "2026-10-04T08:12:32+10:00", "level": "info", "task": "MissionStatus", "kind": "task_end", "text": "每日任务 成功"},
+    {"seq": 16, "ts": "2026-10-04T08:12:32+10:00", "level": "info", "task": null, "kind": "run", "text": "运行 demo-0003 结束：成功 2 · 跳过 1 · 不确定 1"},
+    {"seq": 17, "ts": "2026-10-04T08:13:00+10:00", "level": "error", "task": null, "kind": "host", "text": "画面尺寸变化，未点击（合成）"}
+  ],
+  "readings": [
+    {"key": "money", "label": "マニー", "item": "money", "value": 1234567, "unit": "", "observed_at": "2026-10-04T08:12:12+10:00", "source": "商店 运行 demo-0003（合成）"},
+    {"key": "fes_rights", "label": "Fes 参加权", "item": "fes", "value": 14, "max": 20, "unit": "", "observed_at": "2026-10-04T08:12:18+10:00", "source": "Match 运行 demo-0003（合成）"},
+    {"key": "missions", "label": "任务达成", "value": 3, "max": 7, "unit": "", "observed_at": "2026-10-04T08:12:31+10:00", "source": "每日任务 运行 demo-0003（合成）"},
+    {"key": "bronze_ticket", "label": "铜训练券", "item": "bronze_ticket", "value": null, "unit": "张", "observed_at": null, "source": null},
+    {"key": "stamina", "label": "体力", "value": null, "unit": "", "observed_at": null, "source": null}
+  ],
+  "ledger": [
+    {"ts": "2026-10-03T21:40:30+10:00", "task": "Training", "action": "training-start", "status": "pending", "note": "合成示例：离线回放中意图已写入、未发送"},
+    {"ts": "2026-10-04T08:12:25+10:00", "task": "MatchSkip", "action": "match-skip-confirm", "status": "uncertain", "note": "合成示例：需人工核对参加权"}
+  ],
+  "audit": [
+    {"ts": "2026-10-03T21:40:31+10:00", "kind": "guard_refused", "task": "Training", "detail": "画面许可已过期（合成）"},
+    {"ts": "2026-10-04T08:12:13+10:00", "kind": "refused", "task": "Shop", "detail": "实机未开放：点击未发送（合成）"},
+    {"ts": "2026-10-04T08:12:25+10:00", "kind": "uncertain", "task": "MatchSkip", "detail": "采样帧不足（合成）"},
+    {"ts": "2026-10-04T08:13:00+10:00", "kind": "guard_refused", "task": null, "detail": "画面尺寸变化（合成）"}
+  ],
+  "daily": {
+    "rollover": {"timezone": "Asia/Tokyo", "hour": 5, "verified": true},
+    "items": [
+      {"key": "startup", "label": "启动", "tasks": ["Startup"]},
+      {"key": "shop", "label": "商店", "tasks": ["Shop"]},
+      {"key": "training", "label": "训练", "tasks": ["Training"]},
+      {"key": "fes", "label": "Fes（Match 或 Grade）", "tasks": ["MatchSkip", "GradeFes"], "any": true},
+      {"key": "missions", "label": "每日任务", "tasks": ["MissionStatus"]},
+      {"key": "business", "label": "营业", "tasks": ["Business"]}
+    ],
+    "weekly_produce": {"objective": null, "trusted_count": null, "target": 3}
+  },
+  "produce": {
+    "automation": "未接入自动",
+    "profile": {
+      "p_card": "（示例）P 卡 A",
+      "s_cards": ["（示例）S 卡 1", "（示例）S 卡 2", "（示例）S 卡 3", "（示例）S 卡 4"],
+      "guest": "（示例）客串卡",
+      "mode": "W.I.N.G.",
+      "difficulty": null,
+      "goal": "TE（示例）",
+      "confirmed_at": null
+    },
+    "weekly_plan": {"remaining_runs": null, "note": "等待可信的周常完成计数"},
+    "score_cards": [{"title": "S2 第 5 周 · 体力 50（トラブル 8%）", "source": "合成样例：离线 score_week，非实机", "card": {"version": 1, "groups": [{"key": "primary", "label": "主属性成长", "terms": ["stat_gain", "cap_overflow"]}, {"key": "other", "label": "其他属性/Me", "terms": ["off_stat", "mental"]}, {"key": "sp", "label": "SP", "terms": ["sp"]}, {"key": "support", "label": "支援（絆+事件）", "terms": ["bond", "events"]}, {"key": "fans", "label": "粉丝/试镜进度", "terms": ["fans", "audition_progress", "fan_urgency", "audition_stats"]}, {"key": "risk", "label": "体力与失败风险", "terms": ["stamina", "trouble_risk"]}, {"key": "misc", "label": "约定/テンション", "terms": ["promise", "tension"]}], "rule": "best", "chosen": "lesson_vo_3sup", "summary": "选 课程 Vo（支援 3 人）（lesson_vo_3sup，56.2 分）：SP +40.5，主属性成长 +30.4，体力与失败风险 -21.5", "rows": [{"id": "lesson_vo_3sup", "kind": "lesson", "attribute": "Vo", "label": "课程 Vo（支援 3 人）", "supports": 3, "score": 56.214, "groups": {"primary": 30.36, "other": 0.0, "sp": 40.48, "support": 6.9, "fans": 0.0, "risk": -21.526, "misc": 0.0}, "trouble": 8.0, "unknown": ["support_ids", "cap", "bond"], "chosen": true}, {"id": "s2_10k", "kind": "audition", "attribute": "Vo", "label": "试镜", "supports": null, "score": 9.789, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 9.789, "risk": 0.0, "misc": 0.0}, "trouble": null, "unknown": ["wa:firepower", "wa:mental", "future_week_value_estimated"], "chosen": false}, {"id": "rest", "kind": "rest", "attribute": null, "label": "休息", "supports": null, "score": 9.607, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 0.0, "risk": 7.606, "misc": 2.0}, "trouble": null, "unknown": [], "chosen": false}, {"id": "lesson_vo", "kind": "lesson", "attribute": "Vo", "label": "课程 Vo（空房）", "supports": 0, "score": 8.834, "groups": {"primary": 30.36, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 0.0, "risk": -21.526, "misc": 0.0}, "trouble": 8.0, "unknown": ["sp", "cap"], "chosen": false}, {"id": "s2_15k", "kind": "audition", "attribute": "Vo", "label": "试镜", "supports": null, "score": 7.38, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 7.38, "risk": 0.0, "misc": 0.0}, "trouble": null, "unknown": ["wa:firepower", "wa:mental", "future_week_value_estimated", "win_stats"], "chosen": false}, {"id": "s2_5k", "kind": "audition", "attribute": "Vo", "label": "试镜", "supports": null, "score": 2.756, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 2.756, "risk": 0.0, "misc": 0.0}, "trouble": null, "unknown": ["wa:firepower", "wa:mental", "future_week_value_estimated", "win_stats"], "chosen": false}, {"id": "s2_3k", "kind": "audition", "attribute": "Vo", "label": "试镜", "supports": null, "score": 1.697, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 1.697, "risk": 0.0, "misc": 0.0}, "trouble": null, "unknown": ["wa:firepower", "wa:mental", "future_week_value_estimated", "win_stats"], "chosen": false}, {"id": "work_magazine", "kind": "work", "attribute": null, "label": "工作（空房）", "supports": 0, "score": -3.922, "groups": {"primary": 0.0, "other": 0.55, "sp": 0.0, "support": 0.0, "fans": 0.594, "risk": -5.066, "misc": 0.0}, "trouble": 0.0, "unknown": ["sp"], "chosen": false}, {"id": "work_talk", "kind": "work", "attribute": null, "label": "工作（空房）", "supports": 0, "score": -7.654, "groups": {"primary": 0.0, "other": 0.506, "sp": 20.24, "support": 0.0, "fans": 0.0, "risk": -28.4, "misc": 0.0}, "trouble": 8.0, "unknown": [], "chosen": false}, {"id": "lesson_da", "kind": "lesson", "attribute": "Da", "label": "课程 Da（空房）", "supports": 0, "score": -20.008, "groups": {"primary": 0.0, "other": 1.518, "sp": 0.0, "support": 0.0, "fans": 0.0, "risk": -21.526, "misc": 0.0}, "trouble": 8.0, "unknown": ["sp"], "chosen": false}, {"id": "work_radio", "kind": "work", "attribute": null, "label": "工作（空房）", "supports": 0, "score": -22.328, "groups": {"primary": 5.06, "other": 1.012, "sp": 0.0, "support": 0.0, "fans": 0.0, "risk": -28.4, "misc": 0.0}, "trouble": 8.0, "unknown": ["sp", "cap"], "chosen": false}], "excluded": [{"id": "lesson_vi", "kind": "lesson", "attribute": "Vi", "label": "课程 Vi（支援 2 人）", "reason": "gain_unknown", "reason_text": "预览增量未读", "trouble": null, "unknown": ["support_ids", "stat_gain", "sp"]}], "context": {"primary": "Vo", "goal": "true_end", "W": 12, "weeks_left": 4, "stamina": 50, "stamina_source": "observed", "floor": 19.8}}}, {"title": "S2 第 5 周 · 体力 41（トラブル 25%，超过阈值）", "source": "合成样例：离线 score_week，非实机", "card": {"version": 1, "groups": [{"key": "primary", "label": "主属性成长", "terms": ["stat_gain", "cap_overflow"]}, {"key": "other", "label": "其他属性/Me", "terms": ["off_stat", "mental"]}, {"key": "sp", "label": "SP", "terms": ["sp"]}, {"key": "support", "label": "支援（絆+事件）", "terms": ["bond", "events"]}, {"key": "fans", "label": "粉丝/试镜进度", "terms": ["fans", "audition_progress", "fan_urgency", "audition_stats"]}, {"key": "risk", "label": "体力与失败风险", "terms": ["stamina", "trouble_risk"]}, {"key": "misc", "label": "约定/テンション", "terms": ["promise", "tension"]}], "rule": "best", "chosen": "rest", "summary": "选 休息（rest，20.2 分）：体力与失败风险 +18.2，约定/テンション +2.0", "rows": [{"id": "rest", "kind": "rest", "attribute": null, "label": "休息", "supports": null, "score": 20.183, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 0.0, "risk": 18.183, "misc": 2.0}, "trouble": null, "unknown": [], "chosen": true}, {"id": "s2_10k", "kind": "audition", "attribute": "Vo", "label": "试镜", "supports": null, "score": 9.789, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 9.789, "risk": 0.0, "misc": 0.0}, "trouble": null, "unknown": ["wa:firepower", "wa:mental", "future_week_value_estimated"], "chosen": false}, {"id": "s2_15k", "kind": "audition", "attribute": "Vo", "label": "试镜", "supports": null, "score": 7.38, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 7.38, "risk": 0.0, "misc": 0.0}, "trouble": null, "unknown": ["wa:firepower", "wa:mental", "future_week_value_estimated", "win_stats"], "chosen": false}, {"id": "s2_5k", "kind": "audition", "attribute": "Vo", "label": "试镜", "supports": null, "score": 2.756, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 2.756, "risk": 0.0, "misc": 0.0}, "trouble": null, "unknown": ["wa:firepower", "wa:mental", "future_week_value_estimated", "win_stats"], "chosen": false}, {"id": "s2_3k", "kind": "audition", "attribute": "Vo", "label": "试镜", "supports": null, "score": 1.697, "groups": {"primary": 0.0, "other": 0.0, "sp": 0.0, "support": 0.0, "fans": 1.697, "risk": 0.0, "misc": 0.0}, "trouble": null, "unknown": ["wa:firepower", "wa:mental", "future_week_value_estimated", "win_stats"], "chosen": false}, {"id": "work_magazine", "kind": "work", "attribute": null, "label": "工作（空房）", "supports": 0, "score": -5.308, "groups": {"primary": 0.0, "other": 0.55, "sp": 0.0, "support": 0.0, "fans": 0.594, "risk": -6.452, "misc": 0.0}, "trouble": 0.0, "unknown": ["sp"], "chosen": false}], "excluded": [{"id": "lesson_da", "kind": "lesson", "attribute": "Da", "label": "课程 Da（空房）", "reason": "trouble_hard_cap", "reason_text": "トラブル率达到硬上限，耗体力行动不选", "trouble": 25.0, "unknown": ["sp"]}, {"id": "lesson_vi", "kind": "lesson", "attribute": "Vi", "label": "课程 Vi（支援 2 人）", "reason": "gain_unknown", "reason_text": "预览增量未读", "trouble": null, "unknown": ["support_ids", "stat_gain", "sp"]}, {"id": "lesson_vo", "kind": "lesson", "attribute": "Vo", "label": "课程 Vo（空房）", "reason": "trouble_hard_cap", "reason_text": "トラブル率达到硬上限，耗体力行动不选", "trouble": 25.0, "unknown": ["sp"]}, {"id": "lesson_vo_3sup", "kind": "lesson", "attribute": "Vo", "label": "课程 Vo（支援 3 人）", "reason": "trouble_hard_cap", "reason_text": "トラブル率达到硬上限，耗体力行动不选", "trouble": 25.0, "unknown": ["support_ids"]}, {"id": "work_radio", "kind": "work", "attribute": null, "label": "工作（空房）", "reason": "trouble_hard_cap", "reason_text": "トラブル率达到硬上限，耗体力行动不选", "trouble": 25.0, "unknown": ["sp"]}, {"id": "work_talk", "kind": "work", "attribute": null, "label": "工作（空房）", "reason": "trouble_hard_cap", "reason_text": "トラブル率达到硬上限，耗体力行动不选", "trouble": 25.0, "unknown": []}], "context": {"primary": "Vo", "goal": "true_end", "W": 12, "weeks_left": 4, "stamina": 41, "stamina_source": "observed", "floor": 19.8}}}]
+  }
+}

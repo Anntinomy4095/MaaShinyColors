@@ -1,0 +1,10 @@
+/* Option group titles (ui/annotations.json `heading`, e.g. W.I.N.G. T.E. 编队 / 目标 / 培养 / 试镜 / 高级).
+   Linked on first use by components/option-field.js; uses only the shared tokens. */
+.form-row.has-heading { padding-top: var(--sp-3); }
+.field-heading {
+  grid-column: 1 / -1;
+  font-size: var(--fs-12);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--sc-text-2);
+}

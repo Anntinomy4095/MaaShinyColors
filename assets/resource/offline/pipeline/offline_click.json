@@ -1,0 +1,113 @@
+{
+    "SC.Offline.Click.Root": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "SC.Offline.Click.AlreadyDone",
+            "SC.Offline.Click.ReadyGuard"
+        ],
+        "rate_limit": 250,
+        "timeout": 8000,
+        "on_error": [
+            "SC.Offline.Click.Recovery"
+        ]
+    },
+    "SC.Offline.Click.AlreadyDone": {
+        "recognition": "ColorMatch",
+        "roi": [
+            320,
+            250,
+            640,
+            130
+        ],
+        "method": 4,
+        "lower": [
+            25,
+            85,
+            215
+        ],
+        "upper": [
+            50,
+            115,
+            255
+        ],
+        "count": 45000,
+        "connected": true,
+        "action": "DoNothing",
+        "focus": {
+            "succeeded": "离线靶场已经处于完成状态，无需再次点击。"
+        }
+    },
+    "SC.Offline.Click.ReadyGuard": {
+        "enabled": false,
+        "recognition": "ColorMatch",
+        "roi": [
+            430,
+            380,
+            420,
+            160
+        ],
+        "method": 4,
+        "lower": [
+            10,
+            145,
+            55
+        ],
+        "upper": [
+            35,
+            180,
+            95
+        ],
+        "count": 30000,
+        "connected": true,
+        "order_by": "Area",
+        "action": "Click",
+        "target": true,
+        "pre_delay": 200,
+        "post_delay": 400,
+        "next": [
+            "SC.Offline.Click.SuccessGuard"
+        ],
+        "rate_limit": 250,
+        "timeout": 8000,
+        "on_error": [
+            "SC.Offline.Click.Recovery"
+        ],
+        "focus": {
+            "succeeded": "已在正向绿色状态守卫通过后点击离线领取按钮。"
+        }
+    },
+    "SC.Offline.Click.SuccessGuard": {
+        "recognition": "ColorMatch",
+        "roi": [
+            320,
+            250,
+            640,
+            130
+        ],
+        "method": 4,
+        "lower": [
+            25,
+            85,
+            215
+        ],
+        "upper": [
+            50,
+            115,
+            255
+        ],
+        "count": 45000,
+        "connected": true,
+        "action": "DoNothing",
+        "focus": {
+            "succeeded": "离线点击后的蓝色成功状态已确认。"
+        }
+    },
+    "SC.Offline.Click.Recovery": {
+        "recognition": "DirectHit",
+        "action": "StopTask",
+        "focus": {
+            "starting": "离线状态识别或点击后校验失败，停止任务。"
+        }
+    }
+}

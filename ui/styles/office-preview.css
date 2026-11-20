@@ -1,0 +1,20 @@
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;display:grid;place-items:center;background:var(--sc-bg);color:var(--sc-text);font:13px/1.5 system-ui,"Microsoft YaHei",sans-serif}
+main{width:min(720px,100%);padding:24px}
+.short-stage{position:relative;aspect-ratio:16/9;background:var(--sc-paper);border-radius:var(--r-l);overflow:hidden}
+.short-canvas,.motion-canvas{position:absolute;inset:0;width:100%;height:100%}
+.controls{display:flex;align-items:center;gap:10px;margin-top:14px}
+button{font:inherit;color:inherit;background:var(--sc-surface);border:1px solid var(--sc-border);border-radius:var(--r-s);padding:6px 12px;cursor:pointer;white-space:nowrap}
+button:hover{border-color:var(--sc-primary)}button:disabled{opacity:.4;cursor:default}
+button:focus-visible,input:focus-visible{outline:2px solid var(--sc-primary);outline-offset:2px}
+#play{width:38px}#time{flex:1;min-width:0;accent-color:var(--sc-primary)}output{color:var(--sc-text-2);font-variant-numeric:tabular-nums;min-width:69px;text-align:right}
+#status{color:var(--sc-text-2);font-size:12px;margin-top:10px}#status:empty{display:none}
+@media(max-width:480px){main{padding:12px}.controls{gap:6px}button{padding:6px 9px}}
+
+.preview-nav{display:flex;gap:14px;justify-content:flex-end;margin-bottom:9px;font-size:12px}.preview-nav a{color:var(--sc-text-2);text-decoration:none}.preview-nav a:hover{color:var(--sc-primary-text)}
+
+.story-preview main{width:min(960px,100%)}.story-actor{position:absolute;inset:0;pointer-events:none}
+
+.preview-nav{flex-wrap:wrap}.compare-toggle{display:flex;align-items:center;gap:4px;white-space:nowrap;font-size:12px;color:var(--sc-text-2)}.compare-toggle[hidden]{display:none}
+
+.theater-toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.theater-toolbar label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--sc-text-2)}.theater-toolbar select{font:inherit;color:var(--sc-text);background:var(--sc-surface);border:1px solid var(--sc-border);border-radius:var(--r-s);padding:5px 8px;max-width:210px}.theater-toolbar select:focus-visible{outline:2px solid var(--sc-primary);outline-offset:2px}.theater-cast{display:flex;gap:6px;margin-left:auto}.theater-cast span{border-radius:var(--r-s);padding:3px 7px;background:var(--sc-surface);font-size:12px;color:var(--sc-text-2)}.theater-cast .selected{background:var(--sc-primary-tint);color:var(--sc-primary-text)}

@@ -1,0 +1,86 @@
+{
+    "SC.CardInventory.Anchor.ProduceIdolList.Title": {
+        "recognition": "OCR",
+        "roi": [
+            50,
+            18,
+            320,
+            44
+        ],
+        "expected": [
+            "プロデュースアイドル編成"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.CardInventory.Anchor.ProduceIdolList.Filter": {
+        "recognition": "OCR",
+        "roi": [
+            760,
+            108,
+            170,
+            44
+        ],
+        "expected": [
+            "絞り込み"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.CardInventory.Anchor.ProduceIdolList.Sort": {
+        "recognition": "OCR",
+        "roi": [
+            968,
+            108,
+            168,
+            44
+        ],
+        "expected": [
+            "デフォルト"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.CardInventory.Anchor.UnitFormation.Title": {
+        "recognition": "OCR",
+        "roi": [
+            50,
+            18,
+            180,
+            44
+        ],
+        "expected": [
+            "ユニット編成"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.CardInventory.Anchor.UnitFormation.Counter": {
+        "recognition": "OCR",
+        "roi": [
+            60,
+            160,
+            80,
+            36
+        ],
+        "expected": [
+            "^[0-9]{1,2}/20$"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.CardInventory.Anchor.UnitFormation.Guest": {
+        "recognition": "OCR",
+        "roi": [
+            1110,
+            210,
+            80,
+            28
+        ],
+        "expected": [
+            "ゲスト"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    }
+}

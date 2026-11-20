@@ -1,0 +1,116 @@
+{
+    "SC.ItemInventory.Anchor.ProduceItemSelect.Title": {
+        "recognition": "OCR",
+        "roi": [
+            30,
+            10,
+            360,
+            56
+        ],
+        "expected": [
+            "プロデュースアイテム準備"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.ItemInventory.Anchor.ProduceItemSelect.Tab": {
+        "recognition": "OCR",
+        "roi": [
+            930,
+            8,
+            250,
+            56
+        ],
+        "expected": [
+            "アイテム選択"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.ItemInventory.Anchor.Home.Produce": {
+        "recognition": "OCR",
+        "roi": [
+            985,
+            628,
+            150,
+            52
+        ],
+        "expected": [
+            "プロデュース"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.ItemInventory.Anchor.Home.Fes": {
+        "recognition": "OCR",
+        "roi": [
+            1128,
+            628,
+            120,
+            52
+        ],
+        "expected": [
+            "フ[ェエ]ス"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.ItemInventory.Anchor.Home.Business": {
+        "recognition": "OCR",
+        "roi": [
+            760,
+            655,
+            90,
+            45
+        ],
+        "expected": [
+            "営業"
+        ],
+        "threshold": 0.5,
+        "enabled": false
+    },
+    "SC.ItemInventory.Read.Home.Money": {
+        "recognition": "OCR",
+        "roi": [
+            330,
+            8,
+            145,
+            40
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.ItemInventory.Read.Home.Jewel": {
+        "recognition": "OCR",
+        "roi": [
+            478,
+            8,
+            130,
+            40
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.ItemInventory.Read.Home.Stamina": {
+        "recognition": "OCR",
+        "roi": [
+            988,
+            660,
+            125,
+            34
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    },
+    "SC.ItemInventory.Read.Home.Fes": {
+        "recognition": "OCR",
+        "roi": [
+            1128,
+            660,
+            115,
+            34
+        ],
+        "threshold": 0.3,
+        "enabled": false
+    }
+}

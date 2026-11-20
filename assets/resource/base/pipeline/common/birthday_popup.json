@@ -1,0 +1,31 @@
+{
+    "SC.Popup.Birthday.Title": {
+        "recognition": "OCR", "roi": [237, 280, 900, 120], "expected": ["HAPPY.*BIRTHDAY"]
+    },
+    "SC.Popup.Birthday.Touch": {
+        "recognition": "OCR", "roi": [510, 544, 250, 90], "expected": ["Touch"]
+    },
+    "SC.Popup.Birthday.Skip": {
+        "recognition": "OCR", "roi": [1180, 24, 80, 80], "expected": ["SKIP"]
+    },
+    "SC.Popup.Birthday.Guard": {
+        "recognition": "And",
+        "all_of": ["SC.Popup.Birthday.Title", "SC.Popup.Birthday.Touch", "SC.Popup.Birthday.Skip", "SC.Common.Color.SkipUndimmed"]
+    },
+    "SC.Popup.Birthday.Close": {
+        "enabled": false, "recognition": "And",
+        "all_of": ["SC.Popup.Birthday.Title", "SC.Popup.Birthday.Touch", "SC.Popup.Birthday.Skip", "SC.Common.Color.SkipUndimmed"],
+        "action": "Click", "target": [1193, 33, 56, 45],
+        "pre_delay": 0, "post_delay": 500, "max_hit": 1, "timeout": 10000,
+        "next": ["SC.Popup.Birthday.Settled"], "on_error": ["SC.Common.Stop.GachaAnnouncement", "SC.Common.FailTask"]
+    },
+    "SC.Popup.Birthday.Settled": {
+        "recognition": "Or",
+        "any_of": ["SC.Common.Home.Guard", "SC.Loading.Present", "SC.Popup.Reward.Guard", "SC.Popup.MissionCompleted.Guard", "SC.Popup.EventFanReward.Guard",
+                   "SC.Popup.GachaAnnouncement.Guard"],
+        "pre_delay": 0, "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "生日 SKIP 后已到达另一个已知画面；登录板/预告 SKIP 与生日过场的 SKIP 相同，不算离开（无效点击不重复）。"
+        }
+    }
+}

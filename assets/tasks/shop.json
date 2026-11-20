@@ -1,0 +1,325 @@
+{
+    "task": [
+        {
+            "name": "Shop",
+            "label": "マニー商店本日限定",
+            "entry": "SC.Shop.Entry",
+            "default_check": true,
+            "description": "消耗：マニー。只看マニーショップ当天三张「本日限定」折扣卡，勾选的商品各买 1 个（默认只买 10 マニー 的跳过券与金训练券）。名称与价格须和当天目录一致，「交換確認」核对通过才兑换；对不上就不买。",
+            "option": [
+                "商店跳过券",
+                "商店金训练券",
+                "商店余额保留",
+                "商店其他·ゴールドトレーニングチケット@283",
+                "商店其他·シルバートレーニングチケット@283",
+                "商店其他·始まりのメッセージカード@283",
+                "商店其他·モーニングコミュパン@283",
+                "商店其他·約束のトワレ@283",
+                "商店其他·秘密のメモ帳@50",
+                "商店其他·プチテンションアロマ(2個入り)@500",
+                "商店其他·流行雑誌@500",
+                "商店其他·ボーカル基礎知識本@500",
+                "商店其他·ダンス基礎知識本@500",
+                "商店其他·ビジュアル基礎知識本@500",
+                "商店其他·トラブル守り@1500",
+                "商店其他·約束のコロン@1500",
+                "商店其他·テンションアロマ(2個入り)@1500",
+                "商店其他·ヒーリングタルト(2個入り)@1500",
+                "商店其他·ヒーリングフルーツタルト(2個入り)@5000",
+                "商店其他·予定変更付箋@5000",
+                "商店其他·イルミネーションスターズのタオル@5000",
+                "商店其他·アンティーカのタオル@5000",
+                "商店其他·放課後クライマックスガールズのタオル@5000",
+                "商店其他·アルストロメリアのタオル@5000",
+                "商店其他·ストレイライトのタオル@5000",
+                "商店其他·ノクチルのタオル@5000",
+                "商店其他·シーズのタオル@5000",
+                "商店其他·コメティックのタオル@5000"
+            ]
+        }
+    ],
+    "option": {
+        "商店余额保留": {
+            "type": "select",
+            "label": "购买后保留マニー",
+            "description": "购买后余额不能低于此值；选「不保留」只检查余额够不够。默认保留 10 万。",
+            "default_case": "10万",
+            "cases": [
+                {"name": "不保留", "pipeline_override": {"SC.Shop.Config.Budget": {"attach": {"coin_reserve": 0}}}},
+                {"name": "1万", "pipeline_override": {"SC.Shop.Config.Budget": {"attach": {"coin_reserve": 10000}}}},
+                {"name": "10万", "pipeline_override": {"SC.Shop.Config.Budget": {"attach": {"coin_reserve": 100000}}}},
+                {"name": "100万", "pipeline_override": {"SC.Shop.Config.Budget": {"attach": {"coin_reserve": 1000000}}}}
+            ]
+        },
+        "商店跳过券": {
+            "type": "switch",
+            "label": "スキップチケット",
+            "description": "本日限定折扣卡出现「スキップチケット」且价格正好 10 マニー时买 1 个（每天出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "Yes",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.SkipTicket": {"attach": {"buy_skip_ticket": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.SkipTicket": {"attach": {"buy_skip_ticket": false}}}}
+            ]
+        },
+        "商店金训练券": {
+            "type": "switch",
+            "label": "ゴールドトレーニングチケット",
+            "description": "本日限定折扣卡出现「ゴールドトレーニングチケット」且价格正好 10 マニー（98%OFF）时买 1 个（每天出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "Yes",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.GoldTrainingTicket": {"attach": {"buy_gold_training_ticket": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.GoldTrainingTicket": {"attach": {"buy_gold_training_ticket": false}}}}
+            ]
+        },
+        "商店其他·ゴールドトレーニングチケット@283": {
+            "type": "switch",
+            "label": "其他商品：ゴールドトレーニングチケット 283",
+            "description": "本日限定折扣卡出现「ゴールドトレーニングチケット」且价格正好 283 マニー（71%OFF）时买 1 个（每月 9/14/25 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.GoldTrainingTicket283": {"attach": {"buy_gold_training_ticket_283": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.GoldTrainingTicket283": {"attach": {"buy_gold_training_ticket_283": false}}}}
+            ]
+        },
+        "商店其他·シルバートレーニングチケット@283": {
+            "type": "switch",
+            "label": "其他商品：シルバートレーニングチケット 283",
+            "description": "本日限定折扣卡出现「シルバートレーニングチケット」且价格正好 283 マニー（43%OFF）时买 1 个（每月 2/12/21 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.SilverTrainingTicket283": {"attach": {"buy_silver_training_ticket_283": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.SilverTrainingTicket283": {"attach": {"buy_silver_training_ticket_283": false}}}}
+            ]
+        },
+        "商店其他·始まりのメッセージカード@283": {
+            "type": "switch",
+            "label": "其他商品：始まりのメッセージカード 283",
+            "description": "本日限定折扣卡出现「始まりのメッセージカード」且价格正好 283 マニー（97%OFF）时买 1 个（每月 3 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.MessageCard283": {"attach": {"buy_message_card_283": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.MessageCard283": {"attach": {"buy_message_card_283": false}}}}
+            ]
+        },
+        "商店其他·モーニングコミュパン@283": {
+            "type": "switch",
+            "label": "其他商品：モーニングコミュパン 283",
+            "description": "本日限定折扣卡出现「モーニングコミュパン」且价格正好 283 マニー（98%OFF）时买 1 个（每月 15 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.MorningBread283": {"attach": {"buy_morning_bread_283": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.MorningBread283": {"attach": {"buy_morning_bread_283": false}}}}
+            ]
+        },
+        "商店其他·約束のトワレ@283": {
+            "type": "switch",
+            "label": "其他商品：約束のトワレ 283",
+            "description": "本日限定折扣卡出现「約束のトワレ」且价格正好 283 マニー（97%OFF）时买 1 个（每月 29 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.PromiseToilette283": {"attach": {"buy_promise_toilette_283": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.PromiseToilette283": {"attach": {"buy_promise_toilette_283": false}}}}
+            ]
+        },
+        "商店其他·秘密のメモ帳@50": {
+            "type": "switch",
+            "label": "其他商品：秘密のメモ帳 50",
+            "description": "本日限定折扣卡出现「秘密のメモ帳」且价格正好 50 マニー（50%OFF）时买 1 个（每月 31 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.SecretMemo50": {"attach": {"buy_secret_memo_50": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.SecretMemo50": {"attach": {"buy_secret_memo_50": false}}}}
+            ]
+        },
+        "商店其他·プチテンションアロマ(2個入り)@500": {
+            "type": "switch",
+            "label": "其他商品：プチテンションアロマ(2個入り) 500",
+            "description": "本日限定折扣卡出现「プチテンションアロマ(2個入り)」且价格正好 500 マニー（50%OFF）时买 1 个（每月 6 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.PetitTensionAroma500": {"attach": {"buy_petit_tension_aroma_500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.PetitTensionAroma500": {"attach": {"buy_petit_tension_aroma_500": false}}}}
+            ]
+        },
+        "商店其他·流行雑誌@500": {
+            "type": "switch",
+            "label": "其他商品：流行雑誌 500",
+            "description": "本日限定折扣卡出现「流行雑誌」且价格正好 500 マニー（50%OFF）时买 1 个（每月 8 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TrendMagazine500": {"attach": {"buy_trend_magazine_500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TrendMagazine500": {"attach": {"buy_trend_magazine_500": false}}}}
+            ]
+        },
+        "商店其他·ボーカル基礎知識本@500": {
+            "type": "switch",
+            "label": "其他商品：ボーカル基礎知識本 500",
+            "description": "本日限定折扣卡出现「ボーカル基礎知識本」且价格正好 500 マニー（50%OFF）时买 1 个（每月 26 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.VocalBook500": {"attach": {"buy_vocal_book_500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.VocalBook500": {"attach": {"buy_vocal_book_500": false}}}}
+            ]
+        },
+        "商店其他·ダンス基礎知識本@500": {
+            "type": "switch",
+            "label": "其他商品：ダンス基礎知識本 500",
+            "description": "本日限定折扣卡出现「ダンス基礎知識本」且价格正好 500 マニー（50%OFF）时买 1 个（每月 27 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.DanceBook500": {"attach": {"buy_dance_book_500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.DanceBook500": {"attach": {"buy_dance_book_500": false}}}}
+            ]
+        },
+        "商店其他·ビジュアル基礎知識本@500": {
+            "type": "switch",
+            "label": "其他商品：ビジュアル基礎知識本 500",
+            "description": "本日限定折扣卡出现「ビジュアル基礎知識本」且价格正好 500 マニー（50%OFF）时买 1 个（每月 28 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.VisualBook500": {"attach": {"buy_visual_book_500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.VisualBook500": {"attach": {"buy_visual_book_500": false}}}}
+            ]
+        },
+        "商店其他·トラブル守り@1500": {
+            "type": "switch",
+            "label": "其他商品：トラブル守り 1,500",
+            "description": "本日限定折扣卡出现「トラブル守り」且价格正好 1,500 マニー（50%OFF）时买 1 个（每月 5 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TroubleCharm1500": {"attach": {"buy_trouble_charm_1500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TroubleCharm1500": {"attach": {"buy_trouble_charm_1500": false}}}}
+            ]
+        },
+        "商店其他·約束のコロン@1500": {
+            "type": "switch",
+            "label": "其他商品：約束のコロン 1,500",
+            "description": "本日限定折扣卡出现「約束のコロン」且价格正好 1,500 マニー（50%OFF）时买 1 个（每月 11 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.PromiseCologne1500": {"attach": {"buy_promise_cologne_1500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.PromiseCologne1500": {"attach": {"buy_promise_cologne_1500": false}}}}
+            ]
+        },
+        "商店其他·テンションアロマ(2個入り)@1500": {
+            "type": "switch",
+            "label": "其他商品：テンションアロマ(2個入り) 1,500",
+            "description": "本日限定折扣卡出现「テンションアロマ(2個入り)」且价格正好 1,500 マニー（50%OFF）时买 1 个（每月 18 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TensionAroma1500": {"attach": {"buy_tension_aroma_1500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TensionAroma1500": {"attach": {"buy_tension_aroma_1500": false}}}}
+            ]
+        },
+        "商店其他·ヒーリングタルト(2個入り)@1500": {
+            "type": "switch",
+            "label": "其他商品：ヒーリングタルト(2個入り) 1,500",
+            "description": "本日限定折扣卡出现「ヒーリングタルト(2個入り)」且价格正好 1,500 マニー（50%OFF）时买 1 个（每月 20 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.HealingTart1500": {"attach": {"buy_healing_tart_1500": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.HealingTart1500": {"attach": {"buy_healing_tart_1500": false}}}}
+            ]
+        },
+        "商店其他·ヒーリングフルーツタルト(2個入り)@5000": {
+            "type": "switch",
+            "label": "其他商品：ヒーリングフルーツタルト(2個入り) 5,000",
+            "description": "本日限定折扣卡出现「ヒーリングフルーツタルト(2個入り)」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 17/24/30 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.HealingFruitTart5000": {"attach": {"buy_healing_fruit_tart_5000": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.HealingFruitTart5000": {"attach": {"buy_healing_fruit_tart_5000": false}}}}
+            ]
+        },
+        "商店其他·予定変更付箋@5000": {
+            "type": "switch",
+            "label": "其他商品：予定変更付箋 5,000",
+            "description": "本日限定折扣卡出现「予定変更付箋」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 23 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.ScheduleSticky5000": {"attach": {"buy_schedule_sticky_5000": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.ScheduleSticky5000": {"attach": {"buy_schedule_sticky_5000": false}}}}
+            ]
+        },
+        "商店其他·イルミネーションスターズのタオル@5000": {
+            "type": "switch",
+            "label": "其他商品：イルミネーションスターズのタオル 5,000",
+            "description": "本日限定折扣卡出现「イルミネーションスターズのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 1 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TowelIllumination": {"attach": {"buy_towel_illumination": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TowelIllumination": {"attach": {"buy_towel_illumination": false}}}}
+            ]
+        },
+        "商店其他·アンティーカのタオル@5000": {
+            "type": "switch",
+            "label": "其他商品：アンティーカのタオル 5,000",
+            "description": "本日限定折扣卡出现「アンティーカのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 4 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TowelAntica": {"attach": {"buy_towel_antica": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TowelAntica": {"attach": {"buy_towel_antica": false}}}}
+            ]
+        },
+        "商店其他·放課後クライマックスガールズのタオル@5000": {
+            "type": "switch",
+            "label": "其他商品：放課後クライマックスガールズのタオル 5,000",
+            "description": "本日限定折扣卡出现「放課後クライマックスガールズのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 7 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TowelHokago": {"attach": {"buy_towel_hokago": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TowelHokago": {"attach": {"buy_towel_hokago": false}}}}
+            ]
+        },
+        "商店其他·アルストロメリアのタオル@5000": {
+            "type": "switch",
+            "label": "其他商品：アルストロメリアのタオル 5,000",
+            "description": "本日限定折扣卡出现「アルストロメリアのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 10 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TowelAlstroemeria": {"attach": {"buy_towel_alstroemeria": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TowelAlstroemeria": {"attach": {"buy_towel_alstroemeria": false}}}}
+            ]
+        },
+        "商店其他·ストレイライトのタオル@5000": {
+            "type": "switch",
+            "label": "其他商品：ストレイライトのタオル 5,000",
+            "description": "本日限定折扣卡出现「ストレイライトのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 13 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TowelStraylight": {"attach": {"buy_towel_straylight": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TowelStraylight": {"attach": {"buy_towel_straylight": false}}}}
+            ]
+        },
+        "商店其他·ノクチルのタオル@5000": {
+            "type": "switch",
+            "label": "其他商品：ノクチルのタオル 5,000",
+            "description": "本日限定折扣卡出现「ノクチルのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 16 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TowelNoctchill": {"attach": {"buy_towel_noctchill": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TowelNoctchill": {"attach": {"buy_towel_noctchill": false}}}}
+            ]
+        },
+        "商店其他·シーズのタオル@5000": {
+            "type": "switch",
+            "label": "其他商品：シーズのタオル 5,000",
+            "description": "本日限定折扣卡出现「シーズのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 19 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TowelShhis": {"attach": {"buy_towel_shhis": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TowelShhis": {"attach": {"buy_towel_shhis": false}}}}
+            ]
+        },
+        "商店其他·コメティックのタオル@5000": {
+            "type": "switch",
+            "label": "其他商品：コメティックのタオル 5,000",
+            "description": "本日限定折扣卡出现「コメティックのタオル」且价格正好 5,000 マニー（50%OFF）时买 1 个（每月 22 日出现）；名称须与「交換確認」一致，价格不同或未出现就跳过。",
+            "default_case": "No",
+            "cases": [
+                {"name": "Yes", "pipeline_override": {"SC.Shop.Config.Other.TowelCometik": {"attach": {"buy_towel_cometik": true}}}},
+                {"name": "No", "pipeline_override": {"SC.Shop.Config.Other.TowelCometik": {"attach": {"buy_towel_cometik": false}}}}
+            ]
+        }
+    }
+}

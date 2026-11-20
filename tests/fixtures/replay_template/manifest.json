@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "canvas": [
+    1280,
+    720
+  ],
+  "scenes": [
+    {
+      "name": "SC.Replay.Badge.A",
+      "recognition": "TemplateMatch",
+      "roi": [
+        200,
+        180,
+        300,
+        200
+      ],
+      "template": "badge-a.png",
+      "threshold": 0.95
+    },
+    {
+      "name": "SC.Replay.Badge.B",
+      "recognition": "TemplateMatch",
+      "roi": [
+        700,
+        180,
+        300,
+        200
+      ],
+      "template": "badge-b.png",
+      "threshold": 0.95
+    }
+  ],
+  "samples": [
+    {
+      "id": "positive_a",
+      "image": "positive_a.png",
+      "expected": {
+        "scene": "SC.Replay.Badge.A",
+        "allowed": true,
+        "reason": "positive_guard"
+      }
+    },
+    {
+      "id": "positive_b",
+      "image": "positive_b.png",
+      "expected": {
+        "scene": "SC.Replay.Badge.B",
+        "allowed": true,
+        "reason": "positive_guard"
+      }
+    },
+    {
+      "id": "similar_negative",
+      "image": "similar_negative.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "unknown_state"
+      }
+    },
+    {
+      "id": "unknown",
+      "image": "unknown.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "unknown_state"
+      }
+    },
+    {
+      "id": "invalid_size",
+      "image": "invalid_size.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "invalid_dimensions"
+      }
+    },
+    {
+      "id": "ambiguous",
+      "image": "ambiguous.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "ambiguous_state"
+      }
+    }
+  ]
+}

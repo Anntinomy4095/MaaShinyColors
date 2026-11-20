@@ -1,0 +1,882 @@
+{
+  "SC.Training.Zero.Title": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-Title.png",
+    "roi": [
+      48,
+      24,
+      177,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.CardName": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-CardName.png",
+    "roi": [
+      159,
+      96,
+      451,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.Portrait": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-Portrait.png",
+    "roi": [
+      40,
+      102,
+      99,
+      75
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.BronzeLabel": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-BronzeLabel.png",
+    "roi": [
+      810,
+      270,
+      325,
+      34
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.BronzeZero": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-BronzeZero.png",
+    "roi": [
+      939,
+      322,
+      62,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.Lv50Zero": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-Lv50Zero.png",
+    "roi": [
+      939,
+      184,
+      62,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.SilverZero": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-SilverZero.png",
+    "roi": [
+      939,
+      456,
+      62,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.ClearDisabled": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-ClearDisabled.png",
+    "roi": [
+      906,
+      636,
+      146,
+      50
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.Plus": {
+    "recognition": "TemplateMatch",
+    "template": "Zero-Plus.png",
+    "roi": [
+      1058,
+      320,
+      58,
+      52
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.Zero.Title",
+      "SC.Training.Zero.CardName",
+      "SC.Training.Zero.Portrait",
+      "SC.Training.Zero.BronzeLabel",
+      "SC.Training.Zero.BronzeZero",
+      "SC.Training.Zero.Lv50Zero",
+      "SC.Training.Zero.SilverZero",
+      "SC.Training.Zero.ClearDisabled",
+      "SC.Training.Zero.Plus"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Training.Zero.Guard",
+      "SC.Training.Zero.Unknown"
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Training.Zero.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Zero.Click": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.Zero.Title",
+      "SC.Training.Zero.CardName",
+      "SC.Training.Zero.Portrait",
+      "SC.Training.Zero.BronzeLabel",
+      "SC.Training.Zero.BronzeZero",
+      "SC.Training.Zero.Lv50Zero",
+      "SC.Training.Zero.SilverZero",
+      "SC.Training.Zero.ClearDisabled",
+      "SC.Training.Zero.Plus"
+    ],
+    "action": "Click",
+    "target": [
+      1085,
+      347,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.Title": {
+    "recognition": "TemplateMatch",
+    "template": "One-Title.png",
+    "roi": [
+      48,
+      24,
+      177,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.CardName": {
+    "recognition": "TemplateMatch",
+    "template": "One-CardName.png",
+    "roi": [
+      159,
+      96,
+      451,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.Portrait": {
+    "recognition": "TemplateMatch",
+    "template": "One-Portrait.png",
+    "roi": [
+      40,
+      102,
+      99,
+      75
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.BronzeLabel": {
+    "recognition": "TemplateMatch",
+    "template": "One-BronzeLabel.png",
+    "roi": [
+      810,
+      270,
+      325,
+      34
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.BronzeOne": {
+    "recognition": "TemplateMatch",
+    "template": "One-BronzeOne.png",
+    "roi": [
+      939,
+      322,
+      62,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.SilverZero": {
+    "recognition": "TemplateMatch",
+    "template": "One-SilverZero.png",
+    "roi": [
+      939,
+      456,
+      62,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.Exp50": {
+    "recognition": "TemplateMatch",
+    "template": "One-Exp50.png",
+    "roi": [
+      164,
+      175,
+      147,
+      28
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.Submit": {
+    "recognition": "TemplateMatch",
+    "template": "One-Submit.png",
+    "roi": [
+      1097,
+      635,
+      153,
+      57
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.One.Title",
+      "SC.Training.One.CardName",
+      "SC.Training.One.Portrait",
+      "SC.Training.One.BronzeLabel",
+      "SC.Training.One.BronzeOne",
+      "SC.Training.One.SilverZero",
+      "SC.Training.One.Exp50",
+      "SC.Training.One.Submit"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Training.One.Guard",
+      "SC.Training.One.Unknown"
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Training.One.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.One.Click": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.One.Title",
+      "SC.Training.One.CardName",
+      "SC.Training.One.Portrait",
+      "SC.Training.One.BronzeLabel",
+      "SC.Training.One.BronzeOne",
+      "SC.Training.One.SilverZero",
+      "SC.Training.One.Exp50",
+      "SC.Training.One.Submit"
+    ],
+    "action": "Click",
+    "target": [
+      1173,
+      663,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.Title": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Title.png",
+    "roi": [
+      406,
+      165,
+      230,
+      35
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.CardName": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-CardName.png",
+    "roi": [
+      159,
+      96,
+      451,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.Prompt": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Prompt.png",
+    "roi": [
+      453,
+      245,
+      369,
+      57
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.OnlyBronzeOne": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-OnlyBronzeOne.png",
+    "roi": [
+      366,
+      219,
+      548,
+      220
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.BronzeTicket": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-BronzeTicket.png",
+    "roi": [
+      592,
+      327,
+      105,
+      83
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.QuantityOne": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-QuantityOne.png",
+    "roi": [
+      672,
+      412,
+      24,
+      18
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.Start": {
+    "recognition": "TemplateMatch",
+    "template": "Confirm-Start.png",
+    "roi": [
+      660,
+      475,
+      159,
+      68
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.Confirm.Title",
+      "SC.Training.Confirm.CardName",
+      "SC.Training.Confirm.Prompt",
+      "SC.Training.Confirm.OnlyBronzeOne",
+      "SC.Training.Confirm.BronzeTicket",
+      "SC.Training.Confirm.QuantityOne",
+      "SC.Training.Confirm.Start"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Training.Confirm.Guard",
+      "SC.Training.Confirm.Unknown"
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Training.Confirm.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Confirm.Click": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.Confirm.Title",
+      "SC.Training.Confirm.CardName",
+      "SC.Training.Confirm.Prompt",
+      "SC.Training.Confirm.OnlyBronzeOne",
+      "SC.Training.Confirm.BronzeTicket",
+      "SC.Training.Confirm.QuantityOne",
+      "SC.Training.Confirm.Start"
+    ],
+    "action": "Click",
+    "target": [
+      740,
+      510,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.Title": {
+    "recognition": "TemplateMatch",
+    "template": "Result-Title.png",
+    "roi": [
+      408,
+      190,
+      260,
+      35
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.CardNamePrefix": {
+    "recognition": "TemplateMatch",
+    "template": "Result-CardNamePrefix.png",
+    "roi": [
+      159,
+      96,
+      271,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.Portrait": {
+    "recognition": "TemplateMatch",
+    "template": "Result-Portrait.png",
+    "roi": [
+      40,
+      102,
+      99,
+      75
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.StatsLabels": {
+    "recognition": "TemplateMatch",
+    "template": "Result-StatsLabels.png",
+    "roi": [
+      374,
+      328,
+      40,
+      88
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.Close": {
+    "recognition": "TemplateMatch",
+    "template": "Result-Close.png",
+    "roi": [
+      563,
+      451,
+      154,
+      65
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.Result.Title",
+      "SC.Training.Result.CardNamePrefix",
+      "SC.Training.Result.Portrait",
+      "SC.Training.Result.StatsLabels",
+      "SC.Training.Result.Close"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Training.Result.Guard",
+      "SC.Training.Result.Unknown"
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Training.Result.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Result.Click": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.Result.Title",
+      "SC.Training.Result.CardNamePrefix",
+      "SC.Training.Result.Portrait",
+      "SC.Training.Result.StatsLabels",
+      "SC.Training.Result.Close"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      486,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.Title": {
+    "recognition": "TemplateMatch",
+    "template": "After-Title.png",
+    "roi": [
+      48,
+      24,
+      177,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.CardName": {
+    "recognition": "TemplateMatch",
+    "template": "After-CardName.png",
+    "roi": [
+      159,
+      96,
+      451,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.Portrait": {
+    "recognition": "TemplateMatch",
+    "template": "After-Portrait.png",
+    "roi": [
+      40,
+      102,
+      99,
+      75
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.BronzeLabel": {
+    "recognition": "TemplateMatch",
+    "template": "After-BronzeLabel.png",
+    "roi": [
+      810,
+      270,
+      325,
+      34
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.BronzeZero": {
+    "recognition": "TemplateMatch",
+    "template": "After-BronzeZero.png",
+    "roi": [
+      939,
+      322,
+      62,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.Lv50Zero": {
+    "recognition": "TemplateMatch",
+    "template": "After-Lv50Zero.png",
+    "roi": [
+      939,
+      184,
+      62,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.SilverZero": {
+    "recognition": "TemplateMatch",
+    "template": "After-SilverZero.png",
+    "roi": [
+      939,
+      456,
+      62,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.ClearDisabled": {
+    "recognition": "TemplateMatch",
+    "template": "After-ClearDisabled.png",
+    "roi": [
+      906,
+      636,
+      146,
+      50
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.Plus": {
+    "recognition": "TemplateMatch",
+    "template": "After-Plus.png",
+    "roi": [
+      1058,
+      320,
+      58,
+      52
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Training.After.Title",
+      "SC.Training.After.CardName",
+      "SC.Training.After.Portrait",
+      "SC.Training.After.BronzeLabel",
+      "SC.Training.After.BronzeZero",
+      "SC.Training.After.Lv50Zero",
+      "SC.Training.After.SilverZero",
+      "SC.Training.After.ClearDisabled",
+      "SC.Training.After.Plus"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Training.After.Guard",
+      "SC.Training.After.Unknown"
+    ],
+    "on_error": [
+      "SC.Training.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.After.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Training.After.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Training.Error": {
+    "recognition": "DirectHit",
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  }
+}

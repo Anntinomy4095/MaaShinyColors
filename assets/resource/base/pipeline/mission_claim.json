@@ -1,0 +1,1414 @@
+{
+    "SC.Missions.Entry": {
+        "recognition": "DirectHit",
+        "next": [
+            "SC.Missions.Start"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Config": {
+        "recognition": "DirectHit",
+        "attach": {
+            "enabled": false,
+            "mission_id": "daily.login",
+            "max_attempts": 1
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Start": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Begin",
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Route"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Begin"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Route": {
+        "recognition": "DirectHit",
+        "timeout": 15000,
+        "next": [
+            "SC.Missions.Bulk.Read",
+            "SC.Missions.Read",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "SC.Missions.AtHome",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Route"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "next": [
+            "SC.Missions.HomeClean",
+            "[JumpBack]SC.Popup.CloseKnown"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Route"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Missions.Open",
+            "[JumpBack]SC.Popup.CloseKnown"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Route"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页干净（与 SC.Common.HomeClean 相同的外来锚点清单）。"
+        }
+    },
+    "SC.Missions.Open": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            25,
+            394,
+            76,
+            70
+        ],
+        "post_delay": 600,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Bulk.Read",
+            "SC.Missions.Read",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "SC.Missions.Open"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Route"
+        ],
+        "pre_delay": 0
+    },
+    "SC.Missions.Color.DailyTab": {
+        "recognition": "ColorMatch",
+        "roi": [
+            20,
+            93,
+            130,
+            58
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 200,
+        "method": 4,
+        "connected": false,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.DailyPage": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Mission.Title",
+            "SC.Common.Anchor.Mission.DailyTab",
+            "SC.Common.Anchor.Mission.Return",
+            "SC.Common.Color.BackUndimmed",
+            "SC.Missions.Color.DailyTab"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.NoOverlay": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Weekly.Overlay",
+            "SC.Missions.ErrorOCR"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.ErrorOCR": {
+        "recognition": "OCR",
+        "roi": [
+            332,
+            130,
+            630,
+            470
+        ],
+        "threshold": 0.3,
+        "expected": [
+            "エラー",
+            "通信に失敗",
+            "通信エラー",
+            "^1012$"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.ListOCR": {
+        "recognition": "OCR",
+        "roi": [
+            255,
+            100,
+            975,
+            492
+        ],
+        "threshold": 0.3,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.TimerOCR": {
+        "recognition": "OCR",
+        "roi": [
+            26,
+            125,
+            160,
+            28
+        ],
+        "threshold": 0.3,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Ready.claim": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "custom_recognition_param": {
+            "stage": "claim"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Ready.close": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "custom_recognition_param": {
+            "stage": "close"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Ready.top": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "custom_recognition_param": {
+            "stage": "top"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Ready.bottom": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "custom_recognition_param": {
+            "stage": "bottom"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Ready.return": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "custom_recognition_param": {
+            "stage": "return"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Ready.candidate": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "custom_recognition_param": {
+            "stage": "candidate"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Ready.already_claimed": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "custom_recognition_param": {
+            "stage": "already_claimed"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Ready.terminal": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "custom_recognition_param": {
+            "stage": "terminal"
+        },
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Read": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.DailyPage",
+            "SC.Missions.Ready.single"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Missions.Read",
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Intent",
+            "SC.Missions.Return"
+        ],
+        "on_error": [
+            "SC.Missions.SeekTop",
+            "SC.Missions.SeekBottom",
+            "SC.Missions.Stop.Read"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 3
+    },
+    "SC.Missions.Intent": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.DailyPage",
+            "SC.Missions.Ready.candidate"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Missions.Intent",
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Claim"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Intent"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1
+    },
+    "SC.Missions.Guard.LoginTitle": {
+        "recognition": "OCR",
+        "roi": [
+            382,
+            238,
+            560,
+            52
+        ],
+        "threshold": 0.3,
+        "expected": [
+            "ゲームにログインしよう"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Guard.ClaimText": {
+        "recognition": "OCR",
+        "roi": [
+            1042,
+            246,
+            168,
+            80
+        ],
+        "threshold": 0.3,
+        "expected": [
+            "^受け取る$"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Color.Claim": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1042,
+            246,
+            168,
+            80
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 2000,
+        "method": 4,
+        "connected": false,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Claim": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.DailyPage",
+            "SC.Missions.Guard.LoginTitle",
+            "SC.Missions.Guard.ClaimText",
+            "SC.Missions.Color.Claim",
+            "SC.Missions.Ready.claim"
+        ],
+        "action": "Click",
+        "target": [
+            1042,
+            246,
+            168,
+            80
+        ],
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Receipt"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Intent"
+        ],
+        "pre_delay": 0
+    },
+    "SC.Missions.Guard.ReceiptTitle": {
+        "recognition": "OCR",
+        "roi": [
+            398,
+            144,
+            290,
+            48
+        ],
+        "threshold": 0.3,
+        "expected": [
+            "^報酬受け取り$"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Guard.ReceiptBody": {
+        "recognition": "OCR",
+        "roi": [
+            468,
+            230,
+            355,
+            49
+        ],
+        "threshold": 0.3,
+        "expected": [
+            "以下の報酬を受け取りました"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Guard.ResultOK": {
+        "recognition": "OCR",
+        "roi": [
+            557,
+            480,
+            166,
+            80
+        ],
+        "threshold": 0.3,
+        "expected": [
+            "^OK$"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.ReceiptOCR": {
+        "recognition": "OCR",
+        "roi": [
+            350,
+            130,
+            580,
+            455
+        ],
+        "threshold": 0.3,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Color.ResultOK": {
+        "recognition": "ColorMatch",
+        "roi": [
+            557,
+            480,
+            166,
+            80
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 2000,
+        "method": 4,
+        "connected": false,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Receipt": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.Guard.ReceiptTitle",
+            "SC.Missions.Guard.ReceiptBody"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Missions.Receipt",
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.ResultClose"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Receipt"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.ResultClose": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.Guard.ReceiptTitle",
+            "SC.Missions.Guard.ReceiptBody",
+            "SC.Missions.Guard.ResultOK",
+            "SC.Missions.Color.ResultOK",
+            "SC.Missions.Ready.close"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            480,
+            166,
+            80
+        ],
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Terminal"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Receipt"
+        ],
+        "pre_delay": 0
+    },
+    "SC.Missions.Terminal": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.DailyPage",
+            "SC.Missions.Ready.terminal"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Missions.Confirm",
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Return"
+        ],
+        "on_error": [
+            "SC.Missions.SeekBottom",
+            "SC.Missions.Stop.Terminal"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 2
+    },
+    "SC.Missions.Color.Scrollbar": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1239,
+            112,
+            10,
+            455
+        ],
+        "lower": [
+            110,
+            105,
+            115
+        ],
+        "upper": [
+            175,
+            168,
+            180
+        ],
+        "count": 200,
+        "method": 4,
+        "connected": false,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.SeekTop": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.DailyPage",
+            "SC.Missions.Color.Scrollbar",
+            "SC.Missions.Ready.top"
+        ],
+        "action": "Click",
+        "target": [
+            1235,
+            114,
+            16,
+            18
+        ],
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Read"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Read"
+        ],
+        "pre_delay": 0
+    },
+    "SC.Missions.SeekBottom": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.DailyPage",
+            "SC.Missions.Color.Scrollbar",
+            "SC.Missions.Ready.bottom"
+        ],
+        "action": "Click",
+        "target": [
+            1235,
+            542,
+            16,
+            18
+        ],
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.AfterSeek"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Read"
+        ],
+        "pre_delay": 0
+    },
+    "SC.Missions.AfterSeek": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.DailyPage"
+        ],
+        "next": [
+            "SC.Missions.Terminal",
+            "SC.Missions.Read"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Terminal"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Return": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.TabPage",
+            "SC.Missions.Ready.return"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Home"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Home"
+        ],
+        "pre_delay": 0
+    },
+    "SC.Missions.Home": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "next": [
+            "SC.Missions.Done"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Home"
+        ],
+        "timeout": 10000,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Done": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Done",
+        "timeout": 10000,
+        "next": [],
+        "on_error": [
+            "SC.Missions.Stop.Home"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Stop.Begin": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Stop",
+        "timeout": 10000,
+        "next": [],
+        "on_error": [],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "custom_action_param": {
+            "reason": "begin"
+        }
+    },
+    "SC.Missions.Stop.Route": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Stop",
+        "timeout": 10000,
+        "next": [],
+        "on_error": [],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "custom_action_param": {
+            "reason": "route"
+        }
+    },
+    "SC.Missions.Stop.Read": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Stop",
+        "timeout": 10000,
+        "next": [],
+        "on_error": [],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "custom_action_param": {
+            "reason": "read"
+        }
+    },
+    "SC.Missions.Stop.Intent": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Stop",
+        "timeout": 10000,
+        "next": [],
+        "on_error": [],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "custom_action_param": {
+            "reason": "intent"
+        }
+    },
+    "SC.Missions.Stop.Receipt": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Stop",
+        "timeout": 10000,
+        "next": [],
+        "on_error": [],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "custom_action_param": {
+            "reason": "receipt"
+        }
+    },
+    "SC.Missions.Stop.Terminal": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Stop",
+        "timeout": 10000,
+        "next": [],
+        "on_error": [],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "custom_action_param": {
+            "reason": "terminal"
+        }
+    },
+    "SC.Missions.Stop.Home": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Missions.Stop",
+        "timeout": 10000,
+        "next": [],
+        "on_error": [],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "custom_action_param": {
+            "reason": "home"
+        }
+    },
+    "SC.Missions.Ready.single": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "single"
+        }
+    },
+    "SC.Missions.Ready.bulk_read": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "bulk_read"
+        }
+    },
+    "SC.Missions.Ready.bulk_candidate": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "bulk_candidate"
+        }
+    },
+    "SC.Missions.Ready.bulk_click": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "bulk_click"
+        }
+    },
+    "SC.Missions.Ready.bulk_confirm": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "bulk_confirm"
+        }
+    },
+    "SC.Missions.Ready.bulk_close": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "bulk_close"
+        }
+    },
+    "SC.Missions.Ready.bulk_terminal": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "bulk_terminal"
+        }
+    },
+    "SC.Missions.Bulk.PageOCR": {
+        "recognition": "OCR",
+        "roi": [
+            1095,
+            622,
+            165,
+            80
+        ],
+        "threshold": 0.3
+    },
+    "SC.Missions.Bulk.Guard.Button": {
+        "recognition": "OCR",
+        "roi": [
+            1095,
+            622,
+            165,
+            80
+        ],
+        "expected": [
+            "一括受取",
+            "一括受け取り"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Missions.Bulk.Color.Button": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1095,
+            622,
+            165,
+            80
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 2000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Missions.Bulk.Read": {
+        "doc": "2026-10-10 用户要求：デイリー 一括受取。同一帧读全部可领取行（可领取行之后必须看到 詳細/CLEAR 行），只限已知每日任务（奖励均为免费训练券/フェザージュエル/マニー），每日最多一次（私有账本）。 2026-10-15：先处理当前标签，再切换另一个（デイリー/ウィークリー各一次），按各自已知标题与周期账本。",
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.TabPage",
+            "SC.Missions.Ready.bulk_read"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Missions.BulkRead",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Bulk.Intent",
+            "SC.Missions.Tab.Weekly",
+            "SC.Missions.Tab.Daily",
+            "SC.Missions.Return"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Read"
+        ],
+        "focus": {
+            "Node.Action.Starting": "任务（デイリー）：读取全部可领取行，只有已知每日任务的免费奖励才一括领取。"
+        }
+    },
+    "SC.Missions.Bulk.Intent": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.TabPage",
+            "SC.Missions.Ready.bulk_candidate"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Missions.BulkIntent",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 5000,
+        "max_hit": 2,
+        "next": [
+            "SC.Missions.Bulk.Click"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Intent"
+        ],
+        "focus": {
+            "Node.Action.Starting": "任务：新帧复核可领取行不变，账本写入 pending 后按一次一括受取。"
+        }
+    },
+    "SC.Missions.Bulk.Click": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.TabPage",
+            "SC.Missions.Bulk.Guard.Button",
+            "SC.Missions.Bulk.Color.Button",
+            "SC.Missions.Ready.bulk_click"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            650,
+            130,
+            38
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 2,
+        "timeout": 5000,
+        "next": [
+            "SC.Missions.Bulk.ConfirmClick"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Intent"
+        ]
+    },
+    "SC.Missions.Bulk.Guard.ConfirmTitle": {
+        "recognition": "OCR",
+        "roi": [
+            360,
+            210,
+            440,
+            50
+        ],
+        "expected": [
+            "ミッション報酬[一ー]括受け取り"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Missions.Bulk.Guard.ConfirmBody": {
+        "recognition": "OCR",
+        "roi": [
+            440,
+            300,
+            400,
+            95
+        ],
+        "expected": [
+            "新しいものから"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Missions.Bulk.Guard.ConfirmOK": {
+        "recognition": "OCR",
+        "roi": [
+            661,
+            419,
+            158,
+            72
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Missions.Bulk.ConfirmClick": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.Bulk.Guard.ConfirmTitle",
+            "SC.Missions.Bulk.Guard.ConfirmBody",
+            "SC.Missions.Bulk.Guard.ConfirmOK",
+            "SC.Missions.Ready.bulk_confirm"
+        ],
+        "action": "Click",
+        "target": [
+            661,
+            419,
+            158,
+            72
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 2,
+        "timeout": 5000,
+        "next": [
+            "SC.Missions.Bulk.Result"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Receipt"
+        ]
+    },
+    "SC.Missions.Bulk.Guard.ResultBody": {
+        "recognition": "OCR",
+        "roi": [
+            440,
+            195,
+            400,
+            60
+        ],
+        "expected": [
+            "以下の報酬を受け取りました"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Missions.Bulk.Guard.ResultOK": {
+        "recognition": "OCR",
+        "roi": [
+            557,
+            497,
+            166,
+            82
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Missions.Bulk.ResultOCR": {
+        "recognition": "OCR",
+        "roi": [
+            350,
+            120,
+            580,
+            470
+        ],
+        "threshold": 0.3
+    },
+    "SC.Missions.Bulk.Result": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.Bulk.Guard.ResultBody"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Missions.BulkResult",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Bulk.ResultClose"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Receipt"
+        ]
+    },
+    "SC.Missions.Bulk.ResultClose": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.Bulk.Guard.ResultBody",
+            "SC.Missions.Bulk.Guard.ResultOK",
+            "SC.Missions.Ready.bulk_close"
+        ],
+        "action": "Click",
+        "target": [
+            561,
+            502,
+            158,
+            72
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 2,
+        "timeout": 5000,
+        "next": [
+            "SC.Missions.Bulk.Terminal"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Receipt"
+        ]
+    },
+    "SC.Missions.Bulk.Terminal": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.TabPage",
+            "SC.Missions.Ready.bulk_terminal"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Missions.BulkConfirm",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Tab.Weekly",
+            "SC.Missions.Tab.Daily",
+            "SC.Missions.Return"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Terminal"
+        ],
+        "focus": {
+            "Node.Action.Starting": "任务：关闭结果后在新帧确认没有「受け取る」且一括受取变灰，才算领取完成。"
+        }
+    },
+    "SC.Missions.Color.WeeklyTab": {
+        "recognition": "ColorMatch",
+        "roi": [
+            20,
+            178,
+            130,
+            58
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 200,
+        "method": 4,
+        "connected": false,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Color.AnyTab": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Missions.Color.DailyTab",
+            "SC.Missions.Color.WeeklyTab"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Missions.Anchor.DailyLabel": {
+        "recognition": "OCR",
+        "roi": [
+            30,
+            92,
+            150,
+            34
+        ],
+        "expected": [
+            "^デイリー"
+        ],
+        "threshold": 0.5
+    },
+    "SC.Missions.Anchor.WeeklyLabel": {
+        "recognition": "OCR",
+        "roi": [
+            30,
+            177,
+            150,
+            34
+        ],
+        "expected": [
+            "^ウィークリ"
+        ],
+        "threshold": 0.5
+    },
+    "SC.Missions.Anchor.TabLabels": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.Anchor.DailyLabel",
+            "SC.Missions.Anchor.WeeklyLabel"
+        ],
+        "doc": "2026-10-15 live: the daily_tab template only matches the selected (pink) デイリー tab; both labels read in either state"
+    },
+    "SC.Missions.TabPage": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Mission.Title",
+            "SC.Missions.Anchor.TabLabels",
+            "SC.Common.Anchor.Mission.Return",
+            "SC.Common.Color.BackUndimmed",
+            "SC.Missions.Color.AnyTab"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "doc": "2026-10-15: デイリー or ウィークリー selected (bulk flow; the single login claim keeps SC.Missions.DailyPage)"
+    },
+    "SC.Missions.Tab.Weekly": {
+        "enabled": false,
+        "doc": "2026-10-15 user: open the ウィークリー tab after the other tab is done (one tap; proven by the pink label on a fresh frame)",
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.TabPage",
+            "SC.Missions.Ready.tab_weekly"
+        ],
+        "action": "Click",
+        "target": [
+            30,
+            183,
+            130,
+            48
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Bulk.Read"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Read"
+        ],
+        "focus": {
+            "Node.Action.Starting": "任务：切换到「ウィークリー」标签。"
+        }
+    },
+    "SC.Missions.Tab.Daily": {
+        "enabled": false,
+        "doc": "2026-10-15 user: open the デイリー tab after the other tab is done (one tap; proven by the pink label on a fresh frame)",
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.TabPage",
+            "SC.Missions.Ready.tab_daily"
+        ],
+        "action": "Click",
+        "target": [
+            30,
+            98,
+            130,
+            48
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Missions.Bulk.Read"
+        ],
+        "on_error": [
+            "SC.Missions.Stop.Read"
+        ],
+        "focus": {
+            "Node.Action.Starting": "任务：切换到「デイリー」标签。"
+        }
+    },
+    "SC.Missions.Ready.tab_daily": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "tab_daily"
+        }
+    },
+    "SC.Missions.Ready.tab_weekly": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Missions.Ready",
+        "roi": [
+            0,
+            0,
+            1280,
+            720
+        ],
+        "custom_recognition_param": {
+            "stage": "tab_weekly"
+        }
+    }
+}

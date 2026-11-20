@@ -1,0 +1,98 @@
+{
+    "SC.Popup.FesPeriodReward.Title": {
+        "recognition": "OCR",
+        "roi": [
+            410,
+            240,
+            220,
+            50
+        ],
+        "expected": [
+            "^報酬内容$"
+        ]
+    },
+    "SC.Popup.FesPeriodReward.Body": {
+        "recognition": "OCR",
+        "roi": [
+            485,
+            308,
+            385,
+            50
+        ],
+        "expected": [
+            "グレフェスコインを獲得しました"
+        ]
+    },
+    "SC.Popup.FesPeriodReward.Ok": {
+        "recognition": "OCR",
+        "roi": [
+            493,
+            582,
+            100,
+            52
+        ],
+        "expected": [
+            "^OK$"
+        ]
+    },
+    "SC.Popup.FesPeriodReward.FesTitle": {
+        "recognition": "OCR",
+        "roi": [
+            34,
+            14,
+            120,
+            45
+        ],
+        "expected": [
+            "^フェス$"
+        ]
+    },
+    "SC.Popup.FesPeriodReward.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.FesPeriodReward.Title",
+            "SC.Popup.FesPeriodReward.Body",
+            "SC.Popup.FesPeriodReward.Ok",
+            "SC.Popup.FesPeriodReward.FesTitle"
+        ]
+    },
+    "SC.Popup.FesPeriodReward.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.FesPeriodReward.Title",
+            "SC.Popup.FesPeriodReward.Body",
+            "SC.Popup.FesPeriodReward.Ok",
+            "SC.Popup.FesPeriodReward.FesTitle"
+        ],
+        "action": "Click",
+        "target": [
+            470,
+            627,
+            65,
+            18
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.FesPeriodReward.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "领取赛季结算奖励，关闭弹窗"
+        }
+    },
+    "SC.Popup.FesPeriodReward.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.FesMain.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}

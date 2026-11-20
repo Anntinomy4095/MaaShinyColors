@@ -1,0 +1,14 @@
+[project]
+name = "maa-shiny-colors-agent"
+version = "0.1.0"
+description = "Supervised MaaFramework Agent foundation for Shiny Colors"
+requires-python = ">=3.12"
+dependencies = [
+    "maafw==5.12.3",
+    "Pillow==13.0.0",
+    "scipy==1.18.1",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]

@@ -1,0 +1,76 @@
+{
+    "task": [
+        {
+            "name": "Training",
+            "label": "S 卡训练（基础铜券×1）",
+            "entry": "SC.Training.Entry",
+            "default_check": true,
+            "description": "消耗：基础铜训练券 ×1。训练所选 S 卡：按卡身份在训练列表定位，核对材料只有铜券 ×1 后开始，再核验库存 −1 与等级或经验增长。未选卡取当前排序第一张可训练的 S 卡。",
+            "option": [
+                "训练卡",
+                "训练券",
+                "训练数量"
+            ]
+        }
+    ],
+    "option": {
+        "训练卡": {
+            "type": "input",
+            "label": "训练哪张 S 卡",
+            "description": "从「持有卡牌」选一张 S 卡；未选则取训练列表当前排序第一张可训练的 S 卡。识别不唯一或卡不在列表中就停止，不换别的卡。",
+            "inputs": [
+                {
+                    "name": "card",
+                    "label": "卡 ID",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^(2\\d{9})?$",
+                    "pattern_msg": "2 开头的 10 位卡 ID，留空=默认"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Training.Config.Card": {
+                    "attach": {
+                        "card_id": "{card}"
+                    }
+                }
+            }
+        },
+        "训练券": {
+            "type": "select",
+            "label": "训练券",
+            "description": "只用基础铜训练券（ブロンズトレーニングチケット）。",
+            "default_case": "ブロンズトレーニングチケット",
+            "cases": [
+                {
+                    "name": "ブロンズトレーニングチケット",
+                    "pipeline_override": {
+                        "SC.Training.Config.Ticket": {
+                            "attach": {
+                                "ticket": "basic_bronze"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "训练数量": {
+            "type": "select",
+            "label": "数量",
+            "description": "每次 1 张。",
+            "default_case": "1",
+            "cases": [
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Training.Config.Quantity": {
+                            "attach": {
+                                "quantity": 1
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

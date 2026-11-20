@@ -1,0 +1,143 @@
+{
+    "SC.Popup.ProduceEventHelp.Title": {
+        "recognition": "OCR", "roi": [105, 70, 835, 58],
+        "expected": ["プロデューサーズカップについて", "今回のシナリオイベントについて"]
+    },
+    "SC.Popup.ProduceEventHelp.CloseLabel": {
+        "recognition": "OCR", "roi": [572, 575, 137, 55], "expected": ["閉じる"]
+    },
+    "SC.Popup.ProduceEventHelp.Guard": {
+        "recognition": "And",
+        "all_of": ["SC.Popup.ProduceEventHelp.Title", "SC.Popup.ProduceEventHelp.CloseLabel", "SC.Common.Anchor.FesHelp.Close"]
+    },
+    "SC.Popup.ProduceEventHelp.Close": {
+        "enabled": false, "recognition": "And",
+        "all_of": ["SC.Popup.ProduceEventHelp.Title", "SC.Popup.ProduceEventHelp.CloseLabel", "SC.Common.Anchor.FesHelp.Close"],
+        "action": "Click", "target": [640, 562, 85, 78],
+        "pre_delay": 0, "post_delay": 500, "max_hit": 1, "timeout": 10000,
+        "next": ["SC.Popup.ProduceEventHelp.Settled"], "on_error": ["SC.Common.FailTask"]
+    },
+    "SC.Popup.ProduceEventHelp.Settled": {
+        "recognition": "Or",
+        "any_of": ["SC.Popup.EventFanReceipt.Guard", "SC.Nav.ProduceEvent.Guard", "SC.Popup.EventMissionReceipt.Guard",
+                   "SC.Popup.ScenarioPlay.Guard", "SC.Nav.ScenarioEvent.Guard", "SC.Loading.Present"],
+        "pre_delay": 0, "post_delay": 0
+    },
+    "SC.Popup.EventFanReceipt.Title": {
+        "recognition": "OCR", "roi": [398, 81, 442, 47], "expected": ["累計ファン数達成報酬"]
+    },
+    "SC.Popup.EventFanReceipt.Body": {
+        "recognition": "OCR", "roi": [373, 168, 545, 45],
+        "expected": ["以下のアイテムがプレゼントB[O0]Xに送られました"]
+    },
+    "SC.Popup.EventFanReceipt.Ok": {
+        "recognition": "OCR", "roi": [581, 554, 119, 53], "expected": ["^OK$"]
+    },
+    "SC.Popup.EventFanReceipt.Guard": {
+        "recognition": "And", "all_of": ["SC.Popup.EventFanReceipt.Title", "SC.Popup.EventFanReceipt.Body", "SC.Popup.EventFanReceipt.Ok"]
+    },
+    "SC.Popup.EventFanReceipt.Close": {
+        "enabled": false, "recognition": "And",
+        "all_of": ["SC.Popup.EventFanReceipt.Title", "SC.Popup.EventFanReceipt.Body", "SC.Popup.EventFanReceipt.Ok"],
+        "action": "Click", "target": [562, 550, 42, 64],
+        "pre_delay": 0, "post_delay": 500, "max_hit": 1, "timeout": 10000,
+        "next": ["SC.Popup.EventFanReceipt.Settled"], "on_error": ["SC.Common.FailTask"]
+    },
+    "SC.Popup.EventFanReceipt.Settled": {
+        "recognition": "Or", "any_of": ["SC.Nav.ProduceEvent.Guard", "SC.Loading.Present"],
+        "pre_delay": 0, "post_delay": 0
+    },
+    "SC.Popup.EventMissionReceipt.Title": {
+        "recognition": "OCR", "roi": [398, 140, 442, 48], "expected": ["^ミッション達成累[積計]報酬$"]
+    },
+    "SC.Popup.EventMissionReceipt.Body": {
+        "recognition": "OCR", "roi": [373, 226, 545, 47],
+        "expected": ["^以下のアイテムがプレゼントB[O0]Xに送られました$"]
+    },
+    "SC.Popup.EventMissionReceipt.Ok": {
+        "recognition": "OCR", "roi": [581, 490, 119, 58], "expected": ["^OK$"]
+    },
+    "SC.Popup.EventMissionReceipt.Guard": {
+        "recognition": "And",
+        "all_of": ["SC.Popup.EventMissionReceipt.Title", "SC.Popup.EventMissionReceipt.Body", "SC.Popup.EventMissionReceipt.Ok"]
+    },
+    "SC.Popup.EventMissionReceipt.Close": {
+        "enabled": false, "recognition": "And",
+        "all_of": ["SC.Popup.EventMissionReceipt.Title", "SC.Popup.EventMissionReceipt.Body", "SC.Popup.EventMissionReceipt.Ok"],
+        "action": "Click", "target": [606, 481, 119, 81],
+        "pre_delay": 0, "post_delay": 500, "max_hit": 1, "timeout": 10000,
+        "next": ["SC.Popup.EventMissionReceipt.Settled"], "on_error": ["SC.Common.FailTask"],
+        "focus": {"Node.Action.Starting": "活动任务累计奖励已送到礼物箱：只点 OK 关闭，再从活动页返回首页"}
+    },
+    "SC.Popup.EventMissionReceipt.Settled": {
+        "recognition": "Or",
+        "any_of": ["SC.Nav.TrainingEvent.Guard", "SC.Nav.ProduceEvent.Guard", "SC.Popup.ScenarioPlay.Guard", "SC.Nav.ScenarioEvent.Guard",
+                   "SC.Common.Home.Guard", "SC.Loading.Present"],
+        "pre_delay": 0, "post_delay": 0
+    },
+    "SC.Nav.ProduceEvent.Title": {
+        "recognition": "OCR", "roi": [425, 30, 304, 48], "expected": ["アイドルランキング[一ー]覧"]
+    },
+    "SC.Nav.ProduceEvent.Footer": {
+        "recognition": "OCR", "roi": [144, 594, 320, 91], "expected": ["プロデュースや営業でファンを"]
+    },
+    "SC.Nav.ProduceEvent.Guard": {
+        "recognition": "And", "all_of": ["SC.Nav.ProduceEvent.Title", "SC.Nav.ProduceEvent.Footer", "SC.Common.Color.BackUndimmed"]
+    },
+    "SC.Nav.ProduceEvent.Back": {
+        "enabled": false, "recognition": "And",
+        "all_of": ["SC.Nav.ProduceEvent.Title", "SC.Nav.ProduceEvent.Footer", "SC.Common.Color.BackUndimmed"],
+        "action": "Click", "target": [20, 628, 74, 66],
+        "pre_delay": 0, "post_delay": 500, "max_hit": 1, "timeout": 10000,
+        "next": ["SC.Nav.ProduceEvent.Settled"], "on_error": ["SC.Common.FailTask"]
+    },
+    "SC.Nav.ProduceEvent.Settled": {
+        "recognition": "Or", "any_of": ["SC.Common.Home.Guard", "SC.Loading.Present", "SC.Popup.Birthday.Guard"],
+        "pre_delay": 0, "post_delay": 0
+    },
+    "SC.Popup.ScenarioPlay.Title": {
+        "recognition": "OCR", "roi": [400, 200, 330, 50], "expected": ["^シナリオ再生確認$"]
+    },
+    "SC.Popup.ScenarioPlay.Body": {
+        "recognition": "OCR", "roi": [500, 365, 280, 42], "expected": ["を再生しますか"]
+    },
+    "SC.Popup.ScenarioPlay.CancelLabel": {
+        "recognition": "OCR", "roi": [462, 440, 156, 52], "expected": ["^キャンセル$"]
+    },
+    "SC.Popup.ScenarioPlay.Guard": {
+        "recognition": "And", "all_of": ["SC.Popup.ScenarioPlay.Title", "SC.Popup.ScenarioPlay.Body", "SC.Popup.ScenarioPlay.CancelLabel"]
+    },
+    "SC.Popup.ScenarioPlay.Cancel": {
+        "enabled": false, "recognition": "And",
+        "all_of": ["SC.Popup.ScenarioPlay.Title", "SC.Popup.ScenarioPlay.Body", "SC.Popup.ScenarioPlay.CancelLabel"],
+        "action": "Click", "target": [470, 436, 140, 60],
+        "pre_delay": 0, "post_delay": 500, "max_hit": 1, "timeout": 10000,
+        "next": ["SC.Popup.ScenarioPlay.Settled"], "on_error": ["SC.Common.FailTask"],
+        "focus": {"Node.Action.Starting": "活动剧情播放确认：点キャンセル，不播放"}
+    },
+    "SC.Popup.ScenarioPlay.Settled": {
+        "recognition": "Or", "any_of": ["SC.Nav.ScenarioEvent.Guard", "SC.Common.Home.Guard", "SC.Loading.Present"],
+        "pre_delay": 0, "post_delay": 0
+    },
+    "SC.Nav.ScenarioEvent.Comm": {
+        "recognition": "OCR", "roi": [60, 345, 165, 40], "expected": ["^イベントコミュ$"]
+    },
+    "SC.Nav.ScenarioEvent.Period": {
+        "recognition": "OCR", "roi": [30, 178, 120, 34], "expected": ["^開催期限"]
+    },
+    "SC.Nav.ScenarioEvent.Guard": {
+        "recognition": "And", "all_of": ["SC.Nav.ScenarioEvent.Comm", "SC.Nav.ScenarioEvent.Period", "SC.Common.Color.BackUndimmed"]
+    },
+    "SC.Nav.ScenarioEvent.Back": {
+        "enabled": false, "recognition": "And",
+        "all_of": ["SC.Nav.ScenarioEvent.Comm", "SC.Nav.ScenarioEvent.Period", "SC.Common.Color.BackUndimmed"],
+        "action": "Click", "target": [20, 628, 74, 66],
+        "pre_delay": 0, "post_delay": 500, "max_hit": 1, "timeout": 10000,
+        "next": ["SC.Nav.ScenarioEvent.Settled"], "on_error": ["SC.Common.FailTask"],
+        "focus": {"Node.Action.Starting": "从シナリオイベント页返回首页（活动累计奖励 OK 之后）"}
+    },
+    "SC.Nav.ScenarioEvent.Settled": {
+        "recognition": "Or", "any_of": ["SC.Common.Home.Guard", "SC.Loading.Present", "SC.Popup.Birthday.Guard"],
+        "pre_delay": 0, "post_delay": 0
+    }
+}

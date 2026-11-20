@@ -1,0 +1,94 @@
+{
+    // ProjectInterface V2. Development path is relative to assets/interface.json.
+    "interface_version": 2,
+    "name": "MaaShinyColors",
+    "label": "MaaShinyColors（开发监督版）",
+    "title": "MaaShinyColors v0.1.0",
+    "version": "0.1.0",
+    "github": "https://github.com/Anntinomy4095/MaaShinyColors",
+    "description": "《偶像大师 闪耀色彩》Enza 网页版的本地、人工监督式 MaaFramework 研究工程。",
+    "contact": "请在项目仓库中提交带脱敏截图和 debug/maa.log 的问题记录。",
+    "license": "../LICENSE",
+    "welcome": "人工监督的本地日常自动化。实机点击与消耗只在每次运行的设置和确认允许时进行；使用前请阅读 README.md。",
+    "agent": {
+        "child_exec": "./../.venv/Scripts/python.exe",
+        "child_args": [
+            "-u",
+            "./../agent/main.py"
+        ]
+    },
+    "controller": [
+        {
+            "name": "BrowserForeground",
+            "label": "浏览器前台（仅兼容性对照）",
+            "description": "前台截图兼容性对照，要求目标窗口可见。Seize 输入会占用鼠标，不符合当前后台任务要求。",
+            "type": "Win32",
+            "display_short_side": 720,
+            "win32": {
+                "class_regex": "Chrome_WidgetWin_1|MozillaWindowClass",
+                "window_regex": ".*(シャイニーカラーズ|シャニマス|shinycolors|Shiny Colors).*",
+                "screencap": "Foreground",
+                "mouse": "Seize",
+                "keyboard": "Seize"
+            }
+        },
+        {
+            "name": "BrowserBackgroundExperimental",
+            "label": "浏览器后台（实验）",
+            "description": "优先 FramePool/PrintWindow 与消息输入。若黑屏或点击无效，切回前台控制器。",
+            "type": "Win32",
+            "display_short_side": 720,
+            "win32": {
+                "class_regex": "Chrome_WidgetWin_1|MozillaWindowClass",
+                "window_regex": ".*(シャイニーカラーズ|シャニマス|shinycolors|Shiny Colors).*",
+                "screencap": "Background",
+                "mouse": "PostMessageWithCursorPos",
+                "keyboard": "PostMessageWithCursorPos"
+            }
+        },
+        {
+            "name": "BrowserHostWebView2Experimental",
+            "label": "内置 WebView2（旧 Win32 预设）",
+            "description": "固定 1280×720 页面区域。旧 Maa Win32 截图未通过，仅用于连接研究；新 CapturePreview 只读任务由 BrowserHost 原生任务栏启动。",
+            "type": "Win32",
+            "display_short_side": 720,
+            "win32": {
+                "class_regex": "WindowsForms10\\..*",
+                "window_regex": "^MaaShinyColors BrowserHost$",
+                "screencap": "Foreground",
+                "mouse": "PostMessageWithCursorPos",
+                "keyboard": "PostMessageWithCursorPos"
+            }
+        }
+    ],
+    "resource": [
+        {
+            "name": "JapaneseWeb",
+            "label": "日文网页版（基准资源）",
+            "description": "1280×720、浏览器缩放 100%、游戏日文界面的基准资源。",
+            "path": [
+                "./resource/base"
+            ]
+        }
+    ],
+    // Tasks and presets live in imported files; array order is the default UI order.
+    "import": [
+        "tasks/startup.json",
+        "tasks/shop.json",
+        "tasks/training.json",
+        "tasks/match_skip.json",
+        "tasks/collabo_fes.json",
+        "tasks/grade_fes.json",
+        "tasks/mission_status.json",
+        "tasks/resource_read.json",
+        "tasks/missions_claim.json",
+        "tasks/business.json",
+        "tasks/present_claim.json",
+        "tasks/weekly_check.json",
+        "tasks/auto_produce.json",
+        "tasks/weekly_produce.json",
+        "tasks/diagnostics.json",
+        "tasks/produce_dryrun.json",
+        "presets/daily.json"
+    ]
+}

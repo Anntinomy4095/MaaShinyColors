@@ -1,0 +1,11 @@
+{
+    "task": [
+        {
+            "name": "ResourceRead",
+            "label": "只读取资源",
+            "entry": "SC.ResourceRead.Entry",
+            "default_check": false,
+            "description": "在首页读取マニー、体力、Fes 参加权（ジュエル只显示）。只关已知弹窗，不点其他按钮；放在「启动到首页」之后运行。"
+        }
+    ]
+}

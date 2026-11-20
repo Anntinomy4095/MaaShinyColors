@@ -1,0 +1,11 @@
+{
+    "task": [
+        {
+            "name": "MissionStatus",
+            "label": "每日任务进度（只读）",
+            "entry": "SC.MissionStatus.Entry",
+            "default_check": true,
+            "description": "打开ミッション的デイリー页，读取达成数与各行进度（a/b、受け取る），不领取，读完返回首页。"
+        }
+    ]
+}

@@ -1,0 +1,84 @@
+{
+    "SC.Diagnostics.FailureSnapshot": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Diagnostics.FailureSnapshot",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "任务失败后（只读）：截图一次并核对各页面守卫，记录差一项未命中的守卫，方便修复识别。"
+        }
+    },
+    "SC.Diagnostics": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Diagnostics",
+        "custom_action_param": {
+            "checks": [
+                "resource_root",
+                "agent_core",
+                "runtime_mode"
+            ]
+        },
+        "focus": {
+            "succeeded": "环境诊断通过：当前任务未向目标窗口发送输入。",
+            "failed": "环境诊断失败：请检查 Agent 输出与 debug/maa.log。"
+        }
+    },
+    "SC.Diagnostics.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Diagnostics",
+        "custom_action_param": {
+            "checks": [
+                "resource_root",
+                "agent_core",
+                "runtime_mode"
+            ]
+        },
+        "next": [
+            "SC.Diagnostics.Classify"
+        ],
+        "focus": {
+            "Node.Action.Starting": "诊断（只读）：环境自检，然后截图并识别当前画面。"
+        }
+    },
+    "SC.Diagnostics.Classify": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Diagnostics.ClassifyScreen",
+        "custom_action_param": {
+            "candidates": [
+                "SC.Startup.StartScreen.Guard",
+                "SC.Loading.Present",
+                "SC.Common.Home.Guard",
+                "SC.Popup.LoginBoard",
+                "SC.Popup.Announcement.Guard",
+                "SC.Popup.Reward.Guard",
+                "SC.Popup.MissionCompleted.Guard",
+                "SC.Popup.MissionHelp.Guard",
+                "SC.Popup.MatchHelp.Guard",
+                "SC.Popup.TrainingHelp.Guard",
+                "SC.Popup.FesHelp.Guard",
+                "SC.Popup.Pickup.Guard",
+                "SC.Popup.Story.Guard",
+                "SC.Popup.NewGacha.Guard",
+                "SC.Popup.GachaAnnouncement.Guard",
+                "SC.Popup.FesResume.Guard",
+                "SC.Nav.Mission.Guard",
+                "SC.Nav.IdolPortal.Guard",
+                "SC.Nav.TrainingList.Guard",
+                "SC.Nav.TrainingSelected.Guard",
+                "SC.Nav.MatchMain.Guard",
+                "SC.Nav.FesMain.Guard",
+                "SC.Nav.ShopList.Guard"
+            ],
+            "home_clean": "SC.Common.HomeClean"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "诊断：识别当前画面（不发送输入）。"
+        }
+    }
+}

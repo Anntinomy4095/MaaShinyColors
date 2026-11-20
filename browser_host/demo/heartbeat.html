@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>MaaShinyColors 后台心跳自测页</title>
+<style>
+html,body { margin:0; width:100%; height:100%; overflow:hidden; background:#0b1020; color:#f2f5fb; font:bold 7vh Consolas,monospace; }
+#bar { position:absolute; top:0; height:100%; width:8vw; }
+#text { position:absolute; left:12vw; top:36vh; white-space:pre; }
+footer { position:absolute; left:12vw; bottom:6vh; font-size:2.4vh; color:#8fa2c7; font-weight:normal; }
+</style>
+<div id="bar"></div>
+<div id="text"></div>
+<footer>自有本地页面 · 无网络请求 · 仅供 --self-test-background 测量 rAF / 定时器 / 截图帧</footer>
+<script>
+// rAF moves and recolors the bar every frame, so any two rendered frames differ.
+// setInterval (100 ms) counts timer ticks and reports cumulative counters to the host.
+let raf = 0, timer = 0, clicks = 0, visChanges = 0;
+const bar = document.getElementById('bar'), text = document.getElementById('text');
+document.addEventListener('visibilitychange', () => { visChanges++; });
+document.addEventListener('mousedown', () => { clicks++; });
+function frame() {
+  raf++;
+  bar.style.background = 'hsl(' + ((raf * 7) % 360) + ' 90% 50%)';
+  bar.style.left = ((raf * 6) % Math.max(1, window.innerWidth - 120)) + 'px';
+  text.textContent = 'rAF   ' + raf + '\ntimer ' + timer + '\nclick ' + clicks + '\n' + document.visibilityState;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+setInterval(() => {
+  timer++;
+  if (timer % 2 === 0 && window.chrome && window.chrome.webview) {
+    window.chrome.webview.postMessage({ raf, timer, clicks, hidden: document.hidden,
+      vis: document.visibilityState, visChanges });
+  }
+}, 100);
+</script>
+</html>

@@ -1,0 +1,122 @@
+/* 宽屏工作台 (the wide panel gets its own arrangement instead of the one-column page moved into two
+   columns). layout-mode.js sets .app[data-wide] from 880 px (自动, or 双栏 chosen in 设置 → 外观 → 布局) and
+   .app[data-aside] from 1200 px; without them nothing here applies. Options and controls are the one-column ones:
+     - tab rail on the left;
+     - pages with setting groups (Produce, 资源, 设置) show a section list beside the picked section (common.js sectionDeck);
+     - 任务 shows the task list beside the picked task's settings; ノウハウ its sub-pages as a list;
+     - from 1200 px a third column holds 开始/停止 and the always-open log (app.js renderAside). */
+
+/* ---------- shell ---------- */
+.run-aside { display: none; }
+.app[data-wide] .side-panel { display: grid; grid-template-columns: 148px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
+.app[data-aside] .side-panel { grid-template-columns: 148px minmax(0, 1fr) 320px; }
+.app[data-wide] .tab-rail {
+  flex-direction: column; gap: 2px; padding: var(--sp-3) var(--sp-2); overflow-y: auto;
+  border-bottom: 0; border-right: 1px solid var(--sc-line);
+}
+.app[data-wide] .tab {
+  flex: none; flex-direction: row; justify-content: flex-start; gap: 10px; min-height: 40px; padding: 0 12px;
+  border-radius: var(--r-m); font-size: var(--fs-13);
+}
+.app[data-wide] .tab:hover { background: var(--sc-surface-2); }
+.app[data-wide] .tab.is-active { background: var(--sc-primary-tint); }
+.app[data-wide] .tab.is-active::after { left: 0; right: auto; top: 10px; bottom: 10px; width: 3px; height: auto; }
+.app[data-wide] .tab-badge { margin-left: auto; }
+
+/* ---------- content column: one centred width for every page; the bars outside the scroll area line up with it ---------- */
+.app[data-wide] .panel { --page-max: 1040px; --page-pad: max(var(--sp-5), calc((100% - var(--page-max)) / 2)); }
+.app[data-wide] .panel.home-panel { --page-max: 760px; }
+.app[data-wide] .panel-scroll { padding-left: var(--page-pad); padding-right: calc(var(--page-pad) - var(--scrollbar-w)); }
+.app[data-wide] .run-bar, .app[data-wide] .panel-head, .app[data-wide] .plan-row { padding-left: var(--page-pad); padding-right: var(--page-pad); }
+/* 2026-10-26 role-play B8 (a ~1000 px window has no 运行 column): an open drawer and the task list each keep a usable height
+   (relative to the window, so the run bar is never pushed out); the drawer may give back room down to its minimum. */
+.app[data-wide] .log-drawer.is-open { flex: 0 1 46%; min-height: min(260px, 42vh); }
+/* the drawer's own rows are inset by --sp-4 already: take that off so its search box ends where the run bar's 开始 does */
+.app[data-wide] .log-drawer { padding-inline: calc(var(--page-pad) - var(--sp-4)); }
+
+/* ---------- section list + section (Produce, 资源, 设置) ---------- */
+.deck { display: grid; grid-template-columns: 208px minmax(0, 1fr); gap: var(--sp-4); align-items: start; margin-top: var(--sp-3); }
+.deck-nav {
+  position: sticky; top: 0; display: flex; flex-direction: column; gap: 2px; padding: var(--sp-1);
+  border: 1px solid var(--sc-line); border-radius: var(--r-l); background: var(--sc-surface); box-shadow: var(--shadow-card);
+}
+.deck-item {
+  position: relative; display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 8px 10px 8px 12px;
+  border: 0; border-radius: var(--r-m); background: none; color: var(--sc-text); font: inherit; text-align: left; cursor: pointer;
+}
+.deck-item:hover { background: var(--sc-surface-2); }
+.deck-item:focus-visible { outline-offset: -2px; }
+.deck-item.is-current { background: var(--sc-primary-tint); }
+.deck-item.is-current::before {
+  content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: var(--r-pill); background: var(--sc-primary);
+}
+.deck-item-title { display: flex; align-items: center; gap: 6px; min-width: 0; font-size: var(--fs-13); font-weight: 600; }
+.deck-item-title > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.deck-item.is-current .deck-item-title { color: var(--sc-primary-text); font-weight: 700; }
+.deck-item-title > .fold-count { margin-left: auto; }
+.deck-item.tone-accent .deck-item-title > span:first-child::after { content: " \2022"; color: var(--sc-accent-text); }
+.deck-item-summary { min-width: 0; font-size: var(--fs-12); line-height: 1.45; color: var(--sc-text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.deck-view { min-width: 0; }
+.deck-view > .fold { margin-top: 0; }
+.deck-view > .fold:not(.is-current) { display: none; }
+/* the picked section's head is its title (the list is the control) */
+.deck-view > .fold > .fold-head { cursor: default; }
+.deck-view > .fold > .fold-head:hover { background: none; }
+.deck-view > .fold > .fold-head .fold-chevron { display: none; }
+
+/* Produce: the summary card and scenario switch stay above the list; the settings box is the deck itself */
+.app[data-wide] .wing-body { padding: 0; border-top: 0; }
+/* 资源: the readings (概览) are one section of the list */
+.res-overview > * + * { margin-top: var(--sp-3); }
+
+/* ---------- 任务: task list + the picked task's settings, each scrolling on its own ---------- */
+.app[data-wide] .task-panel .panel-scroll:has(> .task-md) { display: flex; flex-direction: column; overflow: hidden; padding-bottom: 0; min-height: min(120px, 18vh); }
+.task-md { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: var(--sp-4); }
+.task-md-list, .task-md-detail { min-height: 0; overflow-y: auto; padding-bottom: var(--sp-4); scrollbar-width: thin; }
+.task-md-list .task-add-entry { margin-inline: 0; }
+.task-md .task-head { cursor: pointer; }
+.task-md .task-row.is-selected { background: var(--sc-primary-tint); }
+.task-md .task-row.is-selected::before {
+  content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: var(--r-pill); background: var(--sc-primary);
+}
+.task-pick { border: 0; padding: 0; background: none; color: inherit; font: inherit; text-align: left; }
+.task-md .task-result, .task-md .task-warning { margin-left: 64px; }
+.task-detail { margin-top: var(--sp-1); border: 1px solid var(--sc-line); border-radius: var(--r-l); background: var(--sc-surface); box-shadow: var(--shadow-card); }
+.task-detail-head { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-3) var(--sp-4); border-bottom: 1px dotted var(--sc-line-strong); }
+.task-detail-title { font-size: var(--fs-16); font-weight: 700; line-height: 1.4; }
+.task-detail > .task-body { border-top: 0; padding: var(--sp-2) var(--sp-4) var(--sp-4); }
+.task-detail-empty { margin: var(--sp-5) 0; text-align: center; }
+
+/* ---------- ノウハウ: sub-pages as a list on the left ---------- */
+.app[data-wide] .knowhow-panel > .panel-scroll {
+  display: grid; grid-template-columns: 168px minmax(0, 1fr); column-gap: var(--sp-4); align-content: start;
+}
+.app[data-wide] .knowhow-panel > .panel-scroll > * { grid-column: 2; min-width: 0; }
+.app[data-wide] .knowhow-panel > .panel-scroll > .kh-subnav { grid-column: 1; grid-row: 1 / span 6; align-self: start; position: sticky; top: var(--sp-2); }
+.app[data-wide] .kh-subnav .segmented { flex-direction: column; padding: var(--sp-1); border-radius: var(--r-l); background: var(--sc-surface); box-shadow: var(--shadow-card); }
+.app[data-wide] .kh-subnav .segment {
+  position: relative; flex: none; justify-content: flex-start; min-height: 36px; padding: 0 12px; border: 0; border-radius: var(--r-m); text-align: left;
+}
+.app[data-wide] .kh-subnav .segment.is-selected { background: var(--sc-primary-tint); box-shadow: none; }
+.app[data-wide] .kh-subnav .segment.is-selected::before {
+  content: ""; position: absolute; left: 0; top: 9px; bottom: 9px; width: 3px; border-radius: var(--r-pill); background: var(--sc-primary);
+}
+.app[data-wide] .kh-team-block > .segmented { max-width: 440px; }
+
+/* ---------- 运行 column (≥ 1200 px): the tab's 开始/停止 on top, the log filling the rest ---------- */
+.app[data-aside] .run-aside {
+  display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden;
+  border-left: 1px solid var(--sc-line); background: var(--sc-surface);
+}
+.run-aside > .run-bar { border-top: 0; border-bottom: 1px solid var(--sc-line); }
+.app[data-aside] .run-aside > .run-bar { padding-inline: var(--sp-4); }
+.log-aside { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.log-aside-head { flex: none; display: flex; align-items: center; gap: var(--sp-2); min-height: 34px; padding: 0 var(--sp-4); }
+.log-aside > .log-body { flex: 1 1 auto; border-top: 1px solid var(--sc-line); }
+.log-aside .empty-state { padding: var(--sp-4); }
+.log-aside .log-toolbar-row { flex-wrap: wrap; }
+.log-aside .log-toolbar-row > .search-wrap { flex: 1 1 100%; }
+.log-aside > .drawer-head { flex: none; border-top: 1px solid var(--sc-line); border-bottom: 0; }
+.log-aside > .drawer-history { flex: 0 1 40%; max-height: none; border-top: 1px solid var(--sc-line); border-bottom: 0; }
+/* the home card's 开始日常 / 调整任务 repeat the column's 开始 and the 任务 tab */
+.app[data-aside] .home-hero-actions { display: none; }

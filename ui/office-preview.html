@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>短场景预览 · MaaShinyColors</title>
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/office-preview.css?v=6">
+  <script type="module" src="office-preview.js?v=25"></script>
+</head>
+<body>
+  <main>
+    <nav class="preview-nav"><a href="office-preview.html">原生片段</a><a href="office-preview.html?story=1">鸽子片段</a><a href="office-preview.html?story=greeting">立绘短片</a><a id="editor-link" href="office-motion.html?rev=11">动作编辑 ↗</a></nav>
+    <div class="theater-toolbar"><label>偶像 <select id="idol-picker"></select></label><label>剧目 <select id="scene-picker"></select></label><div id="cast" class="theater-cast" aria-label="出演偶像"></div></div>
+    <div id="scene" class="short-stage" aria-busy="true"></div>
+    <div class="controls">
+      <button id="play" type="button" disabled aria-label="暂停">Ⅱ</button>
+      <button id="replay" type="button" disabled>重播</button>
+      <input id="time" type="range" aria-label="播放进度" min="0" max="10.5" step="any" value="0" disabled>
+      <label id="compare-field" class="compare-toggle" hidden title="保留剪辑，关闭追加动作"><input id="original" type="checkbox" disabled>原生对照</label><output id="time-label">0.0 / 10.5</output>
+    </div>
+    <div id="status" role="status">加载中…</div>
+  </main>
+</body>
+</html>

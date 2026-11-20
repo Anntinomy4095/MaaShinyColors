@@ -1,0 +1,4 @@
+# MaaFramework release verified on 2026-08-07.
+maafw==5.12.3
+Pillow==13.0.0
+scipy==1.18.1

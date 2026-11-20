@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动作编辑 · MaaShinyColors</title>
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="stylesheet" href="styles/tokens.css"><link rel="stylesheet" href="styles/office-motion.css?v=5">
+<script type="module" src="office-motion.js?v=11"></script>
+</head><body aria-busy="true">
+<header class="motion-header"><h1>动作编辑</h1><input id="name" aria-label="动作名称" placeholder="动作名称"><span id="saved" title="保存在本浏览器"></span>
+<div class="motion-actions"><button id="new">新建</button><button id="example">示例</button><button id="undo" aria-label="撤销" title="Ctrl+Z">↶</button><button id="redo" aria-label="重做" title="Ctrl+Shift+Z">↷</button><button id="import">导入</button><input id="file" type="file" accept=".json" hidden><button id="export">导出 JSON</button><a id="preview" class="button primary" href="office-preview.html?motion=1" target="_blank" rel="noopener">预览 ↗</a></div></header>
+<div class="motion-toolbar"><label>草稿 <select id="projects"></select></label><label>角色 <select id="character"></select></label><label>模型 <select id="model-kind"><option value="cb">Q 版</option><option value="stand">立绘</option></select></label><label>制作 <select id="kind"><option value="new">新动作</option><option value="overlay">基于原生</option></select></label><label id="clip-field">原生动作 <select id="clip"></select></label><label class="check"><input id="original" type="checkbox">原生对照</label></div>
+<main class="motion-layout"><section class="motion-stage-panel">
+<div class="stage-tools"><label>取景 <select id="view"><option value="full">全身</option><option value="upper">半身</option><option value="face">面部</option></select></label><button id="fit" title="取景包含整段动作">适应窗口</button><label>缩放 <select id="zoom"><option value="0.75">75%</option><option value="1" selected>100%</option><option value="1.5">150%</option><option value="2">200%</option></select></label><label class="check"><input id="bones" type="checkbox" checked>控制点</label><label class="check"><input id="bird" type="checkbox">只看鸽子</label><div id="face-settings"><label>表情 <select id="expression"></select></label><label>视线 <select id="gaze"></select></label></div><span id="status" role="status"></span></div>
+<div id="stage" class="motion-stage"><svg id="handles" viewBox="0 0 800 450" role="group" aria-label="骨骼控制点"></svg></div>
+</section><aside class="motion-inspector">
+<label>部位 <select id="bone"></select></label><input id="bone-search" type="search" aria-label="查找部位" placeholder="查找部位"><div class="motion-values"><label><span id="x-label">局部 X</span><input id="x" type="number" aria-label="局部 X" value="0" step="1"></label><label><span id="y-label">局部 Y</span><input id="y" type="number" aria-label="局部 Y" value="0" step="1"></label><label><span id="angle-label">旋转</span><input id="rotation" type="number" aria-label="旋转" value="0" step="1"></label></div>
+<button id="reset-bone">复位部位</button><label>过渡 <select id="curve"><option value="smooth">平滑</option><option value="linear">线性</option><option value="hold">保持</option></select></label>
+<div class="key-actions"><button id="add-key">记录姿势</button><button id="remove-key">删除关键帧</button></div><label class="check" title="关闭后，调整仅预览；记录后保存，离开此帧则撤回"><input id="auto-key" type="checkbox" checked>自动记录</label><span id="pending" class="pending"></span>
+<label>动作时长 <input id="duration" type="number" min="0.1" step="0.1" value="3"> s</label>
+<details id="source-settings"><summary>原生片段</summary><label>起点 <input id="start" type="number" min="0" step="0.1" value="0"> s</label><label>终点 <input id="source-end" type="number" min="0" step="0.1" value="3"> s</label><label class="check"><input id="source-loop" type="checkbox">原动作循环</label></details>
+</aside>
+<section class="motion-timeline"><div class="motion-playbar"><button id="play" aria-label="播放">▶</button><button id="rewind" aria-label="回到起点">⏮</button><input id="time-number" type="number" aria-label="当前时间" min="0" value="0" step="0.033333"><span id="total">/ 3.00 s</span><label>预览速度 <select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label class="check"><input id="loop" type="checkbox" checked>循环</label></div><div id="timeline" class="timeline" aria-label="动作时间轴"></div></section>
+</main></body></html>

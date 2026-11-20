@@ -1,0 +1,610 @@
+{
+    "SC.Nav.Mission.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Mission.Title",
+            "SC.Common.Variant.MissionTab",
+            "SC.Common.Anchor.Mission.Return",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Nav.IdolPortal.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.IdolPortal.Title",
+            "SC.Common.Variant.IdolTrainingEntry",
+            "SC.Common.Anchor.IdolPortal.Return",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Nav.TrainingList.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.TrainingList.Title",
+            "SC.Common.Variant.TrainingSupportTab",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Nav.TrainingSelected.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.TrainingSelected.Title",
+            "SC.Common.Variant.TrainingSelectedBronze",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Nav.MatchMain.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MatchMain.Title",
+            "SC.Common.Anchor.MatchMain.AreaPrompt",
+            "SC.Common.Anchor.MatchMain.SkipTarget",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Nav.FesMain.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.FesMain.Title",
+            "SC.Common.Anchor.FesMain.Back",
+            "SC.Common.Anchor.FesMain.UnitButton",
+            "SC.Common.Anchor.FesMain.JoinLabel",
+            "SC.Common.Color.FesMainUndimmed",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Nav.ShopList.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ShopList.Title",
+            "SC.Common.Anchor.ShopList.MoneySelected",
+            "SC.Common.Anchor.ShopList.MoneyIcon",
+            "SC.Common.Anchor.ShopList.AllSelected",
+            "SC.Common.Anchor.ShopList.Back",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Nav.Mission.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Mission.Title",
+            "SC.Common.Variant.MissionTab",
+            "SC.Common.Anchor.Mission.Return",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Nav.Mission.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "返回上一页（Mission）"
+        }
+    },
+    "SC.Nav.Mission.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Nav.IdolPortal.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.IdolPortal.Title",
+            "SC.Common.Variant.IdolTrainingEntry",
+            "SC.Common.Anchor.IdolPortal.Return",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Nav.IdolPortal.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "返回上一页（IdolPortal）"
+        }
+    },
+    "SC.Nav.IdolPortal.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Nav.TrainingList.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.TrainingList.Title",
+            "SC.Common.Variant.TrainingSupportTab",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Nav.TrainingList.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "返回上一页（TrainingList）"
+        }
+    },
+    "SC.Nav.TrainingList.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Nav.TrainingSelected.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.TrainingSelected.Title",
+            "SC.Common.Variant.TrainingSelectedBronze",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Nav.TrainingSelected.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "返回上一页（TrainingSelected）"
+        }
+    },
+    "SC.Nav.TrainingSelected.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Nav.MatchMain.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MatchMain.Title",
+            "SC.Common.Anchor.MatchMain.AreaPrompt",
+            "SC.Common.Anchor.MatchMain.SkipTarget",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Nav.MatchMain.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "返回上一页（MatchMain）"
+        }
+    },
+    "SC.Nav.MatchMain.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Nav.FesMain.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.FesMain.Title",
+            "SC.Common.Anchor.FesMain.Back",
+            "SC.Common.Anchor.FesMain.UnitButton",
+            "SC.Common.Anchor.FesMain.JoinLabel",
+            "SC.Common.Color.FesMainUndimmed",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Nav.FesMain.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "返回上一页（FesMain）"
+        }
+    },
+    "SC.Nav.FesMain.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Nav.ShopList.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ShopList.Title",
+            "SC.Common.Anchor.ShopList.MoneySelected",
+            "SC.Common.Anchor.ShopList.MoneyIcon",
+            "SC.Common.Anchor.ShopList.AllSelected",
+            "SC.Common.Anchor.ShopList.Back",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Nav.ShopList.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "返回上一页（ShopList）"
+        }
+    },
+    "SC.Nav.ShopList.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Nav.BackOne": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.ProduceEvent.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard",
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Nav.ScenarioEvent.Guard",
+            "SC.Nav.Present.Guard",
+            "SC.Nav.IdolList.Guard",
+            "SC.Nav.KnowhowList.Guard",
+            "SC.Nav.Business.Guard",
+            "SC.Nav.MatchStages.Guard",
+            "SC.Nav.GradeDifficulty.Guard",
+            "SC.Nav.GradeUnit.Guard",
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.Nav.ProduceUnit.Guard",
+            "SC.Nav.ProduceItem.Guard",
+            "SC.Nav.ItemList.Guard",
+            "SC.Nav.Gacha.Guard",
+            "SC.Nav.ShopPremium.Guard",
+            "SC.Nav.AutoSchedule.Guard",
+            "SC.Nav.TrainingEvent.Guard",
+            "SC.Nav.CollaboEvent.Guard",
+            "SC.Nav.CollaboDifficulty.Guard",
+            "SC.Nav.CollaboUnit.Guard",
+            "SC.Common.Stop.ProduceInProgress",
+            "SC.Common.Stop.BusinessReport",
+            "SC.Common.Stop.GradeLive",
+            "SC.Common.Stop.Maintenance",
+            "SC.Common.Stop.CommunicationError",
+            "SC.Common.Stop.StoryUnverified"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Nav.ProduceEvent.Back",
+            "SC.Nav.Mission.Back",
+            "SC.Nav.IdolPortal.Back",
+            "SC.Nav.TrainingList.Back",
+            "SC.Nav.TrainingSelected.Back",
+            "SC.Nav.MatchMain.Back",
+            "SC.Nav.FesMain.Back",
+            "SC.Nav.ShopList.Back",
+            "SC.Nav.MatchSkip.Cancel",
+            "SC.Nav.ScenarioEvent.Back",
+            "SC.Nav.Present.Back",
+            "SC.Nav.IdolList.Back",
+            "SC.Nav.KnowhowList.Back",
+            "SC.Nav.Business.Back",
+            "SC.Nav.MatchStages.Back",
+            "SC.Nav.GradeDifficulty.Back",
+            "SC.Nav.GradeUnit.Back",
+            "SC.Nav.ProduceSelect.Back",
+            "SC.Nav.ProduceUnit.Back",
+            "SC.Nav.ProduceItem.Back",
+            "SC.Nav.ItemList.Back",
+            "SC.Nav.Gacha.Back",
+            "SC.Nav.ShopPremium.Back",
+            "SC.Nav.AutoSchedule.Back",
+            "SC.Nav.TrainingEvent.Back",
+            "SC.Nav.CollaboEvent.Back",
+            "SC.Nav.CollaboDifficulty.Back",
+            "SC.Nav.CollaboUnit.Back",
+            "SC.Common.Stop.ProduceInProgress",
+            "SC.Common.Stop.BusinessReport",
+            "SC.Common.Stop.GradeLive",
+            "SC.Common.Stop.Maintenance",
+            "SC.Common.Stop.CommunicationError",
+            "SC.Common.Stop.StoryUnverified",
+            "SC.Nav.NotHandled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ]
+    },
+    "SC.Nav.NotHandled": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "已识别已知页面，但返回节点未启用或已达次数上限：不点击，结束任务。"
+        }
+    },
+    "SC.Nav.MatchSkip.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MatchSkip.Title",
+            "SC.Common.Anchor.MatchSkip.Recovery",
+            "SC.Common.Anchor.MatchSkip.Filter",
+            "SC.Common.Anchor.MatchSkip.Cancel",
+            "SC.Common.Anchor.MatchSkip.CostLabel"
+        ]
+    },
+    "SC.Nav.MatchSkip.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MatchSkip.Title",
+            "SC.Common.Anchor.MatchSkip.Recovery",
+            "SC.Common.Anchor.MatchSkip.Filter",
+            "SC.Common.Anchor.MatchSkip.Cancel",
+            "SC.Common.Anchor.MatchSkip.CostLabel"
+        ],
+        "action": "Click",
+        "target": [
+            382,
+            621,
+            69,
+            38
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Nav.MatchSkip.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：点「キャンセル」关闭（非消费；未选择的数量随之作废）。"
+        }
+    },
+    "SC.Nav.MatchSkip.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}

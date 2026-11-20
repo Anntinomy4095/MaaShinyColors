@@ -1,0 +1,19 @@
+{
+    "SC.Runtime.Mode": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.RuntimeMode",
+        "custom_action_param": {
+            "mode": "observe",
+            "allow_input": false,
+            "require_confirmation": true
+        }
+    },
+    "SC.Runtime.StopSafely": {
+        "recognition": "DirectHit",
+        "action": "StopTask",
+        "focus": {
+            "succeeded": "任务已在安全检查点停止。"
+        }
+    }
+}

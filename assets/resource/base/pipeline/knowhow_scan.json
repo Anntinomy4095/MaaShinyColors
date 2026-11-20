@@ -1,0 +1,3068 @@
+{
+    "SC.KnowhowScan.Config": {
+        "recognition": "DirectHit",
+        "attach": {
+            "mode": "scan",
+            "details": true,
+            "max_books": 600,
+            "max_inputs": 590,
+            "max_frames": 8000,
+            "max_holds": 3,
+            "max_grid_scrolls": 300,
+            "max_detail_scrolls": 30,
+            "resume_record": null,
+            "calibration": {
+                "books": 2,
+                "detail_wheels": 10,
+                "grid_wheels": 4,
+                "grid_seek_bottom": true,
+                "max_grid_wheels": 120,
+                "grid_up_wheels": 2,
+                "max_frames": 400,
+                "max_holds": 3
+            },
+            "filter_calibration": {
+                "max_down_wheels": 30,
+                "up_wheels": 3,
+                "max_frames": 200,
+                "max_holds": 6
+            }
+        },
+        "doc": "书库扫描默认读取全库（最多600本），包含详情翻页。按宿主运行窗口分段并续读最新记录，结束恢复排序；mode=calibrate只校准滚动，mode=filter_calibrate测量筛选弹窗。"
+    },
+    "SC.KnowhowScan.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.KnowhowScan.Config"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.KnowhowScan.Main"
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ノウハウブック监督扫描（仅 tools/run_tasks.py --live --supervised-task 的 KnowhowScan 单次入口可运行；点击节点默认禁用，按动作 id 放行）：首页→アイドル→アイドル一覧→ノウハウブック。校准模式只滚轮测步长、打开少量书；扫描模式切评价值顺→逐屏读网格与详情→恢复原排序。读新书且开启锁书时只对计划内的新书按一次「保護」；不売却/マーク/発現，每帧存私有原图。"
+        }
+    },
+    "SC.KnowhowScan.Want.ListOpenSort": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_sort",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.List.OpenSort": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.ListOpenSort",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "书库：打开並び替え（切到评价值顺或恢复原排序，各一次）"
+        },
+        "action": "Click",
+        "target": [
+            975,
+            108,
+            142,
+            34
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.Sort"
+        ]
+    },
+    "SC.KnowhowScan.Want.SortPickEval": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "pick_sort",
+            "key": "ノウハウ評価値順"
+        }
+    },
+    "SC.KnowhowScan.Sort.PickEval": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Sort.Guard",
+            "SC.KnowhowScan.Want.SortPickEval"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 1,
+        "focus": {
+            "Node.Action.Starting": "並び替え：选「ノウハウ評価値順」"
+        },
+        "action": "Click",
+        "target": [
+            758,
+            232,
+            130,
+            42
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.Sort"
+        ]
+    },
+    "SC.KnowhowScan.Want.SortPickDefault": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "pick_sort",
+            "key": "デフォルト"
+        }
+    },
+    "SC.KnowhowScan.Sort.PickDefault": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Sort.Guard",
+            "SC.KnowhowScan.Want.SortPickDefault"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 1,
+        "focus": {
+            "Node.Action.Starting": "並び替え：恢复「デフォルト」"
+        },
+        "action": "Click",
+        "target": [
+            390,
+            232,
+            130,
+            42
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.Sort"
+        ]
+    },
+    "SC.KnowhowScan.Want.SortPickDate": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "pick_sort",
+            "key": "獲得順"
+        }
+    },
+    "SC.KnowhowScan.Sort.PickDate": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Sort.Guard",
+            "SC.KnowhowScan.Want.SortPickDate"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 1,
+        "focus": {
+            "Node.Action.Starting": "並び替え：选「獲得順」（读新书）"
+        },
+        "action": "Click",
+        "target": [
+            574,
+            421,
+            130,
+            42
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.Sort"
+        ]
+    },
+    "SC.KnowhowScan.Want.SortApply": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "apply_sort"
+        }
+    },
+    "SC.KnowhowScan.Sort.Apply": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Sort.Guard",
+            "SC.KnowhowScan.Want.SortApply"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "並び替え：目标键已显示为选中，按決定（仅排序弹窗）"
+        },
+        "action": "Click",
+        "target": [
+            578,
+            520,
+            124,
+            46
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridScrollDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "scroll_grid",
+            "direction": "down",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.ScrollDown": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridScrollDown",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 200,
+        "focus": {
+            "Node.Action.Starting": "书库网格：本屏已读完，滚轮下一格（步长未校准；必须整行重叠）"
+        },
+        "action": "Click",
+        "target": [
+            690,
+            322,
+            90,
+            12
+        ],
+        "doc": "表绑定滚轮 knowhow-grid-scroll-down（-60）；滚动后等待 600ms，画面停稳由 Agent 核对（两帧相同才做文字识别），并按宿主限速自行等待。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridScrollUp": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "scroll_grid",
+            "direction": "up",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Want.GridJumpDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "jump_grid",
+            "direction": "down",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Want.GridJumpUp": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "jump_grid",
+            "direction": "up",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Want.GridTrackUpper": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "tap_track",
+            "key": "upper",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Want.GridTrackLower": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "tap_track",
+            "key": "lower",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.ScrollUp": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridScrollUp",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 200,
+        "focus": {
+            "Node.Action.Starting": "书库网格：不在顶部，滚轮上一格"
+        },
+        "action": "Click",
+        "target": [
+            850,
+            322,
+            90,
+            12
+        ],
+        "doc": "表绑定滚轮 knowhow-grid-scroll-up（+60）；滚动后等待 600ms，画面停稳由 Agent 核对（两帧相同才做文字识别），并按宿主限速自行等待。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Grid.JumpDown": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridJumpDown",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 2000,
+        "max_hit": 10,
+        "focus": {
+            "Node.Action.Starting": "书库网格：探针滚轮 −240 一次，记录跳动距离"
+        },
+        "action": "Click",
+        "target": [
+            690,
+            322,
+            90,
+            12
+        ],
+        "doc": "表绑定滚轮 knowhow-grid-jump-down（-240）；滚动后等待 2000ms，宿主每动作每分钟 ≤30 次；步长使用当前校准。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Grid.JumpUp": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridJumpUp",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 2000,
+        "max_hit": 10,
+        "focus": {
+            "Node.Action.Starting": "书库网格：探针滚轮 +240 一次，记录跳动距离"
+        },
+        "action": "Click",
+        "target": [
+            850,
+            322,
+            90,
+            12
+        ],
+        "doc": "表绑定滚轮 knowhow-grid-jump-up（+240）；滚动后等待 2000ms，宿主每动作每分钟 ≤30 次；步长使用当前校准。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Grid.TrackUpper": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridTrackUpper",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "书库网格：探针点一次滚动条轨道（滑块上方）"
+        },
+        "action": "Click",
+        "target": [
+            1232,
+            192,
+            8,
+            14
+        ],
+        "doc": "表绑定 knowhow-grid-track-upper（仅校准模式的跳转探针，默认关）：滑块离开顶部（上沿低于 y 210）时才点；只看翻页还是跳到点击处。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Grid.TrackLower": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridTrackLower",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "书库网格：探针点一次滚动条轨道（滑块下方）"
+        },
+        "action": "Click",
+        "target": [
+            1232,
+            610,
+            8,
+            20
+        ],
+        "doc": "表绑定 knowhow-grid-track-lower（仅校准模式的跳转探针，默认关）：滑块下沿高于 y 606 时才点；只看翻页还是跳到点击处。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.DetailScrollDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "scroll_detail",
+            "direction": "down",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Detail.ScrollDown": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.DetailScrollDown",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 6000,
+        "focus": {
+            "Node.Action.Starting": "书库详情：滚轮下一格直到行数=ノウハウ数且末行完整（不碰行内按钮）"
+        },
+        "action": "Click",
+        "target": [
+            60,
+            340,
+            200,
+            30
+        ],
+        "doc": "表绑定滚轮 knowhow-detail-scroll-down（-60）；滚动后等待 600ms，画面停稳由 Agent 核对（位移一整格或两帧相同），并按宿主限速自行等待。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR0C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 0,
+            "col": 0,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R0C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR0C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第1行第1列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            562,
+            210,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR0C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 0,
+            "col": 1,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R0C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR0C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第1行第2列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            700,
+            210,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR0C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 0,
+            "col": 2,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R0C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR0C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第1行第3列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            839,
+            210,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR0C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 0,
+            "col": 3,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R0C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR0C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第1行第4列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            977,
+            210,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR0C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 0,
+            "col": 4,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R0C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR0C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第1行第5列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1116,
+            210,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR1C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 1,
+            "col": 0,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R1C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR1C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第2行第1列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            562,
+            368,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR1C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 1,
+            "col": 1,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R1C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR1C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第2行第2列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            700,
+            368,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR1C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 1,
+            "col": 2,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R1C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR1C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第2行第3列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            839,
+            368,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR1C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 1,
+            "col": 3,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R1C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR1C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第2行第4列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            977,
+            368,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR1C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 1,
+            "col": 4,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R1C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR1C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第2行第5列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1116,
+            368,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR2C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 2,
+            "col": 0,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R2C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR2C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第3行第1列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            562,
+            525,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR2C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 2,
+            "col": 1,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R2C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR2C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第3行第2列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            700,
+            525,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR2C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 2,
+            "col": 2,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R2C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR2C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第3行第3列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            839,
+            525,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR2C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 2,
+            "col": 3,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R2C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR2C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第3行第4列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            977,
+            525,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenTileR2C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "row": 2,
+            "col": 4,
+            "key": null,
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenTile.R2C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenTileR2C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：打开第3行第5列的书（只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1116,
+            525,
+            52,
+            40
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY0C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y0c0",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y0C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY0C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第1列 y 槽 0（槽顶 184）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            566,
+            184,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y0c0：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY0C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y0c1",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y0C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY0C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第2列 y 槽 0（槽顶 184）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            704,
+            184,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y0c1：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY0C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y0c2",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y0C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY0C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第3列 y 槽 0（槽顶 184）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            843,
+            184,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y0c2：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY0C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y0c3",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y0C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY0C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第4列 y 槽 0（槽顶 184）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            981,
+            184,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y0c3：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY0C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y0c4",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y0C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY0C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第5列 y 槽 0（槽顶 184）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1120,
+            184,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y0c4：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY1C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y1c0",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y1C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY1C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第1列 y 槽 1（槽顶 254）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            566,
+            254,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y1c0：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY1C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y1c1",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y1C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY1C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第2列 y 槽 1（槽顶 254）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            704,
+            254,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y1c1：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY1C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y1c2",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y1C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY1C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第3列 y 槽 1（槽顶 254）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            843,
+            254,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y1c2：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY1C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y1c3",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y1C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY1C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第4列 y 槽 1（槽顶 254）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            981,
+            254,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y1c3：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY1C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y1c4",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y1C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY1C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第5列 y 槽 1（槽顶 254）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1120,
+            254,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y1c4：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY2C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y2c0",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y2C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY2C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第1列 y 槽 2（槽顶 324）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            566,
+            324,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y2c0：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY2C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y2c1",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y2C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY2C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第2列 y 槽 2（槽顶 324）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            704,
+            324,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y2c1：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY2C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y2c2",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y2C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY2C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第3列 y 槽 2（槽顶 324）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            843,
+            324,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y2c2：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY2C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y2c3",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y2C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY2C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第4列 y 槽 2（槽顶 324）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            981,
+            324,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y2c3：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY2C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y2c4",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y2C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY2C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第5列 y 槽 2（槽顶 324）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1120,
+            324,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y2c4：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY3C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y3c0",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y3C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY3C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第1列 y 槽 3（槽顶 394）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            566,
+            394,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y3c0：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY3C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y3c1",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y3C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY3C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第2列 y 槽 3（槽顶 394）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            704,
+            394,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y3c1：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY3C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y3c2",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y3C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY3C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第3列 y 槽 3（槽顶 394）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            843,
+            394,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y3c2：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY3C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y3c3",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y3C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY3C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第4列 y 槽 3（槽顶 394）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            981,
+            394,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y3c3：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY3C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y3c4",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y3C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY3C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第5列 y 槽 3（槽顶 394）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1120,
+            394,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y3c4：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY4C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y4c0",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y4C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY4C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第1列 y 槽 4（槽顶 464）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            566,
+            464,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y4c0：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY4C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y4c1",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y4C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY4C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第2列 y 槽 4（槽顶 464）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            704,
+            464,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y4c1：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY4C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y4c2",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y4C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY4C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第3列 y 槽 4（槽顶 464）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            843,
+            464,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y4c2：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY4C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y4c3",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y4C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY4C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第4列 y 槽 4（槽顶 464）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            981,
+            464,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y4c3：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY4C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y4c4",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y4C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY4C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第5列 y 槽 4（槽顶 464）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1120,
+            464,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y4c4：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY5C0": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y5c0",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y5C0": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY5C0",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第1列 y 槽 5（槽顶 534）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            566,
+            534,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y5c0：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY5C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y5c1",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y5C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY5C1",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第2列 y 槽 5（槽顶 534）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            704,
+            534,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y5c1：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY5C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y5c2",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y5C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY5C2",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第3列 y 槽 5（槽顶 534）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            843,
+            534,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y5c2：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY5C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y5c3",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y5C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY5C3",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第4列 y 槽 5（槽顶 534）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            981,
+            534,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y5c3：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.GridOpenSlotY5C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_tile",
+            "key": "knowhow-slot-y5c4",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Grid.OpenSlot.Y5C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.GridOpenSlotY5C4",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 600,
+        "focus": {
+            "Node.Action.Starting": "书库网格：点第5列 y 槽 5（槽顶 534）上的书（逐帧定位的格子，只读详情）"
+        },
+        "action": "Click",
+        "target": [
+            1120,
+            534,
+            44,
+            12
+        ],
+        "doc": "表绑定 knowhow-slot-y5c4：漂移网格点击槽（knowhow_grid.slot_for 按定位到的格子选槽，矩形在封面安全区内）；点击后须该格出现 ✓ 且左栏详情与该格一致，否则停止。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.FilterOpen": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "open_filter",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Filter.Open": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.FilterOpen",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "书库：打开「絞り込み」弹窗（只读校准：只滚动、最后按キャンセル）"
+        },
+        "action": "Click",
+        "target": [
+            826,
+            110,
+            86,
+            26
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.Filter"
+        ]
+    },
+    "SC.KnowhowScan.Want.FilterScrollDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "scroll_filter",
+            "direction": "down"
+        }
+    },
+    "SC.KnowhowScan.Filter.ScrollDown": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Filter.Guard",
+            "SC.KnowhowScan.Want.FilterScrollDown"
+        ],
+        "pre_delay": 0,
+        "post_delay": 2000,
+        "max_hit": 70,
+        "focus": {
+            "Node.Action.Starting": "絞り込み弹窗：滚轮向下一格（测量可复现的滚动位置）"
+        },
+        "action": "Click",
+        "target": [
+            1060,
+            300,
+            30,
+            40
+        ],
+        "doc": "表绑定滚轮 knowhow-filter-scroll-down（-60）；滚动后等待 2000ms，宿主每动作每分钟 ≤30 次；步长使用当前校准。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.Filter"
+        ]
+    },
+    "SC.KnowhowScan.Want.FilterScrollUp": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "scroll_filter",
+            "direction": "up"
+        }
+    },
+    "SC.KnowhowScan.Filter.ScrollUp": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Filter.Guard",
+            "SC.KnowhowScan.Want.FilterScrollUp"
+        ],
+        "pre_delay": 0,
+        "post_delay": 2000,
+        "max_hit": 20,
+        "focus": {
+            "Node.Action.Starting": "絞り込み弹窗：滚轮向上一格（从底部回退的位置）"
+        },
+        "action": "Click",
+        "target": [
+            1060,
+            300,
+            30,
+            40
+        ],
+        "doc": "表绑定滚轮 knowhow-filter-scroll-up（+60）；滚动后等待 2000ms，宿主每动作每分钟 ≤30 次；步长使用当前校准。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.Filter"
+        ]
+    },
+    "SC.KnowhowScan.Want.FilterCancel": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "cancel_filter"
+        }
+    },
+    "SC.KnowhowScan.Filter.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Filter.Guard",
+            "SC.KnowhowScan.Want.FilterCancel"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "絞り込み弹窗：按キャンセル关闭（不勾选、不リセット、不決定）"
+        },
+        "action": "Click",
+        "target": [
+            404,
+            606,
+            115,
+            36
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    },
+    "SC.KnowhowScan.Want.ListBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "leave"
+        }
+    },
+    "SC.KnowhowScan.List.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.List.Guard",
+            "SC.KnowhowScan.Want.ListBack"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "书库：扫描结束（已恢复原排序），按返回键回アイドル一覧"
+        },
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.Leave"
+        ]
+    },
+    "SC.KnowhowScan.Home.OpenIdol": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.KnowhowScan.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "首页：点アイドル（扫描未结束）"
+        },
+        "action": "Click",
+        "target": [
+            508,
+            667,
+            114,
+            30
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ],
+        "next": [
+            "SC.KnowhowScan.Portal.Settled"
+        ]
+    },
+    "SC.KnowhowScan.Portal.OpenList": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.IdolPortal.Guard",
+            "SC.CardScan.Anchor.Portal.ListEntry",
+            "SC.KnowhowScan.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル页：点「アイドル一覧」"
+        },
+        "action": "Click",
+        "target": [
+            830,
+            456,
+            170,
+            44
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ],
+        "next": [
+            "SC.KnowhowScan.IdolList.Settled"
+        ]
+    },
+    "SC.KnowhowScan.IdolList.OpenKnowhow": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.IdolList.Guard",
+            "SC.KnowhowScan.Anchor.IdolList.Loaded",
+            "SC.KnowhowScan.State.Active"
+        ],
+        "doc": "须首格战力数字已绘出（Loaded）：2026-10-12 实机在フェスアイドル数据加载前点了ノウハウブック标签，游戏未响应；未进入时 on_error 回到本节点再点一次（max_hit 2，只读标签）。",
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル一覧：点左侧「ノウハウブック」标签进入ノウハウブック一覧"
+        },
+        "action": "Click",
+        "target": [
+            34,
+            532,
+            136,
+            48
+        ],
+        "on_error": [
+            "SC.KnowhowScan.IdolList.OpenKnowhow",
+            "SC.KnowhowScan.Abort"
+        ],
+        "next": [
+            "SC.KnowhowScan.List.Settled"
+        ]
+    },
+    "SC.KnowhowScan.IdolList.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.IdolList.Guard",
+            "SC.KnowhowScan.State.Finished"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル一覧：扫描已结束，按返回键回アイドル页"
+        },
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ],
+        "next": [
+            "SC.KnowhowScan.Portal.Settled"
+        ]
+    },
+    "SC.KnowhowScan.Portal.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.IdolPortal.Guard",
+            "SC.KnowhowScan.State.Finished"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル页：扫描已结束，按返回键回首页"
+        },
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ],
+        "next": [
+            "SC.KnowhowScan.Home.Settled"
+        ]
+    },
+    "SC.KnowhowScan.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 60000,
+        "next": [
+            "SC.KnowhowScan.Done",
+            "SC.KnowhowScan.Overlay.Preset",
+            "SC.KnowhowScan.Halted",
+            "[JumpBack]SC.KnowhowScan.List.Back",
+            "[JumpBack]SC.KnowhowScan.List.Settle",
+            "[JumpBack]SC.KnowhowScan.List.Hold",
+            "[JumpBack]SC.KnowhowScan.Detail.ScrollDown",
+            "[JumpBack]SC.KnowhowScan.Grid.ScrollDown",
+            "[JumpBack]SC.KnowhowScan.Grid.ScrollUp",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y0C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y0C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y0C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y0C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y0C4",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y1C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y1C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y1C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y1C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y1C4",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y2C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y2C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y2C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y2C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y2C4",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y3C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y3C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y3C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y3C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y3C4",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y4C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y4C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y4C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y4C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y4C4",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y5C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y5C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y5C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y5C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenSlot.Y5C4",
+            "[JumpBack]SC.KnowhowScan.Keep.Protect",
+            "[JumpBack]SC.KnowhowScan.Portal.OpenList",
+            "[JumpBack]SC.KnowhowScan.IdolList.OpenKnowhow",
+            "[JumpBack]SC.KnowhowScan.IdolList.Back",
+            "[JumpBack]SC.KnowhowScan.Portal.Back",
+            "[JumpBack]SC.KnowhowScan.Home.AtHome",
+            "[JumpBack]SC.KnowhowScan.Grid.JumpDown",
+            "[JumpBack]SC.KnowhowScan.Grid.JumpUp",
+            "[JumpBack]SC.KnowhowScan.Grid.TrackUpper",
+            "[JumpBack]SC.KnowhowScan.Grid.TrackLower",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "[JumpBack]SC.KnowhowScan.List.OpenSort",
+            "[JumpBack]SC.KnowhowScan.Sort.PickEval",
+            "[JumpBack]SC.KnowhowScan.Sort.PickDefault",
+            "[JumpBack]SC.KnowhowScan.Sort.PickDate",
+            "[JumpBack]SC.KnowhowScan.Sort.Apply",
+            "[JumpBack]SC.KnowhowScan.Filter.Open",
+            "[JumpBack]SC.KnowhowScan.Filter.ScrollDown",
+            "[JumpBack]SC.KnowhowScan.Filter.ScrollUp",
+            "[JumpBack]SC.KnowhowScan.Filter.Cancel",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R0C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R0C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R0C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R0C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R0C4",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R1C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R1C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R1C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R1C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R1C4",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R2C0",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R2C1",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R2C2",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R2C3",
+            "[JumpBack]SC.KnowhowScan.Grid.OpenTile.R2C4",
+            "[JumpBack]SC.KnowhowScan.Filter.Hold"
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.Anchor.List.Title": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            330,
+            70
+        ],
+        "expected": [
+            "ノウハウブック.{0,2}覧"
+        ],
+        "threshold": 0.3,
+        "doc": "原生标题 OCR 拆为「ノウハウブックー」「覧」或「ノウハウブックー覧」。"
+    },
+    "SC.KnowhowScan.Anchor.List.Owned": {
+        "recognition": "OCR",
+        "roi": [
+            1050,
+            648,
+            220,
+            50
+        ],
+        "expected": [
+            "所持数"
+        ],
+        "threshold": 0.3
+    },
+    "SC.KnowhowScan.List.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Anchor.List.Title",
+            "SC.KnowhowScan.Anchor.List.Owned",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "doc": "一覧页正向守卫（无弹窗遮暗）。模式/弹窗/拒绝标记/排序/所持数由 Want 内的 knowhow_books.classify_knowhow_screen 再判，异常即停止。"
+    },
+    "SC.KnowhowScan.Anchor.Sort.Title": {
+        "recognition": "OCR",
+        "roi": [
+            400,
+            120,
+            160,
+            50
+        ],
+        "expected": [
+            "並び替え"
+        ],
+        "threshold": 0.3
+    },
+    "SC.KnowhowScan.Sort.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Anchor.Sort.Title"
+        ],
+        "doc": "並び替え弹窗：选中键由 knowhow_scan.sort_popup_selection 像素判定（选中 0.076 粉 vs 0）。"
+    },
+    "SC.KnowhowScan.Anchor.Filter.Title": {
+        "recognition": "OCR",
+        "roi": [
+            826,
+            36,
+            210,
+            40
+        ],
+        "expected": [
+            "該当するノウハウブック"
+        ],
+        "threshold": 0.3,
+        "doc": "絞り込み弹窗头部「該当するノウハウブック N」（2026-10-12 原生 #117/#122/#131）；计数由 knowhow_books.parse_filter_popup 读取。"
+    },
+    "SC.KnowhowScan.Filter.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Anchor.Filter.Title"
+        ],
+        "doc": "絞り込み弹窗正向守卫；其他弹窗（如「絞り込みノウハウ選択」）由 Want 内 classify_knowhow_screen 判定后停止。"
+    },
+    "SC.KnowhowScan.Anchor.IdolList.KnowhowTab": {
+        "recognition": "OCR",
+        "roi": [
+            24,
+            522,
+            160,
+            66
+        ],
+        "expected": [
+            "ノウハウブック"
+        ],
+        "threshold": 0.3
+    },
+    "SC.KnowhowScan.IdolList.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.Anchor.List.Title",
+            "SC.CardScan.Anchor.List.Filter",
+            "SC.KnowhowScan.Anchor.IdolList.KnowhowTab",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.KnowhowScan.Anchor.IdolList.Loaded": {
+        "recognition": "OCR",
+        "roi": [
+            316,
+            266,
+            64,
+            28
+        ],
+        "expected": [
+            "^[0-9]{3,4}$"
+        ],
+        "threshold": 0.3
+    },
+    "SC.KnowhowScan.State.Active": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "is": "active"
+        }
+    },
+    "SC.KnowhowScan.State.Finished": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "is": "finished"
+        }
+    },
+    "SC.KnowhowScan.State.Halted": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "is": "halted"
+        }
+    },
+    "SC.KnowhowScan.Want.Hold": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "hold"
+        }
+    },
+    "SC.KnowhowScan.List.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.List.Guard",
+            "SC.KnowhowScan.Want.Hold"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 2000,
+        "focus": {
+            "Node.Recognition.Succeeded": "书库：格子/详情尚未加载或文字不可读：不点击，再截一帧（有上限）。"
+        }
+    },
+    "SC.KnowhowScan.Filter.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Filter.Guard",
+            "SC.KnowhowScan.Want.Hold"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 2000,
+        "focus": {
+            "Node.Recognition.Succeeded": "絞り込み弹窗：等待滚动停稳/文字可读：不点击，再截一帧（有上限）。"
+        }
+    },
+    "SC.KnowhowScan.Sent.List": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.KnowhowScan.List.Guard",
+            "SC.Loading.Present",
+            "SC.KnowhowScan.Anchor.Preset.Title"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Sent",
+        "doc": "与 SC.KnowhowScan.List.Settled 相同的正向落定守卫；只有 Want 绑定的点击/滚轮动作成功（控制器确认已发送）才会到达：落定后通知运行时该决定已执行，下一帧即使像素相同也作为新观测（如滚到底 dy=0）。未到达时同像素帧沿用原决定、不推进状态（2026-10-12 实机：帧守卫因首帧观察过慢拒绝点击，旧逻辑把同一画面当成滚动后的新帧）。 也接受プリセット弹窗（压暗后 List.Guard 不命中），交给 Main 的 Overlay.Preset 停止。",
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.Sent.Sort": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.KnowhowScan.Sort.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Sent",
+        "doc": "与 SC.KnowhowScan.Sort.Settled 相同的正向落定守卫；只有 Want 绑定的点击/滚轮动作成功（控制器确认已发送）才会到达：落定后通知运行时该决定已执行，下一帧即使像素相同也作为新观测（如滚到底 dy=0）。未到达时同像素帧沿用原决定、不推进状态（2026-10-12 实机：帧守卫因首帧观察过慢拒绝点击，旧逻辑把同一画面当成滚动后的新帧）。",
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.Sent.Filter": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.KnowhowScan.Filter.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Sent",
+        "doc": "与 Sent.List 相同：绑定的点击/滚轮成功后、弹窗守卫落定时确认该决定已执行。",
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.Sent.Leave": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.KnowhowScan.IdolList.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Sent",
+        "doc": "与 SC.KnowhowScan.IdolList.Settled 相同的正向落定守卫；只有 Want 绑定的点击/滚轮动作成功（控制器确认已发送）才会到达：落定后通知运行时该决定已执行，下一帧即使像素相同也作为新观测（如滚到底 dy=0）。未到达时同像素帧沿用原决定、不推进状态（2026-10-12 实机：帧守卫因首帧观察过慢拒绝点击，旧逻辑把同一画面当成滚动后的新帧）。",
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.KnowhowScan.Home.OpenIdol"
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.Home.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.KnowhowScan.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.KnowhowScan.HomeClean"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页（扫描未结束）：确认无弹窗/公告/加载后再点アイドル。"
+        }
+    },
+    "SC.KnowhowScan.Done": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.KnowhowScan.State.Finished"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "回到首页：保存私有扫描记录与书库（未读完整的结果标记为部分扫描）。"
+        }
+    },
+    "SC.KnowhowScan.Halted": {
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.State.Halted"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Stop",
+        "custom_action_param": {
+            "reason": "halted"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "书库扫描停止（模式/弹窗/未知画面/绑定失败/预算）：不再输入、不重试，已读部分标记为部分扫描；如排序已改，请手动恢复。"
+        }
+    },
+    "SC.KnowhowScan.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Stop",
+        "custom_action_param": {
+            "reason": "abort"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "书库扫描：未知画面/超时/守卫失败，不再输入，本任务失败（已读部分只存私有记录）。"
+        }
+    },
+    "SC.KnowhowScan.Portal.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.IdolList.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.KnowhowScan.IdolList.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.List.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.KnowhowScan.List.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.Sort.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.KnowhowScan.Sort.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.Home.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ]
+    },
+    "SC.KnowhowScan.Retry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Retry",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.KnowhowScan.Main"
+        ],
+        "on_error": [
+            "SC.KnowhowScan.Abort"
+        ],
+        "doc": "输入节点被控制器拒绝且证明未发出（denied / attempted:false，如截图超过帧龄）：回到 Main 重新截图、重新识别（缓存决策使其很快），同一步最多 3 次；已发出或不确定的点击不重试，直接 Abort。",
+        "focus": {
+            "Node.Action.Starting": "书库扫描：点击被拒绝（未发出），重新截图后重试一次（同步骤上限 3 次）"
+        }
+    },
+    "SC.KnowhowScan.Anchor.Preset.Title": {
+        "recognition": "OCR",
+        "roi": [
+            560,
+            15,
+            420,
+            55
+        ],
+        "expected": [
+            "ノウハウブックプリセット"
+        ],
+        "threshold": 0.5,
+        "doc": "ノウハウブックプリセット弹窗标题（2026-10-13 kh-full8：点开某本书时与详情同时出现，屏幕被压暗，List.Guard 不再命中）。"
+    },
+    "SC.KnowhowScan.Overlay.Preset": {
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Anchor.Preset.Title"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.KnowhowScan.Stop",
+        "custom_action_param": {
+            "reason": "popup_preset"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "doc": "意外的プリセット弹窗：不再输入（绝不按「保存」；キャンセル 需单独的受控动作与用户批准），保留已读部分并报告 stopped:popup_preset。",
+        "focus": {
+            "Node.Action.Starting": "书库扫描：出现プリセット弹窗，停止扫描（不点击任何按钮）"
+        }
+    },
+    "SC.KnowhowScan.Want.Settle": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "settle"
+        }
+    },
+    "SC.KnowhowScan.List.Settle": {
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.List.Guard",
+            "SC.KnowhowScan.Want.Settle"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 6000,
+        "focus": {
+            "Node.Recognition.Succeeded": "书库：滚轮后画面尚未停稳：不点击，再截一帧（有上限）。"
+        }
+    },
+    "SC.KnowhowScan.Want.KeepProtect": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.KnowhowScan.Want",
+        "custom_recognition_param": {
+            "want": "press_protect",
+            "peek": true
+        }
+    },
+    "SC.KnowhowScan.Keep.Protect": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.KnowhowScan.Want.KeepProtect",
+            "SC.KnowhowScan.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 10,
+        "focus": {
+            "Node.Action.Starting": "锁书：左栏是计划锁定的新书（✓、标题、能力、ノウハウ数一致，未保護），按一次「保護」"
+        },
+        "action": "Click",
+        "target": [
+            146,
+            648,
+            112,
+            30
+        ],
+        "doc": "表绑定 knowhow-detail-protect：只在锁书步骤、已绑定且未保護的新书上按一次；之后须左栏变为「保護解除」且该格出现锁，否则停止且不再按（结果不确定）。",
+        "on_error": [
+            "SC.KnowhowScan.Retry"
+        ],
+        "next": [
+            "SC.KnowhowScan.Sent.List"
+        ]
+    }
+}

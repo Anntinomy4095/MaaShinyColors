@@ -1,0 +1,41 @@
+{
+  "SC.SupervisedNav.Observe": {
+    "recognition": "DirectHit", "action": "DoNothing",
+    "next": ["SC.SupervisedNav.Announcement.ReadOnly", "SC.SupervisedNav.Unknown"],
+    "on_error": ["SC.SupervisedNav.Error"], "timeout": 1000, "rate_limit": 0,
+    "pre_delay": 0, "post_delay": 0
+  },
+  "SC.SupervisedNav.Announcement.Title": {
+    "recognition": "TemplateMatch", "template": "title.png",
+    "roi": [45, 18, 125, 45], "threshold": 0.95, "method": 5,
+    "action": "DoNothing", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.SupervisedNav.Announcement.TopicsSelected": {
+    "recognition": "TemplateMatch", "template": "topics.png",
+    "roi": [15, 87, 176, 86], "threshold": 0.95, "method": 5,
+    "action": "DoNothing", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.SupervisedNav.Announcement.ReturnTarget": {
+    "recognition": "TemplateMatch", "template": "return.png",
+    "roi": [17, 620, 84, 83], "threshold": 0.95, "method": 5,
+    "action": "DoNothing", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.SupervisedNav.Announcement.ReadOnly": {
+    "recognition": "And",
+    "all_of": ["SC.SupervisedNav.Announcement.Title", "SC.SupervisedNav.Announcement.TopicsSelected", "SC.SupervisedNav.Announcement.ReturnTarget"],
+    "action": "DoNothing", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.SupervisedNav.Announcement.Click": {
+    "enabled": false, "recognition": "And",
+    "all_of": ["SC.SupervisedNav.Announcement.Title", "SC.SupervisedNav.Announcement.TopicsSelected", "SC.SupervisedNav.Announcement.ReturnTarget"],
+    "action": "Click", "target": [57, 662, 1, 1],
+    "on_error": ["SC.SupervisedNav.Error"], "pre_delay": 0, "post_delay": 0
+  },
+  "SC.SupervisedNav.Unknown": {
+    "recognition": "Or", "any_of": ["SC.SupervisedNav.Announcement.ReadOnly"], "inverse": true,
+    "action": "StopTask", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.SupervisedNav.Error": {
+    "recognition": "DirectHit", "action": "StopTask", "pre_delay": 0, "post_delay": 0
+  }
+}

@@ -1,0 +1,24 @@
+# 本机数据：设置、游戏登录状态、截图与运行记录，不要提交
+dev_assets/private/
+
+# 环境与构建输出
+.venv/
+__pycache__/
+*.pyc
+bin/
+obj/
+build/
+install/
+dist/
+node_modules/
+
+# 运行时下载或生成的文件
+deps/*
+!deps/tools/
+deps/tools/*
+!deps/tools/*.schema.json
+assets/resource/base/model/
+ui/game-assets/
+config/
+debug/
+*.local.json

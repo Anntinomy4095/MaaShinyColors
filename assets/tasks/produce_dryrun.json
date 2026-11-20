@@ -1,0 +1,54 @@
+{
+    "task": [
+        {
+            "name": "ProduceDryRun",
+            "label": "Produce 策略空跑（无操作）",
+            "entry": "SC.Produce.DryRun",
+            "default_check": false,
+            "description": "用内置样例运行一次可解释决策，不截图、不点击。",
+            "option": [
+                "Produce策略"
+            ]
+        }
+    ],
+    "option": {
+        "Produce策略": {
+            "type": "select",
+            "label": "Produce 策略",
+            "description": "只影响当前离线评分器；权重需要用真实剧本样本校准。",
+            "default_case": "均衡",
+            "cases": [
+                {
+                    "name": "均衡",
+                    "pipeline_override": {
+                        "SC.Produce.DryRun": {
+                            "custom_action_param": {
+                                "profile": "balanced"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "属性优先",
+                    "pipeline_override": {
+                        "SC.Produce.DryRun": {
+                            "custom_action_param": {
+                                "profile": "score"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "稳健保体力",
+                    "pipeline_override": {
+                        "SC.Produce.DryRun": {
+                            "custom_action_param": {
+                                "profile": "safe"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

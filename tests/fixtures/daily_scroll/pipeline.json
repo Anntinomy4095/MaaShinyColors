@@ -1,0 +1,1285 @@
+{
+  "SC.DailyScroll.Anchor.SC.Research.HomePostcondition.Mission": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.HomePostcondition.Mission.png",
+    "roi": [
+      25,
+      394,
+      76,
+      70
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.HomePostcondition.MissionNative": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.HomePostcondition.MissionNative.png",
+    "roi": [
+      25,
+      394,
+      76,
+      70
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.HomePostcondition.FesText": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.HomePostcondition.FesText.png",
+    "roi": [
+      1150,
+      645,
+      80,
+      25
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.Announcement.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.Title.png",
+    "roi": [
+      45,
+      18,
+      125,
+      45
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.Announcement.ListHeading": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.ListHeading.png",
+    "roi": [
+      620,
+      108,
+      280,
+      43
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.Announcement.TopicsSelected": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.TopicsSelected.png",
+    "roi": [
+      15,
+      87,
+      176,
+      86
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.Announcement.ReturnTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.ReturnTarget.png",
+    "roi": [
+      17,
+      620,
+      84,
+      83
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.StartupPopup.Reward.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Reward.Title.png",
+    "roi": [
+      408,
+      151,
+      184,
+      37
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.StartupPopup.Reward.Body": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Reward.Body.png",
+    "roi": [
+      491,
+      241,
+      301,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.StartupPopup.Reward.OK": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Reward.OK.png",
+    "roi": [
+      556,
+      481,
+      169,
+      81
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.StartupPopup.Loading.Text": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Loading.Text.png",
+    "roi": [
+      826,
+      660,
+      306,
+      47
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.StartupPopup.Loading.Feather": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Loading.Feather.png",
+    "roi": [
+      1150,
+      613,
+      67,
+      62
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyMission.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyMission.Title.png",
+    "roi": [
+      38,
+      18,
+      161,
+      42
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyMission.DailyTab": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyMission.DailyTab.png",
+    "roi": [
+      42,
+      94,
+      115,
+      33
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyMission.Return": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyMission.Return.png",
+    "roi": [
+      17,
+      620,
+      84,
+      83
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyIdol.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.Title.png",
+    "roi": [
+      40,
+      18,
+      141,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyIdol.TrainingEntry": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.TrainingEntry.png",
+    "roi": [
+      409,
+      285,
+      218,
+      50
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyIdol.TrainingEntryNative": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.TrainingEntryNative.png",
+    "roi": [
+      409,
+      285,
+      218,
+      50
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyIdol.Return": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.Return.png",
+    "roi": [
+      17,
+      620,
+      84,
+      83
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyTrainingList.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.Title.png",
+    "roi": [
+      43,
+      17,
+      328,
+      48
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyTrainingList.SupportTab": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.SupportTab.png",
+    "roi": [
+      39,
+      98,
+      121,
+      38
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyTrainingList.SupportTabNative": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.SupportTabNative.png",
+    "roi": [
+      39,
+      98,
+      121,
+      38
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyTrainingList.AsahiPortrait": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.AsahiPortrait.png",
+    "roi": [
+      409,
+      189,
+      101,
+      87
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Training.Zero.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.Title.png",
+    "roi": [
+      48,
+      24,
+      177,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Training.Zero.CardName": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.CardName.png",
+    "roi": [
+      159,
+      96,
+      451,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Training.Zero.Portrait": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.Portrait.png",
+    "roi": [
+      40,
+      102,
+      99,
+      75
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MissionCompleted.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.Title.png",
+    "roi": [
+      405,
+      90,
+      253,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MissionCompleted.Body": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.Body.png",
+    "roi": [
+      379,
+      153,
+      533,
+      61
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MissionCompleted.LoginObjective": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.LoginObjective.png",
+    "roi": [
+      391,
+      252,
+      264,
+      34
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MissionCompleted.MissionTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.MissionTarget.png",
+    "roi": [
+      658,
+      540,
+      171,
+      81
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MissionHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionHelp.Title.png",
+    "roi": [
+      191,
+      79,
+      438,
+      39
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MissionHelp.Page": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionHelp.Page.png",
+    "roi": [
+      1125,
+      78,
+      86,
+      41
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MissionHelp.Close": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionHelp.Close.png",
+    "roi": [
+      558,
+      562,
+      167,
+      78
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.FesMenu.MatchTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.MatchTarget.png",
+    "roi": [
+      976,
+      504,
+      136,
+      74
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.FesMenu.GradeTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.GradeTarget.png",
+    "roi": [
+      1128,
+      549,
+      126,
+      26
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.FesMenu.Border": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.Border.png",
+    "roi": [
+      1171,
+      590,
+      35,
+      15
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchMain.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.Title.png",
+    "roi": [
+      49,
+      23,
+      170,
+      34
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchMain.AreaPrompt": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.AreaPrompt.png",
+    "roi": [
+      97,
+      157,
+      236,
+      37
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchMain.SkipTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.SkipTarget.png",
+    "roi": [
+      1126,
+      518,
+      130,
+      33
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchHelp.Title.png",
+    "roi": [
+      187,
+      77,
+      339,
+      42
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchHelp.Page": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchHelp.Page.png",
+    "roi": [
+      1107,
+      78,
+      107,
+      43
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchHelp.Close": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchHelp.Close.png",
+    "roi": [
+      558,
+      562,
+      167,
+      78
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Title.png",
+    "roi": [
+      91,
+      51,
+      130,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Filter": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Filter.png",
+    "roi": [
+      1020,
+      131,
+      166,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Cancel": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Cancel.png",
+    "roi": [
+      380,
+      582,
+      166,
+      80
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Clear": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Clear.png",
+    "roi": [
+      560,
+      582,
+      166,
+      80
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.MatchSkip.CostLabel": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.CostLabel.png",
+    "roi": [
+      1044,
+      588,
+      172,
+      25
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.Pickup.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Pickup.Title.png",
+    "roi": [
+      465,
+      52,
+      343,
+      39
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.Pickup.Close": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Pickup.Close.png",
+    "roi": [
+      1091,
+      48,
+      42,
+      38
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.Pickup.Details": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Pickup.Details.png",
+    "roi": [
+      552,
+      558,
+      101,
+      33
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyStory.Skip": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Skip.png",
+    "roi": [
+      1180,
+      17,
+      82,
+      80
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyStory.Log": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Log.png",
+    "roi": [
+      1173,
+      423,
+      82,
+      81
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.DailyStory.Hide": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Hide.png",
+    "roi": [
+      1173,
+      514,
+      82,
+      79
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.TrainingHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.TrainingHelp.Title.png",
+    "roi": [
+      190,
+      80,
+      342,
+      37
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.TrainingHelp.Page": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.TrainingHelp.Page.png",
+    "roi": [
+      1125,
+      78,
+      86,
+      41
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.TrainingHelp.Close": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.TrainingHelp.Close.png",
+    "roi": [
+      558,
+      562,
+      167,
+      78
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.StartScreen.TouchToStart": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.TouchToStart.png",
+    "roi": [
+      474,
+      611,
+      332,
+      37
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.StartScreen.Logo": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.Logo.png",
+    "roi": [
+      440,
+      497,
+      402,
+      52
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.Anchor.SC.Research.StartScreen.Copyright": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.Copyright.png",
+    "roi": [
+      586,
+      684,
+      672,
+      27
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.mission-scroll-down.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyScroll.mission-scroll-down.Guard",
+      "SC.DailyScroll.mission-scroll-down.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyScroll.mission-scroll-down.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyScroll.mission-scroll-down.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.Title",
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.DailyTab",
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.Return"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.mission-scroll-down.Scroll": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.Title",
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.DailyTab",
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.Return"
+    ],
+    "action": "Scroll",
+    "target": [
+      1000,
+      430,
+      1,
+      1
+    ],
+    "dx": 0,
+    "dy": -240,
+    "on_error": [
+      "SC.DailyScroll.mission-scroll-down.Error"
+    ]
+  },
+  "SC.DailyScroll.mission-scroll-down.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyScroll.mission-scroll-down.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.mission-scroll-down.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.mission-scroll-up.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyScroll.mission-scroll-up.Guard",
+      "SC.DailyScroll.mission-scroll-up.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyScroll.mission-scroll-up.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyScroll.mission-scroll-up.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.Title",
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.DailyTab",
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.Return"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.mission-scroll-up.Scroll": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.Title",
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.DailyTab",
+      "SC.DailyScroll.Anchor.SC.Research.DailyMission.Return"
+    ],
+    "action": "Scroll",
+    "target": [
+      1000,
+      430,
+      1,
+      1
+    ],
+    "dx": 0,
+    "dy": 240,
+    "on_error": [
+      "SC.DailyScroll.mission-scroll-up.Error"
+    ]
+  },
+  "SC.DailyScroll.mission-scroll-up.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyScroll.mission-scroll-up.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.mission-scroll-up.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.match-area-scroll-down.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyScroll.match-area-scroll-down.Guard",
+      "SC.DailyScroll.match-area-scroll-down.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyScroll.match-area-scroll-down.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyScroll.match-area-scroll-down.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.Title",
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.SkipTarget"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.match-area-scroll-down.Scroll": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.Title",
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.SkipTarget"
+    ],
+    "action": "Scroll",
+    "target": [
+      260,
+      460,
+      1,
+      1
+    ],
+    "dx": 0,
+    "dy": -240,
+    "on_error": [
+      "SC.DailyScroll.match-area-scroll-down.Error"
+    ]
+  },
+  "SC.DailyScroll.match-area-scroll-down.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyScroll.match-area-scroll-down.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.match-area-scroll-down.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.match-area-scroll-up.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyScroll.match-area-scroll-up.Guard",
+      "SC.DailyScroll.match-area-scroll-up.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyScroll.match-area-scroll-up.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyScroll.match-area-scroll-up.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.Title",
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.SkipTarget"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.match-area-scroll-up.Scroll": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.Title",
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyScroll.Anchor.SC.Research.MatchMain.SkipTarget"
+    ],
+    "action": "Scroll",
+    "target": [
+      260,
+      460,
+      1,
+      1
+    ],
+    "dx": 0,
+    "dy": 240,
+    "on_error": [
+      "SC.DailyScroll.match-area-scroll-up.Error"
+    ]
+  },
+  "SC.DailyScroll.match-area-scroll-up.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyScroll.match-area-scroll-up.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.match-area-scroll-up.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.match-skip-scroll-down.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyScroll.match-skip-scroll-down.Guard",
+      "SC.DailyScroll.match-skip-scroll-down.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyScroll.match-skip-scroll-down.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyScroll.match-skip-scroll-down.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Title",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Filter",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Cancel",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Clear",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.CostLabel"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.match-skip-scroll-down.Scroll": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Title",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Filter",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Cancel",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Clear",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.CostLabel"
+    ],
+    "action": "Scroll",
+    "target": [
+      1030,
+      410,
+      1,
+      1
+    ],
+    "dx": 0,
+    "dy": -240,
+    "on_error": [
+      "SC.DailyScroll.match-skip-scroll-down.Error"
+    ]
+  },
+  "SC.DailyScroll.match-skip-scroll-down.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyScroll.match-skip-scroll-down.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.match-skip-scroll-down.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.match-skip-scroll-up.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyScroll.match-skip-scroll-up.Guard",
+      "SC.DailyScroll.match-skip-scroll-up.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyScroll.match-skip-scroll-up.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyScroll.match-skip-scroll-up.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Title",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Filter",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Cancel",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Clear",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.CostLabel"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyScroll.match-skip-scroll-up.Scroll": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Title",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Filter",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Cancel",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.Clear",
+      "SC.DailyScroll.Anchor.SC.Research.MatchSkip.CostLabel"
+    ],
+    "action": "Scroll",
+    "target": [
+      1030,
+      410,
+      1,
+      1
+    ],
+    "dx": 0,
+    "dy": 240,
+    "on_error": [
+      "SC.DailyScroll.match-skip-scroll-up.Error"
+    ]
+  },
+  "SC.DailyScroll.match-skip-scroll-up.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyScroll.match-skip-scroll-up.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyScroll.match-skip-scroll-up.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  }
+}

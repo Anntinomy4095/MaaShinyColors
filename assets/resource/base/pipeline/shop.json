@@ -1,0 +1,1202 @@
+{
+    "SC.Shop.Anchor.Home.ShopLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/home/shop_label.png",
+        "roi": [
+            35,
+            276,
+            56,
+            17
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Premium.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_premium/title.png",
+        "roi": [
+            6,
+            16,
+            150,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Premium.PremiumSelected": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_premium/premiumselected.png",
+        "roi": [
+            20,
+            92,
+            128,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Premium.MoneyIdle": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_premium/moneyidle.png",
+        "roi": [
+            440,
+            90,
+            112,
+            42
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Premium.NewbieSubtab": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_premium/newbiesubtab.png",
+        "roi": [
+            40,
+            165,
+            172,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Premium.LegalNotice": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_premium/legal_notice.png",
+        "roi": [
+            754,
+            156,
+            250,
+            60
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card1.Banner": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/banner1.png",
+        "roi": [
+            118,
+            228,
+            102,
+            30
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card1.Monthly": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/monthly1.png",
+        "roi": [
+            118,
+            228,
+            102,
+            30
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card1.LimitLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/limit_label1.png",
+        "roi": [
+            60,
+            516,
+            126,
+            28
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card1.Coin": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/coin1.png",
+        "roi": [
+            94,
+            598,
+            20,
+            20
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Color.Card1.ButtonEnabled": {
+        "recognition": "ColorMatch",
+        "roi": [
+            140,
+            634,
+            60,
+            8
+        ],
+        "lower": [
+            230,
+            120,
+            0
+        ],
+        "upper": [
+            255,
+            235,
+            90
+        ],
+        "count": 400,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Shop.Anchor.Card2.Banner": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/banner2.png",
+        "roi": [
+            388,
+            228,
+            102,
+            30
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card2.Monthly": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/monthly2.png",
+        "roi": [
+            388,
+            228,
+            102,
+            30
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card2.LimitLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/limit_label2.png",
+        "roi": [
+            330,
+            516,
+            126,
+            28
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card2.Coin": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/coin2.png",
+        "roi": [
+            364,
+            598,
+            20,
+            20
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Color.Card2.ButtonEnabled": {
+        "recognition": "ColorMatch",
+        "roi": [
+            410,
+            634,
+            60,
+            8
+        ],
+        "lower": [
+            230,
+            120,
+            0
+        ],
+        "upper": [
+            255,
+            235,
+            90
+        ],
+        "count": 400,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Shop.Anchor.Card3.Banner": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/banner3.png",
+        "roi": [
+            658,
+            228,
+            102,
+            30
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card3.Monthly": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/monthly3.png",
+        "roi": [
+            658,
+            228,
+            102,
+            30
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card3.LimitLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/limit_label3.png",
+        "roi": [
+            600,
+            516,
+            126,
+            28
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Card3.Coin": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/coin3.png",
+        "roi": [
+            634,
+            598,
+            20,
+            20
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Color.Card3.ButtonEnabled": {
+        "recognition": "ColorMatch",
+        "roi": [
+            680,
+            634,
+            60,
+            8
+        ],
+        "lower": [
+            230,
+            120,
+            0
+        ],
+        "upper": [
+            255,
+            235,
+            90
+        ],
+        "count": 400,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Shop.Anchor.Confirm.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_confirm/title.png",
+        "roi": [
+            360,
+            40,
+            162,
+            36
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Confirm.Labels": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_confirm/labels.png",
+        "roi": [
+            412,
+            352,
+            170,
+            182
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Confirm.Controls": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_confirm/controls.png",
+        "roi": [
+            640,
+            340,
+            190,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Confirm.Cancel": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_confirm/cancel.png",
+        "roi": [
+            457,
+            587,
+            167,
+            79
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Confirm.Exchange": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_confirm/exchange.png",
+        "roi": [
+            657,
+            587,
+            167,
+            79
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Result.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_result/title.png",
+        "roi": [
+            360,
+            170,
+            162,
+            36
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Result.Labels": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_result/labels.png",
+        "roi": [
+            405,
+            343,
+            170,
+            72
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Anchor.Result.Close": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_result/close.png",
+        "roi": [
+            557,
+            457,
+            167,
+            80
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Shop.Premium.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Shop.Anchor.Premium.Title",
+            "SC.Shop.Anchor.Premium.PremiumSelected",
+            "SC.Shop.Anchor.Premium.MoneyIdle",
+            "SC.Shop.Anchor.Premium.LegalNotice"
+        ]
+    },
+    "SC.Shop.Confirm.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Shop.Anchor.Confirm.Title",
+            "SC.Shop.Anchor.Confirm.Labels",
+            "SC.Shop.Anchor.Confirm.Controls",
+            "SC.Shop.Anchor.Confirm.Cancel",
+            "SC.Shop.Anchor.Confirm.Exchange"
+        ]
+    },
+    "SC.Shop.Result.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Shop.Anchor.Result.Title",
+            "SC.Shop.Anchor.Result.Labels",
+            "SC.Shop.Anchor.Result.Close"
+        ]
+    },
+    "SC.Shop.State.Active": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.State",
+        "custom_recognition_param": {
+            "is": "active"
+        }
+    },
+    "SC.Shop.State.Finished": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        }
+    },
+    "SC.Shop.State.ConfirmCancel": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.State",
+        "custom_recognition_param": {
+            "is": "confirm_cancel"
+        }
+    },
+    "SC.Shop.Plan.Wait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.Plan",
+        "custom_recognition_param": {
+            "position": 0
+        }
+    },
+    "SC.Shop.Plan.Open1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.Plan",
+        "custom_recognition_param": {
+            "position": 1
+        }
+    },
+    "SC.Shop.Plan.Open2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.Plan",
+        "custom_recognition_param": {
+            "position": 2
+        }
+    },
+    "SC.Shop.Plan.Open3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.Plan",
+        "custom_recognition_param": {
+            "position": 3
+        }
+    },
+    "SC.Shop.Check.Confirm": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.Check",
+        "custom_recognition_param": {
+            "stage": "confirm"
+        }
+    },
+    "SC.Shop.Check.Result": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.Check",
+        "custom_recognition_param": {
+            "stage": "result"
+        }
+    },
+    "SC.Shop.Config.SkipTicket": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_skip_ticket": true
+        }
+    },
+    "SC.Shop.Config.GoldTrainingTicket": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_gold_training_ticket": true
+        }
+    },
+    "SC.Shop.Config.Other.GoldTrainingTicket283": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_gold_training_ticket_283": false
+        }
+    },
+    "SC.Shop.Config.Other.SilverTrainingTicket283": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_silver_training_ticket_283": false
+        }
+    },
+    "SC.Shop.Config.Other.MessageCard283": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_message_card_283": false
+        }
+    },
+    "SC.Shop.Config.Other.MorningBread283": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_morning_bread_283": false
+        }
+    },
+    "SC.Shop.Config.Other.PromiseToilette283": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_promise_toilette_283": false
+        }
+    },
+    "SC.Shop.Config.Other.SecretMemo50": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_secret_memo_50": false
+        }
+    },
+    "SC.Shop.Config.Other.PetitTensionAroma500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_petit_tension_aroma_500": false
+        }
+    },
+    "SC.Shop.Config.Other.TrendMagazine500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_trend_magazine_500": false
+        }
+    },
+    "SC.Shop.Config.Other.VocalBook500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_vocal_book_500": false
+        }
+    },
+    "SC.Shop.Config.Other.DanceBook500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_dance_book_500": false
+        }
+    },
+    "SC.Shop.Config.Other.VisualBook500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_visual_book_500": false
+        }
+    },
+    "SC.Shop.Config.Other.TroubleCharm1500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_trouble_charm_1500": false
+        }
+    },
+    "SC.Shop.Config.Other.PromiseCologne1500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_promise_cologne_1500": false
+        }
+    },
+    "SC.Shop.Config.Other.TensionAroma1500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_tension_aroma_1500": false
+        }
+    },
+    "SC.Shop.Config.Other.HealingTart1500": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_healing_tart_1500": false
+        }
+    },
+    "SC.Shop.Config.Other.HealingFruitTart5000": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_healing_fruit_tart_5000": false
+        }
+    },
+    "SC.Shop.Config.Other.ScheduleSticky5000": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_schedule_sticky_5000": false
+        }
+    },
+    "SC.Shop.Config.Other.TowelIllumination": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_towel_illumination": false
+        }
+    },
+    "SC.Shop.Config.Other.TowelAntica": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_towel_antica": false
+        }
+    },
+    "SC.Shop.Config.Other.TowelHokago": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_towel_hokago": false
+        }
+    },
+    "SC.Shop.Config.Other.TowelAlstroemeria": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_towel_alstroemeria": false
+        }
+    },
+    "SC.Shop.Config.Other.TowelStraylight": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_towel_straylight": false
+        }
+    },
+    "SC.Shop.Config.Other.TowelNoctchill": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_towel_noctchill": false
+        }
+    },
+    "SC.Shop.Config.Other.TowelShhis": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_towel_shhis": false
+        }
+    },
+    "SC.Shop.Config.Other.TowelCometik": {
+        "recognition": "DirectHit",
+        "attach": {
+            "buy_towel_cometik": false
+        }
+    },
+    "SC.Shop.Config.Budget": {
+        "recognition": "DirectHit",
+        "attach": {
+            "coin_reserve": 100000,
+            "purchase_scope": "daily_discount_only",
+            "currency": "money"
+        }
+    },
+    "SC.Shop.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Shop.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.Shop.Config.SkipTicket",
+                "SC.Shop.Config.GoldTrainingTicket",
+                "SC.Shop.Config.Other.GoldTrainingTicket283",
+                "SC.Shop.Config.Other.SilverTrainingTicket283",
+                "SC.Shop.Config.Other.MessageCard283",
+                "SC.Shop.Config.Other.MorningBread283",
+                "SC.Shop.Config.Other.PromiseToilette283",
+                "SC.Shop.Config.Other.SecretMemo50",
+                "SC.Shop.Config.Other.PetitTensionAroma500",
+                "SC.Shop.Config.Other.TrendMagazine500",
+                "SC.Shop.Config.Other.VocalBook500",
+                "SC.Shop.Config.Other.DanceBook500",
+                "SC.Shop.Config.Other.VisualBook500",
+                "SC.Shop.Config.Other.TroubleCharm1500",
+                "SC.Shop.Config.Other.PromiseCologne1500",
+                "SC.Shop.Config.Other.TensionAroma1500",
+                "SC.Shop.Config.Other.HealingTart1500",
+                "SC.Shop.Config.Other.HealingFruitTart5000",
+                "SC.Shop.Config.Other.ScheduleSticky5000",
+                "SC.Shop.Config.Other.TowelIllumination",
+                "SC.Shop.Config.Other.TowelAntica",
+                "SC.Shop.Config.Other.TowelHokago",
+                "SC.Shop.Config.Other.TowelAlstroemeria",
+                "SC.Shop.Config.Other.TowelStraylight",
+                "SC.Shop.Config.Other.TowelNoctchill",
+                "SC.Shop.Config.Other.TowelShhis",
+                "SC.Shop.Config.Other.TowelCometik",
+                "SC.Shop.Config.Budget"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Shop.Main"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "商店：读取配置（默认第1、2项；第3项需勾选；只用マニー、只买本日限定）。"
+        }
+    },
+    "SC.Shop.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 45000,
+        "next": [
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "[JumpBack]SC.Shop.Result.Close",
+            "[JumpBack]SC.Shop.Confirm.Exchange",
+            "[JumpBack]SC.Shop.Confirm.Cancel",
+            "SC.Shop.Finish",
+            "[JumpBack]SC.Shop.Leave",
+            "[JumpBack]SC.Shop.List.Open1",
+            "[JumpBack]SC.Shop.List.Open2",
+            "[JumpBack]SC.Shop.List.Open3",
+            "[JumpBack]SC.Shop.List.Hold",
+            "[JumpBack]SC.Shop.Premium.MoneyTab",
+            "SC.Resource.Observe.Home",
+            "[JumpBack]SC.Shop.AtHome",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "商店：按当前画面判断下一步（弹窗→交換結果→交換確認→列表→プレミアム→首页）。"
+        }
+    },
+    "SC.Shop.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Shop.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Shop.HomeClean"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ]
+    },
+    "SC.Shop.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Shop.OpenShop"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页干净（与 SC.Common.HomeClean 相同的外来锚点清单）。"
+        }
+    },
+    "SC.Shop.OpenShop": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Shop.Anchor.Home.ShopLabel"
+        ],
+        "action": "Click",
+        "target": [
+            25,
+            232,
+            76,
+            62
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Shop.Opened"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页：点击ショップ（每次任务最多 2 次）。"
+        }
+    },
+    "SC.Shop.Opened": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Shop.Premium.Guard",
+            "SC.Nav.ShopList.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.MissionCompleted.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Shop.Premium.MoneyTab": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Shop.Premium.Guard",
+            "SC.Shop.State.Active"
+        ],
+        "action": "Click",
+        "target": [
+            440,
+            90,
+            112,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Shop.Premium.Tapped"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "プレミアム页：只点击「マニー」页签（不点其它任何东西）。"
+        }
+    },
+    "SC.Shop.Premium.Tapped": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.ShopList.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Shop.List.Open1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ShopList.Guard",
+            "SC.Shop.Plan.Open1"
+        ],
+        "action": "Click",
+        "target": [
+            94,
+            572,
+            170,
+            70
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Shop.List.Opened"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "マニー列表：打开屏幕第1位的本日限定卡（Agent 已核对名称、价格、0/1、可兑换）。"
+        }
+    },
+    "SC.Shop.List.Open2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ShopList.Guard",
+            "SC.Shop.Plan.Open2"
+        ],
+        "action": "Click",
+        "target": [
+            332,
+            572,
+            119,
+            49
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Shop.List.Opened"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "マニー列表：打开屏幕第2位的本日限定卡（Agent 已核对名称、价格、0/1、可兑换）。"
+        }
+    },
+    "SC.Shop.List.Open3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ShopList.Guard",
+            "SC.Shop.Plan.Open3"
+        ],
+        "action": "Click",
+        "target": [
+            725,
+            570,
+            85,
+            34
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Shop.List.Opened"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "マニー列表：打开屏幕第3位的本日限定卡（Agent 已核对名称、价格、0/1、可兑换）。"
+        }
+    },
+    "SC.Shop.List.Opened": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Shop.Confirm.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Shop.List.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ShopList.Guard",
+            "SC.Shop.Plan.Wait"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 8,
+        "focus": {
+            "Node.Recognition.Succeeded": "列表尚未稳定或刚购买后未刷新：再截一帧。"
+        }
+    },
+    "SC.Shop.Confirm.Exchange": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Shop.Confirm.Guard",
+            "SC.Shop.Check.Confirm"
+        ],
+        "action": "Click",
+        "target": [
+            657,
+            640,
+            68,
+            26
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 3,
+        "timeout": 15000,
+        "next": [
+            "SC.Shop.Confirm.Sent"
+        ],
+        "on_error": [
+            "SC.Shop.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "交換確認：名称/交換数1/上限1/1/必要マニー/余额/保留额/道具+1/「マニーを消費して」均已核对，凭一次性授权点击「交換する」。"
+        }
+    },
+    "SC.Shop.Confirm.Sent": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Shop.Result.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Shop.Confirm.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Shop.Confirm.Guard",
+            "SC.Shop.State.ConfirmCancel"
+        ],
+        "action": "Click",
+        "target": [
+            457,
+            621,
+            101,
+            45
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Shop.Confirm.Cancelled"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "交換確認核对不通过（或无消费授权）：点击「キャンセル」，本任务失败。"
+        }
+    },
+    "SC.Shop.Confirm.Cancelled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.ShopList.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Shop.Result.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Shop.Result.Guard",
+            "SC.Shop.Check.Result"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            457,
+            83,
+            24
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Shop.Result.Closed"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "交換結果：记录名称/余额/道具数核对结果后点击「閉じる」。"
+        }
+    },
+    "SC.Shop.Result.Closed": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.ShopList.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.MissionCompleted.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Shop.Leave": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Shop.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Common.GoHome"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "商店任务已有结论：返回首页。"
+        }
+    },
+    "SC.Shop.Finish": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Shop.State.Finished"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Shop.FinishClean",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait"
+        ],
+        "on_error": [
+            "SC.Shop.Abort"
+        ]
+    },
+    "SC.Shop.FinishClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "action": "Custom",
+        "custom_action": "SC.Shop.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "on_error": [
+            "SC.Shop.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "已回到干净首页：写出商店报告并结束任务。"
+        }
+    },
+    "SC.Shop.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Shop.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "商店：未知画面/超时/核对失败，不再点击，本任务失败（下一任务照常）。"
+        }
+    },
+    "SC.Shop.SpendError": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Shop.SpendError",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "交換する 后未观察到交換結果：记为不确定消费，不重试。"
+        }
+    }
+}

@@ -1,0 +1,192 @@
+/* Produce 编队: formation strip, 「持有卡牌」 row, team pickers. Tokens only (both themes). */
+
+.form-row.kind-team { grid-template-columns: minmax(0, 1fr); align-items: start; }
+.team-control { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+.team-strip { display: flex; align-items: flex-end; gap: 4px; padding: 2px 0 4px; }
+.team-slot {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1 1 0; min-width: 0; padding: 2px;
+  border: 1px solid transparent; border-radius: var(--r-m); background: none; color: var(--sc-text); cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.team-slot:hover:not(:disabled) { background: var(--sc-surface-2); }
+.team-slot:focus-visible { outline: 2px solid var(--sc-primary); outline-offset: 1px; }
+.team-slot:disabled { opacity: .5; cursor: not-allowed; }
+.team-slot-img {
+  display: grid; place-items: center; width: 100%; max-width: 48px; height: auto; aspect-ratio: 1; object-fit: cover;
+  border-radius: var(--r-s); border: 1px solid var(--sc-border); background: var(--sc-surface-2); color: var(--sc-text-2);
+}
+.team-slot.is-p { flex-grow: 1.25; }
+.team-slot.is-p .team-slot-img { max-width: 56px; border-color: var(--sc-primary); }
+.team-slot.is-empty .team-slot-img { border-style: dashed; border-color: var(--sc-control); }
+.team-slot.is-guest .team-slot-img { opacity: .9; }
+.team-slot-label { font-size: var(--fs-11); line-height: 1.3; color: var(--sc-text-2); white-space: nowrap; }
+.team-slot.is-p .team-slot-label { color: var(--sc-primary-text); font-weight: 600; }
+.team-sep { flex: none; width: 1px; align-self: stretch; margin: 4px 2px 18px; background: var(--sc-border); }
+
+.team-meta { display: flex; align-items: center; gap: var(--sp-1); flex-wrap: wrap; min-height: 26px; }
+.team-meta-label { font-size: var(--fs-12); color: var(--sc-text-2); margin-right: 2px; }
+.team-meta-note { margin-left: auto; }
+.team-auto { margin: 0; font-size: var(--fs-12); line-height: 1.6; color: var(--sc-text-2); }
+.team-notes { margin: 0; padding: 0 0 0 var(--sp-2); list-style: none; border-left: 2px solid var(--sc-border); }
+.team-notes li { font-size: var(--fs-12); line-height: 1.6; color: var(--sc-text-2); }
+.team-notes.is-error { border-left-color: var(--sc-danger); }
+.team-notes.is-error li { color: var(--sc-danger); font-weight: 600; }
+.task-warning.is-error { --tone: var(--sc-danger); color: var(--sc-danger); }
+
+/* Team pickers (card-picker.js generic additions: filters, tags). */
+.card-filters { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; margin: calc(-1 * var(--sp-1)) 0 var(--sp-3); }
+.select-small { width: auto; min-height: 26px; font-size: var(--fs-12); padding: 0 var(--sp-1); }
+.card-filter-group { display: flex; align-items: center; gap: var(--sp-2); min-width: 0; }
+.card-filter-group.is-long { flex: 1 1 100%; align-items: flex-start; }
+.card-filter-group.is-long > .card-filter-list { flex: 1 1 auto; min-width: 0; }
+.card-filter-label { flex: none; min-width: 3em; font-size: var(--fs-12); color: var(--sc-text-2); white-space: nowrap; }
+.card-filter-group.is-long > .card-filter-label { padding-top: 5px; }
+.card-filter-list { flex: 1 1 100%; }
+.card-tags { display: flex; gap: 2px; justify-content: center; max-width: 100%; overflow: hidden; }
+.card-tag {
+  padding: 0 4px; border-radius: var(--r-s); font-size: var(--fs-11); line-height: 1.5;
+  background: var(--sc-primary-tint); color: var(--sc-primary-text); white-space: nowrap;
+}
+.card-tag.is-flag { background: transparent; border: 1px dashed var(--sc-line-strong); color: var(--sc-text-2); }
+.team-clear { color: var(--sc-text-2); }
+/* In-game Vo/Da/Vi/Me tile (ui/game-assets/icons, local only) on the card's bottom-left; the text tag stays below. */
+.card-attr { position: absolute; left: 3px; bottom: 3px; width: 20px; height: 20px; pointer-events: none; }
+.card-tile.is-locked .card-attr { opacity: .7; filter: grayscale(.85); }
+.team-meta-note { display: inline-flex; align-items: center; gap: 2px; }
+.team-attr { flex: none; }
+
+/* 2026-10-11 W.I.N.G. 编队 redesign: labelled lines (P 偶像 / 编队 / 游戏编队 / 上次读取), unit select + toggle, checklist. */
+/* 2026-10-13: label and the value's first line share one row height (--team-row-h = segmented control height), so
+   text-only rows (推荐 / 游戏内编队) line up with their label; card strips wrap below the head line. */
+.team-line { --team-row-h: 34px; display: grid; grid-template-columns: 5.4em minmax(0, 1fr); align-items: start; gap: var(--sp-1) var(--sp-2); }
+.team-line-label { display: flex; align-items: center; min-height: var(--team-row-h); font-size: var(--fs-13); white-space: nowrap; }
+.team-line-body { display: flex; align-items: center; gap: var(--sp-1) var(--sp-2); flex-wrap: wrap; min-width: 0; }
+.team-line-head { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; flex: 1 1 100%; min-width: 0; min-height: var(--team-row-h); }
+.team-line-text { font-size: var(--fs-12); color: var(--sc-text-2); min-width: 0; }
+.team-line-text.is-warn { color: var(--sc-text); }
+.team-propose-progress { display: inline-flex; align-items: center; gap: var(--sp-2); }
+.team-propose-progress .meter { width: 96px; flex: 0 0 auto; }
+.team-confirm-tag { padding: 0 6px; border-radius: var(--r-s); font-size: var(--fs-11); line-height: 1.7; border: 1px dashed var(--sc-warning); color: var(--sc-text); cursor: help; }
+.team-mode { flex: 1 1 auto; max-width: 20em; }
+.team-line-body > .team-strip { flex: 1 1 100%; }
+.team-line-body > .team-slot.is-p { flex: none; width: 56px; }
+/* P row: thumbnail, then name / specialty / 更换 stacked; the name flows as text (jaText spans must not become flex items). */
+.team-line-body.is-p-row { flex-wrap: nowrap; align-items: flex-start; }
+.team-p-info { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: 1 1 0; min-width: 0; }
+.team-p-name { display: block; min-width: 0; font-size: var(--fs-13, 13px); line-height: 1.4; overflow-wrap: anywhere; }
+.team-p-info .team-meta-note { display: inline-flex; align-items: center; gap: var(--sp-1); }
+.team-unit-chips { flex: 1 1 auto; gap: 3px; }
+.choice-chips.team-unit-chips .chip { min-width: 22px; min-height: 24px; padding: 0 2px; }
+.team-toggle { display: inline-flex; align-items: center; gap: var(--sp-1); }
+.team-checklist { display: flex; flex-wrap: wrap; gap: 2px var(--sp-3); margin: 0; padding: 0; list-style: none; }
+.team-checklist li { display: inline-flex; align-items: center; gap: 4px; font-size: var(--fs-12); color: var(--sc-text-2); }
+.team-checklist .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sc-control); }
+.team-checklist .is-ok .dot { background: var(--sc-success); }
+.team-checklist .is-warn .dot { background: var(--sc-warning); }
+.team-checklist .is-bad { color: var(--sc-danger); }
+.team-checklist .is-bad .dot { background: var(--sc-danger); }
+.team-dev > summary { cursor: pointer; }
+.row-more { opacity: .7; }
+.row-more:hover, .row-more:focus-visible { opacity: 1; }
+/* 2026-10-13 copy audit: a pending read (S/Guest 开始后读取) is neutral, not a warning; 推荐编队 state tag (待确认 / 已采用)
+   and the one-line 推荐理由 with its criteria help. */
+.team-checklist .is-pending .dot { background: transparent; border: 1px solid var(--sc-text-2); }
+.team-state-tag { padding: 0 6px; border-radius: var(--r-s); font-size: var(--fs-11); line-height: 1.7; border: 1px dashed var(--sc-border); color: var(--sc-text-2); cursor: help; white-space: nowrap; }
+.team-state-tag.is-adopted { border-style: solid; color: var(--sc-text); cursor: default; }
+/* 推荐编队: the chosen ユニット is overwritten on a new Produce; the P card is Maa's choice (no 更换). */
+.team-overwrite { padding: 0 6px; border-radius: var(--r-s); font-size: var(--fs-12); line-height: 1.7; border: 1px solid var(--sc-warning); color: var(--sc-text); white-space: nowrap; }
+/* Auto ユニット (option-field unit_grid): the W.I.N.G. pills with the overwrite badge under them */
+.unit-grid { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.team-p-card.is-auto .team-p-eyebrow { color: var(--sc-text-2); }
+.team-why { margin: 0 0 0 calc(5.4em + var(--sp-2)); }
+.team-why > summary { cursor: pointer; color: var(--sc-text-2); line-height: 1.5; }
+.team-why-help { margin: var(--sp-1) 0 0; padding-left: 1.2em; font-size: var(--fs-12); color: var(--sc-text-2); line-height: 1.6; }
+.team-line.is-stacked { grid-template-columns: minmax(0, 1fr); }
+.team-line.is-stacked .team-line-label { min-height: 0; }
+.team-line.is-stacked .team-mode { max-width: none; }
+/* 2026-10-13 visual polish (「Produce」 tab): the P card as one highlighted block, 「本次编队」 vs the recommended
+   alternative (inset, no border), six equal card slots with the P marked by its frame only, readable state tags. */
+.team-control { gap: 10px; }
+.team-p-card {
+  display: flex; align-items: center; gap: var(--sp-3); min-width: 0; padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-2);
+  border-radius: var(--r-m); background: var(--sc-primary-tint);
+}
+.team-p-card.is-empty { background: var(--sc-surface-2); }
+.team-p-card > .team-slot.is-p { flex: none; width: 64px; padding: 0; }
+.team-p-card > .team-slot.is-p .team-slot-frame { max-width: 64px; }
+.team-p-card > .team-slot.is-p .team-slot-label { display: none; }
+.team-p-info { gap: 1px; }
+.team-p-eyebrow { font-size: var(--fs-11); font-weight: 600; letter-spacing: .04em; color: var(--sc-primary-text); }
+.team-p-name { font-size: var(--fs-16); font-weight: 700; line-height: 1.3; }
+.team-p-title { font-size: var(--fs-12); line-height: 1.4; color: var(--sc-text-2); overflow-wrap: anywhere; }
+.team-p-missing { font-size: var(--fs-14); font-weight: 600; color: var(--sc-accent-text); }
+.team-p-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 2px var(--sp-3); margin-top: 2px; }
+.team-p-meta .btn-text { padding: 0; }
+.team-p-meta .btn-primary { min-height: 30px; padding: 0 var(--sp-3); }
+.team-subhead {
+  display: flex; align-items: center; gap: var(--sp-2); margin-top: 2px;
+  font-size: var(--fs-11); font-weight: 700; letter-spacing: .06em; color: var(--sc-text-2);
+}
+.team-subhead::after { content: ""; flex: 1; height: 1px; background: var(--sc-line); }
+.team-rec { display: flex; flex-direction: column; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3) var(--sp-3); border-radius: var(--r-m); background: var(--sc-surface-2); }
+.team-rec .team-why { margin-left: 0; }
+.team-rec .team-line { grid-template-columns: minmax(0, 1fr); }
+.team-rec .team-line-label { min-height: 0; font-size: var(--fs-12); font-weight: 700; color: var(--sc-text-2); letter-spacing: .04em; }
+.team-line-label { font-weight: 600; }
+/* six equal slots: P marked by its pink/rarity frame and label, not by size */
+.team-strip { gap: 6px; }
+.team-strip .team-slot.is-p { flex-grow: 1; }
+.team-strip .team-slot.is-p .team-slot-frame { max-width: 48px; }
+.team-strip .team-slot-frame { max-width: 48px; }
+.team-strip.is-proposal .team-slot { cursor: default; }
+.team-checklist { gap: 4px var(--sp-3); }
+.team-checklist li { line-height: 1.5; }
+.team-state-tag { line-height: 20px; }
+.team-state-tag:not(.is-adopted) { border-style: solid; border-color: var(--sc-warning); color: var(--sc-text); }
+.team-state-tag.is-adopted { border-color: var(--sc-success); color: var(--sc-success); font-weight: 600; }
+.team-state-tag.is-tie { border-color: var(--sc-border); color: var(--sc-text-2); }
+.team-state-tag.is-style { border-color: var(--sc-primary); color: var(--sc-primary-text); }
+.team-why > summary { font-size: var(--fs-12); line-height: 1.55; }
+.team-mode .segment { min-height: 28px; }
+/* 2026-10-14 polish: in the narrow panel the 推荐理由 line uses the full width instead of the label column's indent. */
+@media (max-width: 399px) {
+  .team-why { margin-left: 0; }
+}
+/* 2026-10-14 推荐编队 alternatives: 特点/取舍 lines and folded
+   「其他编队」 cards, stacked vertically for the narrow panel. */
+.team-traits { margin: 0 0 0 calc(5.4em + var(--sp-2)); padding: 0; list-style: none; color: var(--sc-text); }
+.team-traits li { font-size: var(--fs-12); line-height: 1.6; }
+.team-trait-key { margin-right: 6px; color: var(--sc-text-2); }
+.team-alts { margin: 0 0 0 calc(5.4em + var(--sp-2)); }
+.team-alts > summary { cursor: pointer; color: var(--sc-text-2); font-size: var(--fs-12); line-height: 1.6; }
+.team-alt { display: grid; gap: var(--sp-1); margin-top: var(--sp-2); padding: var(--sp-2); border: 1px solid var(--sc-border); border-radius: var(--r-m); }
+.team-alt-head { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+.team-alt-name { font-size: var(--fs-13); font-weight: 600; color: var(--sc-text); }
+.team-alt-head .btn { margin-left: auto; }
+.team-alt .team-traits, .team-alt .team-why { margin-left: 0; }
+@media (max-width: 399px) {
+  .team-traits, .team-alts { margin-left: 0; }
+}
+
+/* 推荐编队 (2026-10-14 user): S1–S4 | Guest without the P, larger art, attribute + short reasons under each card. */
+.team-strip.is-large {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) 1px minmax(0, 1fr); align-items: start;
+  gap: 4px; width: 100%; min-width: 0; box-sizing: border-box;
+}
+.team-pick { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; overflow: hidden; }
+.team-strip.is-large .team-slot { flex: none; width: 100%; }
+.team-strip.is-large .team-slot-frame { max-width: 72px; }
+.team-pick-tags { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; max-width: 100%; }
+.team-pick-tag {
+  max-width: 100%; padding: 0 4px; border-radius: var(--r-s); background: var(--sc-surface-2); color: var(--sc-text-2);
+  font-size: var(--fs-11); line-height: 1.35; text-align: center; overflow-wrap: anywhere;
+}
+.team-pick-tag.is-live { color: var(--sc-primary-text); font-weight: 600; }
+.team-pick-tag.is-gain { color: var(--sc-success); font-weight: 600; }
+/* 训练后可加入推荐: up to three cards in a row, each as wide as one 推荐编队 slot. */
+.team-strip.is-hints { display: flex; flex-wrap: wrap; gap: 8px; }
+.team-strip.is-hints .team-pick { width: 72px; }
+.team-strip.is-hints .team-slot { width: 100%; }
+.team-strip.is-large .team-sep { width: 1px; margin: 4px 0 0; align-self: stretch; }
+.team-alts { display: flex; flex-direction: column; gap: var(--sp-2); }

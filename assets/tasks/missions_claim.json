@@ -1,0 +1,54 @@
+{
+    "task": [
+        {
+            "name": "MissionsClaim",
+            "label": "每日任务奖励领取",
+            "entry": "SC.Missions.Entry",
+            "default_check": true,
+            "description": "打开ミッション，デイリー和ウィークリー标签各读一次：有「受け取る」就按一次「一括受取」，核对奖励只有免费物品；再返回首页。领取不消耗资源；结果不确定将暂停，不重试。",
+            "option": ["任务奖励领取"]
+        }
+    ],
+    "option": {
+        "任务奖励领取": {
+            "type": "select",
+            "label": "任务奖励领取",
+            "description": "一括（默认）：デイリー和ウィークリー奖励各一次领完，顺带读进度（最上方未完成的一行）。仅デイリー：不切换周常标签。单项：只领每日登录奖励（开发者）。",
+            "default_case": "开启（デイリー一括）",
+            "cases": [
+                {
+                    "name": "关闭",
+                    "pipeline_override": {
+                        "SC.Missions.Config": {
+                            "attach": {"enabled": false, "mission_id": "daily.login", "max_attempts": 1}
+                        }
+                    }
+                },
+                {
+                    "name": "开启（デイリー一括）",
+                    "pipeline_override": {
+                        "SC.Missions.Config": {
+                            "attach": {"enabled": true, "mode": "bulk", "max_attempts": 1, "weekly": true}
+                        }
+                    }
+                },
+                {
+                    "name": "开启（仅デイリー一括）",
+                    "pipeline_override": {
+                        "SC.Missions.Config": {
+                            "attach": {"enabled": true, "mode": "bulk", "max_attempts": 1, "weekly": false}
+                        }
+                    }
+                },
+                {
+                    "name": "开启（每日登录，单次）",
+                    "pipeline_override": {
+                        "SC.Missions.Config": {
+                            "attach": {"enabled": true, "mission_id": "daily.login", "max_attempts": 1}
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

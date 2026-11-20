@@ -1,0 +1,194 @@
+{
+    "SC.MissionStatus.Entry": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 30000,
+        "next": [
+            "SC.MissionStatus.Read",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "[JumpBack]SC.MissionStatus.AtHome",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "任务状态（只读）：进入ミッション デイリー页，读取可见行，再返回首页。"
+        }
+    },
+    "SC.MissionStatus.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.MissionStatus.HomeClean"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ]
+    },
+    "SC.MissionStatus.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.MissionStatus.OpenMission"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页干净（与 SC.Common.HomeClean 相同的外来锚点清单）。"
+        }
+    },
+    "SC.MissionStatus.OpenMission": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            25,
+            394,
+            76,
+            70
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.MissionStatus.Opened"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页：点击ミッション按钮（每次任务最多 1 次）。"
+        }
+    },
+    "SC.MissionStatus.Opened": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.Mission.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MissionCompleted.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.MissionStatus.Read": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Mission.Title",
+            "SC.Common.Anchor.Mission.DailyTab",
+            "SC.Common.Anchor.Mission.Return",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.MissionStatus.Read",
+        "custom_action_param": {
+            "list_node": "SC.MissionStatus.ListOCR",
+            "counter_node": "SC.MissionStatus.CounterOCR"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.MissionStatus.Return"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "读取デイリー任务的可见行（OCR，不点击、不滚动）。"
+        }
+    },
+    "SC.MissionStatus.ListOCR": {
+        "recognition": "OCR",
+        "roi": [
+            255,
+            225,
+            975,
+            370
+        ],
+        "threshold": 0.3
+    },
+    "SC.MissionStatus.CounterOCR": {
+        "recognition": "OCR",
+        "roi": [
+            950,
+            572,
+            320,
+            32
+        ],
+        "threshold": 0.3
+    },
+    "SC.MissionStatus.Return": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Common.GoHome"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "状态已读取，返回首页。"
+        }
+    }
+}

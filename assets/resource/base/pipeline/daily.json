@@ -1,0 +1,48 @@
+{
+    "SC.Daily.Root": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.RuntimeMode",
+        "custom_action_param": {
+            "mode": "observe",
+            "allow_input": false,
+            "require_confirmation": true
+        },
+        "next": [
+            "SC.Daily.Placeholder"
+        ]
+    },
+    "SC.Daily.Placeholder": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.SupervisionCheckpoint",
+        "custom_action_param": {
+            "feature": "daily",
+            "status": "placeholder",
+            "allow_input": false,
+            "message": "日常任务尚未启用。"
+        },
+        "focus": {
+            "succeeded": "日常流程当前为安全占位，不会点击游戏。"
+        }
+    },
+    "SC.Daily.Home.Guard": {
+        "enabled": false,
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "SC.Daily.FirstVerticalSlice"
+        ],
+        "on_error": [
+            "SC.Runtime.StopSafely"
+        ]
+    },
+    "SC.Daily.FirstVerticalSlice": {
+        "enabled": false,
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "focus": {
+            "starting": "待实现：第一个只领取、不消费资源的日常垂直切片。"
+        }
+    }
+}

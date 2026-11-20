@@ -1,0 +1,215 @@
+{
+    "task": [
+        {
+            "name": "Business",
+            "label": "营业（收取并再营业）",
+            "entry": "SC.Business.Entry",
+            "default_check": true,
+            "description": "收取已完成的营业，在「獲得報酬」页按「再営業へ」，核对游戏预填的 12 小时队伍后按「決定」。不使用差し入れ、体力、ソーダ、ジュエル。出现错误（如 1012）或结果不确定：暂停，当天不重试。",
+            "option": [
+                "营业收取后",
+                "营业模式",
+                "营业一括派出",
+                "营业队伍",
+                "营业槽位数",
+                "营业内容"
+            ]
+        }
+    ],
+    "option": {
+        "营业收取后": {
+            "type": "select",
+            "label": "收取后",
+            "description": "再营业（默认）：按「再営業へ」，核对预填的 12 小时队伍后按「決定」。只收取：按「再営業へ」读取队伍后按 ← 返回，不派出。",
+            "default_case": "再营业（默认）",
+            "cases": [
+                {
+                    "name": "再营业（默认）",
+                    "pipeline_override": {
+                        "SC.Business.Config.Redispatch": {
+                            "attach": {
+                                "redispatch": "decide"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "只收取",
+                    "pipeline_override": {
+                        "SC.Business.Config.Redispatch": {
+                            "attach": {
+                                "redispatch": "back"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "营业模式": {
+            "type": "select",
+            "label": "营业模式",
+            "description": "bulk_default（默认）：一括完了 → WORK REPORT 逐份 Touch to Next → 一括営業 → 核验营业首页（无 CLEAR、无空槽、两键灰色）后返回首页；每个一括按钮每次最多 1 次，对话框/未知画面只采样不点击。sample：只进入营业首页采样并返回；sample_collect_one：在营业首页读槽位，只按第一个 CLEAR 槽位的「営業完了」一次（非消费，按前写 claim_intent），之后只读观察 ≤60 s 并存帧，出现 WORK REPORT（两帧读数一致）→ 记录 Exp/粉丝数并记为 claimed → 按「Touch to Next」一次 → 回到营业首页记录槽位并返回首页；该槽位不再 CLEAR 也记 claimed；否则 claim_uncertain（当天不重试）；任务开始时已是 WORK REPORT 也会接管（今天恰有一个不确定槽位时补记 claimed）；永不按一括完了；sample_dispatch_open：营业首页两帧都判定为空槽（无 CLEAR/営業完了、无计时/数字/营业名）时只点第一个空槽卡片一次，只读采样派出画面 ≤30 s 后按一次返回键（不可用则停止），不选择营业/队伍、不派出；collect_and_dispatch：收取已完成营业并派出 12 小时营业（已设计、未启用，当前以 needs_sampling 结束且不点击）。",
+            "default_case": "一括收放（默认）",
+            "cases": [
+                {
+                    "name": "一括收放（默认）",
+                    "pipeline_override": {
+                        "SC.Business.Config.Mode": {
+                            "attach": {
+                                "mode": "bulk_default"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "只采样",
+                    "pipeline_override": {
+                        "SC.Business.Config.Mode": {
+                            "attach": {
+                                "mode": "sample"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "采样并收取一个（sample_collect_one）",
+                    "pipeline_override": {
+                        "SC.Business.Config.Mode": {
+                            "attach": {
+                                "mode": "sample_collect_one"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "采样派出页（sample_dispatch_open）",
+                    "pipeline_override": {
+                        "SC.Business.Config.Mode": {
+                            "attach": {
+                                "mode": "sample_dispatch_open"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "收取并派出（未启用）",
+                    "pipeline_override": {
+                        "SC.Business.Config.Mode": {
+                            "attach": {
+                                "mode": "collect_and_dispatch"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "营业一括派出": {
+            "type": "select",
+            "label": "一括営業（派出）",
+            "description": "默认关闭：只做一括完了与 WORK REPORT，空槽保留（collected_dispatch_disabled，成功）。“核对后派出”需同时填写“营业队伍”：按一次「一括営業」后只读取并核对确认画面（营业名、「12時間」、队伍名、无ジュエル/スタミナ/差し入れ/ソーダ/回復），本版本永不按确认；未填队伍 → team_not_configured。游戏若不经确认直接派出 → dispatched_binding_unverified（失败，当天不重试）。一括営業 尚无实机样本，首次只在监督下使用。",
+            "default_case": "关闭（只收取）",
+            "cases": [
+                {
+                    "name": "关闭（只收取）",
+                    "pipeline_override": {
+                        "SC.Business.Config.Dispatch": {
+                            "attach": {
+                                "bulk_dispatch": "off"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "核对后派出（需填写队伍）",
+                    "pipeline_override": {
+                        "SC.Business.Config.Dispatch": {
+                            "attach": {
+                                "bulk_dispatch": "verify"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "营业队伍": {
+            "type": "input",
+            "label": "营业队伍（偶像名）",
+            "description": "开发者：只用于空槽「一括営業」。确认画面必须出现的偶像名，用「、」或「/」分隔；留空不派出。再营业不需要填写。",
+            "inputs": [
+                {
+                    "name": "team",
+                    "label": "队伍/偶像名",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^.{0,40}$",
+                    "pattern_msg": "最多 40 个字符，留空=未选择"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Business.Config.Team": {
+                    "attach": {
+                        "team": "{team}"
+                    }
+                }
+            }
+        },
+        "营业槽位数": {
+            "type": "select",
+            "label": "最多派出的空槽位数",
+            "description": "仅供“收取并派出（未启用）”设计使用；bulk_default 的一括営業 由游戏处理全部空槽，不使用此项。进行中的槽位永不覆盖；不会解锁槽位。",
+            "default_case": "1",
+            "cases": [
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Business.Config.Slots": {
+                            "attach": {
+                                "slots": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Business.Config.Slots": {
+                            "attach": {
+                                "slots": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Business.Config.Slots": {
+                            "attach": {
+                                "slots": 3
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "营业内容": {
+            "type": "select",
+            "label": "派出的营业",
+            "description": "派出的营业固定为 12 小时 雑誌インタビュー（核对后派出时，确认画面必须显示该营业与「12時間」）。差し入れ 固定关闭。",
+            "default_case": "雑誌インタビュー（12小时）",
+            "cases": [
+                {
+                    "name": "雑誌インタビュー（12小时）",
+                    "pipeline_override": {
+                        "SC.Business.Config.Target": {
+                            "attach": {
+                                "business": "雑誌インタビュー",
+                                "duration_hours": 12,
+                                "gift": false
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,1012 @@
+{
+ "version": 1,
+ "recording": "dev_assets/private/recordings/wing-demo-20261005-0058-01",
+ "ocr": "dev_assets/private/wing-demo-analysis/ocr.jsonl",
+ "note": "Hand labels (contact sheets + OCR, 2026-10-05). Keys are sample sequence numbers; 'A|B' accepts either. Transition/LiveAnim/ResultBadge are wait-only frames without a stable anchor (expected: unknown or a wait screen). Truth values were read from the frames by hand (timeline.json + visual check); stamina_pct is a bar-fill estimate (+-5). No images, account identifiers or currency values. Loading overlays confirmed by ROI OCR ('Now Loading' over the page) are labelled 'Page|Loading'.",
+ "wait_labels": [
+  "Transition",
+  "LiveAnim",
+  "ResultBadge"
+ ],
+ "families": {
+  "Minigame": [
+   "MinigameMenu",
+   "MinigameResult",
+   "MinigameRules",
+   "MinigameGame",
+   "MinigameTop",
+   "MinigameCourse"
+  ],
+  "Home": [
+   "Home",
+   "HomeMinigamePopup"
+  ],
+  "Commu": [
+   "Commu",
+   "CommuSkip",
+   "CommuFastForwardOff"
+  ]
+ },
+ "labels": {
+  "1": "TitleScreen",
+  "2": "TitleScreen",
+  "3": "TitleScreen",
+  "4": "TitleScreen",
+  "5": "TitleScreen",
+  "6": "TitleScreen",
+  "7": "TitleScreen",
+  "8": "TitleScreen",
+  "9": "TitleScreen",
+  "10": "TitleScreen",
+  "11": "TitleScreen",
+  "12": "TitleScreen",
+  "13": "TitleScreen",
+  "14": "TitleScreen",
+  "15": "TitleScreen",
+  "16": "TitleScreen",
+  "17": "TitleScreen",
+  "18": "TitleScreen",
+  "19": "TitleScreen",
+  "20": "TitleScreen",
+  "21": "TitleScreen",
+  "22": "TitleScreen",
+  "23": "TitleScreen",
+  "24": "TitleScreen",
+  "25": "TitleScreen",
+  "26": "TitleScreen",
+  "27": "TitleScreen",
+  "28": "TitleScreen",
+  "29": "TitleScreen",
+  "30": "TitleScreen",
+  "31": "TitleScreen",
+  "32": "TitleScreen",
+  "33": "TitleScreen",
+  "34": "TitleScreen",
+  "35": "TitleScreen",
+  "36": "TitleScreen",
+  "37": "TitleScreen",
+  "38": "TitleScreen",
+  "39": "TitleScreen",
+  "40": "TitleScreen",
+  "41": "TitleScreen",
+  "42": "TitleScreen",
+  "43": "TitleScreen",
+  "44": "TitleScreen",
+  "45": "TitleScreen",
+  "46": "TitleScreen",
+  "47": "TitleScreen",
+  "48": "TitleScreen",
+  "49": "TitleScreen",
+  "50": "TitleScreen",
+  "51": "TitleScreen",
+  "52": "TitleScreen",
+  "53": "TitleScreen",
+  "54": "TitleScreen",
+  "55": "TitleScreen",
+  "56": "TitleScreen",
+  "57": "TitleScreen",
+  "58": "TitleScreen",
+  "59": "TitleScreen",
+  "60": "TitleScreen",
+  "61": "TitleScreen",
+  "62": "TitleScreen",
+  "63": "TitleScreen",
+  "64": "TitleScreen",
+  "65": "TitleScreen",
+  "66": "TitleScreen",
+  "67": "TitleScreen",
+  "68": "TitleScreen",
+  "69": "TitleScreen",
+  "70": "TitleScreen",
+  "72": "TitleScreen",
+  "73": "TitleScreen",
+  "75": "TitleScreen",
+  "76": "TitleScreen",
+  "77": "TitleScreen",
+  "78": "TitleScreen",
+  "79": "TitleScreen",
+  "80": "TitleScreen",
+  "81": "TitleScreen",
+  "82": "TitleScreen",
+  "83": "TitleScreen",
+  "84": "TitleScreen",
+  "85": "TitleScreen",
+  "86": "TitleScreen",
+  "87": "TitleScreen",
+  "88": "TitleScreen",
+  "89": "TitleScreen",
+  "90": "TitleScreen",
+  "91": "TitleScreen",
+  "92": "TitleScreen",
+  "93": "TitleScreen",
+  "94": "TitleScreen",
+  "95": "TitleScreen",
+  "98": "Loading",
+  "100": "Notice",
+  "101": "Notice",
+  "107": "Loading",
+  "109": "Loading",
+  "110": "Loading",
+  "111": "Loading",
+  "112": "Loading",
+  "113": "ProduceSelectOther",
+  "115": "ProduceSelect|ProduceSelectOther|Loading",
+  "118": "Loading",
+  "130": "IdolPicker",
+  "143": "IdolPicker",
+  "146": "UnitSelect",
+  "152": "IdolPickerConfirm",
+  "157": "IdolPicker",
+  "159": "IdolPicker|Loading",
+  "163": "UnitSelect",
+  "164": "UnitSelect",
+  "169": "UnitSelect",
+  "173": "UnitSelect",
+  "175": "UnitSelect",
+  "176": "UnitSelect",
+  "178": "UnitSelect",
+  "181": "UnitSelect",
+  "182": "UnitSelect",
+  "185": "UnitSelect",
+  "186": "UnitSelect",
+  "187": "UnitSelect",
+  "188": "UnitSelect",
+  "189": "UnitSelect",
+  "190": "UnitSelect",
+  "191": "UnitSelect",
+  "192": "UnitSelect",
+  "193": "UnitSelect",
+  "194": "UnitSelect",
+  "195": "UnitSelect",
+  "196": "UnitSelect",
+  "197": "UnitSelect",
+  "198": "UnitSelect",
+  "199": "UnitSelect",
+  "200": "UnitSelect",
+  "201": "UnitSelect",
+  "202": "UnitSelect",
+  "203": "UnitSelect",
+  "204": "UnitSelect",
+  "205": "UnitSelect",
+  "206": "UnitSelect",
+  "207": "UnitSelect",
+  "208": "UnitSelect",
+  "209": "UnitSelect",
+  "210": "UnitSelect",
+  "211": "UnitSelect",
+  "212": "UnitSelect",
+  "213": "UnitSelect",
+  "214": "UnitSelect",
+  "215": "UnitSelect",
+  "216": "UnitSelect",
+  "217": "UnitSelect",
+  "218": "UnitSelect",
+  "219": "UnitSelect",
+  "220": "UnitSelect",
+  "221": "UnitSelect",
+  "222": "UnitSelect",
+  "223": "UnitSelect",
+  "224": "UnitSelect",
+  "225": "UnitSelect",
+  "226": "UnitSelect",
+  "227": "UnitSelect",
+  "228": "UnitSelect",
+  "229": "Loading",
+  "233": "ItemSelect",
+  "239": "ItemSelect|Loading",
+  "240": "ItemSelect|Loading",
+  "241": "ItemSelect|Loading",
+  "242": "ItemSelect|Loading",
+  "243": "Transition",
+  "247": "SupportSkillCutIn",
+  "251": "Transition",
+  "256": "Commu",
+  "257": "Commu",
+  "259": "Schedule",
+  "262": "Transition",
+  "270": "Schedule",
+  "277": "HubBanner",
+  "289": "Commu",
+  "290": "Transition",
+  "299": "Transition",
+  "300": "WeekCard",
+  "302": "SeasonEndCommu",
+  "303": "Transition",
+  "304": "Transition",
+  "305": "Transition",
+  "306": "Transition",
+  "307": "Transition",
+  "308": "Commu",
+  "309": "Commu",
+  "310": "Commu",
+  "311": "Commu",
+  "312": "Commu",
+  "313": "Commu",
+  "314": "Commu",
+  "315": "Commu",
+  "316": "Commu",
+  "320": "Commu",
+  "325": "Schedule",
+  "326": "Schedule",
+  "328": "Transition",
+  "329": "Commu",
+  "333": "SupportSkillCutIn",
+  "334": "Schedule",
+  "338": "Schedule",
+  "343": "Commu",
+  "345": "Commu",
+  "346": "Transition",
+  "347": "TimeCard",
+  "350": "Commu",
+  "352": "Transition",
+  "354": "Commu",
+  "361": "ScheduleBusy",
+  "373": "Review",
+  "383": "ReplaceConfirm",
+  "397": "Transition",
+  "398": "Transition",
+  "415": "Review",
+  "418": "AuditionTab",
+  "419": "AuditionTab",
+  "427": "Live",
+  "428": "Live",
+  "431": "Live",
+  "432": "Live",
+  "433": "Live",
+  "434": "Live",
+  "435": "Live",
+  "436": "Live",
+  "445": "Commu",
+  "452": "Transition",
+  "453": "Transition",
+  "456": "Transition",
+  "460": "Schedule",
+  "463": "PromiseBroken",
+  "465": "Transition",
+  "466": "RankPyramid",
+  "467": "PassCommu",
+  "480": "AuditionTab",
+  "483": "Commu",
+  "484": "Loading",
+  "485": "Live",
+  "488": "Live",
+  "489": "Live",
+  "490": "LiveSkillCutIn",
+  "498": "Live",
+  "500": "Live",
+  "501": "Live",
+  "507": "Live",
+  "508": "Live",
+  "509": "Live|Loading",
+  "510": "LiveAnim",
+  "525": "AuditionTab",
+  "527": "Choice",
+  "529": "Loading",
+  "533": "Live",
+  "534": "Live",
+  "535": "Live",
+  "537": "Live",
+  "538": "Live",
+  "539": "Live",
+  "540": "Live",
+  "548": "Live",
+  "550": "Live",
+  "551": "Live",
+  "552": "Live",
+  "553": "Live",
+  "554": "LiveAnim",
+  "555": "Live",
+  "564": "RankPyramid",
+  "565": "RankPyramid",
+  "569": "Transition",
+  "570": "Commu",
+  "575": "Transition",
+  "579": "Hub",
+  "580": "Owned",
+  "592": "Transition",
+  "595": "Transition",
+  "606": "Hub",
+  "616": "Commu",
+  "626": "Schedule",
+  "628": "ScheduleBusy",
+  "631": "Commu",
+  "635": "Transition",
+  "636": "Transition",
+  "637": "Schedule",
+  "638": "Schedule",
+  "656": "Transition",
+  "657": "Choice",
+  "658": "Commu",
+  "662": "Live",
+  "663": "Live",
+  "665": "Live",
+  "666": "Live",
+  "667": "Live",
+  "668": "Live",
+  "669": "Live",
+  "670": "Live",
+  "671": "Live",
+  "672": "Live",
+  "673": "LiveAnim",
+  "675": "Live",
+  "676": "Live",
+  "677": "Live",
+  "678": "Live",
+  "679": "Live",
+  "680": "Live",
+  "681": "Live",
+  "682": "Live|Loading",
+  "683": "ResultJudge",
+  "685": "ResultBadge",
+  "686": "AuditionPass",
+  "687": "AuditionPass",
+  "688": "ResultJudge",
+  "689": "ResultJudge",
+  "690": "ResultJudge",
+  "692": "Transition",
+  "693": "OnAir",
+  "694": "OnAir",
+  "695": "OnAir",
+  "696": "OnAir",
+  "697": "OnAir",
+  "698": "Commu",
+  "699": "Commu",
+  "700": "Commu",
+  "701": "Transition",
+  "702": "Transition",
+  "703": "Commu",
+  "704": "Commu",
+  "705": "Commu",
+  "706": "Commu",
+  "707": "Transition",
+  "708": "Schedule",
+  "711": "AuditionTab",
+  "712": "Schedule",
+  "715": "AuditionTab",
+  "717": "Loading",
+  "721": "Live",
+  "722": "LiveSkillCutIn",
+  "723": "Live",
+  "724": "Live",
+  "725": "Live",
+  "726": "Live",
+  "727": "Live",
+  "728": "Live",
+  "729": "Live",
+  "730": "Live",
+  "731": "Live",
+  "732": "Live",
+  "733": "LiveAnim",
+  "734": "LiveAnim",
+  "735": "LiveAnim",
+  "736": "LiveAnim",
+  "737": "LiveAnim",
+  "738": "LiveAnim",
+  "739": "LiveAnim",
+  "740": "Live",
+  "741": "Live",
+  "742": "Live",
+  "743": "Live",
+  "744": "Live",
+  "745": "Live",
+  "746": "Live",
+  "747": "Live|Loading",
+  "748": "ResultJudge",
+  "749": "ResultJudge",
+  "750": "ResultJudge",
+  "755": "OnAir",
+  "758": "Choice",
+  "763": "AuditionTab",
+  "765": "Review",
+  "775": "Live",
+  "778": "Live",
+  "779": "Live",
+  "780": "Live",
+  "781": "Live",
+  "782": "Live",
+  "784": "Live",
+  "787": "Live",
+  "789": "Live",
+  "790": "LiveAnim",
+  "791": "Live",
+  "792": "Live",
+  "795": "Live",
+  "796": "Live",
+  "797": "Live",
+  "798": "Live|Loading",
+  "799": "ResultJudge",
+  "800": "ResultJudge",
+  "801": "ResultJudge",
+  "802": "ResultJudge",
+  "803": "ResultJudge",
+  "804": "ResultJudge",
+  "805": "ResultJudge",
+  "806": "ResultJudge",
+  "816": "Commu",
+  "820": "Live",
+  "821": "Live",
+  "822": "Live",
+  "826": "Live",
+  "827": "LiveSkillCutIn",
+  "828": "Live",
+  "829": "Live",
+  "830": "Live",
+  "831": "LiveAnim",
+  "832": "LiveAnim",
+  "834": "Live",
+  "835": "Live",
+  "836": "Live",
+  "838": "ResultJudge",
+  "840": "Transition",
+  "842": "Commu",
+  "845": "RankPyramid",
+  "847": "Transition",
+  "848": "HubBanner",
+  "852": "Transition",
+  "854": "Commu",
+  "864": "Schedule",
+  "870": "Commu",
+  "880": "WingQualified",
+  "882": "Transition",
+  "891": "Commu",
+  "892": "Live",
+  "894": "LiveSkillCutIn",
+  "895": "Live",
+  "896": "Live",
+  "897": "Live",
+  "898": "LiveSkillCutIn",
+  "899": "Live",
+  "900": "Live",
+  "901": "Live",
+  "902": "Live",
+  "903": "Live",
+  "907": "ResultJudge",
+  "908": "ResultJudge",
+  "909": "LiveAnim",
+  "911": "PassCommu",
+  "912": "Transition",
+  "915": "Transition",
+  "917": "RankPyramid",
+  "918": "Transition",
+  "920": "HubFinal",
+  "924": "Transition",
+  "928": "Live",
+  "929": "Live",
+  "931": "Live",
+  "933": "Live",
+  "935": "Live",
+  "940": "Live",
+  "954": "Commu",
+  "956": "Transition",
+  "957": "Transition",
+  "959": "Evaluation",
+  "962": "FesBirth",
+  "963": "Transition",
+  "964": "TotalEval",
+  "965": "ClearReward",
+  "974": "Loading",
+  "976": "TrueEndCommu",
+  "978": "LiveAnim",
+  "979": "LiveAnim",
+  "980": "LiveAnim",
+  "981": "Loading",
+  "982": "Loading",
+  "983": "Loading",
+  "984": "MissionPopup",
+  "985": "MissionPopup",
+  "987": "MissionPopup",
+  "988": "MissionPopup",
+  "989": "MissionPopup",
+  "990": "MissionPopup",
+  "991": "MissionPopup",
+  "992": "MissionPopup",
+  "993": "MissionPopup",
+  "994": "MissionPopup",
+  "995": "MissionPopup",
+  "996": "MissionPopup"
+ },
+ "truth": {
+  "259": {
+   "season": 1,
+   "weeks_left": 6,
+   "stats": {
+    "Vo": 177,
+    "Da": 108,
+    "Vi": 108,
+    "Me": 115
+   },
+   "sp": 63,
+   "fans": 159,
+   "fans_left": 841,
+   "stamina_pct": 100,
+   "selected_room": "lesson_vo",
+   "promise": false
+  },
+  "270": {
+   "season": 1,
+   "weeks_left": 4,
+   "stats": {
+    "Vo": 255,
+    "Da": 108,
+    "Vi": 108,
+    "Me": 140
+   },
+   "sp": 96,
+   "fans": 569,
+   "fans_left": 431,
+   "stamina_pct": 100,
+   "selected_room": "work_talk",
+   "promise": false
+  },
+  "325": {
+   "season": 2,
+   "weeks_left": 8,
+   "stats": {
+    "Vo": 368,
+    "Da": 125,
+    "Vi": 118,
+    "Me": 213
+   },
+   "sp": 213,
+   "fans": 1513,
+   "fans_left": 8487,
+   "stamina_pct": 99,
+   "selected_room": "lesson_vo",
+   "promise": false
+  },
+  "326": {
+   "season": 2,
+   "weeks_left": 8,
+   "stats": {
+    "Vo": 368,
+    "Da": 125,
+    "Vi": 118,
+    "Me": 213
+   },
+   "sp": 213,
+   "fans": 1513,
+   "fans_left": 8487,
+   "stamina_pct": 99,
+   "selected_room": "lesson_da",
+   "promise": true
+  },
+  "334": {
+   "season": 2,
+   "weeks_left": 7,
+   "stats": {
+    "Vo": 388,
+    "Da": 173,
+    "Vi": 118,
+    "Me": 248
+   },
+   "sp": 286,
+   "fans": 1545,
+   "fans_left": 8455,
+   "stamina_pct": 100,
+   "selected_room": "lesson_vo",
+   "promise": false
+  },
+  "338": {
+   "season": 2,
+   "weeks_left": 7,
+   "stats": {
+    "Vo": 388,
+    "Da": 173,
+    "Vi": 118,
+    "Me": 248
+   },
+   "sp": 286,
+   "fans": 1545,
+   "fans_left": 8455,
+   "stamina_pct": 100,
+   "selected_room": "work_radio",
+   "promise": false
+  },
+  "460": {
+   "season": 2,
+   "weeks_left": 1,
+   "stats": {
+    "Vo": 703,
+    "Da": 198,
+    "Vi": 168,
+    "Me": 353
+   },
+   "sp": 31,
+   "fans": 13228,
+   "fans_left": "clear",
+   "stamina_pct": 95,
+   "selected_room": "lesson_vo",
+   "promise": true
+  },
+  "626": {
+   "season": 3,
+   "weeks_left": 1,
+   "stats": {
+    "Vo": 1167,
+    "Da": 241,
+    "Vi": 211,
+    "Me": 478
+   },
+   "sp": 10,
+   "fans": 109564,
+   "fans_left": "clear",
+   "stamina_pct": 94,
+   "selected_room": "lesson_vo",
+   "promise": false
+  },
+  "637": {
+   "season": 4,
+   "weeks_left": 8,
+   "stats": {
+    "Vo": 1193,
+    "Da": 251,
+    "Vi": 211,
+    "Me": 511
+   },
+   "sp": 30,
+   "fans": 109894,
+   "fans_left": "clear",
+   "stamina_pct": 91,
+   "selected_room": "lesson_vo",
+   "promise": false
+  },
+  "708": {
+   "season": 4,
+   "weeks_left": 6,
+   "stats": {
+    "Vo": 1229,
+    "Da": 296,
+    "Vi": 247,
+    "Me": 526
+   },
+   "sp": 38,
+   "fans": 209933,
+   "fans_left": "clear",
+   "stamina_pct": 75,
+   "selected_room": "lesson_vo",
+   "promise": false
+  },
+  "864": {
+   "season": 4,
+   "weeks_left": 2,
+   "stats": {
+    "Vo": 1342,
+    "Da": 340,
+    "Vi": 279,
+    "Me": 571
+   },
+   "sp": 26,
+   "fans": 511565,
+   "fans_left": "clear",
+   "stamina_pct": 96,
+   "selected_room": "work_talk",
+   "promise": false
+  },
+  "418": {
+   "season": 2,
+   "weeks_left": 2,
+   "stats": {
+    "Vo": 678,
+    "Da": 193,
+    "Vi": 158,
+    "Me": 343
+   },
+   "sp": 21,
+   "fans": 3228,
+   "fans_left": 6772,
+   "stamina_pct": 95,
+   "reward": 10000,
+   "difficulty": 8,
+   "required_rank": "F",
+   "trend": {
+    "Vi": 1,
+    "Vo": 2,
+    "Da": 3
+   },
+   "recommended": {
+    "Vo": 150,
+    "Me": 150
+   }
+  },
+  "419": {
+   "season": 2,
+   "weeks_left": 2,
+   "stats": {
+    "Vo": 678,
+    "Da": 193,
+    "Vi": 158,
+    "Me": 343
+   },
+   "sp": 21,
+   "fans": 3228,
+   "fans_left": 6772,
+   "stamina_pct": 95,
+   "reward": 10000,
+   "difficulty": 8,
+   "required_rank": "F",
+   "trend": {
+    "Vi": 1,
+    "Vo": 2,
+    "Da": 3
+   },
+   "recommended": {
+    "Vo": 150,
+    "Me": 150
+   }
+  },
+  "480": {
+   "season": 3,
+   "weeks_left": 8,
+   "stats": {
+    "Vo": 785,
+    "Da": 198,
+    "Vi": 168,
+    "Me": 388
+   },
+   "sp": 8,
+   "fans": 13852,
+   "fans_left": 36148,
+   "stamina_pct": 100,
+   "reward": 40000,
+   "difficulty": 13,
+   "required_rank": "F",
+   "trend": {
+    "Vo": 1,
+    "Da": 2,
+    "Vi": 3
+   },
+   "recommended": {
+    "Vo": 330,
+    "Me": 250
+   }
+  },
+  "525": {
+   "season": 3,
+   "weeks_left": 7,
+   "stats": {
+    "Vo": 797,
+    "Da": 214,
+    "Vi": 194,
+    "Me": 398
+   },
+   "sp": 18,
+   "fans": 53852,
+   "fans_left": "clear",
+   "stamina_pct": 100,
+   "reward": 50000,
+   "difficulty": 15,
+   "required_rank": "C",
+   "trend": {
+    "Da": 1,
+    "Vo": 2,
+    "Vi": 3
+   },
+   "recommended": {
+    "Vo": 380,
+    "Me": 280
+   }
+  },
+  "711": {
+   "season": 4,
+   "weeks_left": 6,
+   "stats": {
+    "Vo": 1229,
+    "Da": 296,
+    "Vi": 247,
+    "Me": 526
+   },
+   "sp": 38,
+   "fans": 209933,
+   "fans_left": "clear",
+   "stamina_pct": 75,
+   "reward": 100000,
+   "difficulty": 19,
+   "required_rank": "B",
+   "trend": {
+    "Vo": 1,
+    "Da": 2,
+    "Vi": 3
+   },
+   "recommended": {
+    "Vo": 450,
+    "Me": 450
+   }
+  },
+  "715": {
+   "season": 4,
+   "weeks_left": 6,
+   "stats": {
+    "Vo": 1229,
+    "Da": 296,
+    "Vi": 247,
+    "Me": 526
+   },
+   "sp": 38,
+   "fans": 209933,
+   "fans_left": "clear",
+   "stamina_pct": 75,
+   "reward": 100000,
+   "difficulty": 19,
+   "required_rank": "B",
+   "trend": {
+    "Vo": 1,
+    "Da": 2,
+    "Vi": 3
+   },
+   "recommended": {
+    "Vo": 450,
+    "Me": 450
+   }
+  },
+  "763": {
+   "season": 4,
+   "weeks_left": 5,
+   "stats": {
+    "Vo": 1255,
+    "Da": 314,
+    "Vi": 255,
+    "Me": 536
+   },
+   "sp": 48,
+   "fans": 309933,
+   "fans_left": "clear",
+   "stamina_pct": 75,
+   "reward": 100000,
+   "difficulty": 19,
+   "required_rank": "B",
+   "trend": {
+    "Vi": 1,
+    "Vo": 2,
+    "Da": 3
+   },
+   "recommended": {
+    "Vo": 480,
+    "Me": 450
+   }
+  },
+  "277": {
+   "season": 1,
+   "weeks_left": 3,
+   "fans_left": 243
+  },
+  "579": {
+   "season": 3,
+   "weeks_left": 4,
+   "fans_left": "clear"
+  },
+  "606": {
+   "season": 3,
+   "weeks_left": 2,
+   "fans_left": "clear"
+  },
+  "848": {
+   "season": 4,
+   "weeks_left": 3,
+   "fans_left": "clear"
+  },
+  "920": {
+   "season": "wing"
+  },
+  "373": {
+   "sp": 337
+  },
+  "415": {
+   "sp": 71
+  },
+  "765": {
+   "sp": 48
+  },
+  "580": {
+   "sp": 83,
+   "owned": {
+    "Vo": [
+     961,
+     1059
+    ],
+    "Da": [
+     221,
+     545
+    ],
+    "Vi": [
+     201,
+     595
+    ],
+    "Me": [
+     423,
+     575
+    ]
+   }
+  },
+  "466": {
+   "fans": 13228
+  },
+  "564": {
+   "fans": 103852
+  },
+  "565": {
+   "fans": 103852
+  },
+  "845": {
+   "fans": 409933
+  },
+  "917": {
+   "fans": 514253
+  },
+  "962": {
+   "sp": 248
+  },
+  "527": {
+   "options": {
+    "Left": "夏葉なら大丈夫",
+    "Center": "緊張を楽しもう！",
+    "Right": "まずは落ち着こう"
+   }
+  },
+  "427": {
+   "auto": "OFF"
+  },
+  "431": {
+   "auto": "ON"
+  },
+  "485": {
+   "auto": "OFF"
+  },
+  "500": {
+   "auto": "ON"
+  },
+  "533": {
+   "auto": "OFF"
+  },
+  "550": {
+   "auto": "ON"
+  },
+  "663": {
+   "auto": "ON"
+  },
+  "775": {
+   "auto": "OFF"
+  },
+  "778": {
+   "auto": "ON"
+  },
+  "784": {
+   "auto": "OFF"
+  },
+  "789": {
+   "auto": "ON"
+  },
+  "820": {
+   "auto": "OFF"
+  },
+  "829": {
+   "auto": "ON"
+  },
+  "892": {
+   "auto": "OFF"
+  },
+  "895": {
+   "auto": "ON"
+  },
+  "928": {
+   "auto": "OFF"
+  },
+  "940": {
+   "auto": "OFF"
+  },
+  "146": {
+   "unit_index": 7,
+   "unit_total": 20,
+   "unit_page": 0
+  },
+  "163": {
+   "unit_index": 7,
+   "unit_total": 20,
+   "unit_page": 0
+  },
+  "228": {
+   "unit_index": 7,
+   "unit_total": 20,
+   "unit_page": 0
+  }
+ }
+}

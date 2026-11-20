@@ -1,0 +1,43 @@
+{
+    "task": [
+        {
+            "name": "PresentClaim",
+            "label": "礼物箱领取",
+            "entry": "SC.Present.Entry",
+            "default_check": true,
+            "description": "打开礼物箱，「一括受取」可按就按一次，不可按就跳过；按后以未领取件数减少或空箱核对，再返回首页。",
+            "option": [
+                "プレゼント领取"
+            ]
+        }
+    ],
+    "option": {
+        "プレゼント领取": {
+            "type": "select",
+            "label": "领取",
+            "default_case": "开启",
+            "cases": [
+                {
+                    "name": "关闭",
+                    "pipeline_override": {
+                        "SC.Present.Config": {
+                            "attach": {
+                                "enabled": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "开启",
+                    "pipeline_override": {
+                        "SC.Present.Config": {
+                            "attach": {
+                                "enabled": true
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

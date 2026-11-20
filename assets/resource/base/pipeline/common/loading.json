@@ -1,0 +1,36 @@
+{
+    "SC.Loading.Present": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.Loading.Text",
+            "SC.Common.Anchor.Loading.Feather"
+        ]
+    },
+    "SC.Loading.Wait": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.Loading.Text",
+            "SC.Common.Anchor.Loading.Feather"
+        ],
+        "max_hit": 20,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 30000,
+        "next": [
+            "SC.Loading.Gone"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ]
+    },
+    "SC.Loading.Gone": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.Loading.Text",
+            "SC.Common.Anchor.Loading.Feather"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}

@@ -1,0 +1,176 @@
+/* 「Produce」 tab (wing-panel.js, 2026-10-13). Linked on first use (CSP 'self'). Tokens only (both themes).
+   2026-10-13 visual polish: one small system for this tab — summary card, quiet fold cards (no inner rules under the
+   head), 34 px controls, one helper-text style, tags for 自动 / 不生效 / 暂不可用, a run bar that says why 开始 is off. */
+.wing-panel {
+  --wing-ctl-h: 32px;           /* segmented / select / button height inside the tab */
+  --wing-row-gap: 10px;         /* vertical rhythm between option rows */
+  --wing-rule: color-mix(in srgb, var(--sc-line) 65%, transparent);
+}
+.wing-panel .panel-scroll { padding-top: var(--sp-3); }
+
+/* ---------- Scenario rail: 育成 and 特化 groups; only the current one is lit, the rest are placeholders ---------- */
+.produce-rail { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin: 0 0 var(--sp-2); }
+.produce-rail-group { display: flex; flex-wrap: wrap; gap: 4px; }
+.produce-rail-item {
+  flex: none; padding: 2px 10px; border: 1px solid var(--sc-line); border-radius: var(--r-pill);
+  font-size: var(--fs-12); font-weight: 600; line-height: 1.5; white-space: nowrap; color: var(--sc-text-2);
+}
+.produce-rail-item.is-current { border-color: transparent; background: var(--sc-primary-tint); color: var(--sc-primary-text); font-weight: 700; }
+.produce-rail-item.is-soon { border-style: dashed; opacity: .55; cursor: default; }
+.produce-rail-cell { display: contents; }
+button.produce-rail-item { background: none; font-family: inherit; cursor: pointer; }
+button.produce-rail-item:not(.is-current):hover { border-color: var(--sc-primary); color: var(--sc-primary-text); }
+button.produce-rail-item:disabled { cursor: default; opacity: .55; }
+.produce-rail-soon { margin-left: 4px; font-size: var(--fs-11); font-weight: 400; }
+
+/* ---------- Summary card (P card + 目标 / 主属性 / P 偶像 / 编队 / 开局) ---------- */
+.wing-hero {
+  display: flex; align-items: flex-start; gap: var(--sp-3); min-width: 0; padding: var(--sp-3);
+  border: 1px solid var(--sc-line); border-radius: var(--r-l); background: var(--grad-hero); box-shadow: var(--shadow-card);
+}
+.wing-hero-p {
+  flex: none; padding: 0; border: none; background: none; border-radius: var(--r-m); cursor: pointer; color: var(--sc-text-2);
+}
+.wing-hero-p:focus-visible { outline: 2px solid var(--sc-primary); outline-offset: 2px; }
+.wing-hero-thumb {
+  display: grid; place-items: center; width: 52px; height: 52px; overflow: hidden;
+  border: 2px solid var(--rar, var(--sc-primary)); border-radius: var(--r-m); background: var(--sc-surface-2);
+}
+.wing-hero-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.wing-hero-thumb.is-empty { border: 1.5px dashed var(--sc-primary); background: var(--sc-primary-tint); color: var(--sc-primary-text); }
+.wing-hero-p:hover .wing-hero-thumb { filter: brightness(1.06); }
+.wing-hero-thumb.rar-ur { --rar: var(--rar-ur); }
+.wing-hero-thumb.rar-ssr { --rar: var(--rar-ssr); }
+.wing-hero-thumb.rar-sr { --rar: var(--rar-sr); }
+.wing-hero-thumb.rar-r { --rar: var(--rar-r); }
+.wing-hero-main { flex: 1 1 auto; min-width: 0; }
+.wing-hero-title { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.wing-hero-icon { flex: none; }
+.wing-hero-name { font-family: var(--font-heading); font-size: var(--fs-16); font-weight: 700; letter-spacing: .02em; color: var(--sc-text); }
+.wing-hero-goal {
+  flex: none; padding: 1px 8px; border-radius: var(--r-pill);
+  border: 1px solid transparent; background: var(--sc-primary-tint); color: var(--sc-primary-text); font: inherit; font-size: var(--fs-12); font-weight: 700;
+  white-space: nowrap; cursor: pointer;
+}
+.wing-hero-goal:hover { border-color: var(--sc-primary); }
+.wing-hero-goal:focus-visible { outline: 2px solid var(--sc-primary); outline-offset: 1px; }
+/* 2026-10-24: who (P idol + card) on one line, then one muted line 主属性 · 编队; a value that needs a choice is accented */
+.wing-hero-idol { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 4px; margin-top: 4px; min-width: 0; }
+.wing-hero-idol-name { font-size: var(--fs-14); font-weight: 700; color: var(--sc-text); }
+.wing-hero-card { min-width: 0; font-size: var(--fs-12); color: var(--sc-text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wing-hero-pick {
+  margin-top: 4px; padding: 0; border: none; background: none; font: inherit; font-size: var(--fs-14); font-weight: 700;
+  color: var(--sc-accent-text); text-decoration: underline dashed; text-underline-offset: 3px; cursor: pointer;
+}
+.wing-hero-pick:focus-visible { outline: 2px solid var(--sc-primary); outline-offset: 2px; }
+.wing-hero-facts { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 4px; margin-top: 2px; min-width: 0; }
+.wing-hero-sep { color: var(--sc-text-2); }
+.wing-fact {
+  padding: 1px 2px; margin: 0 -2px; border: none; border-radius: var(--r-s); background: none; font: inherit; font-size: var(--fs-12);
+  color: var(--sc-text-2); text-align: left; cursor: pointer; white-space: nowrap;
+}
+.wing-fact:hover { background: var(--sc-surface-2); color: var(--sc-text); }
+.wing-fact:focus-visible { outline: 2px solid var(--sc-primary); outline-offset: -1px; }
+.wing-fact.is-missing { color: var(--sc-accent-text); font-weight: 600; text-decoration: underline dashed; text-underline-offset: 3px; }
+.wing-auto-tag, .seg-sub, .wing-tag {
+  flex: none; padding: 0 5px; border-radius: var(--r-pill); font-size: var(--fs-11); font-weight: 500; line-height: 16px;
+  background: var(--sc-surface-2); color: var(--sc-text-2); white-space: nowrap;
+}
+
+/* ---------- Last run / attention ---------- */
+.wing-last { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; margin: var(--sp-2) 2px 0; font-size: var(--fs-12); }
+.wing-last-label { color: var(--sc-text-2); }
+.wing-last-text { flex: 1 1 auto; min-width: 0; color: var(--sc-text); }
+.wing-panel .task-attention { margin: var(--sp-2) 0 0; }
+.wing-panel .task-attention .attention-card { margin-top: 0; }
+
+/* ---------- Fold cards: quiet heads, value summary while closed, changed dot ---------- */
+.wing-body.task-body { padding: 0; border-top: none; }
+.wing-panel .task-body > .fold, .wing-panel .panel-scroll > .fold { margin-top: var(--sp-2); box-shadow: none; }
+.wing-panel .task-body .fold-head { min-height: 40px; gap: var(--sp-2); }
+.wing-panel .fold[open] > .fold-head { border-bottom: none; }
+.wing-panel .task-body .fold-body { padding: 0 var(--sp-3) var(--sp-2); }
+.wing-panel .fold-title { font-size: var(--fs-14); }
+.wing-panel .fold:not([open]) > .fold-head .fold-title { color: var(--sc-text); }
+.fold-values { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--sc-text-2); }
+.fold-changed { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--sc-primary); }
+.fold[open] > .fold-head .fold-values, .fold[open] > .fold-head .fold-changed { display: none; }
+.fold:not([open]) > .fold-head .fold-values ~ .fold-state { display: none; }
+.wing-panel .fold .changed { color: var(--sc-text-2); font-weight: 500; }
+
+/* ---------- Option rows: one rhythm, one helper style, aligned controls ---------- */
+.wing-panel .form-row { padding: var(--wing-row-gap) 0; border-top-color: var(--wing-rule); gap: 6px var(--sp-3); }
+/* short labels (目标 / 难度 / 主属性): the control gets the room, so 「Beginner · Middle · Master」 stays on one row */
+.wing-panel .form-row.kind-segmented, .wing-panel .form-row.kind-list { grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); }
+.wing-panel .form-row.is-child { padding-left: var(--sp-4); border-top-style: solid; }
+.wing-panel .form-row.wing-wide { grid-template-columns: minmax(0, 1fr); }
+.wing-panel .field-label { font-size: var(--fs-13); font-weight: 600; color: var(--sc-text); }
+.wing-panel .form-row.is-child .field-label { font-weight: 500; }
+.wing-panel .field-label-row { flex-wrap: wrap; row-gap: 2px; }
+.field-sub { font-size: var(--fs-11); color: var(--sc-text-2); font-weight: 400; }
+.wing-panel .field-hint { font-size: var(--fs-12); line-height: 1.55; color: var(--sc-text-2); }
+.wing-panel .field-hint.is-case { color: var(--sc-text); }
+.wing-panel .segmented { min-height: var(--wing-ctl-h); }
+.wing-panel .segment { min-height: calc(var(--wing-ctl-h) - 6px); padding: 0 var(--sp-2); }
+.wing-panel .segment .seg-sub { margin-left: 4px; background: var(--sc-primary-tint); color: var(--sc-primary-text); }
+.wing-panel .segment.is-implied:not(.is-selected) { color: var(--sc-primary-text); box-shadow: inset 0 0 0 1px var(--sc-line-strong); }
+.wing-panel .select { min-height: var(--wing-ctl-h); }
+.wing-panel .form-row.kind-switch .field-control { min-height: var(--wing-ctl-h); }
+.wing-panel .toggle { min-height: var(--wing-ctl-h); padding: 0 2px; border-radius: var(--r-pill); }
+.wing-panel .toggle:focus-visible { outline: 2px solid var(--sc-primary); outline-offset: 2px; }
+.wing-panel .btn-small { min-height: 28px; }
+
+/* ⓘ: a long static note stays behind this toggle */
+.wing-info {
+  display: inline-grid; place-items: center; flex: none; width: 24px; height: 24px; margin: -4px 0; padding: 0;
+  border: none; border-radius: 50%; background: none; color: var(--sc-text-2); cursor: pointer;
+}
+.wing-info:hover, .wing-info.is-open { background: var(--sc-surface-2); color: var(--sc-primary-text); }
+.wing-info:focus-visible { outline: 2px solid var(--sc-primary); outline-offset: 0; }
+.wing-note { padding: 6px var(--sp-2); border-radius: var(--r-s); background: var(--sc-surface-2); }
+
+/* SP order 「a → b → c」 as a numbered row */
+.wing-order { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 0; padding: 0; list-style: none; counter-reset: wing-step; }
+.wing-order li {
+  counter-increment: wing-step; display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px 1px 3px;
+  border-radius: var(--r-pill); background: var(--sc-surface-2); font-size: var(--fs-12); line-height: 18px; color: var(--sc-text);
+}
+.wing-order li::before {
+  content: counter(wing-step); display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--sc-primary-tint); color: var(--sc-primary-text); font-size: var(--fs-11); font-weight: 700;
+}
+
+/* Inactive (另一个选择让它不生效) and not-yet-available rows */
+.wing-panel .field.is-inactive .field-label, .wing-panel .field.is-inactive .field-control { opacity: .5; }
+.wing-tag.tone-warning { background: color-mix(in srgb, var(--sc-warning) 18%, transparent); color: var(--sc-text); }
+.wing-tag.tone-muted { background: var(--sc-surface-2); color: var(--sc-text-2); }
+
+/* Group labels inside a fold (行动 / SP / 结束前 / 结算画面) */
+.wing-subhead {
+  display: flex; align-items: center; gap: var(--sp-2); margin: var(--sp-2) 0 0;
+  font-size: var(--fs-11); font-weight: 700; letter-spacing: .06em; color: var(--sc-text-2);
+}
+.wing-subhead::after { content: ""; flex: 1; height: 1px; background: var(--wing-rule); }
+.wing-subhead + .form-row { border-top: none; padding-top: 6px; }
+
+/* ---------- Run bar: state dot, why 开始 is off ---------- */
+.wing-run-bar .run-summary-main { display: flex; align-items: center; gap: 6px; }
+.wing-run-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--sc-muted); }
+.wing-run-bar.is-ready .wing-run-dot { background: var(--sc-success); }
+.wing-run-bar.is-blocked .wing-run-dot { background: var(--sc-accent); }
+.wing-run-bar.is-running .wing-run-dot { background: var(--sc-primary); outline: 3px solid var(--sc-primary-tint); }
+.wing-run-bar .run-summary-sub { flex-wrap: wrap; row-gap: 0; }
+.wing-cost { color: var(--sc-text-2); }
+.wing-clause { display: inline-block; white-space: nowrap; }
+.wing-run-block { color: var(--sc-accent-text); font-weight: 600; }
+
+/* Narrow panel (< 400 px): option rows stack (label above, control full width) so 4-way choices never wrap; the
+   summary facts take one column (two columns clipped 「推荐编队 · 覆盖ユニットN」 and the 自动 tag at 380 px). */
+@media (max-width: 379px) {
+  .wing-panel .form-row.kind-segmented, .wing-panel .form-row.kind-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 339px) {
+  .wing-hero-thumb { width: 44px; height: 44px; }
+}
+/* 2026-10-14: developer-only facts under an option (e.g. the unverified 大富豪 home entry) read as a side note */
+.wing-hint.is-dev { color: var(--sc-text-2); padding-left: 6px; border-left: 2px dashed var(--sc-border); }

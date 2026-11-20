@@ -1,0 +1,75 @@
+/* 「添加任务」: list entry, picker dialog, inline 撤销 and the row context menu. Linked by task-add.js on first use. */
+
+/* Entry under the task list: a quiet full-width text row, like the hairline task rows. */
+/* Bleed to the panel edges; the right padding is already reduced by the scrollbar gutter. */
+.task-add-entry { margin: 0 calc(var(--scrollbar-w, 0px) - var(--sp-4)) 0 calc(-1 * var(--sp-4)); }
+.task-add-btn {
+  display: flex; align-items: center; gap: var(--sp-2); width: 100%; min-height: 44px; padding: 0 var(--sp-4) 0 28px;
+  border: 0; border-bottom: 1px dashed var(--sc-border); background: transparent; color: var(--sc-primary-text);
+  font: inherit; font-size: var(--fs-14); text-align: left; cursor: pointer;
+  transition: background var(--dur-fast) var(--ease);
+}
+.task-add-btn:hover:not(:disabled) { background: color-mix(in srgb, var(--sc-surface-2) 55%, var(--sc-surface)); }
+.task-add-btn:focus-visible { outline: 2px solid var(--sc-primary); outline-offset: -2px; }
+.task-add-btn:disabled { color: var(--sc-text-2); cursor: default; }
+.task-list-empty { margin: var(--sp-3) 0; }
+
+/* Inline 撤销 after 移出方案. */
+.task-undo {
+  display: flex; align-items: center; gap: var(--sp-2); margin: var(--sp-2) 0 0; padding: 2px 0 2px var(--sp-3);
+  border-left: 2px solid var(--sc-primary); font-size: var(--fs-13); color: var(--sc-text);
+}
+.task-undo-text { flex: 1 1 auto; min-width: 0; }
+.task-body-foot { display: flex; justify-content: flex-end; margin-top: var(--sp-2); }
+.task-remove { color: var(--sc-text-2); }
+
+/* Picker dialog: one-column list (icon · name + one line · state). */
+.task-add-dialog { width: min(420px, calc(100vw - 24px)); padding: var(--sp-4); }
+.task-add-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); margin-bottom: var(--sp-2); }
+.task-add-head .dialog-title { margin: 0; font-size: var(--fs-16); }
+.task-add-empty { margin: 0 0 var(--sp-2); }
+.task-add-list { list-style: none; margin: 0 calc(-1 * var(--sp-4)); padding: 0; max-height: min(480px, calc(100vh - 140px)); overflow-y: auto; }
+.task-add-item {
+  display: flex; align-items: center; gap: var(--sp-3); min-height: 52px; padding: var(--sp-2) var(--sp-4);
+  border-top: 1px solid var(--sc-border); cursor: pointer; transition: background var(--dur-fast) var(--ease);
+}
+.task-add-item:hover:not(.is-added), .task-add-item:focus-visible { background: var(--sc-surface-2); outline: none; }
+.task-add-item:focus-visible { box-shadow: inset 2px 0 0 var(--sc-primary); }
+.task-add-item.is-added { cursor: default; }
+.task-add-item.is-added .task-add-name, .task-add-item.is-added .task-glyph { color: var(--sc-text-2); }
+.task-add-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.task-add-name { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-14); font-weight: 500; line-height: 1.4; }
+.task-add-blurb { font-size: var(--fs-12); line-height: 1.5; color: var(--sc-text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.task-add-blurb.is-warning { color: var(--sc-accent-text); white-space: normal; }
+.task-add-tag {
+  padding: 0 4px; border: 1px solid var(--sc-border); border-radius: var(--r-s);
+  font-size: var(--fs-11); font-weight: 400; line-height: 1.5; color: var(--sc-text-2);
+}
+.task-add-state { flex: none; font-size: var(--fs-12); color: var(--sc-text-2); }
+.task-add-plus { flex: none; color: var(--sc-primary-text); }
+
+/* Glyph: item icon, or the first character of the short task name in a hairline square. */
+.task-glyph {
+  flex: none; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px;
+  border: 1px solid var(--sc-border); border-radius: var(--r-s); background: var(--sc-surface);
+  font-size: var(--fs-14); font-weight: 600; color: var(--sc-text);
+}
+.task-glyph.is-item { border-color: transparent; background: transparent; }
+
+/* Row context menu (floating layer). */
+.task-menu {
+  position: fixed; z-index: 50; min-width: 148px; padding: var(--sp-1) 0;
+  border: 1px solid var(--sc-border); border-radius: var(--r-s); background: var(--sc-surface); box-shadow: var(--shadow-pop);
+}
+.task-menu-item {
+  display: block; width: 100%; padding: 6px var(--sp-3); border: 0; background: transparent; color: var(--sc-text);
+  font: inherit; font-size: var(--fs-13); text-align: left; cursor: pointer;
+}
+.task-menu-item:hover:not(:disabled), .task-menu-item:focus-visible { background: var(--sc-surface-2); outline: none; }
+.task-menu-item:disabled { color: var(--sc-text-2); opacity: .6; cursor: default; }
+.task-menu-item.is-danger { color: var(--sc-danger); }
+.task-menu-item.is-danger:disabled { color: var(--sc-text-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .task-add-btn, .task-add-item { transition: none; }
+}

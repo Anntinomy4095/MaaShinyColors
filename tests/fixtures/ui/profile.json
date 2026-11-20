@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "preset": "daily",
+  "tasks": [
+    {"name": "Startup", "enabled": true},
+    {"name": "MissionStatus", "enabled": true},
+    {"name": "Shop", "enabled": true, "option": {"商店金训练券": "No", "商店其他·シルバートレーニングチケット@283": "No"}},
+    {"name": "MatchSkip", "enabled": false, "option": {"Match只采样": "Yes", "Match次数": "5"}},
+    {"name": "GradeFes", "enabled": true, "option": {"Grade难度": "Hard"}},
+    {"name": "Diagnostics", "enabled": false}
+  ],
+  "task_timeout_s": 600
+}

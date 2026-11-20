@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>MaaShinyColors 本地浏览器靶场</title>
+<style>
+* { box-sizing: border-box; }
+html,body { margin:0; width:100%; height:100%; overflow:hidden; }
+body { background:#111c30; color:#e6eefc; font-family:'Microsoft YaHei',sans-serif; }
+header { position:absolute; left:6vw; top:8vh; }
+.tag { color:#91aee8; font-size:2vh; letter-spacing:.2em; }
+h1 { font-size:5vh; margin:2vh 0; }
+p { color:#a7b8d4; font-size:2.3vh; }
+#claim { position:absolute; left:33.59375vw; top:52.77778vh; width:32.8125vw; height:22.22222vh;
+background:rgb(20,160,70); border:0; border-radius:12px; color:white; font-size:4vh; cursor:pointer; }
+#success { display:none; position:absolute; left:25vw; top:34.72222vh; width:50vw; height:18.05556vh;
+background:rgb(36,100,235); border-radius:12px; text-align:center; padding-top:5vh; font-size:4vh; }
+footer { position:absolute; bottom:6vh; left:6vw; color:#7893bd; font-size:2vh; }
+</style>
+<header><div class="tag">SC / LOCAL LAB</div><h1>免费领取 · 本地测试</h1>
+<p>这是自有测试页面。先运行日常识别，再手动领取并复核成功状态。</p></header>
+<button id="claim" type="button">领取测试奖励</button>
+<div id="success">已领取 · 成功状态</div>
+<footer>无游戏素材 · 无网络请求 · 无账号数据 · Maa 输入关闭</footer>
+<script>
+document.getElementById('claim').addEventListener('click', () => {
+  document.getElementById('claim').style.display = 'none';
+  document.getElementById('success').style.display = 'block';
+});
+</script>
+</html>

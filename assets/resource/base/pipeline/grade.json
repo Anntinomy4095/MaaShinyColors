@@ -1,0 +1,2729 @@
+{
+    "SC.Grade.Anchor.Difficulty.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_difficulty/title.png",
+        "roi": [
+            232,
+            88,
+            815,
+            46
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Difficulty.ScoreEasy": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_difficulty/score_easy.png",
+            "native/grade_difficulty/score_easy_shifted.png"
+        ],
+        "roi": [
+            248,
+            417,
+            146,
+            68
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Difficulty.ScoreNormal": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_difficulty/score_normal.png",
+            "native/grade_difficulty/score_normal_shifted.png"
+        ],
+        "roi": [
+            554,
+            420,
+            146,
+            67
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Difficulty.ScoreHard": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_difficulty/score_hard.png",
+            "native/grade_difficulty/score_hard_shifted.png"
+        ],
+        "roi": [
+            859,
+            420,
+            145,
+            67
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Difficulty.Prompt": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_difficulty/prompt_small.png",
+            "native/grade_difficulty/prompt_mid.png",
+            "native/grade_difficulty/prompt_large.png"
+        ],
+        "roi": [
+            841,
+            572,
+            403,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Difficulty.PromptDigit": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_difficulty/prompt_digit.png",
+        "roi": [
+            1036,
+            574,
+            58,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Difficulty.CheckboxOff": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_difficulty/checkbox_off.png",
+        "roi": [
+            866,
+            644,
+            46,
+            46
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Difficulty.BulkLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_difficulty/bulk_label.png",
+        "roi": [
+            918,
+            644,
+            160,
+            46
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Difficulty.Back": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_difficulty/back.png",
+        "roi": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Color.Difficulty.BubbleBright": {
+        "recognition": "ColorMatch",
+        "roi": [
+            840,
+            612,
+            380,
+            10
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 3200,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Grade.Anchor.Mode.Rehearsal": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_mode/rehearsal_button.png",
+        "roi": [
+            912,
+            378,
+            150,
+            150
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Rehearsal.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_rehearsal/title.png",
+        "roi": [
+            205,
+            82,
+            235,
+            60
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Mode.Grade": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_mode/grade_button.png",
+        "roi": [
+            1092,
+            378,
+            150,
+            150
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Unit.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_unit/title.png",
+        "roi": [
+            6,
+            18,
+            196,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Unit.Judges": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_unit/judges.png",
+        "roi": [
+            525,
+            38,
+            110,
+            62
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Unit.TensionLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_unit/tension_label.png",
+        "roi": [
+            1100,
+            628,
+            155,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Tension.LiveStart": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_tension/live_start_label.png",
+        "roi": [
+            1100,
+            628,
+            155,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Anchor.Tension.Notice": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_tension/notice.png",
+        "roi": [
+            594,
+            632,
+            492,
+            60
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Color.Tension.Own": {
+        "recognition": "ColorMatch",
+        "roi": [
+            130,
+            360,
+            80,
+            72
+        ],
+        "lower": [
+            0,
+            60,
+            120
+        ],
+        "upper": [
+            180,
+            255,
+            255
+        ],
+        "count": 1000,
+        "method": 40,
+        "connected": false
+    },
+    "SC.Grade.Color.Tension.Rival1": {
+        "recognition": "ColorMatch",
+        "roi": [
+            600,
+            140,
+            80,
+            72
+        ],
+        "lower": [
+            0,
+            60,
+            120
+        ],
+        "upper": [
+            180,
+            255,
+            255
+        ],
+        "count": 1000,
+        "method": 40,
+        "connected": false
+    },
+    "SC.Grade.Color.Tension.Rival2": {
+        "recognition": "ColorMatch",
+        "roi": [
+            600,
+            240,
+            80,
+            72
+        ],
+        "lower": [
+            0,
+            60,
+            120
+        ],
+        "upper": [
+            180,
+            255,
+            255
+        ],
+        "count": 1000,
+        "method": 40,
+        "connected": false
+    },
+    "SC.Grade.Color.Tension.Rival3": {
+        "recognition": "ColorMatch",
+        "roi": [
+            600,
+            340,
+            80,
+            72
+        ],
+        "lower": [
+            0,
+            60,
+            120
+        ],
+        "upper": [
+            180,
+            255,
+            255
+        ],
+        "count": 1000,
+        "method": 40,
+        "connected": false
+    },
+    "SC.Grade.Live.Anchor.TurnLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_live/turn_label.png",
+        "roi": [
+            516,
+            9,
+            112,
+            42
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.Pause": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_live/pause.png",
+            "native/grade_live/pause_pink.png",
+            "native/grade_live/pause_pink_mid.png"
+        ],
+        "roi": [
+            1199,
+            6,
+            74,
+            72
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.History": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_live/history.png",
+            "native/grade_live/history_pink.png",
+            "native/grade_live/history_pink_mid.png"
+        ],
+        "roi": [
+            4,
+            649,
+            62,
+            57
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.TrendWord.Template": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_live/trend_word.png",
+        "roi": [
+            10,
+            6,
+            44,
+            26
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.TrendWord.Vo": {
+        "recognition": "OCR", "roi": [4, 0, 62, 38], "expected": ["流行"], "threshold": 0.95
+    },
+    "SC.Grade.Live.Anchor.TrendWord.Da": {
+        "recognition": "OCR", "roi": [4, 160, 62, 40], "expected": ["流行"], "threshold": 0.95
+    },
+    "SC.Grade.Live.Anchor.TrendWord.Vi": {
+        "recognition": "OCR", "roi": [4, 326, 62, 40], "expected": ["流行"], "threshold": 0.95
+    },
+    "SC.Grade.Live.Anchor.TrendWord": {
+        "recognition": "Or",
+        "any_of": ["SC.Grade.Live.Anchor.TrendWord.Template", "SC.Grade.Live.Anchor.TrendWord.Vo", "SC.Grade.Live.Anchor.TrendWord.Da", "SC.Grade.Live.Anchor.TrendWord.Vi"]
+    },
+    "SC.Grade.Live.Anchor.SpeedOff": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_live/speed_off.png",
+        "roi": [
+            1104,
+            6,
+            76,
+            72
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.SwapHint": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_live/swap_hint.png",
+        "roi": [
+            300,
+            694,
+            700,
+            26
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.AppealLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_live/appeal_label.png",
+        "roi": [
+            386,
+            479,
+            152,
+            50
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.MemoryArrow": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_live/memory_arrow.png",
+        "roi": [
+            120,
+            10,
+            120,
+            500
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.FilmTop": {
+        "recognition": "ColorMatch",
+        "roi": [
+            515,
+            258,
+            250,
+            18
+        ],
+        "lower": [
+            0,
+            190,
+            200
+        ],
+        "upper": [
+            140,
+            255,
+            255
+        ],
+        "count": 1800,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Grade.Live.Anchor.FilmBottom": {
+        "recognition": "ColorMatch",
+        "roi": [
+            515,
+            444,
+            250,
+            18
+        ],
+        "lower": [
+            0,
+            190,
+            200
+        ],
+        "upper": [
+            140,
+            255,
+            255
+        ],
+        "count": 1800,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Grade.Live.Anchor.FilmLeft": {
+        "recognition": "ColorMatch",
+        "roi": [
+            504,
+            275,
+            20,
+            170
+        ],
+        "lower": [
+            0,
+            190,
+            200
+        ],
+        "upper": [
+            140,
+            255,
+            255
+        ],
+        "count": 1200,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Grade.Live.Anchor.FilmRight": {
+        "recognition": "ColorMatch",
+        "roi": [
+            756,
+            275,
+            20,
+            170
+        ],
+        "lower": [
+            0,
+            190,
+            200
+        ],
+        "upper": [
+            140,
+            255,
+            255
+        ],
+        "count": 1200,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Grade.Live.Anchor.ReportTitle": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_report/title.png",
+            "native/grade_report/title_auto.png"
+        ],
+        "roi": [
+            412,
+            14,
+            450,
+            85
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.ReportOk": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_report/ok.png",
+            "native/grade_report/ok_auto.png"
+        ],
+        "roi": [
+            1104,
+            634,
+            147,
+            57
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.ReportScore": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_report/score_label.png",
+            "native/grade_report/score_label_auto.png"
+        ],
+        "roi": [
+            94,
+            327,
+            140,
+            48
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.ReportMoney2x": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_report/money2x_badge.png",
+        "roi": [
+            58,
+            388,
+            50,
+            46
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.ReportMission": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_report/mission_reward.png",
+        "roi": [
+            784,
+            552,
+            172,
+            38
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.RankingScoreDetail": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_report/ranking_score_detail.png",
+        "roi": [
+            890,
+            199,
+            146,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.RankingUnitDetail": {
+        "recognition": "TemplateMatch",
+        "template": "native/grade_report/ranking_unit_detail.png",
+        "roi": [
+            1042,
+            199,
+            148,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Live.Anchor.RecordBanner": {
+        "recognition": "OCR",
+        "expected": [
+            "NEW RECORD",
+            "NEWRECORD"
+        ],
+        "roi": [
+            380,
+            118,
+            520,
+            104
+        ],
+        "threshold": 0.8
+    },
+    "SC.Grade.Live.Anchor.RankingBanner": {
+        "recognition": "OCR",
+        "expected": [
+            "グレードランキング"
+        ],
+        "roi": [
+            380,
+            425,
+            520,
+            85
+        ],
+        "threshold": 0.8
+    },
+    "SC.Grade.Live.Anchor.RecordAny": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Live.Anchor.RecordBanner",
+            "SC.Grade.Live.Anchor.RankingBanner"
+        ]
+    },
+    "SC.Grade.Mode.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.FesMain.Guard",
+            "SC.Grade.Anchor.Mode.Rehearsal",
+            "SC.Grade.Anchor.Mode.Grade"
+        ]
+    },
+    "SC.Grade.Rehearsal.Difficulty.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Anchor.Rehearsal.Title",
+            "SC.Grade.Anchor.Difficulty.CheckboxOff",
+            "SC.Grade.Anchor.Difficulty.BulkLabel",
+            "SC.Grade.Anchor.Difficulty.Back"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "フェスリハーサル 难度页；正式 Grade 与彩排使用独立标题守卫。"
+        }
+    },
+    "SC.Grade.Difficulty.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Anchor.Difficulty.Title",
+            "SC.Grade.Anchor.Difficulty.ScoreEasy",
+            "SC.Grade.Anchor.Difficulty.ScoreNormal",
+            "SC.Grade.Anchor.Difficulty.ScoreHard",
+            "SC.Grade.Anchor.Difficulty.Prompt",
+            "SC.Grade.Anchor.Difficulty.PromptDigit",
+            "SC.Grade.Anchor.Difficulty.CheckboxOff",
+            "SC.Grade.Anchor.Difficulty.BulkLabel",
+            "SC.Grade.Anchor.Difficulty.Back",
+            "SC.Grade.Color.Difficulty.BubbleBright"
+        ]
+    },
+    "SC.Grade.Unit.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Anchor.Unit.Title",
+            "SC.Grade.Anchor.Unit.Judges",
+            "SC.Grade.Anchor.Unit.TensionLabel",
+            "SC.Common.Anchor.FesMain.Back",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Grade.Tension.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Anchor.Unit.Title",
+            "SC.Grade.Anchor.Unit.Judges",
+            "SC.Grade.Anchor.Tension.LiveStart",
+            "SC.Grade.Anchor.Tension.Notice",
+            "SC.Common.Anchor.FesMain.Back",
+            "SC.Grade.Color.Tension.Own",
+            "SC.Grade.Color.Tension.Rival1",
+            "SC.Grade.Color.Tension.Rival2",
+            "SC.Grade.Color.Tension.Rival3"
+        ]
+    },
+    "SC.Grade.Unit.Ready": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Unit.Guard",
+            "SC.Grade.Check.Unit"
+        ]
+    },
+    "SC.Grade.Tension.Ready": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Tension.Guard",
+            "SC.Grade.Check.LiveStart"
+        ]
+    },
+    "SC.Grade.Live.Screen.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Anchor.TurnLabel",
+            "SC.Grade.Live.Anchor.Pause",
+            "SC.Grade.Live.Anchor.History"
+        ]
+    },
+    "SC.Grade.Live.Wait.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Screen.Guard",
+            "SC.Grade.Live.Anchor.TrendWord"
+        ]
+    },
+    "SC.Grade.Live.MemoryGo.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Screen.Guard",
+            "SC.Grade.Live.Anchor.MemoryArrow"
+        ]
+    },
+    "SC.Grade.Live.Film.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Anchor.FilmTop",
+            "SC.Grade.Live.Anchor.FilmBottom",
+            "SC.Grade.Live.Anchor.FilmLeft",
+            "SC.Grade.Live.Anchor.FilmRight"
+        ]
+    },
+    "SC.Grade.Live.Timing.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Screen.Guard",
+            "SC.Grade.Live.Anchor.AppealLabel"
+        ]
+    },
+    "SC.Grade.Live.Report.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Anchor.ReportTitle",
+            "SC.Grade.Live.Anchor.ReportOk",
+            "SC.Grade.Live.Anchor.ReportScore"
+        ]
+    },
+    "SC.Grade.Live.Ranking.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Anchor.ReportTitle",
+            "SC.Grade.Live.Anchor.ReportOk",
+            "SC.Grade.Live.Anchor.RankingScoreDetail",
+            "SC.Grade.Live.Anchor.RankingUnitDetail"
+        ]
+    },
+    "SC.Grade.Live.ReportOk.Guard": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Live.Report.AnyGuard",
+            "SC.Grade.Live.Ranking.Guard"
+        ]
+    },
+    "SC.Grade.Live.Record.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Anchor.ReportTitle",
+            "SC.Grade.Live.Anchor.RecordAny"
+        ]
+    },
+    "SC.Grade.Live.Turn.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Anchor.TurnLabel",
+            "SC.Grade.Live.Anchor.Pause"
+        ]
+    },
+    "SC.Grade.Live.Selected": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Timing.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Live.Targeted": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Live.Timing.Guard",
+            "SC.Grade.Live.Turn.Guard",
+            "SC.Grade.Live.Film.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Live.Appealed": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Live.Turn.Guard",
+            "SC.Grade.Live.Report.AnyGuard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Live.Filmed": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Live.Film.Guard",
+            "SC.Grade.Live.Turn.Guard",
+            "SC.Grade.Live.Report.AnyGuard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Live.Reported": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.FesMain.Guard",
+            "SC.Grade.Live.Report.AnyGuard",
+            "SC.Grade.Live.Ranking.Guard",
+            "SC.Loading.Present",
+            "SC.Grade.Live.Step.AfterReport"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Live.Step.Speed": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "speed"
+        }
+    },
+    "SC.Grade.Live.Step.Memory": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "memory"
+        }
+    },
+    "SC.Grade.Live.Step.MemoryGoVo": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "memory_go",
+            "judge": "Vo"
+        }
+    },
+    "SC.Grade.Live.Step.MemoryGoDa": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "memory_go",
+            "judge": "Da"
+        }
+    },
+    "SC.Grade.Live.Step.MemoryGoVi": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "memory_go",
+            "judge": "Vi"
+        }
+    },
+    "SC.Grade.Live.Step.MemoryFilm": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "film"
+        }
+    },
+    "SC.Grade.Live.Step.Card1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "card",
+            "slot": 1
+        }
+    },
+    "SC.Grade.Live.Step.Card2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "card",
+            "slot": 2
+        }
+    },
+    "SC.Grade.Live.Step.Card3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "card",
+            "slot": 3
+        }
+    },
+    "SC.Grade.Live.Step.JudgeVo": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "judge",
+            "judge": "Vo"
+        }
+    },
+    "SC.Grade.Live.Step.JudgeDa": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "judge",
+            "judge": "Da"
+        }
+    },
+    "SC.Grade.Live.Step.JudgeVi": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "judge",
+            "judge": "Vi"
+        }
+    },
+    "SC.Grade.Live.Step.Timing": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "timing"
+        }
+    },
+    "SC.Grade.Live.Step.Report": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "report"
+        }
+    },
+    "SC.Grade.Live.Step.AfterReport": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "after_report"
+        }
+    },
+    "SC.Grade.Live.Step.Record": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "record"
+        }
+    },
+    "SC.Grade.State.Active": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "active"
+        }
+    },
+    "SC.Grade.State.Finished": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        }
+    },
+    "SC.Grade.State.Halted": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        }
+    },
+    "SC.Grade.State.UnitCancel": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "unit_cancel"
+        }
+    },
+    "SC.Grade.State.UnitWait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "unit_wait"
+        }
+    },
+    "SC.Grade.State.TensionHold": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "tension_hold"
+        }
+    },
+    "SC.Grade.State.ResumeHold": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "resume_hold"
+        }
+    },
+    "SC.Grade.State.FlowHold": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "flow_hold"
+        }
+    },
+    "SC.Grade.Flow.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.State.FlowHold"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "Grade 流程中（フェスに参加する 之后、テンション決定 之前）本帧无 Grade 节点接受：不交给通用 BackOne，留在原页换帧（最多 8 帧，保存样本），之后停止且不点击。"
+        }
+    },
+    "SC.Grade.State.ResumeWait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "resume_wait"
+        }
+    },
+    "SC.Grade.Plan.Join": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Plan",
+        "custom_recognition_param": {
+            "step": "join"
+        }
+    },
+    "SC.Grade.Plan.Mode": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Plan",
+        "custom_recognition_param": {
+            "step": "mode",
+            "mode": "grade"
+        }
+    },
+    "SC.Grade.Plan.DifficultyEasy": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Plan",
+        "custom_recognition_param": {
+            "step": "difficulty",
+            "difficulty": "Easy"
+        }
+    },
+    "SC.Grade.Plan.DifficultyNormal": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Plan",
+        "custom_recognition_param": {
+            "step": "difficulty",
+            "difficulty": "Normal"
+        }
+    },
+    "SC.Grade.Plan.DifficultyHard": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Plan",
+        "custom_recognition_param": {
+            "step": "difficulty",
+            "difficulty": "Hard"
+        }
+    },
+    "SC.Grade.Check.Unit": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "unit"
+        }
+    },
+    "SC.Grade.Check.TensionObserve": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "tension_observe"
+        }
+    },
+    "SC.Grade.Check.LiveStart": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "live_start"
+        }
+    },
+    "SC.Grade.Check.Resume": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "resume"
+        }
+    },
+    "SC.Grade.Check.Takeover": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "takeover"
+        }
+    },
+    "SC.Grade.Check.RankingTakeover": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "ranking_takeover"
+        }
+    },
+    "SC.Grade.Check.ReportTakeover": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "report_takeover"
+        }
+    },
+    "SC.Grade.Config.Difficulty": {
+        "recognition": "DirectHit",
+        "attach": {
+            "difficulty": "Normal"
+        }
+    },
+    "SC.Grade.Config.Mode": {
+        "recognition": "DirectHit",
+        "attach": {
+            "mode": "grade"
+        }
+    },
+    "SC.Grade.Config.Runs": {
+        "recognition": "DirectHit",
+        "attach": {
+            "runs_per_day": 1
+        }
+    },
+    "SC.Grade.Config.Bulk": {
+        "recognition": "DirectHit",
+        "attach": {
+            "bulk_count": 1
+        }
+    },
+    "SC.Grade.Config.Reserve": {
+        "recognition": "DirectHit",
+        "attach": {
+            "rights_reserve": 0
+        }
+    },
+    "SC.Grade.Config.Fixed": {
+        "recognition": "DirectHit",
+        "attach": {
+            "bulk": false
+        }
+    },
+    "SC.Grade.Config.Samples": {
+        "recognition": "DirectHit",
+        "attach": {
+            "samples_runs_per_day": 0
+        }
+    },
+    "SC.Grade.Config.Live": {
+        "recognition": "DirectHit",
+        "attach": {
+            "live_play": false
+        }
+    },
+    "SC.Grade.Config.Speed": {
+        "recognition": "DirectHit",
+        "attach": {
+            "live_speed": "on"
+        }
+    },
+    "SC.Grade.Config.Unit": {
+        "recognition": "DirectHit",
+        "attach": {
+            "unit_score": ""
+        }
+    },
+    "SC.Grade.Config.Timing": {
+        "recognition": "DirectHit",
+        "attach": {
+            "live_timed_click": false
+        }
+    },
+    "SC.Grade.Config.Recovery": {
+        "recognition": "DirectHit",
+        "attach": {
+            "use_recovery_tickets": false
+        }
+    },
+    "SC.Grade.Config.RecoveryCap": {
+        "recognition": "DirectHit",
+        "attach": {
+            "recovery_cap": 1
+        }
+    },
+    "SC.Grade.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Grade.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.Grade.Config.Difficulty",
+                "SC.Grade.Config.Mode",
+                "SC.Grade.Config.Runs",
+                "SC.Grade.Config.Bulk",
+                "SC.Grade.Config.Reserve",
+                "SC.Grade.Config.Fixed",
+                "SC.Grade.Config.Samples",
+                "SC.Grade.Config.Live",
+                "SC.Grade.Config.Speed",
+                "SC.Grade.Config.Unit",
+                "SC.Grade.Config.Timing",
+                "SC.Grade.Config.Recovery",
+                "SC.Grade.Config.RecoveryCap"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Grade.Main"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Grade Fes：读取配置（默认 Normal、核验成功每日1次、采样上限每日3局、保留0；まとめて消費 永远关闭）。"
+        }
+    },
+    "SC.Grade.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]SC.Grade.Resume",
+            "[JumpBack]SC.Grade.Resume.Wait",
+            "SC.Grade.Resume.Hold",
+            "[JumpBack]SC.Grade.Takeover",
+            "[JumpBack]SC.Grade.ReportTakeover",
+            "[JumpBack]SC.Grade.RankingTakeover",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "SC.Grade.Halt",
+            "SC.Grade.Done",
+            "[JumpBack]SC.Grade.Tension.Observe",
+            "[JumpBack]SC.Grade.Unit.Confirm",
+            "[JumpBack]SC.Grade.Unit.Wait",
+            "SC.Grade.Tension.Hold",
+            "[JumpBack]SC.Grade.Unit.Back",
+            "[JumpBack]SC.Grade.Difficulty.Back",
+            "SC.Grade.Finish",
+            "[JumpBack]SC.Grade.Rehearsal.Easy",
+            "[JumpBack]SC.Grade.Difficulty.Easy",
+            "[JumpBack]SC.Grade.Rehearsal.Normal",
+            "[JumpBack]SC.Grade.Difficulty.Normal",
+            "[JumpBack]SC.Grade.Rehearsal.Hard",
+            "[JumpBack]SC.Grade.Difficulty.Hard",
+            "[JumpBack]SC.Grade.Mode.Rehearsal",
+            "[JumpBack]SC.Grade.Mode.Grade",
+            "[JumpBack]SC.Grade.Main.Join",
+            "[JumpBack]SC.Grade.Menu.Grade",
+            "[JumpBack]SC.Grade.Leave",
+            "[JumpBack]SC.Grade.Flow.Hold",
+            "SC.Resource.Observe.Home",
+            "[JumpBack]SC.Grade.AtHome",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "Grade Fes：按当前画面判断下一步（弹窗→ライブ開始/テンション決定→参加ユニット→难度→模式→Fes主页→フェス弹层→首页）。"
+        }
+    },
+    "SC.Grade.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Grade.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Grade.HomeClean"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ]
+    },
+    "SC.Grade.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Grade.OpenFes"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页干净（与 SC.Common.HomeClean 相同的外来锚点清单）。"
+        }
+    },
+    "SC.Grade.OpenFes": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            1130,
+            606,
+            120,
+            29
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Fes.Opened"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页：点击「フェス」打开弹层（每次任务最多 2 次）。"
+        }
+    },
+    "SC.Grade.Fes.Opened": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Fes.Menu.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Menu.Grade": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Fes.Menu.Guard",
+            "SC.Grade.State.Active"
+        ],
+        "action": "Click",
+        "target": [
+            1122,
+            546,
+            130,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Menu.Tapped"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェス弹层：点击「グレード&リハ」。"
+        }
+    },
+    "SC.Grade.Menu.Tapped": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.FesMain.Guard",
+            "SC.Popup.FesResume.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Main.Join": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.FesMain.Guard",
+            "SC.Grade.Plan.Join"
+        ],
+        "action": "Click",
+        "target": [
+            1135,
+            578,
+            100,
+            27
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Main.Joined"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Fes 主页：参加权与当日次数已核对，点击「フェスに参加する」（非消费）。"
+        }
+    },
+    "SC.Grade.Main.Joined": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Mode.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Mode.Grade": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Mode.Guard",
+            "SC.Grade.Plan.Mode"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            410,
+            115,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Mode.Tapped"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "模式选择：点击「グレードフェス」（不点フェスリハーサル）。"
+        }
+    },
+    "SC.Grade.Mode.Tapped": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Difficulty.AnyGuard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Difficulty.Easy": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Difficulty.Guard",
+            "SC.Grade.Plan.DifficultyEasy"
+        ],
+        "action": "Click",
+        "target": [
+            262,
+            336,
+            140,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Difficulty.Tapped"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度：标题/「フェス参加権を1消費します」/まとめて消費未勾选已核对，点击 Easy（非消费，进入参加ユニット）。"
+        }
+    },
+    "SC.Grade.Difficulty.Normal": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Difficulty.Guard",
+            "SC.Grade.Plan.DifficultyNormal"
+        ],
+        "action": "Click",
+        "target": [
+            606,
+            336,
+            102,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Difficulty.Tapped"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度：标题/「フェス参加権を1消費します」/まとめて消費未勾选已核对，点击 Normal（非消费，进入参加ユニット）。"
+        }
+    },
+    "SC.Grade.Difficulty.Hard": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Difficulty.Guard",
+            "SC.Grade.Plan.DifficultyHard"
+        ],
+        "action": "Click",
+        "target": [
+            872,
+            336,
+            140,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Difficulty.Tapped"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度：标题/「フェス参加権を1消費します」/まとめて消費未勾选已核对，点击 Hard（非消费，进入参加ユニット）。"
+        }
+    },
+    "SC.Grade.Difficulty.Tapped": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Unit.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Difficulty.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Difficulty.AnyGuard",
+            "SC.Grade.State.Finished"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Difficulty.Left"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "难度弹窗：本任务已有结论，点返回（非消费）。"
+        }
+    },
+    "SC.Grade.Difficulty.Left": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Mode.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Unit.Confirm": {
+        "enabled": false,
+        "recognition": "Or",
+        "action": "Click",
+        "target": [
+            1176,
+            636,
+            78,
+            56
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 2,
+        "timeout": 300000,
+        "next": [
+            "SC.Grade.Watch.Tension",
+            "SC.Grade.Live.Loop"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "参加ユニット主按钮（同一动作框，各凭一次性授权）：参加ユニット 核对后点「テンション決定」（不消耗、不可返回），或 TensionDecided（表情已揭示、参加权未变）核对后点「ライブ開始」（消耗1参加权，之后只读观察 ≤300 s，画面 20 s 不变即停止）。"
+        },
+        "rate_limit": 1500,
+        "any_of": [
+            "SC.Grade.Unit.Ready",
+            "SC.Grade.Tension.Ready"
+        ]
+    },
+    "SC.Grade.Unit.Wait": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Unit.Guard",
+            "SC.Grade.State.UnitWait"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "参加ユニット：参加权暂未读出，留在当前页换一帧再读（最多 3 帧，不点击）。"
+        }
+    },
+    "SC.Grade.Watch.Concluded": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Watch",
+        "custom_recognition_param": {},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Grade.Main"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "本局结束：回到 Fes 主页且参加权−1后，自动演出继续剩余每日局数；目标达到、参加权不足或结果不确定时结束。"
+        }
+    },
+    "SC.Grade.Watch.Tension": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Watch",
+        "custom_recognition_param": {
+            "after": "tension"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "テンション決定 后只读观察：TensionDecided（表情已揭示、ライブ開始、参加权未变）已确认，或 30 s 内未出现（不确定，停止）。"
+        }
+    },
+    "SC.Grade.Live.Loop": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "enter"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 120000,
+        "rate_limit": 500,
+        "next": [
+            "SC.Grade.Watch.Concluded",
+            "[JumpBack]SC.Grade.Live.MemoryFilm",
+            "[JumpBack]SC.Grade.Live.Report.Ok",
+            "[JumpBack]SC.Grade.Live.Record.Dismiss",
+            "[JumpBack]SC.Grade.Live.Timing",
+            "[JumpBack]SC.Grade.Live.MemoryGoVo",
+            "[JumpBack]SC.Grade.Live.MemoryGoDa",
+            "[JumpBack]SC.Grade.Live.MemoryGoVi",
+            "[JumpBack]SC.Grade.Live.JudgeVo",
+            "[JumpBack]SC.Grade.Live.JudgeDa",
+            "[JumpBack]SC.Grade.Live.JudgeVi",
+            "[JumpBack]SC.Grade.Live.Speed",
+            "[JumpBack]SC.Grade.Live.Memory",
+            "[JumpBack]SC.Grade.Live.Card1",
+            "[JumpBack]SC.Grade.Live.Card2",
+            "[JumpBack]SC.Grade.Live.Card3",
+            "[JumpBack]SC.Grade.Live.AfterReport"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "ライブ開始 已发送：只读观察（未开启 Live 自动演出时）或逐回合演出（选卡→审查员→时机），每个阶段最多等待 120 s；任何未知/卡住 → 停止（live_unfinished），绝不重按ライブ開始。"
+        }
+    },
+    "SC.Grade.Live.AfterReport": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Live",
+        "custom_recognition_param": {
+            "step": "after_report"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "SC.Grade.Live.Idle"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "LIVE REPORT 已按 OK：只关闭共享白名单弹窗（ミッション達成 等）/ 等 Loading；未知画面不点击（静止 20 s 或 60 s 内未到 Fes 主页 → live_unfinished），Fes 主页读到参加权即成功。"
+        }
+    },
+    "SC.Grade.Live.Idle": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 500
+    },
+    "SC.Grade.Live.Speed": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Step.Speed"
+        ],
+        "action": "Click",
+        "target": [
+            1134,
+            12,
+            40,
+            58
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 2,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：等待选卡且显示「倍速OFF」，按一次倍速（每局最多一次，之后不再触碰）。"
+        },
+        "next": [
+            "SC.Grade.Live.Selected"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.Memory": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Step.Memory"
+        ],
+        "action": "Click",
+        "target": [
+            1005,
+            640,
+            90,
+            70
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 2,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：思い出アピール 槽满且策略选择（两帧一致的回合状态），点思い出アピール。"
+        },
+        "next": [
+            "SC.Grade.Live.Selected"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.MemoryGoVo": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.MemoryGo.Guard",
+            "SC.Grade.Live.Step.MemoryGoVo"
+        ],
+        "action": "Click",
+        "target": [
+            30,
+            70,
+            100,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 4,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：思い出アピール 选完审查员、胶片演出结束后，画面停在本回合（无「流行」标记，箭头指向所选审查员）等待一次点击：两帧一致且 ≥2 s 后点箭头所指的 Vo. 审查员（日志 live_memory_go）；无效果时 ≥3 s 后最多重点一次。"
+        },
+        "next": [
+            "SC.Grade.Live.Appealed"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.MemoryGoDa": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.MemoryGo.Guard",
+            "SC.Grade.Live.Step.MemoryGoDa"
+        ],
+        "action": "Click",
+        "target": [
+            101,
+            236,
+            35,
+            94
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 4,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：思い出アピール 选完审查员、胶片演出结束后，画面停在本回合（无「流行」标记，箭头指向所选审查员）等待一次点击：两帧一致且 ≥2 s 后点箭头所指的 Da. 审查员（日志 live_memory_go）；无效果时 ≥3 s 后最多重点一次。"
+        },
+        "next": [
+            "SC.Grade.Live.Appealed"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.MemoryGoVi": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.MemoryGo.Guard",
+            "SC.Grade.Live.Step.MemoryGoVi"
+        ],
+        "action": "Click",
+        "target": [
+            101,
+            398,
+            35,
+            96
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 4,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：思い出アピール 选完审查员、胶片演出结束后，画面停在本回合（无「流行」标记，箭头指向所选审查员）等待一次点击：两帧一致且 ≥2 s 后点箭头所指的 Vi. 审查员（日志 live_memory_go）；无效果时 ≥3 s 后最多重点一次。"
+        },
+        "next": [
+            "SC.Grade.Live.Appealed"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.MemoryFilm": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Film.Guard",
+            "SC.Grade.Live.Step.MemoryFilm"
+        ],
+        "action": "Click",
+        "target": [
+            560,
+            300,
+            160,
+            100
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 2,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：思い出アピール 胶片（Good/Bad 回忆从右向左滚过青色框）：右侧即将到框的那格是 Good 时点框内一次停下；第 3 轮或 1 s 内未等到就直接点（不点必定 miss）。每次回忆最多一次（日志 live_memory_film）。"
+        },
+        "next": [
+            "SC.Grade.Live.Filmed"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.Card1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Step.Card1"
+        ],
+        "action": "Click",
+        "target": [
+            320,
+            667,
+            180,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 14,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：两帧一致的回合状态，策略选择第1张卡（日志 live_turn 记录理由）。"
+        },
+        "next": [
+            "SC.Grade.Live.Selected"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.Card2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Step.Card2"
+        ],
+        "action": "Click",
+        "target": [
+            622,
+            667,
+            125,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 14,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：两帧一致的回合状态，策略选择第2张卡（日志 live_turn 记录理由）。"
+        },
+        "next": [
+            "SC.Grade.Live.Selected"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.Card3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Step.Card3"
+        ],
+        "action": "Click",
+        "target": [
+            775,
+            660,
+            200,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 14,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：两帧一致的回合状态，策略选择第3张卡（日志 live_turn 记录理由）。"
+        },
+        "next": [
+            "SC.Grade.Live.Selected"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.JudgeVo": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Step.JudgeVo"
+        ],
+        "action": "Click",
+        "target": [
+            30,
+            70,
+            100,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 16,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：已选中计划的卡（スライドで交換 在该卡下）、两帧一致的预测兴趣值，选择 Vo. 审查员（日志 live_target）。"
+        },
+        "next": [
+            "SC.Grade.Live.Targeted"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.JudgeDa": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Step.JudgeDa"
+        ],
+        "action": "Click",
+        "target": [
+            101,
+            236,
+            35,
+            94
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 16,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：已选中计划的卡（スライドで交換 在该卡下）、两帧一致的预测兴趣值，选择 Da. 审查员（日志 live_target）。"
+        },
+        "next": [
+            "SC.Grade.Live.Targeted"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.JudgeVi": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Wait.Guard",
+            "SC.Grade.Live.Step.JudgeVi"
+        ],
+        "action": "Click",
+        "target": [
+            101,
+            398,
+            35,
+            96
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 16,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "Live：已选中计划的卡（スライドで交換 在该卡下）、两帧一致的预测兴趣值，选择 Vi. 审查员（日志 live_target）。"
+        },
+        "next": [
+            "SC.Grade.Live.Targeted"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.Timing": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Timing.Guard",
+            "SC.Grade.Live.Step.Timing"
+        ],
+        "action": "Click",
+        "target": [
+            385,
+            478,
+            70,
+            45
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 10,
+        "timeout": 60000,
+        "focus": {
+            "Node.Action.Starting": "Live：APPEAL 时机条出现，点一次（光标位置随机：Perfect/Good/Normal）。"
+        },
+        "next": [
+            "SC.Grade.Live.Appealed"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.Report.Ok": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.ReportOk.Guard",
+            "SC.Grade.Live.Step.Report"
+        ],
+        "action": "Click",
+        "target": [
+            1141,
+            640,
+            34,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 4,
+        "timeout": 30000,
+        "focus": {
+            "Node.Action.Starting": "LIVE REPORT：顺位/获得スター/SCORE/获得マニー/所持マニー 连续 ≥3 s 不变（或 10 s 后）已记录，按 OK（live-report-ok，按钮中部）；第二页排名列表出现 ≥2 s 且本人行（顺位、pt）两帧一致后已记录，按同一 OK。每页 ≥3 s 后两帧未变时允许重按一次。"
+        },
+        "next": [
+            "SC.Grade.Live.Reported"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Unit.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Unit.Guard",
+            "SC.Grade.State.UnitCancel"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Unit.Left"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "参加ユニット核对不通过（或无消费授权/已有结论）：テンション決定之前点返回（非消费），本任务失败。"
+        }
+    },
+    "SC.Grade.Unit.Left": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Difficulty.AnyGuard",
+            "SC.Grade.Mode.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Grade.Tension.Observe": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Tension.Guard",
+            "SC.Grade.Check.TensionObserve"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "续跑（只读）：今日未结束的一局停在 TensionDecided，标题/提示/参加权未变已核对（旧 B5 不确定记录标为 not_spent_tension_decided）。"
+        }
+    },
+    "SC.Grade.Tension.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Tension.Guard",
+            "SC.Grade.State.TensionHold"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Grade.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "TensionDecided 但不能点「ライブ開始」（无消费授权/核对失败/非本任务的局）：不点击（也不点返回），本任务失败。"
+        }
+    },
+    "SC.Grade.Resume": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.FesResume.Guard",
+            "SC.Grade.Check.Resume"
+        ],
+        "action": "Click",
+        "target": [
+            728,
+            440,
+            84,
+            33
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Live.Loop"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェス再開：进行中的 Fes Live（参加权已消耗）——核对后只点「再開」（非消费，每次运行一次，永不点「終了」），之后直接进入 Live 逐回合流程；15 s 内未见 Live 画面 → live_unfinished。"
+        }
+    },
+    "SC.Grade.Takeover": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Screen.Guard",
+            "SC.Grade.Check.Takeover"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "next": [
+            "SC.Grade.Live.Loop"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "Live 接管：任务开始时画面已是 Live 回合（TURN+暂停+スキル履歴，无フェス再開 对话框），参加权早已消耗——不点击任何按钮，记 live_takeover 后直接进入逐回合演出；未开启 Grade自动演出 或本次运行已开始 Grade 流程 → 不点击、任务失败。"
+        }
+    },
+    "SC.Grade.ReportTakeover": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Report.AnyGuard",
+            "SC.Grade.Check.ReportTakeover"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "next": [
+            "SC.Grade.Live.Loop"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "LIVE REPORT 接管：任务开始时画面已是 LIVE REPORT（标题+SCORE+OK），参加权早已消耗——不点击任何按钮，记 report_takeover 后进入 Live 循环，读数稳定后只按 OK；未开启 Grade自动演出 或本次运行已开始 Grade 流程 → 不点击、任务失败。"
+        }
+    },
+    "SC.Grade.RankingTakeover": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Ranking.Guard",
+            "SC.Grade.Check.RankingTakeover"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "next": [
+            "SC.Grade.Live.Loop"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "LIVE REPORT 排名页接管：任务开始时画面已是 LIVE REPORT 第二页（排名列表，スコア詳細/ユニット詳細+OK），参加权早已消耗——不点击任何按钮，记 ranking_takeover 后进入 Live 循环，≥2 s 且本人行两帧一致后只按 OK；未开启 Grade自动演出 或本次运行已开始 Grade 流程 → 不点击、任务失败。"
+        }
+    },
+    "SC.Grade.Resume.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.FesResume.Guard",
+            "SC.Grade.State.ResumeHold"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Grade.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "フェス再開 但不能续跑（未开启 Grade自动演出、参加权读不出、本次运行已有结论或已按过テンション決定）：不点击（永不点「終了」），本任务失败。"
+        }
+    },
+    "SC.Grade.Resume.Wait": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.FesResume.Guard",
+            "SC.Grade.State.ResumeWait"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "フェス再開：对话框下 Fes 主页的参加权暂未读出，换一帧再读（最多 3 帧，不点击）。"
+        }
+    },
+    "SC.Grade.Finish": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Grade.State.Finished"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Grade.FinishClean",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ]
+    },
+    "SC.Grade.FinishClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "action": "Custom",
+        "custom_action": "SC.Grade.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "已回到干净首页：写出Grade Fes报告并结束任务。"
+        }
+    },
+    "SC.Grade.Leave": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        },
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "next": [
+            "SC.Common.GoHome"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "Grade Fes已有结论：返回首页。"
+        }
+    },
+    "SC.Grade.Halt": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        },
+        "action": "Custom",
+        "custom_action": "SC.Grade.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Grade Fes：结论要求立即停止（不再点击），本任务失败；例外 played_reported（本局 LIVE REPORT 已读并按 OK，只是未见回 Fes 主页）算成功。"
+        }
+    },
+    "SC.Grade.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Grade.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Grade Fes：未知画面/超时/核对失败，不再点击，本任务失败（下一任务照常）。"
+        }
+    },
+    "SC.Grade.SpendError": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Grade.SpendError",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "テンション決定/ライブ開始 后未识别到预期画面（≤30 s / ≤300 s）：记为不确定，不重试，已保存帧待采样。"
+        }
+    },
+    "SC.Grade.Done": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.State",
+        "custom_recognition_param": {
+            "is": "observed"
+        },
+        "action": "Custom",
+        "custom_action": "SC.Grade.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "ライブ開始 之后已核验参加权−1：写出报告并结束任务，不返回首页（消耗后不再点击）。"
+        }
+    },
+    "SC.Grade.Plan.Rehearsal": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Plan",
+        "custom_recognition_param": {
+            "step": "mode",
+            "mode": "rehearsal"
+        }
+    },
+    "SC.Grade.Mode.Rehearsal": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Mode.Guard",
+            "SC.Grade.Plan.Rehearsal"
+        ],
+        "action": "Click",
+        "target": [
+            930,
+            410,
+            115,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Mode.Tapped"
+        ],
+        "on_error": [
+            "SC.Grade.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "模式选择：按已选择的彩排模式点击「フェスリハーサル」。"
+        }
+    },
+    "SC.Grade.Difficulty.AnyGuard": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Difficulty.Guard",
+            "SC.Grade.Rehearsal.Difficulty.Guard"
+        ]
+    },
+    "SC.Grade.Check.RehearsalEasy": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "rehearsal",
+            "difficulty": "Easy"
+        }
+    },
+    "SC.Grade.Rehearsal.Easy": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Rehearsal.Difficulty.Guard",
+            "SC.Grade.Check.RehearsalEasy"
+        ],
+        "action": "Click",
+        "target": [
+            262,
+            336,
+            140,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Live.Loop"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "彩排：难度、1参加权提示与未勾选批量已经核对；点击 Easy 消耗1参加权并直接开始演出。"
+        }
+    },
+    "SC.Grade.Check.RehearsalNormal": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "rehearsal",
+            "difficulty": "Normal"
+        }
+    },
+    "SC.Grade.Rehearsal.Normal": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Rehearsal.Difficulty.Guard",
+            "SC.Grade.Check.RehearsalNormal"
+        ],
+        "action": "Click",
+        "target": [
+            606,
+            336,
+            102,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Live.Loop"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "彩排：难度、1参加权提示与未勾选批量已经核对；点击 Normal 消耗1参加权并直接开始演出。"
+        }
+    },
+    "SC.Grade.Check.RehearsalHard": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Grade.Check",
+        "custom_recognition_param": {
+            "stage": "rehearsal",
+            "difficulty": "Hard"
+        }
+    },
+    "SC.Grade.Rehearsal.Hard": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Rehearsal.Difficulty.Guard",
+            "SC.Grade.Check.RehearsalHard"
+        ],
+        "action": "Click",
+        "target": [
+            872,
+            336,
+            140,
+            90
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Grade.Live.Loop"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "彩排：难度、1参加权提示与未勾选批量已经核对；点击 Hard 消耗1参加权并直接开始演出。"
+        }
+    },
+    "SC.Grade.Rehearsal.Report.Header": {
+        "recognition": "OCR",
+        "expected": [
+            "フェスリハーサル"
+        ],
+        "roi": [
+            90,
+            140,
+            270,
+            42
+        ],
+        "threshold": 0.95
+    },
+    "SC.Grade.Rehearsal.Report.Score": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "native/grade_report/score_label.png",
+            "native/grade_report/score_label_auto.png"
+        ],
+        "roi": [
+            90,
+            430,
+            145,
+            49
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Grade.Rehearsal.Report.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Anchor.ReportTitle",
+            "SC.Grade.Live.Anchor.ReportOk",
+            "SC.Grade.Rehearsal.Report.Header",
+            "SC.Grade.Rehearsal.Report.Score"
+        ]
+    },
+    "SC.Grade.Live.Report.AnyGuard": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Live.Report.Guard",
+            "SC.Grade.Rehearsal.Report.Guard"
+        ]
+    },
+    "SC.Grade.Live.Record.Dismiss": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Grade.Live.Record.Guard",
+            "SC.Grade.Live.Step.Record"
+        ],
+        "action": "Click",
+        "target": [
+            604,
+            248,
+            32,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 4,
+        "timeout": 10000,
+        "focus": {
+            "Node.Action.Starting": "LIVE REPORT 上的「NEW RECORD」/「グレードランキング」叠层（不会自动消失）：两帧一致且出现 ≥2 s 后点叠层白带中部空白处（live-record-dismiss；叠层消失时该点落在报告两栏之间的空白），只为关闭叠层；无效果时 ≥3 s 后最多重点一次，之后仍在 → live_unfinished。之后照常读报告并按 OK。"
+        },
+        "next": [
+            "SC.Grade.Live.Recorded"
+        ],
+        "on_error": [
+            "SC.Grade.SpendError"
+        ]
+    },
+    "SC.Grade.Live.Recorded": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Grade.Live.Report.AnyGuard",
+            "SC.Grade.Live.Record.Guard",
+            "SC.Grade.Live.Ranking.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}

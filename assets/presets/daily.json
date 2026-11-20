@@ -1,0 +1,65 @@
+{
+    "preset": [
+        {
+            "name": "daily",
+            "label": "日常（默认顺序）",
+            "description": "默认日常：勾选 启动 → 商店 → 训练 → Match Live → 任务奖励 → 营业（任务进度读取自动附带）；礼物箱、Grade Fes、Collabo Fes 按同一顺序列在方案里、默认不勾选。Match 与 Grade 共享フェス参加権，Match 默认「全部用完」、跳过最新一关。Shop 默认只买前两项。Business 收取后「再営業へ」→ 核对预填队伍 →「決定」。",
+            "task": [
+                {
+                    "name": "Startup",
+                    "enabled": true
+                },
+                {
+                    "name": "PresentClaim",
+                    "enabled": false,
+                    "option": {
+                        "プレゼント领取": "开启"
+                    }
+                },
+                {
+                    "name": "Shop",
+                    "enabled": true
+                },
+                {
+                    "name": "Training",
+                    "enabled": true
+                },
+                {
+                    "name": "GradeFes",
+                    "enabled": false
+                },
+                {
+                    "name": "MatchSkip",
+                    "enabled": true,
+                    "option": {
+                        "Match只采样": "No",
+                        "Match关卡": "最新（全部关卡）",
+                        "Match次数": "全部用完"
+                    }
+                },
+                {
+                    "name": "MissionsClaim",
+                    "enabled": true,
+                    "option": {
+                        "任务奖励领取": "开启（デイリー一括）"
+                    }
+                },
+                {
+                    "name": "Business",
+                    "enabled": true,
+                    "option": {
+                        "营业收取后": "再营业（默认）"
+                    }
+                },
+                {
+                    "name": "MissionStatus",
+                    "enabled": true
+                },
+                {
+                    "name": "CollaboFes",
+                    "enabled": false
+                }
+            ]
+        }
+    ]
+}

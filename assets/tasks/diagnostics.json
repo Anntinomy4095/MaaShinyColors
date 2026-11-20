@@ -1,0 +1,11 @@
+{
+    "task": [
+        {
+            "name": "Diagnostics",
+            "label": "诊断（只读）",
+            "entry": "SC.Diagnostics.Entry",
+            "default_check": false,
+            "description": "环境自检后截图一次，用已知画面守卫判断当前画面（标题、加载、首页、各白名单弹窗与页面），截图保存到 dev_assets/private/run_logs/diagnostics/。不发送任何输入。"
+        }
+    ]
+}

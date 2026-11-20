@@ -1,0 +1,11 @@
+{
+    "task": [
+        {
+            "name": "Startup",
+            "label": "启动到首页",
+            "entry": "SC.Startup.Entry",
+            "default_check": true,
+            "description": "从标题画面或任意已知画面回到首页：等待加载，关闭已知弹窗（登录奖励、ミッション達成、公告等）。未知画面、消耗确认和错误弹窗不点击，以失败结束。"
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "premium_currency_allowed": false,
+  "budgets": {
+    "coins": 0,
+    "basic_training_tickets": 0,
+    "fes_participation_rights": 0
+  },
+  "shop": {
+    "enabled": false,
+    "purchase_scope": "daily_discount_only",
+    "include_third": false,
+    "coin_budget": 0,
+    "coin_reserve": 0,
+    "items": []
+  },
+  "training": {
+    "enabled": false,
+    "card_id": null,
+    "candidate_card_ids": [],
+    "ticket_type": "basic_training_ticket",
+    "ticket_quantity": 1,
+    "ticket_budget": 0
+  },
+  "match_fes": {
+    "enabled": false,
+    "mode": "skip",
+    "count": 20,
+    "participation_budget": 0,
+    "stage_id": null,
+    "stage_selection": "latest"
+  },
+  "grade_fes": {
+    "enabled": false,
+    "difficulty_id": null,
+    "count": 1,
+    "participation_budget": 0
+  }
+}

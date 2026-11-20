@@ -1,0 +1,334 @@
+/* Design tokens. 2026-10-09: Shiny Colors × minimal.
+   Pale lavender paper, white rounded panels with a soft shadow, slate-violet ink, one pink for "do / selected",
+   orange only for "needs you", glossy pastel badges for icons, dark slate ribbons for section labels.
+   Project-chosen values read off native screenshots (not official colours). Gradients, larger radii and shadows exist
+   ONLY as the tokens below; component CSS references them (tests/test_ui_static.py). WCAG AA pairs are asserted there. */
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/MPLUSRounded1c-Bold.ttf") format("truetype");
+}
+
+:root {
+  color-scheme: light;
+  --sc-bg: #FAF8F4;
+  --sc-surface: #FFFFFF;
+  --sc-surface-2: #F3EEF4;
+  --sc-border: #E6E2DA;
+  --sc-control: #8E7E96;
+  --sc-text: #24232B;
+  --sc-text-2: #6E6B76;
+  --sc-primary: #E0438A;
+  --sc-primary-strong: #C42876;
+  --sc-primary-text: #B42A68;
+  --sc-primary-tint: #FDEAF3;
+  --sc-on-primary: #FFFFFF;
+  --sc-accent: #D96A24;
+  --sc-accent-text: #A34C17;
+  --sc-success: #2F8E6B;
+  --sc-warning: #B07A2A;
+  --sc-danger: #C4403C;
+  --sc-danger-strong: #B23733;
+  --sc-on-danger: #FFFFFF;
+  --sc-uncertain: #7A62C0;
+  --sc-muted: #8A8496;
+  --sc-canvas: #F3F1EC;
+  /* Panel page background (lavender paper). --sc-bg / --sc-canvas / --sc-border / --sc-text(-2) / --sc-warning / --sc-surface
+     stay equal to the host chrome palette (browser_host UiShellForm, tests/test_ui_host_guards.py) so the 44 px header row
+     and the status bar painted by the host match the page; the panel body uses this paper. */
+  --sc-paper: #F5F1F6;
+  /* Dark slate ribbon / tag (the game's 「期限」「✦ アイドル」 labels) and the lavender sparkle ✦. */
+  --sc-ribbon: #6A5D6E;
+  /* Card outlines and dotted rules: the game's mauve hairline (#D6CEDE on white bars, #9C8CA4 on panels). */
+  --sc-line: #DDD4E2;
+  --sc-line-strong: #B7A9BE;
+  --sc-on-ribbon: #FFFFFF;
+  --sc-sparkle: #C9B6DA;
+
+  /* Umbrella tones: the host chrome palette (UiShellForm.ShellPalette) mirrors them. */
+  --sc-umbrella-fill: #FFFFFF;
+  --sc-umbrella-line: #7D838B;
+  --sc-umbrella-rib: #A3A9B1;
+  --sc-umbrella-handle: #5B6470;
+  --sc-umbrella-shine: #D5DDE4;
+  /* Badge tones: soft tint (bg, plain fills) + ink (fg) + a two-stop glossy gradient for icon badges (white glyph). */
+  --tone-pink-bg: #FCE8F1; --tone-pink-fg: #C0457A;
+  --tone-sky-bg: #E4F0FB; --tone-sky-fg: #2F77B6;
+  --tone-violet-bg: #EEE9FA; --tone-violet-fg: #7454B6;
+  --tone-mint-bg: #E2F4ED; --tone-mint-fg: #2D876A;
+  --tone-amber-bg: #FBF0DC; --tone-amber-fg: #A2680F;
+  --tone-gray-bg: #EFEDF3; --tone-gray-fg: #66636E;
+  --grad-pink: linear-gradient(160deg, #FF9CC9 0%, #EC5A9C 100%);
+  --grad-sky: linear-gradient(160deg, #94CCFF 0%, #4A8FE2 100%);
+  --grad-violet: linear-gradient(160deg, #C9AEFF 0%, #8467DB 100%);
+  --grad-mint: linear-gradient(160deg, #8FE3C4 0%, #34A87F 100%);
+  --grad-amber: linear-gradient(160deg, #FFD587 0%, #EE9A2C 100%);
+  --grad-gray: linear-gradient(160deg, #CFCAD9 0%, #8E87A0 100%);
+  --gloss: linear-gradient(180deg, rgb(255 255 255 / .55) 0%, rgb(255 255 255 / .12) 55%, rgb(255 255 255 / 0) 56%);
+  --badge-ring: #FFFFFF;
+  --badge-glyph: #FFFFFF;
+  /* Buttons: pink primary (every stop keeps white text >= 4.5:1), white→lavender secondary, panel wash. */
+  --grad-primary: linear-gradient(180deg, #D33682 0%, #C42876 100%);
+  --grad-button: linear-gradient(180deg, #FBFBFF 0%, #E4E5F8 100%);
+  --grad-hero: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 60%, #F8F3F9 100%);
+  --grad-meter: linear-gradient(180deg, #FFC6DD 0%, #F678B2 40%, #EE489C 100%);
+  --grad-meter-done: linear-gradient(90deg, #6FCBA4 0%, #2F8E6B 100%);
+  /* Card rarity frames and 凸 stars (资源 tab, 2026-10-08): frame colours are non-text decoration (>= 3:1 on surface). */
+  --rar-ur: #B44D9C; --rar-ssr: #B57A0C; --rar-sr: #6F8296; --rar-r: #A06A3C; --rar-n: #8C877F;
+  --lb-on: #F2B91E; --lb-max: #B98AF5; --lb-off: rgb(255 255 255 / .35); --card-bar: rgb(20 19 26 / .72); --on-card-bar: #FFFFFF;
+
+  --r-s: 4px;
+  --r-m: 8px;
+  --r-l: 12px;
+  --r-pill: 999px;
+  --r-badge: 30%;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+
+  /* Soft card shadow (panels sit on the paper like the game's white windows), floating layers, buttons, badges. */
+  --shadow-card: 0 1px 2px rgb(60 48 96 / .06), 0 2px 10px rgb(60 48 96 / .05);
+  --shadow-pop: 0 10px 30px rgb(44 40 56 / .16), 0 1px 3px rgb(44 40 56 / .08);
+  --shadow-btn: 0 1px 0 rgb(120 104 160 / .25);
+  --shadow-btn-primary: 0 2px 0 rgb(140 24 82 / .35), inset 0 1px 0 rgb(255 255 255 / .28);
+  --shadow-badge: 0 0 0 1.5px var(--badge-ring), 0 1px 3px rgb(60 40 96 / .30);
+
+  --dur-fast: 120ms;
+  --dur-med: 180ms;
+  --ease: ease-out;
+
+  --font-ui: "Microsoft YaHei UI", "Noto Sans SC", "PingFang SC", sans-serif;
+  --font-ja: "Yu Gothic UI", "BIZ UDPGothic", "Meiryo UI", "Noto Sans JP", sans-serif;
+  --font-heading: "M PLUS Rounded 1c", "Microsoft YaHei UI", "Noto Sans SC", "PingFang SC", sans-serif;
+  --font-mono: Consolas, "Cascadia Mono", monospace;
+
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-22: 22px;
+
+  --header-h: 44px;
+  --statusbar-h: 24px;
+  --panel-w: 400px;
+  --game-w: 1280px;
+  --game-h: 720px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --sc-bg: #17161B;
+    --sc-surface: #201F25;
+    --sc-surface-2: #2C2632;
+    --sc-border: #34323A;
+    --sc-control: #8A7C92;
+    --sc-text: #ECEAE6;
+    --sc-text-2: #A7A3AD;
+    --sc-primary: #F27BB0;
+    --sc-primary-strong: #F27BB0;
+    --sc-primary-text: #F59CC4;
+    --sc-primary-tint: #3B2132;
+    --sc-on-primary: #1B1220;
+    --sc-accent: #F0975A;
+    --sc-accent-text: #F4AE7C;
+    --sc-success: #5DB38C;
+    --sc-warning: #D1A158;
+    --sc-danger: #E5807A;
+    --sc-danger-strong: #E5807A;
+    --sc-on-danger: #1B1220;
+    --sc-uncertain: #A796DE;
+    --sc-muted: #827B90;
+    --sc-canvas: #1C1B20;
+    --sc-paper: #19161D;
+    --sc-ribbon: #CFC3D3;
+    --sc-line: #3B3442;
+    --sc-line-strong: #5A5064;
+    --sc-on-ribbon: #1B1722;
+    --sc-sparkle: #5E527A;
+    --sc-umbrella-fill: #F4F6F8;
+    --sc-umbrella-line: #C9CED4;
+    --sc-umbrella-rib: #9AA1A9;
+    --sc-umbrella-handle: #E6E8EB;
+    --sc-umbrella-shine: #FFFFFF;
+    --tone-pink-bg: #3A2430; --tone-pink-fg: #F2A3C0;
+    --tone-sky-bg: #1F2E3B; --tone-sky-fg: #8CC6F0;
+    --tone-violet-bg: #2D2740; --tone-violet-fg: #BBA8EE;
+    --tone-mint-bg: #1D322A; --tone-mint-fg: #82D0AF;
+    --tone-amber-bg: #352A19; --tone-amber-fg: #E3B66B;
+    --tone-gray-bg: #2C2B32; --tone-gray-fg: #B8B4BE;
+    --grad-pink: linear-gradient(160deg, #E77FB0 0%, #B83E79 100%);
+    --grad-sky: linear-gradient(160deg, #6FAEE8 0%, #2F68B4 100%);
+    --grad-violet: linear-gradient(160deg, #A68BE6 0%, #6046B0 100%);
+    --grad-mint: linear-gradient(160deg, #6CC7A5 0%, #237D5E 100%);
+    --grad-amber: linear-gradient(160deg, #E8B866 0%, #B87316 100%);
+    --grad-gray: linear-gradient(160deg, #8E879E 0%, #5C566B 100%);
+    --gloss: linear-gradient(180deg, rgb(255 255 255 / .30) 0%, rgb(255 255 255 / .06) 55%, rgb(255 255 255 / 0) 56%);
+    --badge-ring: rgb(255 255 255 / .38);
+    --badge-glyph: #FFFFFF;
+    --grad-primary: linear-gradient(180deg, #F58FBE 0%, #F27BB0 100%);
+    --grad-button: linear-gradient(180deg, #2F2A38 0%, #26212E 100%);
+    --grad-hero: linear-gradient(180deg, #221E2B 0%, #221E2B 60%, #28222F 100%);
+    --grad-meter: linear-gradient(180deg, #F7A3C8 0%, #F27BB0 45%, #D9579A 100%);
+    --grad-meter-done: linear-gradient(90deg, #3E8E6A 0%, #5DB38C 100%);
+    --rar-ur: #E08BCB; --rar-ssr: #E3B350; --rar-sr: #A3B3C4; --rar-r: #C99A6E; --rar-n: #7A7680;
+    --shadow-card: 0 1px 2px rgb(0 0 0 / .35);
+    --shadow-pop: 0 10px 30px rgb(0 0 0 / .5), 0 1px 3px rgb(0 0 0 / .4);
+    --shadow-btn: 0 1px 0 rgb(0 0 0 / .35);
+    --shadow-btn-primary: 0 2px 0 rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .3);
+    --shadow-badge: 0 0 0 1.5px var(--badge-ring), 0 1px 2px rgb(0 0 0 / .45);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --sc-bg: #17161B;
+  --sc-surface: #201F25;
+  --sc-surface-2: #2C2632;
+  --sc-border: #34323A;
+  --sc-control: #8A7C92;
+  --sc-text: #ECEAE6;
+  --sc-text-2: #A7A3AD;
+  --sc-primary: #F27BB0;
+  --sc-primary-strong: #F27BB0;
+  --sc-primary-text: #F59CC4;
+  --sc-primary-tint: #3B2132;
+  --sc-on-primary: #1B1220;
+  --sc-accent: #F0975A;
+  --sc-accent-text: #F4AE7C;
+  --sc-success: #5DB38C;
+  --sc-warning: #D1A158;
+  --sc-danger: #E5807A;
+  --sc-danger-strong: #E5807A;
+  --sc-on-danger: #1B1220;
+  --sc-uncertain: #A796DE;
+  --sc-muted: #827B90;
+  --sc-canvas: #1C1B20;
+  --sc-paper: #19161D;
+  --sc-ribbon: #CFC3D3;
+  --sc-line: #3B3442;
+  --sc-line-strong: #5A5064;
+  --sc-on-ribbon: #1B1722;
+  --sc-sparkle: #5E527A;
+  --sc-umbrella-fill: #F4F6F8;
+  --sc-umbrella-line: #C9CED4;
+  --sc-umbrella-rib: #9AA1A9;
+  --sc-umbrella-handle: #E6E8EB;
+  --sc-umbrella-shine: #FFFFFF;
+  --tone-pink-bg: #3A2430; --tone-pink-fg: #F2A3C0;
+  --tone-sky-bg: #1F2E3B; --tone-sky-fg: #8CC6F0;
+  --tone-violet-bg: #2D2740; --tone-violet-fg: #BBA8EE;
+  --tone-mint-bg: #1D322A; --tone-mint-fg: #82D0AF;
+  --tone-amber-bg: #352A19; --tone-amber-fg: #E3B66B;
+  --tone-gray-bg: #2C2B32; --tone-gray-fg: #B8B4BE;
+  --grad-pink: linear-gradient(160deg, #E77FB0 0%, #B83E79 100%);
+  --grad-sky: linear-gradient(160deg, #6FAEE8 0%, #2F68B4 100%);
+  --grad-violet: linear-gradient(160deg, #A68BE6 0%, #6046B0 100%);
+  --grad-mint: linear-gradient(160deg, #6CC7A5 0%, #237D5E 100%);
+  --grad-amber: linear-gradient(160deg, #E8B866 0%, #B87316 100%);
+  --grad-gray: linear-gradient(160deg, #8E879E 0%, #5C566B 100%);
+  --gloss: linear-gradient(180deg, rgb(255 255 255 / .30) 0%, rgb(255 255 255 / .06) 55%, rgb(255 255 255 / 0) 56%);
+  --badge-ring: rgb(255 255 255 / .38);
+  --badge-glyph: #FFFFFF;
+  --grad-primary: linear-gradient(180deg, #F58FBE 0%, #F27BB0 100%);
+  --grad-button: linear-gradient(180deg, #2F2A38 0%, #26212E 100%);
+  --grad-hero: linear-gradient(180deg, #221E2B 0%, #221E2B 60%, #28222F 100%);
+  --grad-meter: linear-gradient(180deg, #F7A3C8 0%, #F27BB0 45%, #D9579A 100%);
+  --grad-meter-done: linear-gradient(90deg, #3E8E6A 0%, #5DB38C 100%);
+  --rar-ur: #E08BCB; --rar-ssr: #E3B350; --rar-sr: #A3B3C4; --rar-r: #C99A6E; --rar-n: #7A7680;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / .35);
+  --shadow-pop: 0 10px 30px rgb(0 0 0 / .5), 0 1px 3px rgb(0 0 0 / .4);
+  --shadow-btn: 0 1px 0 rgb(0 0 0 / .35);
+  --shadow-btn-primary: 0 2px 0 rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .3);
+  --shadow-badge: 0 0 0 1.5px var(--badge-ring), 0 1px 2px rgb(0 0 0 / .45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-med: 0ms;
+  }
+}
+
+/* 设置 → 外观: user-chosen 主题色 / 字号 / 紧凑度 / 动画 as root attributes (ui/app.js applyPrefs). Default
+   pink, 标准 and 跟随系统 set no attribute. Accent blocks only swap the "do / selected" family (orange stays "needs you");
+   each light block is followed by a more specific dark block so dark mode keeps its own values. WCAG AA pairs per accent
+   are asserted in tests/test_ui_static.py. */
+:root[data-accent="sky"] {
+  --sc-primary: #2E7BD0; --sc-primary-strong: #1D63B4; --sc-primary-text: #1C5EA8; --sc-primary-tint: #E6F0FB; --sc-on-primary: #FFFFFF;
+  --grad-primary: linear-gradient(180deg, #2670C2 0%, #1D63B4 100%);
+  --grad-meter: linear-gradient(180deg, #BFDCFA 0%, #6AA9EC 40%, #2E7BD0 100%);
+  --shadow-btn-primary: 0 2px 0 rgb(20 64 128 / .35), inset 0 1px 0 rgb(255 255 255 / .28);
+}
+:root[data-accent="violet"] {
+  --sc-primary: #8B5CD6; --sc-primary-strong: #6D42B8; --sc-primary-text: #6941AE; --sc-primary-tint: #F0EAFB; --sc-on-primary: #FFFFFF;
+  --grad-primary: linear-gradient(180deg, #7A4DC8 0%, #6D42B8 100%);
+  --grad-meter: linear-gradient(180deg, #DCCBFF 0%, #A787EE 40%, #8B5CD6 100%);
+  --shadow-btn-primary: 0 2px 0 rgb(76 40 140 / .35), inset 0 1px 0 rgb(255 255 255 / .28);
+}
+:root[data-accent="teal"] {
+  --sc-primary: #1A8FA0; --sc-primary-strong: #147585; --sc-primary-text: #126F7E; --sc-primary-tint: #E1F3F5; --sc-on-primary: #FFFFFF;
+  --grad-primary: linear-gradient(180deg, #178293 0%, #147585 100%);
+  --grad-meter: linear-gradient(180deg, #B4E6EC 0%, #5BC0CF 40%, #1A8FA0 100%);
+  --shadow-btn-primary: 0 2px 0 rgb(12 84 96 / .35), inset 0 1px 0 rgb(255 255 255 / .28);
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-accent="sky"]:not([data-theme="light"]) {
+    --sc-primary: #7DB7F0; --sc-primary-strong: #7DB7F0; --sc-primary-text: #9CC9F4; --sc-primary-tint: #1D2B3A; --sc-on-primary: #101826;
+    --grad-primary: linear-gradient(180deg, #94C5F4 0%, #7DB7F0 100%);
+    --grad-meter: linear-gradient(180deg, #A9D0F7 0%, #7DB7F0 45%, #5A98DA 100%);
+    --shadow-btn-primary: 0 2px 0 rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .3);
+  }
+  :root[data-accent="violet"]:not([data-theme="light"]) {
+    --sc-primary: #B89DF2; --sc-primary-strong: #B89DF2; --sc-primary-text: #C8B4F6; --sc-primary-tint: #2C2440; --sc-on-primary: #17121F;
+    --grad-primary: linear-gradient(180deg, #C6B0F6 0%, #B89DF2 100%);
+    --grad-meter: linear-gradient(180deg, #D2C1F8 0%, #B89DF2 45%, #9677DE 100%);
+    --shadow-btn-primary: 0 2px 0 rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .3);
+  }
+  :root[data-accent="teal"]:not([data-theme="light"]) {
+    --sc-primary: #5FC5D5; --sc-primary-strong: #5FC5D5; --sc-primary-text: #84D4E1; --sc-primary-tint: #17313A; --sc-on-primary: #0E1E22;
+    --grad-primary: linear-gradient(180deg, #79CFDD 0%, #5FC5D5 100%);
+    --grad-meter: linear-gradient(180deg, #9BDCE6 0%, #5FC5D5 45%, #3AA3B4 100%);
+    --shadow-btn-primary: 0 2px 0 rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .3);
+  }
+}
+:root[data-theme="dark"][data-accent="sky"] {
+  --sc-primary: #7DB7F0; --sc-primary-strong: #7DB7F0; --sc-primary-text: #9CC9F4; --sc-primary-tint: #1D2B3A; --sc-on-primary: #101826;
+  --grad-primary: linear-gradient(180deg, #94C5F4 0%, #7DB7F0 100%);
+  --grad-meter: linear-gradient(180deg, #A9D0F7 0%, #7DB7F0 45%, #5A98DA 100%);
+  --shadow-btn-primary: 0 2px 0 rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .3);
+}
+:root[data-theme="dark"][data-accent="violet"] {
+  --sc-primary: #B89DF2; --sc-primary-strong: #B89DF2; --sc-primary-text: #C8B4F6; --sc-primary-tint: #2C2440; --sc-on-primary: #17121F;
+  --grad-primary: linear-gradient(180deg, #C6B0F6 0%, #B89DF2 100%);
+  --grad-meter: linear-gradient(180deg, #D2C1F8 0%, #B89DF2 45%, #9677DE 100%);
+  --shadow-btn-primary: 0 2px 0 rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .3);
+}
+:root[data-theme="dark"][data-accent="teal"] {
+  --sc-primary: #5FC5D5; --sc-primary-strong: #5FC5D5; --sc-primary-text: #84D4E1; --sc-primary-tint: #17313A; --sc-on-primary: #0E1E22;
+  --grad-primary: linear-gradient(180deg, #79CFDD 0%, #5FC5D5 100%);
+  --grad-meter: linear-gradient(180deg, #9BDCE6 0%, #5FC5D5 45%, #3AA3B4 100%);
+  --shadow-btn-primary: 0 2px 0 rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .3);
+}
+
+/* 主题色 swatches in the picker always show their own colour, whatever accent is active. */
+:root { --swatch-pink: #E0438A; --swatch-sky: #2E7BD0; --swatch-violet: #8B5CD6; --swatch-teal: #1A8FA0; }
+
+/* 字号: every text size is a --fs token; 小 / 大 / 特大 shift the whole scale. */
+:root[data-font="small"] { --fs-11: 10px; --fs-12: 11px; --fs-13: 12px; --fs-14: 13px; --fs-16: 15px; --fs-18: 17px; --fs-22: 20px; }
+:root[data-font="large"] { --fs-11: 12px; --fs-12: 13px; --fs-13: 14px; --fs-14: 15px; --fs-16: 17px; --fs-18: 20px; --fs-22: 24px; }
+:root[data-font="xlarge"] { --fs-11: 13px; --fs-12: 14px; --fs-13: 15px; --fs-14: 16px; --fs-16: 18px; --fs-18: 21px; --fs-22: 26px; }
+
+/* 紧凑: tighter spacing scale so a narrow panel shows more rows. */
+:root[data-density="compact"] { --sp-1: 3px; --sp-2: 6px; --sp-3: 8px; --sp-4: 12px; --sp-5: 18px; --sp-6: 24px; }
+
+/* 减少动画 (also on whenever the system asks for reduced motion, see above and app.css). */
+:root[data-motion="reduce"] { --dur-fast: 0ms; --dur-med: 0ms; }

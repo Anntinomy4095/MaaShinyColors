@@ -1,0 +1,187 @@
+{
+    "SC.Common.Anchor.Produce.FansHeader": {
+        "recognition": "OCR",
+        "roi": [700, 5, 150, 40],
+        "expected": ["ファン人数"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.Produce.HubTitle": {
+        "recognition": "OCR",
+        "roi": [38, 10, 220, 52],
+        "expected": ["^プロデュース$"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.Produce.ScheduleTitle": {
+        "recognition": "OCR",
+        "roi": [38, 10, 260, 52],
+        "expected": ["^スケジュール選択"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.Produce.ReviewTitle": {
+        "recognition": "OCR",
+        "roi": [38, 10, 220, 52],
+        "expected": ["^振り返り$"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.Produce.ResumeTitle": {
+        "recognition": "OCR",
+        "roi": [395, 30, 260, 50],
+        "expected": ["(プ|ブ)ロデュース再開"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.Produce.ResumeQuestion": {
+        "recognition": "OCR",
+        "roi": [420, 85, 440, 75],
+        "expected": ["再開しますか"],
+        "threshold": 0.5
+    },
+    "SC.Common.Presence.ProduceResumeDialog": {
+        "recognition": "And",
+        "all_of": ["SC.Common.Anchor.Produce.ResumeTitle", "SC.Common.Anchor.Produce.ResumeQuestion"]
+    },
+    "SC.Common.Anchor.Maintenance.Title": {
+        "recognition": "OCR",
+        "roi": [180, 130, 200, 60],
+        "expected": ["^メンテナンス$"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.Maintenance.Body": {
+        "recognition": "OCR",
+        "roi": [380, 310, 520, 50],
+        "expected": ["メンテナンスを実施"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.Error.Title": {
+        "recognition": "OCR",
+        "roi": [380, 120, 200, 130],
+        "expected": ["^エラー$"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.Error.Buttons": {
+        "recognition": "OCR",
+        "roi": [380, 430, 520, 140],
+        "expected": ["再読み込み", "お問い合わせ", "タイトルへ"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.GachaAnnouncement.Title": {
+        "recognition": "OCR",
+        "roi": [60, 500, 1160, 80],
+        "expected": ["ガ[シンソ][ャヤ]|開催[!！]"],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.GachaAnnouncement.Period": {
+        "recognition": "OCR",
+        "roi": [300, 582, 680, 52],
+        "expected": ["開催期間"],
+        "threshold": 0.5
+    },
+    "SC.Common.Presence.ProduceActive": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.Produce.FansHeader",
+            "SC.Common.Anchor.Produce.HubTitle",
+            "SC.Common.Anchor.Produce.ScheduleTitle",
+            "SC.Common.Anchor.Produce.ReviewTitle"
+        ]
+    },
+    "SC.Common.Stop.ProduceInProgress": {
+        "recognition": "Or",
+        "any_of": ["SC.Common.Presence.ProduceActive", "SC.Common.Presence.ProduceResumeDialog"],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {"reason": "produce_in_progress"},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "进行中的 Produce（Hub／スケジュール／振り返り／首页的プロデュース再開对话框）：不点击、不返回，交给 W.I.N.G. 任务（from_home）处理；永不点 終了。"
+        }
+    },
+    "SC.Common.Stop.Maintenance": {
+        "recognition": "And",
+        "all_of": ["SC.Common.Anchor.Maintenance.Title", "SC.Common.Anchor.Maintenance.Body"],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {"reason": "maintenance"},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "メンテナンス：不点击，等维护结束后由用户重新运行。"
+        }
+    },
+    "SC.Common.Stop.CommunicationError": {
+        "recognition": "And",
+        "all_of": ["SC.Common.Anchor.Error.Title", "SC.Common.Anchor.Error.Buttons"],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {"reason": "communication_error"},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "通信／业务错误（含 1012）：不点击「再読み込み」「タイトルへ」，结果可能不明，交给用户。"
+        }
+    },
+    "SC.Common.Stop.BusinessReport": {
+        "recognition": "And",
+        "all_of": ["SC.Business.Report.Guard"],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {"reason": "business_report_pending"},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "営業结果报告页：收取或派出的结果未确认，不点 Touch to Next，也不返回，等人工重新观察。"
+        }
+    },
+    "SC.Common.Stop.GradeLive": {
+        "recognition": "Or",
+        "any_of": ["SC.Grade.Live.Screen.Guard", "SC.Grade.Tension.Guard"],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {"reason": "grade_live_in_progress"},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Grade Fes 已决定テンション或在 Live 中：参加权已消耗，不点击也不返回，交给 GradeFes 任务。"
+        }
+    },
+    "SC.Common.Stop.FesMenuOpen": {
+        "recognition": "And",
+        "all_of": ["SC.Fes.Menu.Guard"],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {"reason": "fes_menu_open"},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "首页フェス菜单已展开：尚无已验证的收起动作，不点击。"
+        }
+    },
+    "SC.Common.Stop.GachaAnnouncement": {
+        "recognition": "And",
+        "all_of": ["SC.Common.Anchor.GachaAnnouncement.Period", "SC.Common.Anchor.GachaAnnouncement.Title"],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {"reason": "gacha_announcement_unhandled"},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "卡池公告没有关掉（关闭点击未启用、已达次数或点后公告没变）：不再点击，停止；请在游戏里关闭后再开始。"
+        }
+    },
+    "SC.Common.Presence.StoryControls": {
+        "recognition": "Or",
+        "any_of": ["SC.Common.Presence.Story.Log", "SC.Common.Presence.Story.Hide"]
+    },
+    "SC.Common.Stop.StoryUnverified": {
+        "recognition": "And",
+        "all_of": ["SC.Common.Presence.Story.Skip", "SC.Common.Presence.StoryControls"],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {"reason": "story_overlay_unverified"},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "疑似剧情画面（SKIP 与 LOG/HIDE 近似但未达到已验证外观，如活动换皮）：不点 SKIP，停止并保存证据。"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "SC.Produce.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {
+            "reason": "not_migrated:produce"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "自动 Produce任务未迁移到 Pipeline：不点击，本任务以失败结束，下一任务照常执行。"
+        }
+    }
+}

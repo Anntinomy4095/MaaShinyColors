@@ -1,0 +1,346 @@
+{
+    "SC.Produce.DryRun": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.ProduceDecision",
+        "custom_action_param": {
+            "profile": "balanced",
+            "sample": true
+        },
+        "focus": {
+            "succeeded": "Produce 策略空跑完成；结果见 Agent 日志。",
+            "failed": "Produce 策略空跑失败；请运行离线单元测试。"
+        }
+    },
+    "SC.Produce.Root": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.RuntimeMode",
+        "custom_action_param": {
+            "mode": "observe",
+            "allow_input": false,
+            "require_confirmation": true
+        },
+        "next": [
+            "SC.Produce.Placeholder"
+        ]
+    },
+    "SC.Produce.Placeholder": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.SupervisionCheckpoint",
+        "custom_action_param": {
+            "feature": "produce",
+            "status": "placeholder",
+            "allow_input": false,
+            "message": "Produce 在线识别与点击尚未启用；当前只允许离线策略空跑。"
+        },
+        "focus": {
+            "succeeded": "Produce 流程当前为安全占位，不会点击游戏。"
+        }
+    },
+    "SC.Produce.Scene.Guard": {
+        "enabled": false,
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "SC.Produce.State.Read"
+        ],
+        "on_error": [
+            "SC.Runtime.StopSafely"
+        ]
+    },
+    "SC.Produce.State.Read": {
+        "enabled": false,
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "SC.Produce.Decide"
+        ]
+    },
+    "SC.Produce.Decide": {
+        "enabled": false,
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.ProduceDecision",
+        "custom_action_param": {
+            "profile": "balanced"
+        },
+        "next": [
+            "SC.Produce.Confirm"
+        ]
+    },
+    "SC.Produce.Confirm": {
+        "enabled": false,
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.SupervisionCheckpoint",
+        "custom_action_param": {
+            "feature": "produce",
+            "status": "awaiting_manual_confirmation",
+            "allow_input": false
+        },
+        "next": [
+            "SC.Runtime.StopSafely"
+        ]
+    },
+    "SC.Produce.Config.TeamMode": {
+        "recognition": "DirectHit",
+        "attach": {
+            "team_mode": "manual"
+        }
+    },
+    "SC.Produce.Config.UnitPreset": {
+        "recognition": "DirectHit",
+        "attach": {
+            "unit_preset": "unit1"
+        }
+    },
+    "SC.Produce.Config.UnitSearch": {
+        "recognition": "DirectHit",
+        "attach": {
+            "unit_search": false
+        }
+    },
+    "SC.Produce.Config.Minigame": {
+        "recognition": "DirectHit",
+        "attach": {
+            "minigame": "auto"
+        }
+    },
+    "SC.Produce.Config.SettingsFix": {
+        "recognition": "DirectHit",
+        "attach": {
+            "settings_fix": false
+        }
+    },
+    "SC.Produce.Config.Scenario": {
+        "recognition": "DirectHit",
+        "attach": {
+            "scenario": "wing"
+        }
+    },
+    "SC.Produce.Config.Halo.Book": {
+        "recognition": "DirectHit",
+        "attach": {
+            "halo_book": "auto"
+        }
+    },
+    "SC.Produce.Config.PrimaryStat": {
+        "recognition": "DirectHit",
+        "attach": {
+            "primary_stat": "auto"
+        }
+    },
+    "SC.Produce.Config.Difficulty": {
+        "recognition": "DirectHit",
+        "attach": {
+            "difficulty": "middle"
+        }
+    },
+    "SC.Produce.Config.Goal": {
+        "recognition": "DirectHit",
+        "attach": {
+            "goal": "true_end"
+        }
+    },
+    "SC.Produce.Config.Runs": {
+        "recognition": "DirectHit",
+        "attach": {
+            "max_runs": 1
+        }
+    },
+    "SC.Produce.Config.Card.P": {
+        "recognition": "DirectHit",
+        "attach": {
+            "p_card": ""
+        }
+    },
+    "SC.Produce.Config.Card.S1": {
+        "recognition": "DirectHit",
+        "attach": {
+            "s1": ""
+        }
+    },
+    "SC.Produce.Config.Card.S2": {
+        "recognition": "DirectHit",
+        "attach": {
+            "s2": ""
+        }
+    },
+    "SC.Produce.Config.Card.S3": {
+        "recognition": "DirectHit",
+        "attach": {
+            "s3": ""
+        }
+    },
+    "SC.Produce.Config.Card.S4": {
+        "recognition": "DirectHit",
+        "attach": {
+            "s4": ""
+        }
+    },
+    "SC.Produce.Config.Card.Guest": {
+        "recognition": "DirectHit",
+        "attach": {
+            "guest": ""
+        }
+    },
+    "SC.Produce.Config.Wing.Rest": {
+        "recognition": "DirectHit",
+        "attach": {
+            "rest_trouble_rate": 10
+        }
+    },
+    "SC.Produce.Config.Wing.Fallback": {
+        "recognition": "DirectHit",
+        "attach": {
+            "fallback": "empty_room"
+        }
+    },
+    "SC.Produce.Config.Wing.SpOrder": {
+        "recognition": "DirectHit",
+        "attach": {
+            "sp_order": "skills_first",
+            "sp_mode": "auto"
+        }
+    },
+    "SC.Produce.Config.Wing.CapMargin": {
+        "recognition": "DirectHit",
+        "attach": {
+            "cap_margin": 100
+        }
+    },
+    "SC.Produce.Config.Wing.Promise": {
+        "recognition": "DirectHit",
+        "attach": {
+            "promise": "neutral"
+        }
+    },
+    "SC.Produce.Config.Wing.LiveMode": {
+        "recognition": "DirectHit",
+        "attach": {
+            "live_mode": "policy"
+        }
+    },
+    "SC.Produce.Config.Wing.AuditionStyle": {
+        "recognition": "DirectHit",
+        "attach": {
+            "audition_style": "first"
+        }
+    },
+    "SC.Produce.Config.Wing.EventChoice": {
+        "recognition": "DirectHit",
+        "attach": {
+            "event_default_choice": 0
+        }
+    },
+    "SC.Produce.Config.Wing.Items": {
+        "recognition": "DirectHit",
+        "attach": {
+            "p_items": "none"
+        }
+    },
+    "SC.Produce.Config.Wing.Tune.Sp": {
+        "recognition": "DirectHit",
+        "attach": {
+            "tune_w_sp": 1.0
+        }
+    },
+    "SC.Produce.Config.Wing.Tune.Urgency": {
+        "recognition": "DirectHit",
+        "attach": {
+            "tune_urgency_max": 3.0
+        }
+    },
+    "SC.Produce.Config.Wing.Tune.Floor": {
+        "recognition": "DirectHit",
+        "attach": {
+            "tune_floor_ratio": 0.6
+        }
+    },
+    "SC.Produce.Config.Wing.Tune.Bond": {
+        "recognition": "DirectHit",
+        "attach": {
+            "tune_bond_beta": 0.5
+        }
+    },
+    "SC.Produce.Config.Wing.Tune.AutoPass": {
+        "recognition": "DirectHit",
+        "attach": {
+            "tune_auto_min_pass": 0.97
+        }
+    },
+    "SC.Produce.Config.Wing.SpSpendDown": {
+        "recognition": "DirectHit",
+        "attach": {
+            "sp_spend_down": false
+        }
+    },
+    "SC.Produce.Config.Wing.RewardRead": {
+        "recognition": "DirectHit",
+        "attach": {
+            "reward_read": true
+        }
+    },
+    "SC.Produce.Config.Wing.RewardProtect": {
+        "recognition": "DirectHit",
+        "attach": {
+            "reward_protect_lv5": true
+        }
+    },
+    "SC.Produce.Config.Wing.RewardReroll": {
+        "recognition": "DirectHit",
+        "attach": {
+            "reward_reroll": false
+        }
+    },
+    "SC.Produce.Config.Wing.RewardOk": {
+        "recognition": "DirectHit",
+        "attach": {
+            "reward_ok": false
+        }
+    },
+    "SC.Produce.Config.Wing.KnowhowLock": {
+        "recognition": "DirectHit",
+        "attach": {
+            "knowhow_lock": false
+        }
+    },
+    "SC.Produce.Config.Wing.KnowhowSell": {
+        "recognition": "DirectHit",
+        "attach": {
+            "knowhow_sell": false
+        }
+    },
+    "SC.Produce.Config.Wing.KnowhowSellStrategy": {
+        "recognition": "DirectHit",
+        "attach": {
+            "knowhow_sell_strategy": "useless_only"
+        }
+    },
+    "SC.Produce.Config.Wing.SpecialS1": {
+        "recognition": "DirectHit",
+        "attach": {
+            "special_s1": true
+        }
+    },
+    "SC.Produce.Config.Wing.SpecialS2": {
+        "recognition": "DirectHit",
+        "attach": {
+            "special_s2": true
+        }
+    },
+    "SC.Produce.Config.Wing.SpecialS3": {
+        "recognition": "DirectHit",
+        "attach": {
+            "special_s3": true
+        }
+    },
+    "SC.Produce.Config.Wing.SpecialS4": {
+        "recognition": "DirectHit",
+        "attach": {
+            "special_s4": true
+        }
+    }
+}

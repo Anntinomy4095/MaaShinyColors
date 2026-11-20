@@ -1,0 +1,22 @@
+{
+ "version": 1,
+ "note": "Hand labels for the Produce item reference templates (アイテム選択 grid). Tile slot -> item id only; no images, counts, account identifiers or currency values. Templates are cropped from the user's own private frames by tools/item_inventory_scan.py --build-templates into dev_assets/private/item_inventory/templates/ (gitignored). Accuracy truth counts live privately in dev_assets/private/item_inventory/truth.json.",
+ "references": [
+  {
+   "frame": "dev_assets/private/recordings/wing-demo-20261005-0058-01/frame-000233.png",
+   "layout": "produce_item_select",
+   "row_tops": [214, 332, 450],
+   "tiles": {
+    "r1c1": "p_tart_yellow_3", "r1c2": "p_tart_blue_2", "r1c3": "p_tart_blue_3", "r1c4": "p_tart_black_2", "r1c5": "p_tart_black_3",
+    "r2c1": "p_candle_1", "r2c2": "p_candle_2", "r2c3": "p_candle_3", "r2c4": "p_magazine_1", "r2c5": "p_magazine_2",
+    "r3c1": "p_magazine_vocal", "r3c2": "p_magazine_dance", "r3c3": "p_magazine_visual", "r3c4": "p_secret_memo", "r3c5": "p_book_magnifier"
+   }
+  },
+  {
+   "frame": "dev_assets/private/recordings/wing-demo-20261005-0058-01/frame-000239.png",
+   "layout": "produce_item_select",
+   "row_tops": [214, 332, 450],
+   "tiles": {"r3c1": "p_bookmark_orange", "r3c2": "p_bookmark_rainbow", "r3c3": "p_charm_pouch"}
+  }
+ ]
+}

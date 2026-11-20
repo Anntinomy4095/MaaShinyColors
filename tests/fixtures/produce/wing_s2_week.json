@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "phase": "week",
+  "season": 2,
+  "week": 3,
+  "stats": {"Vo": 220, "Da": 80, "Vi": 75, "Me": 160},
+  "fans": 3000,
+  "stamina": 80,
+  "max_stamina": 100,
+  "condition": "普通",
+  "sp": 120,
+  "memory_level": 1,
+  "trend": {"Vo": 2, "Da": 1, "Vi": 3},
+  "trouble_rate": null,
+  "options": [
+    {"id": "lesson_vo", "kind": "lesson", "attribute": "Vo", "label": "Vocal", "available": true, "preview": {"Vo": 30}, "stamina_cost": 20},
+    {"id": "lesson_da", "kind": "lesson", "attribute": "Da", "label": "Dance", "available": true, "preview": {"Da": 30}, "stamina_cost": 20},
+    {"id": "work_radio", "kind": "work", "attribute": null, "label": "ラジオ", "available": true, "preview": {"Me": 20}, "stamina_cost": 15},
+    {"id": "rest", "kind": "rest", "available": true}
+  ],
+  "auditions": [
+    {"id": "aud_10k", "name": "synthetic 10k", "fan_reward": 10000, "min_fans": 1000, "available": true}
+  ],
+  "wins": [{"season": 1, "fan_reward": 1000}],
+  "confidence": 0.99,
+  "recognized": true,
+  "evidence": ["synthetic fixture; not a game capture"]
+}

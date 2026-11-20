@@ -1,0 +1,3619 @@
+{
+    "SC.WeeklyProduce.Config.Runs": {
+        "recognition": "DirectHit",
+        "attach": {
+            "runs": 1
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.Skip": {
+        "recognition": "DirectHit",
+        "attach": {
+            "use_skip": false
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.Scenario": {
+        "recognition": "DirectHit",
+        "attach": {
+            "expect_scenario": "WING"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.UnitName": {
+        "recognition": "DirectHit",
+        "attach": {
+            "expect_unit": ""
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.Setup": {
+        "recognition": "DirectHit",
+        "attach": {
+            "setup": "maa"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.Unit": {
+        "recognition": "DirectHit",
+        "attach": {
+            "unit": 1
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.Team": {
+        "recognition": "DirectHit",
+        "attach": {
+            "team": "auto"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.Books": {
+        "recognition": "DirectHit",
+        "attach": {
+            "books": "history"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.Policy": {
+        "recognition": "DirectHit",
+        "attach": {
+            "policy": "auto"
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.Loop": {
+        "recognition": "DirectHit",
+        "attach": {
+            "loop": false
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Config.SodaCap": {
+        "recognition": "DirectHit",
+        "attach": {
+            "soda_cap": 450
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.WeeklyProduce.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.WeeklyProduce.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.WeeklyProduce.Config.Runs",
+                "SC.WeeklyProduce.Config.Skip",
+                "SC.WeeklyProduce.Config.Scenario",
+                "SC.WeeklyProduce.Config.UnitName",
+                "SC.WeeklyProduce.Config.Setup",
+                "SC.WeeklyProduce.Config.Unit",
+                "SC.WeeklyProduce.Config.Team",
+                "SC.WeeklyProduce.Config.Books",
+                "SC.WeeklyProduce.Config.Policy",
+                "SC.WeeklyProduce.Config.Loop",
+                "SC.WeeklyProduce.Config.SodaCap"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Auto Produce（周常）：用「オート1」（未設定时可由 Maa 设定），设回数、核对体力后开始。"
+        }
+    },
+    "SC.WeeklyProduce.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.Halt",
+            "SC.WeeklyProduce.Done",
+            "SC.WeeklyProduce.Observe",
+            "SC.WeeklyProduce.Dialog.Start",
+            "SC.WeeklyProduce.Dialog.Skip",
+            "SC.WeeklyProduce.Dialog.Cancel",
+            "SC.WeeklyProduce.End.Ok",
+            "SC.WeeklyProduce.Result.Ok",
+            "SC.WeeklyProduce.Running.Cancel",
+            "SC.WeeklyProduce.Recovery.Start",
+            "SC.WeeklyProduce.Recovery.Cancel",
+            "SC.WeeklyProduce.Recovery.Soda30",
+            "SC.WeeklyProduce.Recovery.Soda60",
+            "SC.WeeklyProduce.Recovery.Soda100",
+            "SC.WeeklyProduce.Policy.Set",
+            "SC.WeeklyProduce.Policy.Cancel",
+            "SC.WeeklyProduce.Policy.Vocal",
+            "SC.WeeklyProduce.Policy.Dance",
+            "SC.WeeklyProduce.Policy.Visual",
+            "SC.WeeklyProduce.Schedule.PolicyOpen",
+            "SC.WeeklyProduce.Schedule.LoopOff",
+            "SC.WeeklyProduce.Schedule.LoopOn",
+            "SC.WeeklyProduce.Schedule.Decide",
+            "SC.WeeklyProduce.Schedule.Plus",
+            "SC.WeeklyProduce.Schedule.Minus",
+            "SC.WeeklyProduce.Schedule.RowSet",
+            "SC.WeeklyProduce.Setup.ItemDecide",
+            "SC.WeeklyProduce.Setup.HistoryCall",
+            "SC.WeeklyProduce.Setup.HistoryBack",
+            "SC.WeeklyProduce.Setup.BookOmakase",
+            "SC.WeeklyProduce.Setup.BookNext",
+            "SC.WeeklyProduce.Setup.PresetSet1",
+            "SC.WeeklyProduce.Setup.PresetSet2",
+            "SC.WeeklyProduce.Setup.BookPreset",
+            "SC.WeeklyProduce.Picker.Decide",
+            "SC.WeeklyProduce.Picker.Tile00",
+            "SC.WeeklyProduce.Picker.Tile01",
+            "SC.WeeklyProduce.Picker.Tile02",
+            "SC.WeeklyProduce.Picker.Tile03",
+            "SC.WeeklyProduce.Picker.Tile04",
+            "SC.WeeklyProduce.Picker.Tile10",
+            "SC.WeeklyProduce.Picker.Tile11",
+            "SC.WeeklyProduce.Picker.Tile12",
+            "SC.WeeklyProduce.Picker.Tile13",
+            "SC.WeeklyProduce.Picker.Tile14",
+            "SC.WeeklyProduce.Picker.Tile20",
+            "SC.WeeklyProduce.Picker.Tile21",
+            "SC.WeeklyProduce.Picker.Tile22",
+            "SC.WeeklyProduce.Picker.Tile23",
+            "SC.WeeklyProduce.Picker.Tile24",
+            "SC.WeeklyProduce.Setup.BookSlot1",
+            "SC.WeeklyProduce.Setup.BookHistory",
+            "SC.WeeklyProduce.Setup.UnitNext",
+            "SC.WeeklyProduce.Setup.UnitPagePrev",
+            "SC.WeeklyProduce.Setup.UnitPageNext",
+            "SC.WeeklyProduce.Setup.UnitTab1",
+            "SC.WeeklyProduce.Setup.UnitTab2",
+            "SC.WeeklyProduce.Setup.UnitTab3",
+            "SC.WeeklyProduce.Setup.UnitTab4",
+            "SC.WeeklyProduce.Setup.UnitTab5",
+            "SC.WeeklyProduce.Setup.UnitTab6",
+            "SC.WeeklyProduce.Setup.UnitTab7",
+            "SC.WeeklyProduce.Setup.UnitTab8",
+            "SC.WeeklyProduce.Setup.UnitTab9",
+            "SC.WeeklyProduce.Setup.UnitTab10",
+            "SC.WeeklyProduce.Setup.ScenarioNext",
+            "SC.WeeklyProduce.Setup.ScenarioDown",
+            "SC.WeeklyProduce.Setup.TabTrain",
+            "SC.WeeklyProduce.Setup.TabSpecial",
+            "SC.WeeklyProduce.Select.OpenAuto",
+            "SC.WeeklyProduce.Home.OpenRunning",
+            "SC.WeeklyProduce.Home.OpenProduce",
+            "[JumpBack]SC.WeeklyProduce.Collect.GoHome",
+            "SC.WeeklyProduce.Wait",
+            "[JumpBack]SC.Loading.Wait"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "Auto Produce：按当前画面决定下一步（停止→完成→开始确认→スケジュール→设定向导→プロデュース選択→首页）。"
+        }
+    },
+    "SC.WeeklyProduce.Observe": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "observe"
+        }
+    },
+    "SC.WeeklyProduce.Halt": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        },
+        "action": "Custom",
+        "custom_action": "SC.WeeklyProduce.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Auto Produce：已停止（原因见运行记录），不再点击。"
+        }
+    },
+    "SC.WeeklyProduce.Done": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        },
+        "action": "Custom",
+        "custom_action": "SC.WeeklyProduce.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Auto Produce：首页显示「オートプロデュース中」，已开始。"
+        }
+    },
+    "SC.WeeklyProduce.Wait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "wait"
+        },
+        "action": "DoNothing",
+        "pre_delay": 0,
+        "post_delay": 500,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.WeeklyProduce.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Auto Produce：未知画面或超时，不再点击，本任务失败。"
+        }
+    },
+    "SC.WeeklyProduce.SpendError": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.WeeklyProduce.SpendError",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "开始后未看到结果：结果不确定，停止，不重试。"
+        }
+    },
+    "SC.WeeklyProduce.Anchor.HomeProduce": {
+        "recognition": "OCR",
+        "roi": [
+            1000,
+            638,
+            120,
+            34
+        ],
+        "expected": [
+            "^プロデュース$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.AutoEntry": {
+        "recognition": "OCR",
+        "roi": [
+            130,
+            628,
+            160,
+            70
+        ],
+        "expected": [
+            "^オート$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.ScheduleTitle": {
+        "recognition": "OCR",
+        "roi": [
+            38,
+            10,
+            300,
+            52
+        ],
+        "expected": [
+            "^オートスケジュール$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.ScheduleCount": {
+        "recognition": "OCR",
+        "roi": [
+            890,
+            205,
+            170,
+            40
+        ],
+        "expected": [
+            "^プロデュース回数$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.ScheduleDecide": {
+        "recognition": "OCR",
+        "roi": [
+            1100,
+            640,
+            150,
+            50
+        ],
+        "expected": [
+            "^決定$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.DialogTitle": {
+        "recognition": "OCR",
+        "roi": [
+            400,
+            125,
+            320,
+            45
+        ],
+        "expected": [
+            "^オートプロデュース開始$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.DialogCancel": {
+        "recognition": "OCR",
+        "roi": [
+            385,
+            515,
+            155,
+            50
+        ],
+        "expected": [
+            "^キャンセル$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.DialogStart": {
+        "recognition": "OCR",
+        "roi": [
+            740,
+            510,
+            150,
+            62
+        ],
+        "expected": [
+            "^プロデュース$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.DialogSkip": {
+        "recognition": "OCR",
+        "roi": [
+            565,
+            505,
+            150,
+            35
+        ],
+        "expected": [
+            "^スキップ$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.KnowhowTitle": {
+        "recognition": "OCR",
+        "roi": [
+            38,
+            10,
+            330,
+            52
+        ],
+        "expected": [
+            "^ノウハウブック選択$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.RowSet": {
+        "recognition": "OCR",
+        "roi": [
+            1115,
+            127,
+            95,
+            42
+        ],
+        "expected": [
+            "^設定$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.TabTrain": {
+        "recognition": "OCR",
+        "roi": [
+            845,
+            85,
+            150,
+            32
+        ],
+        "expected": [
+            "^育成プロデュース$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.TabSpecial": {
+        "recognition": "OCR",
+        "roi": [
+            1015,
+            85,
+            155,
+            32
+        ],
+        "expected": [
+            "^特化プロデュース$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.SetupNext": {
+        "recognition": "OCR",
+        "roi": [
+            1110,
+            632,
+            135,
+            60
+        ],
+        "expected": [
+            "^次へ$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.SetupDecide": {
+        "recognition": "OCR",
+        "roi": [
+            1110,
+            632,
+            135,
+            60
+        ],
+        "expected": [
+            "^決定$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.BookHistory": {
+        "recognition": "OCR",
+        "roi": [
+            718,
+            636,
+            162,
+            42
+        ],
+        "expected": [
+            "^設定履[歴歷]$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.HistoryTitle": {
+        "recognition": "OCR",
+        "roi": [
+            38,
+            10,
+            400,
+            52
+        ],
+        "expected": [
+            "^ノウハウブック設定履歴$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.HistoryCall": {
+        "recognition": "OCR",
+        "roi": [
+            1010,
+            157,
+            116,
+            42
+        ],
+        "expected": [
+            "^呼び出し$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.BookOmakase": {
+        "recognition": "OCR",
+        "roi": [
+            540,
+            636,
+            165,
+            42
+        ],
+        "expected": [
+            "^おまかせ編成$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.ScenarioNextCard": {
+        "recognition": "OCR",
+        "roi": [
+            700,
+            470,
+            400,
+            90
+        ],
+        "expected": [
+            "感謝|283|G\\.R\\.A\\.D|Grand|Landing"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PresetButton": {
+        "recognition": "OCR",
+        "roi": [
+            25,
+            160,
+            155,
+            34
+        ],
+        "expected": [
+            "^プリセット$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PresetTitle": {
+        "recognition": "OCR",
+        "roi": [
+            355,
+            25,
+            340,
+            45
+        ],
+        "expected": [
+            "^ノウハウブックプリセット$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PresetSet1": {
+        "recognition": "OCR",
+        "roi": [
+            765,
+            152,
+            105,
+            36
+        ],
+        "expected": [
+            "^セット$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PresetSet2": {
+        "recognition": "OCR",
+        "roi": [
+            765,
+            337,
+            105,
+            36
+        ],
+        "expected": [
+            "^セット$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PolicyButton": {
+        "recognition": "OCR",
+        "roi": [
+            733,
+            205,
+            125,
+            40
+        ],
+        "expected": [
+            "^(Vocal|Dance|Visual)$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.LoopButton": {
+        "recognition": "OCR",
+        "roi": [
+            125,
+            635,
+            170,
+            56
+        ],
+        "expected": [
+            "ループする"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PolicyTitle": {
+        "recognition": "OCR",
+        "roi": [
+            365,
+            70,
+            300,
+            45
+        ],
+        "expected": [
+            "^育成方針選択$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PolicyVocal": {
+        "recognition": "OCR",
+        "roi": [
+            405,
+            170,
+            470,
+            58
+        ],
+        "expected": [
+            "Vocal$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PolicyDance": {
+        "recognition": "OCR",
+        "roi": [
+            405,
+            260,
+            470,
+            58
+        ],
+        "expected": [
+            "Dance$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PolicyVisual": {
+        "recognition": "OCR",
+        "roi": [
+            405,
+            350,
+            470,
+            58
+        ],
+        "expected": [
+            "Visual$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PolicySet": {
+        "recognition": "OCR",
+        "roi": [
+            663,
+            557,
+            152,
+            66
+        ],
+        "expected": [
+            "^設定する$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PolicyCancel": {
+        "recognition": "OCR",
+        "roi": [
+            462,
+            557,
+            152,
+            66
+        ],
+        "expected": [
+            "^キャンセル$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Schedule.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.ScheduleTitle",
+            "SC.WeeklyProduce.Anchor.ScheduleCount",
+            "SC.WeeklyProduce.Anchor.ScheduleDecide",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.WeeklyProduce.Dialog.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.DialogTitle",
+            "SC.WeeklyProduce.Anchor.DialogCancel",
+            "SC.WeeklyProduce.Anchor.DialogStart"
+        ]
+    },
+    "SC.WeeklyProduce.Setup.Step": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Anchor.ProduceSetup.ItemTitle",
+            "SC.WeeklyProduce.Anchor.KnowhowTitle",
+            "SC.WeeklyProduce.Anchor.HistoryTitle"
+        ]
+    },
+    "SC.WeeklyProduce.Want.HomeOpen": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "home_open"
+        }
+    },
+    "SC.WeeklyProduce.Want.OpenAuto": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "open_auto"
+        }
+    },
+    "SC.WeeklyProduce.Want.Plus": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "plus"
+        }
+    },
+    "SC.WeeklyProduce.Want.Minus": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "minus"
+        }
+    },
+    "SC.WeeklyProduce.Want.LoopOff": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "loop_off"
+        }
+    },
+    "SC.WeeklyProduce.Want.Decide": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "decide"
+        }
+    },
+    "SC.WeeklyProduce.Want.Cancel": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "cancel"
+        }
+    },
+    "SC.WeeklyProduce.Want.Start": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "start"
+        }
+    },
+    "SC.WeeklyProduce.Want.Skip": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "skip"
+        }
+    },
+    "SC.WeeklyProduce.Want.RowSet": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "row_set"
+        }
+    },
+    "SC.WeeklyProduce.Want.TabTrain": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "tab_train"
+        }
+    },
+    "SC.WeeklyProduce.Want.TabSpecial": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "tab_special"
+        }
+    },
+    "SC.WeeklyProduce.Want.ScenarioNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "scenario_next"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_1"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_2"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_3"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_4"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_5"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_6"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_7"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab8": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_8"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab9": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_9"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitTab10": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_10"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_next"
+        }
+    },
+    "SC.WeeklyProduce.Want.BookHistory": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "book_history"
+        }
+    },
+    "SC.WeeklyProduce.Want.HistoryCall": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "history_call"
+        }
+    },
+    "SC.WeeklyProduce.Want.HistoryBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "history_back"
+        }
+    },
+    "SC.WeeklyProduce.Want.BookOmakase": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "book_omakase"
+        }
+    },
+    "SC.WeeklyProduce.Want.BookNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "book_next"
+        }
+    },
+    "SC.WeeklyProduce.Want.ItemDecide": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "item_decide"
+        }
+    },
+    "SC.WeeklyProduce.Want.ScenarioDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "scenario_down"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitPagePrev": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_page_prev"
+        }
+    },
+    "SC.WeeklyProduce.Want.UnitPageNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "unit_page_next"
+        }
+    },
+    "SC.WeeklyProduce.Want.BookPreset": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "book_preset"
+        }
+    },
+    "SC.WeeklyProduce.Want.PresetSet1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "preset_set_1"
+        }
+    },
+    "SC.WeeklyProduce.Want.PresetSet2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "preset_set_2"
+        }
+    },
+    "SC.WeeklyProduce.Want.PolicyOpen": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "policy_open"
+        }
+    },
+    "SC.WeeklyProduce.Want.PolicyVocal": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "policy_vocal"
+        }
+    },
+    "SC.WeeklyProduce.Want.PolicyDance": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "policy_dance"
+        }
+    },
+    "SC.WeeklyProduce.Want.PolicyVisual": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "policy_visual"
+        }
+    },
+    "SC.WeeklyProduce.Want.PolicySet": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "policy_set"
+        }
+    },
+    "SC.WeeklyProduce.Want.PolicyCancel": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "policy_cancel"
+        }
+    },
+    "SC.WeeklyProduce.Home.OpenProduce": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Home.Guard",
+            "SC.WeeklyProduce.Anchor.HomeProduce",
+            "SC.WeeklyProduce.Want.HomeOpen"
+        ],
+        "action": "Click",
+        "target": [
+            1005,
+            615,
+            105,
+            70
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.HomeOpen"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页「プロデュース」（不在 Auto 中、体力够 30×次数）：打开プロデュース選択。"
+        }
+    },
+    "SC.WeeklyProduce.Anchor.HomeRunning": {
+        "recognition": "OCR",
+        "roi": [
+            1000,
+            638,
+            120,
+            34
+        ],
+        "expected": [
+            "^プロデュー[-‐－]?ス中$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Want.HomeRunning": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "home_running"
+        }
+    },
+    "SC.WeeklyProduce.Home.OpenRunning": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Home.Guard",
+            "SC.WeeklyProduce.Anchor.HomeRunning",
+            "SC.WeeklyProduce.Want.HomeRunning"
+        ],
+        "action": "Click",
+        "target": [
+            1005,
+            615,
+            105,
+            70
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Collect"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页「オートプロデュース中」：点一次，收取已结束的 Auto 结果。"
+        }
+    },
+    "SC.WeeklyProduce.Anchor.EndTitle": {
+        "recognition": "OCR",
+        "roi": [
+            395,
+            195,
+            330,
+            50
+        ],
+        "expected": [
+            "^オートプロデュース終"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.EndBody": {
+        "recognition": "OCR",
+        "roi": [
+            420,
+            305,
+            440,
+            50
+        ],
+        "expected": [
+            "オートプロデュースが全て"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.EndOk": {
+        "recognition": "OCR",
+        "roi": [
+            560,
+            428,
+            162,
+            75
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.End.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.EndTitle",
+            "SC.WeeklyProduce.Anchor.EndBody",
+            "SC.WeeklyProduce.Anchor.EndOk"
+        ]
+    },
+    "SC.WeeklyProduce.Want.EndOk": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "end_ok"
+        }
+    },
+    "SC.WeeklyProduce.End.Ok": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.EndTitle",
+            "SC.WeeklyProduce.Anchor.EndBody",
+            "SC.WeeklyProduce.Anchor.EndOk",
+            "SC.WeeklyProduce.Want.EndOk"
+        ],
+        "action": "Click",
+        "target": [
+            575,
+            440,
+            130,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Collect"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「オートプロデュース終了」：按 OK。"
+        }
+    },
+    "SC.WeeklyProduce.Anchor.ResultTitle": {
+        "recognition": "OCR",
+        "roi": [
+            38,
+            10,
+            330,
+            52
+        ],
+        "expected": [
+            "^オートリザルト$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.ResultOk": {
+        "recognition": "OCR",
+        "roi": [
+            1095,
+            625,
+            165,
+            75
+        ],
+        "expected": [
+            "^OK$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Result.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.ResultTitle",
+            "SC.WeeklyProduce.Anchor.ResultOk"
+        ]
+    },
+    "SC.WeeklyProduce.Want.ResultOk": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "result_ok"
+        }
+    },
+    "SC.WeeklyProduce.Result.Ok": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.ResultTitle",
+            "SC.WeeklyProduce.Anchor.ResultOk",
+            "SC.WeeklyProduce.Want.ResultOk"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            635,
+            135,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Collect"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「オートリザルト」：按 OK（不碰保護/移籍/売却）。"
+        }
+    },
+    "SC.WeeklyProduce.Anchor.RunningTitle": {
+        "recognition": "OCR",
+        "roi": [
+            400,
+            28,
+            330,
+            50
+        ],
+        "expected": [
+            "^オートプロデュース確認$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.RunningCancel": {
+        "recognition": "OCR",
+        "roi": [
+            380,
+            597,
+            165,
+            75
+        ],
+        "expected": [
+            "^キャンセル$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Running.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.RunningTitle",
+            "SC.WeeklyProduce.Anchor.RunningCancel"
+        ]
+    },
+    "SC.WeeklyProduce.Want.RunningCancel": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "running_cancel"
+        }
+    },
+    "SC.WeeklyProduce.Running.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.RunningTitle",
+            "SC.WeeklyProduce.Anchor.RunningCancel",
+            "SC.WeeklyProduce.Want.RunningCancel"
+        ],
+        "action": "Click",
+        "target": [
+            395,
+            610,
+            135,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Collect"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Auto 还没结束（「オートプロデュース確認」）：按「キャンセル」关闭，不按終了/スキップ。"
+        }
+    },
+    "SC.WeeklyProduce.Collect.GoHome": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "go_home"
+        },
+        "action": "DoNothing",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Common.GoHome"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Auto 结果已收取：关掉首页弹窗（ミッション達成、イベント累計報酬 等）并回到首页。"
+        }
+    },
+    "SC.WeeklyProduce.After.Collect": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.WeeklyProduce.End.Guard",
+            "SC.WeeklyProduce.Result.Guard",
+            "SC.WeeklyProduce.Running.Guard",
+            "SC.Common.Home.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.EventFanReward.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.After.HomeOpen": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.Common.Home.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.Select.OpenAuto": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.WeeklyProduce.Anchor.AutoEntry",
+            "SC.WeeklyProduce.Want.OpenAuto"
+        ],
+        "action": "Click",
+        "target": [
+            140,
+            632,
+            140,
+            58
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.OpenAuto"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "プロデュース選択：按一次「オートプロデュース」。"
+        }
+    },
+    "SC.WeeklyProduce.After.OpenAuto": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.WeeklyProduce.Setup.Step"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.Schedule.Plus": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Want.Plus"
+        ],
+        "action": "Click",
+        "target": [
+            1174,
+            210,
+            30,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 24,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Schedule"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "オート1 回数 +1（每点一次重新读数，不超过目标）。"
+        }
+    },
+    "SC.WeeklyProduce.Schedule.Minus": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Want.Minus"
+        ],
+        "action": "Click",
+        "target": [
+            1074,
+            210,
+            30,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 24,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Schedule"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "オート1 回数 −1（每点一次重新读数，不低于目标）。"
+        }
+    },
+    "SC.WeeklyProduce.Schedule.LoopOff": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Anchor.LoopButton",
+            "SC.WeeklyProduce.Want.LoopOff"
+        ],
+        "action": "Click",
+        "target": [
+            150,
+            645,
+            130,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Schedule"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「ループする」为开：点一次关掉（开时要先放回復アイテム，Auto 不用）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.LoopOn": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "loop_on"
+        }
+    },
+    "SC.WeeklyProduce.Schedule.LoopOn": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Anchor.LoopButton",
+            "SC.WeeklyProduce.Want.LoopOn"
+        ],
+        "action": "Click",
+        "target": [
+            150,
+            645,
+            130,
+            36
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Schedule"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ループ为开：点「ループする」打开（25 回，体力 750）。"
+        }
+    },
+    "SC.WeeklyProduce.After.Schedule": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.Schedule.Decide": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Want.Decide"
+        ],
+        "action": "Click",
+        "target": [
+            1105,
+            635,
+            140,
+            55
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Decide"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "オート1 已设好、回数=目标、ループ关、必要スタミナ=30×次数：按「決定」。"
+        }
+    },
+    "SC.WeeklyProduce.After.Decide": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.WeeklyProduce.Dialog.Guard",
+            "SC.WeeklyProduce.Recovery.Guard",
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.Dialog.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Dialog.Guard",
+            "SC.WeeklyProduce.Want.Cancel"
+        ],
+        "action": "Click",
+        "target": [
+            392,
+            512,
+            140,
+            58
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Cancel"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "开始确认核对不通过：按「キャンセル」（不消耗），然后停止。"
+        }
+    },
+    "SC.WeeklyProduce.After.Cancel": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Dialog.Guard",
+            "SC.WeeklyProduce.Recovery.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.Dialog.Start": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Dialog.Guard",
+            "SC.WeeklyProduce.Want.Start"
+        ],
+        "action": "Click",
+        "target": [
+            747,
+            512,
+            140,
+            58
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Start"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "必要スタミナ 前后差=30×次数：按「プロデュース開始」。消耗：体力 30×次数。"
+        }
+    },
+    "SC.WeeklyProduce.Dialog.Skip": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Dialog.Guard",
+            "SC.WeeklyProduce.Anchor.DialogSkip",
+            "SC.WeeklyProduce.Want.Skip"
+        ],
+        "action": "Click",
+        "target": [
+            567,
+            508,
+            145,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Start"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "已开启スキップ：按「スキップ」。消耗：体力 30×次数与当日スキップ次数（未验证）。"
+        }
+    },
+    "SC.WeeklyProduce.Anchor.RecoveryTitle": {
+        "recognition": "OCR",
+        "roi": [
+            190,
+            25,
+            320,
+            40
+        ],
+        "expected": [
+            "^オートプロデュース開始$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.RecoveryPrompt": {
+        "recognition": "OCR",
+        "roi": [
+            215,
+            147,
+            290,
+            35
+        ],
+        "expected": [
+            "回復アイテムをセットして"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.RecoveryCancel": {
+        "recognition": "OCR",
+        "roi": [
+            385,
+            612,
+            150,
+            50
+        ],
+        "expected": [
+            "^キャンセル$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.RecoveryStart": {
+        "recognition": "OCR",
+        "roi": [
+            735,
+            598,
+            165,
+            50
+        ],
+        "expected": [
+            "^プロデュース$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.Soda30": {
+        "recognition": "OCR",
+        "roi": [
+            700,
+            136,
+            250,
+            36
+        ],
+        "expected": [
+            "^リカバリーソーダ30$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.Soda60": {
+        "recognition": "OCR",
+        "roi": [
+            700,
+            269,
+            250,
+            36
+        ],
+        "expected": [
+            "^リカバリーソーダ60$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.Soda100": {
+        "recognition": "OCR",
+        "roi": [
+            700,
+            402,
+            250,
+            36
+        ],
+        "expected": [
+            "^リカバリーソーダ100$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Recovery.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.RecoveryTitle",
+            "SC.WeeklyProduce.Anchor.RecoveryPrompt",
+            "SC.WeeklyProduce.Anchor.RecoveryCancel",
+            "SC.WeeklyProduce.Anchor.RecoveryStart"
+        ]
+    },
+    "SC.WeeklyProduce.Want.Soda30": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "soda_30"
+        }
+    },
+    "SC.WeeklyProduce.Recovery.Soda30": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Recovery.Guard",
+            "SC.WeeklyProduce.Anchor.Soda30",
+            "SC.WeeklyProduce.Want.Soda30"
+        ],
+        "action": "Click",
+        "target": [
+            956,
+            198,
+            56,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 30,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Recovery"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ループ：リカバリーソーダ30 点一次「+」（开始前不消耗）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.Soda60": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "soda_60"
+        }
+    },
+    "SC.WeeklyProduce.Recovery.Soda60": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Recovery.Guard",
+            "SC.WeeklyProduce.Anchor.Soda60",
+            "SC.WeeklyProduce.Want.Soda60"
+        ],
+        "action": "Click",
+        "target": [
+            956,
+            331,
+            56,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 30,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Recovery"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ループ：リカバリーソーダ60 点一次「+」（开始前不消耗）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.Soda100": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "soda_100"
+        }
+    },
+    "SC.WeeklyProduce.Recovery.Soda100": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Recovery.Guard",
+            "SC.WeeklyProduce.Anchor.Soda100",
+            "SC.WeeklyProduce.Want.Soda100"
+        ],
+        "action": "Click",
+        "target": [
+            956,
+            464,
+            56,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 30,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Recovery"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ループ：リカバリーソーダ100 点一次「+」（开始前不消耗）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.RecoveryCancel": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "recovery_cancel"
+        }
+    },
+    "SC.WeeklyProduce.Recovery.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Recovery.Guard",
+            "SC.WeeklyProduce.Want.RecoveryCancel"
+        ],
+        "action": "Click",
+        "target": [
+            395,
+            612,
+            135,
+            56
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Cancel"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "回復アイテム框：按「キャンセル」（不消耗），然后停止。"
+        }
+    },
+    "SC.WeeklyProduce.Want.RecoveryStart": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "recovery_start"
+        }
+    },
+    "SC.WeeklyProduce.Recovery.Start": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Recovery.Guard",
+            "SC.WeeklyProduce.Want.RecoveryStart"
+        ],
+        "action": "Click",
+        "target": [
+            750,
+            610,
+            135,
+            58
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Start"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "必要スタミナ 750/750：按「プロデュース開始」。消耗：体力与所设ソーダ，共 750。"
+        }
+    },
+    "SC.WeeklyProduce.After.Recovery": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.WeeklyProduce.Recovery.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.After.Start": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.Common.Home.Guard",
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Dialog.Guard",
+            "SC.WeeklyProduce.Recovery.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.Schedule.RowSet": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Anchor.RowSet",
+            "SC.WeeklyProduce.Want.RowSet"
+        ],
+        "action": "Click",
+        "target": [
+            1115,
+            127,
+            95,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "オート1 为「未設定」且已开启由 Maa 设定：按「設定」进入设定。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.TabTrain": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.WeeklyProduce.Anchor.TabTrain",
+            "SC.WeeklyProduce.Want.TabTrain"
+        ],
+        "action": "Click",
+        "target": [
+            845,
+            85,
+            150,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "剧本页：切到「育成プロデュース」（W.I.N.G.）。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.TabSpecial": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.WeeklyProduce.Anchor.TabSpecial",
+            "SC.WeeklyProduce.Want.TabSpecial"
+        ],
+        "action": "Click",
+        "target": [
+            1015,
+            85,
+            155,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "剧本页：切到「特化プロデュース」（S.T.E.P.）。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.ScenarioNext": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.WeeklyProduce.Anchor.SetupNext",
+            "SC.WeeklyProduce.Want.ScenarioNext"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            632,
+            135,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "剧本页显示所选剧本：按「次へ」。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab1"
+        ],
+        "action": "Click",
+        "target": [
+            28,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット1。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab2"
+        ],
+        "action": "Click",
+        "target": [
+            140,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット2。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab3"
+        ],
+        "action": "Click",
+        "target": [
+            252,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット3。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab4"
+        ],
+        "action": "Click",
+        "target": [
+            364,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット4。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab5"
+        ],
+        "action": "Click",
+        "target": [
+            476,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット5。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab6"
+        ],
+        "action": "Click",
+        "target": [
+            588,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット6。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab7"
+        ],
+        "action": "Click",
+        "target": [
+            700,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット7。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab8": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab8"
+        ],
+        "action": "Click",
+        "target": [
+            812,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット8。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab9": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab9"
+        ],
+        "action": "Click",
+        "target": [
+            924,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット9。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitTab10": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitTab10"
+        ],
+        "action": "Click",
+        "target": [
+            1036,
+            85,
+            95,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：切到ユニット10。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitNext": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Anchor.SetupNext",
+            "SC.WeeklyProduce.Want.UnitNext"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            632,
+            135,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット编号=所选：按「次へ」。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.BookHistory": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.KnowhowTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Anchor.BookHistory",
+            "SC.WeeklyProduce.Want.BookHistory"
+        ],
+        "action": "Click",
+        "target": [
+            718,
+            636,
+            162,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ノウハウブック未选满：打开「設定履歴」。"
+        }
+    },
+    "SC.WeeklyProduce.Anchor.BookSlot1": {
+        "recognition": "OCR",
+        "roi": [
+            532,
+            208,
+            160,
+            32
+        ],
+        "expected": [
+            "ノウハウブック1$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PickerCount": {
+        "recognition": "OCR",
+        "roi": [
+            545,
+            100,
+            95,
+            45
+        ],
+        "expected": [
+            "^選択数$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Anchor.PickerDecide": {
+        "recognition": "OCR",
+        "roi": [
+            1090,
+            608,
+            140,
+            58
+        ],
+        "expected": [
+            "^決定$"
+        ],
+        "threshold": 0.5
+    },
+    "SC.WeeklyProduce.Picker.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.KnowhowTitle",
+            "SC.WeeklyProduce.Anchor.PickerCount"
+        ]
+    },
+    "SC.WeeklyProduce.Want.BookSlot1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "book_slot1"
+        }
+    },
+    "SC.WeeklyProduce.Setup.BookSlot1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.KnowhowTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Anchor.BookSlot1",
+            "SC.WeeklyProduce.Want.BookSlot1"
+        ],
+        "action": "Click",
+        "target": [
+            590,
+            300,
+            110,
+            100
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "带书「ノウハウ页指定」：点ノウハウブック1 的「+」打开选书。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerDecide": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_decide"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Decide": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Anchor.PickerDecide",
+            "SC.WeeklyProduce.Want.PickerDecide"
+        ],
+        "action": "Click",
+        "target": [
+            1100,
+            615,
+            120,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "三本已选中并核对：按「決定」。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile00": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_0_0"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile00": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile00"
+        ],
+        "action": "Click",
+        "target": [
+            550,
+            215,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 1 行第 1 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile01": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_0_1"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile01": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile01"
+        ],
+        "action": "Click",
+        "target": [
+            688,
+            215,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 1 行第 2 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile02": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_0_2"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile02": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile02"
+        ],
+        "action": "Click",
+        "target": [
+            826,
+            215,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 1 行第 3 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile03": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_0_3"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile03": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile03"
+        ],
+        "action": "Click",
+        "target": [
+            964,
+            215,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 1 行第 4 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile04": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_0_4"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile04": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile04"
+        ],
+        "action": "Click",
+        "target": [
+            1102,
+            215,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 1 行第 5 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile10": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_1_0"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile10": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile10"
+        ],
+        "action": "Click",
+        "target": [
+            550,
+            353,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 2 行第 1 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile11": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_1_1"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile11": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile11"
+        ],
+        "action": "Click",
+        "target": [
+            688,
+            353,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 2 行第 2 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile12": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_1_2"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile12": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile12"
+        ],
+        "action": "Click",
+        "target": [
+            826,
+            353,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 2 行第 3 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile13": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_1_3"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile13": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile13"
+        ],
+        "action": "Click",
+        "target": [
+            964,
+            353,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 2 行第 4 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile14": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_1_4"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile14": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile14"
+        ],
+        "action": "Click",
+        "target": [
+            1102,
+            353,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 2 行第 5 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile20": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_2_0"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile20": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile20"
+        ],
+        "action": "Click",
+        "target": [
+            550,
+            491,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 3 行第 1 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile21": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_2_1"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile21": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile21"
+        ],
+        "action": "Click",
+        "target": [
+            688,
+            491,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 3 行第 2 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile22": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_2_2"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile22": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile22"
+        ],
+        "action": "Click",
+        "target": [
+            826,
+            491,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 3 行第 3 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile23": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_2_3"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile23": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile23"
+        ],
+        "action": "Click",
+        "target": [
+            964,
+            491,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 3 行第 4 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Want.PickerTile24": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.WeeklyProduce.Check",
+        "custom_recognition_param": {
+            "stage": "picker_tile_2_4"
+        }
+    },
+    "SC.WeeklyProduce.Picker.Tile24": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Picker.Guard",
+            "SC.WeeklyProduce.Want.PickerTile24"
+        ],
+        "action": "Click",
+        "target": [
+            1102,
+            491,
+            70,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 400,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选书：点第 3 行第 5 本（按評価値找目标书，选中后核对书名与属性）。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.HistoryCall": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.HistoryTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Anchor.HistoryCall",
+            "SC.WeeklyProduce.Want.HistoryCall"
+        ],
+        "action": "Click",
+        "target": [
+            1010,
+            157,
+            116,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "設定履歴：按最新一组的「呼び出し」。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.HistoryBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.HistoryTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.HistoryBack"
+        ],
+        "action": "Click",
+        "target": [
+            19,
+            625,
+            77,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "設定履歴的「呼び出し」不可用（含编队里偶像的书）：返回选书页。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.BookOmakase": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.KnowhowTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Anchor.BookOmakase",
+            "SC.WeeklyProduce.Want.BookOmakase"
+        ],
+        "action": "Click",
+        "target": [
+            540,
+            636,
+            165,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "所选来源的书放不进去：按「おまかせ編成」让游戏选 3 本。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.BookNext": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.KnowhowTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Anchor.SetupNext",
+            "SC.WeeklyProduce.Want.BookNext"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            632,
+            135,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "3 本ノウハウブック已填：按「次へ」。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.ItemDecide": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.ItemTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Anchor.SetupDecide",
+            "SC.WeeklyProduce.Want.ItemDecide"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            632,
+            135,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "プロデュースアイテム准备：两格都空，按「決定」。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.ScenarioDown": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.WeeklyProduce.Anchor.ScenarioNextCard",
+            "SC.WeeklyProduce.Want.ScenarioDown"
+        ],
+        "action": "Click",
+        "target": [
+            760,
+            490,
+            300,
+            70
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "剧本列表：选下一张卡（W.I.N.G.→ファン感謝祭→G.R.A.D.→Landing Point）。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitPagePrev": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitPagePrev"
+        ],
+        "action": "Click",
+        "target": [
+            1178,
+            85,
+            36,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：翻到ユニット1–10。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.UnitPageNext": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.ProduceSetup.UnitTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Want.UnitPageNext"
+        ],
+        "action": "Click",
+        "target": [
+            1218,
+            85,
+            40,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ユニット編成：翻到ユニット11–20。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.BookPreset": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.KnowhowTitle",
+            "SC.Common.Color.BackUndimmed",
+            "SC.WeeklyProduce.Anchor.PresetButton",
+            "SC.WeeklyProduce.Want.BookPreset"
+        ],
+        "action": "Click",
+        "target": [
+            30,
+            162,
+            145,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ノウハウブック未选满：打开「プリセット」。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.PresetSet1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.PresetTitle",
+            "SC.WeeklyProduce.Anchor.PresetSet1",
+            "SC.WeeklyProduce.Want.PresetSet1"
+        ],
+        "action": "Click",
+        "target": [
+            770,
+            155,
+            95,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "プリセット1：按「セット」。"
+        }
+    },
+    "SC.WeeklyProduce.Setup.PresetSet2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.PresetTitle",
+            "SC.WeeklyProduce.Anchor.PresetSet2",
+            "SC.WeeklyProduce.Want.PresetSet2"
+        ],
+        "action": "Click",
+        "target": [
+            770,
+            340,
+            95,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Setup"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "プリセット2：按「セット」。"
+        }
+    },
+    "SC.WeeklyProduce.Schedule.PolicyOpen": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Anchor.PolicyButton",
+            "SC.WeeklyProduce.Want.PolicyOpen"
+        ],
+        "action": "Click",
+        "target": [
+            740,
+            208,
+            112,
+            34
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Policy"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "オート1 的育成方針与面板不同：打开「育成方針選択」。"
+        }
+    },
+    "SC.WeeklyProduce.Policy.Vocal": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.PolicyTitle",
+            "SC.WeeklyProduce.Anchor.PolicyVocal",
+            "SC.WeeklyProduce.Want.PolicyVocal"
+        ],
+        "action": "Click",
+        "target": [
+            420,
+            172,
+            440,
+            54
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Policy"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "育成方針選択：选 Vocal。"
+        }
+    },
+    "SC.WeeklyProduce.Policy.Dance": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.PolicyTitle",
+            "SC.WeeklyProduce.Anchor.PolicyDance",
+            "SC.WeeklyProduce.Want.PolicyDance"
+        ],
+        "action": "Click",
+        "target": [
+            420,
+            262,
+            440,
+            54
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Policy"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "育成方針選択：选 Dance。"
+        }
+    },
+    "SC.WeeklyProduce.Policy.Visual": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.PolicyTitle",
+            "SC.WeeklyProduce.Anchor.PolicyVisual",
+            "SC.WeeklyProduce.Want.PolicyVisual"
+        ],
+        "action": "Click",
+        "target": [
+            420,
+            352,
+            440,
+            54
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Policy"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "育成方針選択：选 Visual。"
+        }
+    },
+    "SC.WeeklyProduce.Policy.Set": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.PolicyTitle",
+            "SC.WeeklyProduce.Anchor.PolicySet",
+            "SC.WeeklyProduce.Want.PolicySet"
+        ],
+        "action": "Click",
+        "target": [
+            668,
+            560,
+            142,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Policy"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "育成方針選択：所选=面板设置，按「設定する」。"
+        }
+    },
+    "SC.WeeklyProduce.Policy.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.WeeklyProduce.Anchor.PolicyTitle",
+            "SC.WeeklyProduce.Anchor.PolicyCancel",
+            "SC.WeeklyProduce.Want.PolicyCancel"
+        ],
+        "action": "Click",
+        "target": [
+            467,
+            560,
+            142,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.WeeklyProduce.After.Policy"
+        ],
+        "on_error": [
+            "SC.WeeklyProduce.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "育成方針選択：读数不符，按「キャンセル」不改，然后停止。"
+        }
+    },
+    "SC.WeeklyProduce.After.Setup": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.WeeklyProduce.Setup.Step",
+            "SC.WeeklyProduce.Anchor.PresetTitle"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    },
+    "SC.WeeklyProduce.After.Policy": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.WeeklyProduce.Schedule.Guard",
+            "SC.WeeklyProduce.Anchor.PolicyTitle"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.WeeklyProduce.Main"
+        ]
+    }
+}

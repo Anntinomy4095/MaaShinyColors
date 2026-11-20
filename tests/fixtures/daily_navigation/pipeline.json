@@ -1,0 +1,3093 @@
+{
+  "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.Mission": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.HomePostcondition.Mission.png",
+    "roi": [
+      25,
+      394,
+      76,
+      70
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.MissionNative": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.HomePostcondition.MissionNative.png",
+    "roi": [
+      25,
+      394,
+      76,
+      70
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.FesText": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.HomePostcondition.FesText.png",
+    "roi": [
+      1150,
+      645,
+      80,
+      25
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.Announcement.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.Title.png",
+    "roi": [
+      45,
+      18,
+      125,
+      45
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.Announcement.ListHeading": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.ListHeading.png",
+    "roi": [
+      620,
+      108,
+      280,
+      43
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.Announcement.TopicsSelected": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.TopicsSelected.png",
+    "roi": [
+      15,
+      87,
+      176,
+      86
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.Announcement.ReturnTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.ReturnTarget.png",
+    "roi": [
+      17,
+      620,
+      84,
+      83
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Reward.Title.png",
+    "roi": [
+      408,
+      151,
+      184,
+      37
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.Body": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Reward.Body.png",
+    "roi": [
+      491,
+      241,
+      301,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.OK": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Reward.OK.png",
+    "roi": [
+      556,
+      481,
+      169,
+      81
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Loading.Text": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Loading.Text.png",
+    "roi": [
+      826,
+      660,
+      306,
+      47
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Loading.Feather": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Loading.Feather.png",
+    "roi": [
+      1150,
+      613,
+      67,
+      62
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyMission.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyMission.Title.png",
+    "roi": [
+      38,
+      18,
+      161,
+      42
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyMission.DailyTab": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyMission.DailyTab.png",
+    "roi": [
+      42,
+      94,
+      115,
+      33
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyMission.Return": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyMission.Return.png",
+    "roi": [
+      17,
+      620,
+      84,
+      83
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.Title.png",
+    "roi": [
+      40,
+      18,
+      141,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.TrainingEntry": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.TrainingEntry.png",
+    "roi": [
+      409,
+      285,
+      218,
+      50
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.TrainingEntryNative": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.TrainingEntryNative.png",
+    "roi": [
+      409,
+      285,
+      218,
+      50
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Return": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.Return.png",
+    "roi": [
+      17,
+      620,
+      84,
+      83
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.Title.png",
+    "roi": [
+      43,
+      17,
+      328,
+      48
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.SupportTab": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.SupportTab.png",
+    "roi": [
+      39,
+      98,
+      121,
+      38
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.SupportTabNative": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.SupportTabNative.png",
+    "roi": [
+      39,
+      98,
+      121,
+      38
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.AsahiPortrait": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.AsahiPortrait.png",
+    "roi": [
+      409,
+      189,
+      101,
+      87
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Training.Zero.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.Title.png",
+    "roi": [
+      48,
+      24,
+      177,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Training.Zero.CardName": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.CardName.png",
+    "roi": [
+      159,
+      96,
+      451,
+      31
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Training.Zero.Portrait": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.Portrait.png",
+    "roi": [
+      40,
+      102,
+      99,
+      75
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.Title.png",
+    "roi": [
+      405,
+      90,
+      253,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.Body": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.Body.png",
+    "roi": [
+      379,
+      153,
+      533,
+      61
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.LoginObjective": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.LoginObjective.png",
+    "roi": [
+      391,
+      252,
+      264,
+      34
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.MissionTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.MissionTarget.png",
+    "roi": [
+      658,
+      540,
+      171,
+      81
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionHelp.Title.png",
+    "roi": [
+      191,
+      79,
+      438,
+      39
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Page": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionHelp.Page.png",
+    "roi": [
+      1125,
+      78,
+      86,
+      41
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Close": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionHelp.Close.png",
+    "roi": [
+      558,
+      562,
+      167,
+      78
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.FesMenu.MatchTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.MatchTarget.png",
+    "roi": [
+      976,
+      504,
+      136,
+      74
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.FesMenu.GradeTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.GradeTarget.png",
+    "roi": [
+      1128,
+      549,
+      126,
+      26
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.FesMenu.Border": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.Border.png",
+    "roi": [
+      1171,
+      590,
+      35,
+      15
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchMain.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.Title.png",
+    "roi": [
+      49,
+      23,
+      170,
+      34
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchMain.AreaPrompt": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.AreaPrompt.png",
+    "roi": [
+      97,
+      157,
+      236,
+      37
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchMain.SkipTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.SkipTarget.png",
+    "roi": [
+      1126,
+      518,
+      130,
+      33
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchHelp.Title.png",
+    "roi": [
+      187,
+      77,
+      339,
+      42
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Page": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchHelp.Page.png",
+    "roi": [
+      1107,
+      78,
+      107,
+      43
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Close": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchHelp.Close.png",
+    "roi": [
+      558,
+      562,
+      167,
+      78
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Title.png",
+    "roi": [
+      91,
+      51,
+      130,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Filter": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Filter.png",
+    "roi": [
+      1020,
+      131,
+      166,
+      44
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Cancel": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Cancel.png",
+    "roi": [
+      380,
+      582,
+      166,
+      80
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Clear": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Clear.png",
+    "roi": [
+      560,
+      582,
+      166,
+      80
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.CostLabel": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.CostLabel.png",
+    "roi": [
+      1044,
+      588,
+      172,
+      25
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.Pickup.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Pickup.Title.png",
+    "roi": [
+      465,
+      52,
+      343,
+      39
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.Pickup.Close": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Pickup.Close.png",
+    "roi": [
+      1091,
+      48,
+      42,
+      38
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.Pickup.Details": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Pickup.Details.png",
+    "roi": [
+      552,
+      558,
+      101,
+      33
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Skip": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Skip.png",
+    "roi": [
+      1180,
+      17,
+      82,
+      80
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Log": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Log.png",
+    "roi": [
+      1173,
+      423,
+      82,
+      81
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Hide": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Hide.png",
+    "roi": [
+      1173,
+      514,
+      82,
+      79
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.TrainingHelp.Title.png",
+    "roi": [
+      190,
+      80,
+      342,
+      37
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Page": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.TrainingHelp.Page.png",
+    "roi": [
+      1125,
+      78,
+      86,
+      41
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Close": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.TrainingHelp.Close.png",
+    "roi": [
+      558,
+      562,
+      167,
+      78
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.StartScreen.TouchToStart": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.TouchToStart.png",
+    "roi": [
+      474,
+      611,
+      332,
+      37
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.StartScreen.Logo": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.Logo.png",
+    "roi": [
+      440,
+      497,
+      402,
+      52
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Anchor.SC.Research.StartScreen.Copyright": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.Copyright.png",
+    "roi": [
+      586,
+      684,
+      672,
+      27
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.AnnouncementVariant": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.Announcement.ListHeading",
+      "SC.DailyNavigation.Anchor.SC.Research.Announcement.TopicsSelected"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.HomeVariant": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.Mission",
+      "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.MissionNative"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.IdolTrainingVariant": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.TrainingEntry",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.TrainingEntryNative"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.TrainingSupportVariant": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.SupportTab",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.SupportTabNative"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.HomeUnobstructed": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.Presence.SC.Research.Announcement.Title",
+      "SC.DailyNavigation.Presence.SC.Research.Announcement.ListHeading",
+      "SC.DailyNavigation.Presence.SC.Research.Announcement.TopicsSelected",
+      "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Reward.Title",
+      "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Reward.Body",
+      "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Loading.Text",
+      "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Loading.Feather",
+      "SC.DailyNavigation.Presence.SC.Research.DailyMission.Title",
+      "SC.DailyNavigation.Presence.SC.Research.DailyMission.DailyTab",
+      "SC.DailyNavigation.Presence.SC.Research.DailyIdol.Title",
+      "SC.DailyNavigation.Presence.SC.Research.DailyIdol.TrainingEntry",
+      "SC.DailyNavigation.Presence.SC.Research.DailyIdol.TrainingEntryNative",
+      "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.Title",
+      "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.SupportTab",
+      "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.SupportTabNative",
+      "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.AsahiPortrait",
+      "SC.DailyNavigation.Presence.SC.Training.Zero.Title",
+      "SC.DailyNavigation.Presence.SC.Training.Zero.CardName",
+      "SC.DailyNavigation.Presence.SC.Training.Zero.Portrait",
+      "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.Title",
+      "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.Body",
+      "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.LoginObjective",
+      "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.MissionTarget",
+      "SC.DailyNavigation.Presence.SC.Research.MissionHelp.Title",
+      "SC.DailyNavigation.Presence.SC.Research.FesMenu.MatchTarget",
+      "SC.DailyNavigation.Presence.SC.Research.FesMenu.GradeTarget",
+      "SC.DailyNavigation.Presence.SC.Research.FesMenu.Border",
+      "SC.DailyNavigation.Presence.SC.Research.MatchMain.Title",
+      "SC.DailyNavigation.Presence.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyNavigation.Presence.SC.Research.MatchMain.SkipTarget",
+      "SC.DailyNavigation.Presence.SC.Research.MatchHelp.Title",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Title",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Filter",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Cancel",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Clear",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.CostLabel",
+      "SC.DailyNavigation.Presence.SC.Research.Pickup.Title",
+      "SC.DailyNavigation.Presence.SC.Research.Pickup.Details",
+      "SC.DailyNavigation.Presence.SC.Research.DailyStory.Skip",
+      "SC.DailyNavigation.Presence.SC.Research.DailyStory.Log",
+      "SC.DailyNavigation.Presence.SC.Research.DailyStory.Hide",
+      "SC.DailyNavigation.Presence.SC.Research.TrainingHelp.Title",
+      "SC.DailyNavigation.Presence.SC.Research.StartScreen.TouchToStart",
+      "SC.DailyNavigation.Presence.SC.Research.StartScreen.Logo",
+      "SC.DailyNavigation.Presence.SC.Research.StartScreen.Copyright"
+    ],
+    "inverse": true,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.HomeBlocked": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.Presence.SC.Research.Announcement.Title",
+      "SC.DailyNavigation.Presence.SC.Research.Announcement.ListHeading",
+      "SC.DailyNavigation.Presence.SC.Research.Announcement.TopicsSelected",
+      "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Reward.Title",
+      "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Reward.Body",
+      "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Loading.Text",
+      "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Loading.Feather",
+      "SC.DailyNavigation.Presence.SC.Research.DailyMission.Title",
+      "SC.DailyNavigation.Presence.SC.Research.DailyMission.DailyTab",
+      "SC.DailyNavigation.Presence.SC.Research.DailyIdol.Title",
+      "SC.DailyNavigation.Presence.SC.Research.DailyIdol.TrainingEntry",
+      "SC.DailyNavigation.Presence.SC.Research.DailyIdol.TrainingEntryNative",
+      "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.Title",
+      "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.SupportTab",
+      "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.SupportTabNative",
+      "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.AsahiPortrait",
+      "SC.DailyNavigation.Presence.SC.Training.Zero.Title",
+      "SC.DailyNavigation.Presence.SC.Training.Zero.CardName",
+      "SC.DailyNavigation.Presence.SC.Training.Zero.Portrait",
+      "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.Title",
+      "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.Body",
+      "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.LoginObjective",
+      "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.MissionTarget",
+      "SC.DailyNavigation.Presence.SC.Research.MissionHelp.Title",
+      "SC.DailyNavigation.Presence.SC.Research.FesMenu.MatchTarget",
+      "SC.DailyNavigation.Presence.SC.Research.FesMenu.GradeTarget",
+      "SC.DailyNavigation.Presence.SC.Research.FesMenu.Border",
+      "SC.DailyNavigation.Presence.SC.Research.MatchMain.Title",
+      "SC.DailyNavigation.Presence.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyNavigation.Presence.SC.Research.MatchMain.SkipTarget",
+      "SC.DailyNavigation.Presence.SC.Research.MatchHelp.Title",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Title",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Filter",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Cancel",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Clear",
+      "SC.DailyNavigation.Presence.SC.Research.MatchSkip.CostLabel",
+      "SC.DailyNavigation.Presence.SC.Research.Pickup.Title",
+      "SC.DailyNavigation.Presence.SC.Research.Pickup.Details",
+      "SC.DailyNavigation.Presence.SC.Research.DailyStory.Skip",
+      "SC.DailyNavigation.Presence.SC.Research.DailyStory.Log",
+      "SC.DailyNavigation.Presence.SC.Research.DailyStory.Hide",
+      "SC.DailyNavigation.Presence.SC.Research.TrainingHelp.Title",
+      "SC.DailyNavigation.Presence.SC.Research.StartScreen.TouchToStart",
+      "SC.DailyNavigation.Presence.SC.Research.StartScreen.Logo",
+      "SC.DailyNavigation.Presence.SC.Research.StartScreen.Copyright"
+    ],
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.reward-ack.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.reward-ack.Guard",
+      "SC.DailyNavigation.reward-ack.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.reward-ack.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.reward-ack.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.Body",
+      "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.OK"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.reward-ack.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.Body",
+      "SC.DailyNavigation.Anchor.SC.Research.StartupPopup.Reward.OK"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      520,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.reward-ack.Error"
+    ]
+  },
+  "SC.DailyNavigation.reward-ack.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.reward-ack.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.reward-ack.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.announcement-back.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.announcement-back.Guard",
+      "SC.DailyNavigation.announcement-back.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.announcement-back.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.announcement-back.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.Announcement.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.Announcement.ReturnTarget",
+      "SC.DailyNavigation.AnnouncementVariant"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.announcement-back.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.Announcement.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.Announcement.ReturnTarget",
+      "SC.DailyNavigation.AnnouncementVariant"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.announcement-back.Error"
+    ]
+  },
+  "SC.DailyNavigation.announcement-back.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.announcement-back.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.announcement-back.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.home-mission.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.home-mission.Guard",
+      "SC.DailyNavigation.home-mission.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.home-mission.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.home-mission.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.FesText",
+      "SC.DailyNavigation.HomeVariant"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.home-mission.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.FesText",
+      "SC.DailyNavigation.HomeVariant"
+    ],
+    "action": "Click",
+    "target": [
+      62,
+      429,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.home-mission.Error"
+    ]
+  },
+  "SC.DailyNavigation.home-mission.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.home-mission.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.home-mission.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.mission-back.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.mission-back.Guard",
+      "SC.DailyNavigation.mission-back.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.mission-back.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.mission-back.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyMission.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyMission.DailyTab",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyMission.Return"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.mission-back.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyMission.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyMission.DailyTab",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyMission.Return"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.mission-back.Error"
+    ]
+  },
+  "SC.DailyNavigation.mission-back.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.mission-back.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.mission-back.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.home-idol.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.home-idol.Guard",
+      "SC.DailyNavigation.home-idol.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.home-idol.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.home-idol.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.FesText",
+      "SC.DailyNavigation.HomeVariant"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.home-idol.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.FesText",
+      "SC.DailyNavigation.HomeVariant"
+    ],
+    "action": "Click",
+    "target": [
+      565,
+      665,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.home-idol.Error"
+    ]
+  },
+  "SC.DailyNavigation.home-idol.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.home-idol.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.home-idol.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.idol-training.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.idol-training.Guard",
+      "SC.DailyNavigation.idol-training.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.idol-training.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.idol-training.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Return",
+      "SC.DailyNavigation.IdolTrainingVariant"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.idol-training.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Return",
+      "SC.DailyNavigation.IdolTrainingVariant"
+    ],
+    "action": "Click",
+    "target": [
+      516,
+      299,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.idol-training.Error"
+    ]
+  },
+  "SC.DailyNavigation.idol-training.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.idol-training.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.idol-training.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.training-select-asahi.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.training-select-asahi.Guard",
+      "SC.DailyNavigation.training-select-asahi.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.training-select-asahi.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.training-select-asahi.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.AsahiPortrait",
+      "SC.DailyNavigation.TrainingSupportVariant"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.training-select-asahi.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.AsahiPortrait",
+      "SC.DailyNavigation.TrainingSupportVariant"
+    ],
+    "action": "Click",
+    "target": [
+      461,
+      236,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.training-select-asahi.Error"
+    ]
+  },
+  "SC.DailyNavigation.training-select-asahi.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.training-select-asahi.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.training-select-asahi.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.mission-complete-to-mission.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.mission-complete-to-mission.Guard",
+      "SC.DailyNavigation.mission-complete-to-mission.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.mission-complete-to-mission.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.mission-complete-to-mission.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.Body",
+      "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.MissionTarget"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.mission-complete-to-mission.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.Body",
+      "SC.DailyNavigation.Anchor.SC.Research.MissionCompleted.MissionTarget"
+    ],
+    "action": "Click",
+    "target": [
+      744,
+      580,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.mission-complete-to-mission.Error"
+    ]
+  },
+  "SC.DailyNavigation.mission-complete-to-mission.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.mission-complete-to-mission.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.mission-complete-to-mission.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.mission-help-close.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.mission-help-close.Guard",
+      "SC.DailyNavigation.mission-help-close.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.mission-help-close.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.mission-help-close.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Page",
+      "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Close"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.mission-help-close.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Page",
+      "SC.DailyNavigation.Anchor.SC.Research.MissionHelp.Close"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      603,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.mission-help-close.Error"
+    ]
+  },
+  "SC.DailyNavigation.mission-help-close.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.mission-help-close.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.mission-help-close.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.home-fes.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.home-fes.Guard",
+      "SC.DailyNavigation.home-fes.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.home-fes.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.home-fes.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.FesText",
+      "SC.DailyNavigation.HomeVariant"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.home-fes.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.HomePostcondition.FesText",
+      "SC.DailyNavigation.HomeVariant"
+    ],
+    "action": "Click",
+    "target": [
+      1190,
+      650,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.home-fes.Error"
+    ]
+  },
+  "SC.DailyNavigation.home-fes.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.home-fes.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.home-fes.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.fes-match-entry.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.fes-match-entry.Guard",
+      "SC.DailyNavigation.fes-match-entry.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.fes-match-entry.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.fes-match-entry.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.FesMenu.MatchTarget",
+      "SC.DailyNavigation.Anchor.SC.Research.FesMenu.GradeTarget",
+      "SC.DailyNavigation.Anchor.SC.Research.FesMenu.Border"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.fes-match-entry.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.FesMenu.MatchTarget",
+      "SC.DailyNavigation.Anchor.SC.Research.FesMenu.GradeTarget",
+      "SC.DailyNavigation.Anchor.SC.Research.FesMenu.Border"
+    ],
+    "action": "Click",
+    "target": [
+      1045,
+      543,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.fes-match-entry.Error"
+    ]
+  },
+  "SC.DailyNavigation.fes-match-entry.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.fes-match-entry.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.fes-match-entry.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.match-help-close.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.match-help-close.Guard",
+      "SC.DailyNavigation.match-help-close.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.match-help-close.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.match-help-close.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Page",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Close"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.match-help-close.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Page",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchHelp.Close"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      603,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.match-help-close.Error"
+    ]
+  },
+  "SC.DailyNavigation.match-help-close.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.match-help-close.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.match-help-close.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.match-skip-open.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.match-skip-open.Guard",
+      "SC.DailyNavigation.match-skip-open.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.match-skip-open.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.match-skip-open.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.SkipTarget"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.match-skip-open.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.SkipTarget"
+    ],
+    "action": "Click",
+    "target": [
+      1190,
+      548,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.match-skip-open.Error"
+    ]
+  },
+  "SC.DailyNavigation.match-skip-open.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.match-skip-open.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.match-skip-open.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.match-skip-cancel.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.match-skip-cancel.Guard",
+      "SC.DailyNavigation.match-skip-cancel.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.match-skip-cancel.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.match-skip-cancel.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Filter",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Cancel",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Clear",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.CostLabel"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.match-skip-cancel.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Filter",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Cancel",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.Clear",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchSkip.CostLabel"
+    ],
+    "action": "Click",
+    "target": [
+      462,
+      620,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.match-skip-cancel.Error"
+    ]
+  },
+  "SC.DailyNavigation.match-skip-cancel.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.match-skip-cancel.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.match-skip-cancel.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.match-back.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.match-back.Guard",
+      "SC.DailyNavigation.match-back.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.match-back.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.match-back.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.SkipTarget"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.match-back.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.AreaPrompt",
+      "SC.DailyNavigation.Anchor.SC.Research.MatchMain.SkipTarget"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.match-back.Error"
+    ]
+  },
+  "SC.DailyNavigation.match-back.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.match-back.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.match-back.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.training-back.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.training-back.Guard",
+      "SC.DailyNavigation.training-back.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.training-back.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.training-back.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Training.Zero.Title",
+      "SC.DailyNavigation.Anchor.SC.Training.Zero.CardName",
+      "SC.DailyNavigation.Anchor.SC.Training.Zero.Portrait"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.training-back.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Training.Zero.Title",
+      "SC.DailyNavigation.Anchor.SC.Training.Zero.CardName",
+      "SC.DailyNavigation.Anchor.SC.Training.Zero.Portrait"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.training-back.Error"
+    ]
+  },
+  "SC.DailyNavigation.training-back.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.training-back.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.training-back.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.pickup-close.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.pickup-close.Guard",
+      "SC.DailyNavigation.pickup-close.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.pickup-close.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.pickup-close.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.Pickup.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.Pickup.Close",
+      "SC.DailyNavigation.Anchor.SC.Research.Pickup.Details"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.pickup-close.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.Pickup.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.Pickup.Close",
+      "SC.DailyNavigation.Anchor.SC.Research.Pickup.Details"
+    ],
+    "action": "Click",
+    "target": [
+      1111,
+      68,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.pickup-close.Error"
+    ]
+  },
+  "SC.DailyNavigation.pickup-close.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.pickup-close.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.pickup-close.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.story-skip-open.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.story-skip-open.Guard",
+      "SC.DailyNavigation.story-skip-open.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.story-skip-open.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.story-skip-open.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Skip",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Log",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Hide"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.story-skip-open.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Skip",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Log",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyStory.Hide"
+    ],
+    "action": "Click",
+    "target": [
+      1221,
+      56,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.story-skip-open.Error"
+    ]
+  },
+  "SC.DailyNavigation.story-skip-open.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.story-skip-open.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.story-skip-open.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.training-help-close.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.training-help-close.Guard",
+      "SC.DailyNavigation.training-help-close.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.training-help-close.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.training-help-close.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Page",
+      "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Close"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.training-help-close.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Page",
+      "SC.DailyNavigation.Anchor.SC.Research.TrainingHelp.Close"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      603,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.training-help-close.Error"
+    ]
+  },
+  "SC.DailyNavigation.training-help-close.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.training-help-close.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.training-help-close.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.training-list-back.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.training-list-back.Guard",
+      "SC.DailyNavigation.training-list-back.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.training-list-back.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.training-list-back.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.AsahiPortrait",
+      "SC.DailyNavigation.TrainingSupportVariant"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.training-list-back.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyTrainingList.AsahiPortrait",
+      "SC.DailyNavigation.TrainingSupportVariant"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.training-list-back.Error"
+    ]
+  },
+  "SC.DailyNavigation.training-list-back.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.training-list-back.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.training-list-back.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.idol-back.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.idol-back.Guard",
+      "SC.DailyNavigation.idol-back.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.idol-back.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.idol-back.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Return",
+      "SC.DailyNavigation.IdolTrainingVariant"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.idol-back.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Title",
+      "SC.DailyNavigation.Anchor.SC.Research.DailyIdol.Return",
+      "SC.DailyNavigation.IdolTrainingVariant"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.idol-back.Error"
+    ]
+  },
+  "SC.DailyNavigation.idol-back.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.idol-back.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.idol-back.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.game-start.Observe": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.DailyNavigation.game-start.Guard",
+      "SC.DailyNavigation.game-start.Unknown"
+    ],
+    "on_error": [
+      "SC.DailyNavigation.game-start.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0
+  },
+  "SC.DailyNavigation.game-start.Guard": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.StartScreen.TouchToStart",
+      "SC.DailyNavigation.Anchor.SC.Research.StartScreen.Logo",
+      "SC.DailyNavigation.Anchor.SC.Research.StartScreen.Copyright"
+    ],
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.game-start.Click": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.DailyNavigation.Anchor.SC.Research.StartScreen.TouchToStart",
+      "SC.DailyNavigation.Anchor.SC.Research.StartScreen.Logo",
+      "SC.DailyNavigation.Anchor.SC.Research.StartScreen.Copyright"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      630,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.DailyNavigation.game-start.Error"
+    ]
+  },
+  "SC.DailyNavigation.game-start.Unknown": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "Or",
+    "any_of": [
+      "SC.DailyNavigation.game-start.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.game-start.Error": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "DirectHit",
+    "action": "StopTask"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.Announcement.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.Title.png",
+    "roi": [
+      45,
+      18,
+      125,
+      45
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.Announcement.ListHeading": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.ListHeading.png",
+    "roi": [
+      620,
+      108,
+      280,
+      43
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.Announcement.TopicsSelected": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Announcement.TopicsSelected.png",
+    "roi": [
+      15,
+      87,
+      176,
+      86
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Reward.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Reward.Title.png",
+    "roi": [
+      408,
+      151,
+      184,
+      37
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Reward.Body": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Reward.Body.png",
+    "roi": [
+      491,
+      241,
+      301,
+      31
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Loading.Text": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Loading.Text.png",
+    "roi": [
+      826,
+      660,
+      306,
+      47
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.StartupPopup.Loading.Feather": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartupPopup.Loading.Feather.png",
+    "roi": [
+      1150,
+      613,
+      67,
+      62
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyMission.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyMission.Title.png",
+    "roi": [
+      38,
+      18,
+      161,
+      42
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyMission.DailyTab": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyMission.DailyTab.png",
+    "roi": [
+      42,
+      94,
+      115,
+      33
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyIdol.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.Title.png",
+    "roi": [
+      40,
+      18,
+      141,
+      44
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyIdol.TrainingEntry": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.TrainingEntry.png",
+    "roi": [
+      409,
+      285,
+      218,
+      50
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyIdol.TrainingEntryNative": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyIdol.TrainingEntryNative.png",
+    "roi": [
+      409,
+      285,
+      218,
+      50
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.Title.png",
+    "roi": [
+      43,
+      17,
+      328,
+      48
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.SupportTab": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.SupportTab.png",
+    "roi": [
+      39,
+      98,
+      121,
+      38
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.SupportTabNative": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.SupportTabNative.png",
+    "roi": [
+      39,
+      98,
+      121,
+      38
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyTrainingList.AsahiPortrait": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyTrainingList.AsahiPortrait.png",
+    "roi": [
+      409,
+      189,
+      101,
+      87
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Training.Zero.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.Title.png",
+    "roi": [
+      48,
+      24,
+      177,
+      31
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Training.Zero.CardName": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.CardName.png",
+    "roi": [
+      159,
+      96,
+      451,
+      31
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Training.Zero.Portrait": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Training.Zero.Portrait.png",
+    "roi": [
+      40,
+      102,
+      99,
+      75
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.Title.png",
+    "roi": [
+      405,
+      90,
+      253,
+      40
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.Body": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.Body.png",
+    "roi": [
+      379,
+      153,
+      533,
+      61
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.LoginObjective": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.LoginObjective.png",
+    "roi": [
+      391,
+      252,
+      264,
+      34
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MissionCompleted.MissionTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionCompleted.MissionTarget.png",
+    "roi": [
+      658,
+      540,
+      171,
+      81
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MissionHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MissionHelp.Title.png",
+    "roi": [
+      191,
+      79,
+      438,
+      39
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.FesMenu.MatchTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.MatchTarget.png",
+    "roi": [
+      976,
+      504,
+      136,
+      74
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.FesMenu.GradeTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.GradeTarget.png",
+    "roi": [
+      1128,
+      549,
+      126,
+      26
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.FesMenu.Border": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.FesMenu.Border.png",
+    "roi": [
+      1171,
+      590,
+      35,
+      15
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchMain.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.Title.png",
+    "roi": [
+      49,
+      23,
+      170,
+      34
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchMain.AreaPrompt": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.AreaPrompt.png",
+    "roi": [
+      97,
+      157,
+      236,
+      37
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchMain.SkipTarget": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchMain.SkipTarget.png",
+    "roi": [
+      1126,
+      518,
+      130,
+      33
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchHelp.Title.png",
+    "roi": [
+      187,
+      77,
+      339,
+      42
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Title.png",
+    "roi": [
+      91,
+      51,
+      130,
+      40
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Filter": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Filter.png",
+    "roi": [
+      1020,
+      131,
+      166,
+      44
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Cancel": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Cancel.png",
+    "roi": [
+      380,
+      582,
+      166,
+      80
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchSkip.Clear": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.Clear.png",
+    "roi": [
+      560,
+      582,
+      166,
+      80
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.MatchSkip.CostLabel": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.MatchSkip.CostLabel.png",
+    "roi": [
+      1044,
+      588,
+      172,
+      25
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.Pickup.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Pickup.Title.png",
+    "roi": [
+      465,
+      52,
+      343,
+      39
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.Pickup.Details": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.Pickup.Details.png",
+    "roi": [
+      552,
+      558,
+      101,
+      33
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyStory.Skip": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Skip.png",
+    "roi": [
+      1180,
+      17,
+      82,
+      80
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyStory.Log": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Log.png",
+    "roi": [
+      1173,
+      423,
+      82,
+      81
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.DailyStory.Hide": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.DailyStory.Hide.png",
+    "roi": [
+      1173,
+      514,
+      82,
+      79
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.TrainingHelp.Title": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.TrainingHelp.Title.png",
+    "roi": [
+      190,
+      80,
+      342,
+      37
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.StartScreen.TouchToStart": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.TouchToStart.png",
+    "roi": [
+      474,
+      611,
+      332,
+      37
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.StartScreen.Logo": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.Logo.png",
+    "roi": [
+      440,
+      497,
+      402,
+      52
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  },
+  "SC.DailyNavigation.Presence.SC.Research.StartScreen.Copyright": {
+    "pre_delay": 0,
+    "post_delay": 0,
+    "recognition": "TemplateMatch",
+    "template": "SC.Research.StartScreen.Copyright.png",
+    "roi": [
+      586,
+      684,
+      672,
+      27
+    ],
+    "threshold": 0.8,
+    "method": 5,
+    "action": "DoNothing"
+  }
+}

@@ -1,0 +1,1 @@
+"""MaaShinyColors Python Agent package."""

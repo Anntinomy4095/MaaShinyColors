@@ -1,0 +1,907 @@
+{
+    "task": [
+        {
+            "name": "MatchSkip",
+            "label": "Match Live",
+            "entry": "SC.Match.Entry",
+            "default_check": true,
+            "description": "先用所选编队打下一个未通关关卡推进（输了按设定重试），剩余 Fes 参加权跳过已通关的最新一关（与 Grade 共享，Grade 先打）。参加权每场后重新核对；结果不确定将暂停。",
+            "option": [
+                "Match推进",
+                "Match编队",
+                "Match失败重试",
+                "Match关卡",
+                "Match次数",
+                "Match参加权保留",
+                "Match回复券",
+                "Match回复券上限",
+                "Match只采样"
+            ]
+        }
+    ],
+    "option": {
+        "Match推进": {
+            "type": "select",
+            "label": "推进",
+            "default_case": "推进后跳过",
+            "description": "推进后跳过：先打下一个未通关关卡（ライブ開始，每场消耗：Fes 参加权 1），打不过或参加权用完再跳过。只跳过：不打关卡。",
+            "cases": [
+                {
+                    "name": "推进后跳过",
+                    "pipeline_override": {
+                        "SC.Match.Config.Play": {
+                            "attach": {
+                                "play": "advance"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "只跳过",
+                    "pipeline_override": {
+                        "SC.Match.Config.Play": {
+                            "attach": {
+                                "play": "off"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Match编队": {
+            "type": "select",
+            "label": "推进编队",
+            "default_case": "当前编队",
+            "description": "推进前切到这支フェスユニット；有空位时按「おまかせ編成」补满。",
+            "cases": [
+                {
+                    "name": "当前编队",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット1",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット2",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット3",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット4",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット5",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット6",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 6
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット7",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 7
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット8",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 8
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット9",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 9
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ユニット10",
+                    "pipeline_override": {
+                        "SC.Match.Config.Unit": {
+                            "attach": {
+                                "unit": 10
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Match失败重试": {
+            "type": "select",
+            "label": "输了重试",
+            "default_case": "3",
+            "description": "同一关输了再打几次（输了不扣参加权，每场后核对）；用完就停止推进。",
+            "cases": [
+                {
+                    "name": "0",
+                    "pipeline_override": {
+                        "SC.Match.Config.Retries": {
+                            "attach": {
+                                "retries": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Match.Config.Retries": {
+                            "attach": {
+                                "retries": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Match.Config.Retries": {
+                            "attach": {
+                                "retries": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Match.Config.Retries": {
+                            "attach": {
+                                "retries": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Match.Config.Retries": {
+                            "attach": {
+                                "retries": 5
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Match关卡": {
+            "type": "select",
+            "label": "跳过哪一关",
+            "description": "默认「最新」：取跳过列表里最靠后的一关（已开放但还没通关的关卡不能跳过，会用它前面最新的可跳过关）；也可指定一关，指定关不能跳过就停止。按奖励属性选关（最新 Vo/Da/Vi）仅开发者选项，奖励表未核实前会停止。",
+            "default_case": "最新（全部关卡）",
+            "cases": [
+                {
+                    "name": "最新Vo道具关卡",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "latest_vo"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "最新Da道具关卡",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "latest_da"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "最新Vi道具关卡",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "latest_vi"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア1 ステージ1",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A1-S1"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア1 ステージ2",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A1-S2"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア1 ステージ3",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A1-S3"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア2 ステージ4",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A2-S4"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア2 ステージ5",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A2-S5"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア2 ステージ6",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A2-S6"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア3 ステージ7",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A3-S7"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア3 ステージ8",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A3-S8"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア3 ステージ9",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A3-S9"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア4 ステージ10",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A4-S10"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア4 ステージ11",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A4-S11"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア4 ステージ12",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A4-S12"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア5 ステージ13",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A5-S13"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア5 ステージ14",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A5-S14"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア5 ステージ15",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A5-S15"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア6 ステージ16",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A6-S16"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア6 ステージ17",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A6-S17"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア6 ステージ18",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A6-S18"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア7 ステージ19",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A7-S19"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア7 ステージ20",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A7-S20"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリア7 ステージ21",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A7-S21"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリアEX ステージ22",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A8-S22"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリアEX ステージ23",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A8-S23"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリアEX ステージ24",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A8-S24"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "エリアEX ステージ25",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "A8-S25"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "最新（全部关卡）",
+                    "pipeline_override": {
+                        "SC.Match.Config.Stage": {
+                            "attach": {
+                                "stage": "latest"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Match次数": {
+            "type": "select",
+            "label": "跳过次数（Fes 参加权分配）",
+            "description": "每次跳过消耗 1 个 Fes 参加权（与 Grade 共享）。「全部用完」= Match 页读到的参加权 − 保留，每批最多 20；同日 Grade 先打。选数字时参加权不够就停止，不自动减少。",
+            "default_case": "全部用完",
+            "cases": [
+                {
+                    "name": "全部用完",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 20,
+                                "count_mode": "all"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "20",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 20,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "19",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 19,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "18",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 18,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "17",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 17,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "16",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 16,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "15",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 15,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "14",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 14,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "13",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 13,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "12",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 12,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "11",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 11,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "10",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 10,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "9",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 9,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "8",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 8,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "7",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 7,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "6",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 6,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 5,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 4,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 3,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 2,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Match.Config.Count": {
+                            "attach": {
+                                "count": 1,
+                                "count_mode": "fixed"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Match参加权保留": {
+            "type": "select",
+            "label": "至少保留的フェス参加権",
+            "default_case": "0",
+            "cases": [
+                {
+                    "name": "0",
+                    "pipeline_override": {
+                        "SC.Match.Config.Reserve": {
+                            "attach": {
+                                "rights_reserve": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Match.Config.Reserve": {
+                            "attach": {
+                                "rights_reserve": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Match.Config.Reserve": {
+                            "attach": {
+                                "rights_reserve": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "10",
+                    "pipeline_override": {
+                        "SC.Match.Config.Reserve": {
+                            "attach": {
+                                "rights_reserve": 10
+                            }
+                        }
+                    }
+                }
+            ],
+            "description": "跳过后至少剩下这么多参加权。"
+        },
+        "Match回复券": {
+            "type": "switch",
+            "label": "参加权不足时使用回复券",
+            "description": "参加权回复券（参加権回復）与参加权分开计算。暂未开放：打开后开始前会被拒绝。永不使用ジュエル。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Match.Config.Recovery": {
+                            "attach": {
+                                "use_recovery_tickets": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Match.Config.Recovery": {
+                            "attach": {
+                                "use_recovery_tickets": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Match回复券上限": {
+            "type": "select",
+            "label": "回复券每次最多",
+            "description": "每次运行最多使用几张回复券（只在上一项打开时有效）。",
+            "default_case": "1",
+            "cases": [
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Match.Config.RecoveryCap": {
+                            "attach": {
+                                "recovery_cap": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Match.Config.RecoveryCap": {
+                            "attach": {
+                                "recovery_cap": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Match.Config.RecoveryCap": {
+                            "attach": {
+                                "recovery_cap": 3
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Match只采样": {
+            "type": "switch",
+            "label": "只采样（不实际跳过）",
+            "description": "开启时只打开再取消スキップ弹窗并截图，不消耗参加权。默认关闭。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Match.Config.Sample": {
+                            "attach": {
+                                "sample_only": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Match.Config.Sample": {
+                            "attach": {
+                                "sample_only": false
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

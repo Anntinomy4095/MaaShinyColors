@@ -1,0 +1,39 @@
+{
+    "canonical_viewport": [
+        1280,
+        720
+    ],
+    "pipeline_prefix": "SC.",
+    "live_input_enabled": true,
+    "live_input_requires_service_authorization": true,
+    "service_authorization_reference": null,
+    "risk_acceptance_reference": "docs/SAFETY.md#adr-011用户自担风险启用本地实机输入",
+    "allowed_live_input_nodes": [],
+    "resource_usage": {
+        "premium_currency_allowed": false,
+        "paid_items_allowed": false,
+        "other_inventory_allowed": false,
+        "stamina_items": {
+            "enabled": true,
+            "max_per_run": 750
+        },
+        "fes_tickets": {
+            "enabled": false,
+            "max_per_run": 0
+        }
+    },
+    "offline_harness": {
+        "enabled": true,
+        "window_title": "MaaShinyColors OfflineHarness",
+        "allowed_input_nodes": [
+            "SC.Offline.Click.ReadyGuard"
+        ],
+        "evidence_dir": "dev_assets/private/offline_evidence"
+    },
+    "forbidden_actions": [
+        "Command",
+        "Shell",
+        "StartApp",
+        "StopApp"
+    ]
+}

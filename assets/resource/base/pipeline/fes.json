@@ -1,0 +1,12 @@
+{
+    "SC.Fes.Menu.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Common.Anchor.FesMenu.MatchLabel",
+            "SC.Common.Anchor.FesMenu.GradeLabel"
+        ]
+    }
+}

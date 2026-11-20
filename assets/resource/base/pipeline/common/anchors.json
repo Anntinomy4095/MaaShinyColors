@@ -1,0 +1,1644 @@
+{
+    "SC.Common.Anchor.Announcement.ListHeading": {
+        "recognition": "TemplateMatch",
+        "template": "native/announcement/list_heading.png",
+        "roi": [
+            620,
+            108,
+            280,
+            43
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Announcement.Return": {
+        "recognition": "TemplateMatch",
+        "template": "native/announcement/return.png",
+        "roi": [
+            17,
+            620,
+            84,
+            83
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Announcement.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/announcement/title.png",
+        "roi": [
+            45,
+            18,
+            125,
+            45
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Announcement.TopicsSelected": {
+        "recognition": "TemplateMatch",
+        "template": "native/announcement/topics_selected.png",
+        "roi": [
+            15,
+            87,
+            176,
+            86
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesHelp.Close": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_help/close.png",
+        "roi": [
+            558,
+            562,
+            167,
+            78
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesHelp.Icon": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_help/icon.png",
+        "roi": [
+            68,
+            60,
+            100,
+            74
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesHelp.Page": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_help/page.png",
+        "roi": [
+            1107,
+            78,
+            107,
+            43
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesHelp.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_help/title.png",
+        "roi": [
+            190,
+            82,
+            225,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesMain.Back": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_main/back.png",
+        "roi": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesMain.JoinLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_main/join_label.png",
+        "roi": [
+            1130,
+            595,
+            105,
+            50
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesMain.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_main/title.png",
+        "roi": [
+            6,
+            16,
+            150,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesMain.UnitButton": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_main/unit_button.png",
+        "roi": [
+            905,
+            628,
+            160,
+            62
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesMenu.GradeLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_menu/grade_label.png",
+        "roi": [
+            1128,
+            547,
+            126,
+            26
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesMenu.MatchLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_menu/match_label.png",
+        "roi": [
+            985,
+            525,
+            120,
+            32
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Home.FesText": {
+        "recognition": "TemplateMatch",
+        "template": "native/home/fes_text.png",
+        "roi": [
+            1150,
+            645,
+            80,
+            25
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Home.MissionLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/home/mission_label.png",
+        "roi": [
+            31,
+            418,
+            62,
+            36
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.IdolPortal.Return": {
+        "recognition": "TemplateMatch",
+        "template": "native/idol_portal/return.png",
+        "roi": [
+            17,
+            620,
+            84,
+            83
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.IdolPortal.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/idol_portal/title.png",
+        "roi": [
+            40,
+            18,
+            141,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.IdolPortal.TrainingEntry": {
+        "recognition": "TemplateMatch",
+        "template": "native/idol_portal/training_entry.png",
+        "roi": [
+            409,
+            285,
+            218,
+            50
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.IdolPortal.TrainingEntryNative": {
+        "recognition": "TemplateMatch",
+        "template": "native/idol_portal/training_entry_native.png",
+        "roi": [
+            409,
+            285,
+            218,
+            50
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Loading.Feather": {
+        "recognition": "TemplateMatch",
+        "template": "native/loading/feather.png",
+        "roi": [
+            1150,
+            613,
+            67,
+            62
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Loading.Text": {
+        "recognition": "TemplateMatch",
+        "template": "native/loading/text.png",
+        "roi": [
+            826,
+            660,
+            306,
+            47
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchHelp.Close": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_help/close.png",
+        "roi": [
+            558,
+            562,
+            167,
+            78
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchSeason.Title": {
+        "recognition": "OCR",
+        "roi": [
+            290,
+            105,
+            300,
+            60
+        ],
+        "expected": [
+            "マッチライブ更新"
+        ],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.MatchSeason.Body": {
+        "recognition": "OCR",
+        "roi": [
+            380,
+            195,
+            520,
+            50
+        ],
+        "expected": [
+            "シーズンが切り替わりました"
+        ],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.MatchSeason.Close": {
+        "recognition": "OCR",
+        "roi": [
+            557,
+            512,
+            166,
+            76
+        ],
+        "expected": [
+            "閉じる"
+        ],
+        "threshold": 0.5
+    },
+    "SC.Common.Anchor.MatchHelp.Page": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_help/page.png",
+        "roi": [
+            1107,
+            78,
+            107,
+            43
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchHelp.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_help/title.png",
+        "roi": [
+            187,
+            77,
+            339,
+            42
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchMain.AreaPrompt": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_main/area_prompt.png",
+        "roi": [
+            97,
+            157,
+            236,
+            37
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchMain.SkipTarget": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_main/skip_target.png",
+        "roi": [
+            1126,
+            518,
+            130,
+            33
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchMain.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_main/title.png",
+        "roi": [
+            49,
+            23,
+            170,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Mission.DailyTab": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission/daily_tab.png",
+        "roi": [
+            42,
+            94,
+            115,
+            33
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Mission.Return": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission/return.png",
+        "roi": [
+            17,
+            620,
+            84,
+            83
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Mission.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission/title.png",
+        "roi": [
+            38,
+            18,
+            161,
+            42
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MissionCompleted.Body": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_completed/body.png",
+        "roi": [
+            379,
+            153,
+            533,
+            61
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MissionCompleted.MissionTarget": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_completed/mission_target.png",
+        "roi": [
+            658,
+            540,
+            171,
+            81
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MissionCompleted.Ok": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_completed/ok.png",
+        "roi": [
+            451,
+            540,
+            171,
+            81
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MissionCompleted.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_completed/title.png",
+        "roi": [
+            405,
+            90,
+            253,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MissionHelp.Close": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_help/close.png",
+        "roi": [
+            558,
+            562,
+            167,
+            78
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MissionHelp.Page": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_help/page.png",
+        "roi": [
+            1125,
+            78,
+            86,
+            41
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MissionHelp.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_help/title.png",
+        "roi": [
+            191,
+            79,
+            438,
+            39
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Pickup.Close": {
+        "recognition": "TemplateMatch",
+        "template": "native/pickup/close.png",
+        "roi": [
+            1091,
+            48,
+            42,
+            38
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Pickup.Details": {
+        "recognition": "TemplateMatch",
+        "template": "native/pickup/details.png",
+        "roi": [
+            552,
+            558,
+            101,
+            33
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Pickup.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/pickup/title.png",
+        "roi": [
+            465,
+            52,
+            343,
+            39
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Reward.Body": {
+        "recognition": "TemplateMatch",
+        "template": "native/reward/body.png",
+        "roi": [
+            491,
+            241,
+            301,
+            31
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Reward.Ok": {
+        "recognition": "TemplateMatch",
+        "template": "native/reward/ok.png",
+        "roi": [
+            556,
+            481,
+            169,
+            81
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Reward.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/reward/title.png",
+        "roi": [
+            408,
+            151,
+            184,
+            37
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.ShopList.AllSelected": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/all_selected.png",
+        "roi": [
+            40,
+            165,
+            172,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.ShopList.Back": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/back.png",
+        "roi": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.ShopList.MoneyIcon": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/money_icon.png",
+        "roi": [
+            958,
+            22,
+            40,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.ShopList.MoneySelected": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/money_selected.png",
+        "roi": [
+            440,
+            90,
+            112,
+            42
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.ShopList.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/title.png",
+        "roi": [
+            6,
+            16,
+            150,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Story.Hide": {
+        "recognition": "TemplateMatch",
+        "template": "native/story/hide.png",
+        "roi": [
+            1173,
+            514,
+            82,
+            79
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Story.Log": {
+        "recognition": "TemplateMatch",
+        "template": "native/story/log.png",
+        "roi": [
+            1173,
+            423,
+            82,
+            81
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.Story.Skip": {
+        "recognition": "TemplateMatch",
+        "template": "native/story/skip.png",
+        "roi": [
+            1180,
+            17,
+            82,
+            80
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.NewGacha.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/new_gacha/title.png",
+        "roi": [
+            420,
+            312,
+            452,
+            72
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.NewGacha.SkipAll": {
+        "recognition": "TemplateMatch",
+        "template": "native/new_gacha/skip_all.png",
+        "roi": [
+            1084,
+            20,
+            75,
+            75
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.NewGacha.Skip": {
+        "recognition": "TemplateMatch",
+        "template": "native/new_gacha/skip.png",
+        "roi": [
+            1184,
+            20,
+            75,
+            75
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingHelp.Close": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_help/close.png",
+        "roi": [
+            558,
+            562,
+            167,
+            78
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingHelp.Page": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_help/page.png",
+        "roi": [
+            1125,
+            78,
+            86,
+            41
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingHelp.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_help/title.png",
+        "roi": [
+            190,
+            80,
+            342,
+            37
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingList.AsahiPortrait": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_list/asahi_portrait.png",
+        "roi": [
+            409,
+            189,
+            101,
+            87
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingList.SupportTab": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_list/support_tab.png",
+        "roi": [
+            39,
+            98,
+            121,
+            38
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingList.SupportTabNative": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_list/support_tab_native.png",
+        "roi": [
+            39,
+            98,
+            121,
+            38
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingList.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_list/title.png",
+        "roi": [
+            43,
+            17,
+            328,
+            48
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingSelected.CardName": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_selected/card_name.png",
+        "roi": [
+            159,
+            96,
+            451,
+            31
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingSelected.Portrait": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_selected/portrait.png",
+        "roi": [
+            40,
+            102,
+            99,
+            75
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingSelected.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_selected/title.png",
+        "roi": [
+            48,
+            24,
+            177,
+            31
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingSelected.BronzeLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/bronze_label.png",
+        "roi": [
+            810,
+            270,
+            325,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingSelected.BronzeLabelOne": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/bronze_label.png",
+        "roi": [
+            810,
+            270,
+            325,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.TrainingSelected.BronzeLabelTop": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/bronze_label_top.png",
+        "roi": [
+            810,
+            139,
+            325,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Color.HomeUndimmed": {
+        "recognition": "ColorMatch",
+        "roi": [
+            25,
+            394,
+            76,
+            70
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 1000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Common.Color.BackUndimmed": {
+        "recognition": "ColorMatch",
+        "roi": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 1800,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Common.Color.FesMainUndimmed": {
+        "recognition": "ColorMatch",
+        "roi": [
+            150,
+            22,
+            200,
+            30
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 5800,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Common.Color.SkipUndimmed": {
+        "recognition": "ColorMatch",
+        "roi": [
+            1180,
+            17,
+            82,
+            80
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 1500,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Common.Variant.HomeMission": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.Home.MissionLabel"
+        ]
+    },
+    "SC.Common.Variant.MissionTab": {
+        "doc": "2026-10-27 live: a stopped MissionsClaim left ウィークリー selected; the daily_tab template only matches a selected デイリー",
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.Mission.DailyTab",
+            "SC.Common.Anchor.Mission.WeeklyTab"
+        ]
+    },
+    "SC.Common.Anchor.Mission.WeeklyTab": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Missions.Color.WeeklyTab",
+            "SC.Missions.Anchor.WeeklyLabel"
+        ]
+    },
+    "SC.Common.Variant.AnnouncementTab": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.Announcement.ListHeading",
+            "SC.Common.Anchor.Announcement.TopicsSelected",
+            "SC.Common.Anchor.Announcement.HeaderButtons"
+        ]
+    },
+    "SC.Common.Variant.IdolTrainingEntry": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.IdolPortal.TrainingEntry",
+            "SC.Common.Anchor.IdolPortal.TrainingEntryNative"
+        ]
+    },
+    "SC.Common.Variant.TrainingSupportTab": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.TrainingList.SupportTab",
+            "SC.Common.Anchor.TrainingList.SupportTabNative"
+        ]
+    },
+    "SC.Common.Variant.TrainingSelectedBronze": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Anchor.TrainingSelected.BronzeLabel",
+            "SC.Common.Anchor.TrainingSelected.BronzeLabelOne",
+            "SC.Common.Anchor.TrainingSelected.BronzeLabelTop"
+        ]
+    },
+    "SC.Common.Presence.Announcement.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/announcement/title.png",
+        "roi": [
+            45,
+            18,
+            125,
+            45
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Announcement.ListHeading": {
+        "recognition": "TemplateMatch",
+        "template": "native/announcement/list_heading.png",
+        "roi": [
+            620,
+            108,
+            280,
+            43
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Announcement.TopicsSelected": {
+        "recognition": "TemplateMatch",
+        "template": "native/announcement/topics_selected.png",
+        "roi": [
+            15,
+            87,
+            176,
+            86
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Reward.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/reward/title.png",
+        "roi": [
+            408,
+            151,
+            184,
+            37
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Reward.Body": {
+        "recognition": "TemplateMatch",
+        "template": "native/reward/body.png",
+        "roi": [
+            491,
+            241,
+            301,
+            31
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Loading.Text": {
+        "recognition": "TemplateMatch",
+        "template": "native/loading/text.png",
+        "roi": [
+            826,
+            660,
+            306,
+            47
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Loading.Feather": {
+        "recognition": "TemplateMatch",
+        "template": "native/loading/feather.png",
+        "roi": [
+            1150,
+            613,
+            67,
+            62
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Mission.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission/title.png",
+        "roi": [
+            38,
+            18,
+            161,
+            42
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Mission.DailyTab": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission/daily_tab.png",
+        "roi": [
+            42,
+            94,
+            115,
+            33
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.IdolPortal.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/idol_portal/title.png",
+        "roi": [
+            40,
+            18,
+            141,
+            44
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.IdolPortal.TrainingEntry": {
+        "recognition": "TemplateMatch",
+        "template": "native/idol_portal/training_entry.png",
+        "roi": [
+            409,
+            285,
+            218,
+            50
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.IdolPortal.TrainingEntryNative": {
+        "recognition": "TemplateMatch",
+        "template": "native/idol_portal/training_entry_native.png",
+        "roi": [
+            409,
+            285,
+            218,
+            50
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.TrainingList.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_list/title.png",
+        "roi": [
+            43,
+            17,
+            328,
+            48
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.TrainingList.SupportTab": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_list/support_tab.png",
+        "roi": [
+            39,
+            98,
+            121,
+            38
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.TrainingList.SupportTabNative": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_list/support_tab_native.png",
+        "roi": [
+            39,
+            98,
+            121,
+            38
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.TrainingList.AsahiPortrait": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_list/asahi_portrait.png",
+        "roi": [
+            409,
+            189,
+            101,
+            87
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.TrainingSelected.CardName": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_selected/card_name.png",
+        "roi": [
+            159,
+            96,
+            451,
+            31
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.TrainingSelected.Portrait": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_selected/portrait.png",
+        "roi": [
+            40,
+            102,
+            99,
+            75
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.MissionCompleted.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_completed/title.png",
+        "roi": [
+            405,
+            90,
+            253,
+            40
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.MissionCompleted.Body": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_completed/body.png",
+        "roi": [
+            379,
+            153,
+            533,
+            61
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.MissionHelp.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/mission_help/title.png",
+        "roi": [
+            191,
+            79,
+            438,
+            39
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.MatchHelp.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_help/title.png",
+        "roi": [
+            187,
+            77,
+            339,
+            42
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.TrainingHelp.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_help/title.png",
+        "roi": [
+            190,
+            80,
+            342,
+            37
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.FesHelp.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_help/title.png",
+        "roi": [
+            190,
+            82,
+            225,
+            40
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.FesHelp.Icon": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_help/icon.png",
+        "roi": [
+            68,
+            60,
+            100,
+            74
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Pickup.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/pickup/title.png",
+        "roi": [
+            465,
+            52,
+            343,
+            39
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Pickup.Details": {
+        "recognition": "TemplateMatch",
+        "template": "native/pickup/details.png",
+        "roi": [
+            552,
+            558,
+            101,
+            33
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Story.Skip": {
+        "recognition": "TemplateMatch",
+        "template": "native/story/skip.png",
+        "roi": [
+            1180,
+            17,
+            82,
+            80
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Story.Log": {
+        "recognition": "TemplateMatch",
+        "template": "native/story/log.png",
+        "roi": [
+            1173,
+            423,
+            82,
+            81
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.Story.Hide": {
+        "recognition": "TemplateMatch",
+        "template": "native/story/hide.png",
+        "roi": [
+            1173,
+            514,
+            82,
+            79
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.MatchMain.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_main/title.png",
+        "roi": [
+            49,
+            23,
+            170,
+            34
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.MatchMain.AreaPrompt": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_main/area_prompt.png",
+        "roi": [
+            97,
+            157,
+            236,
+            37
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.MatchMain.SkipTarget": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_main/skip_target.png",
+        "roi": [
+            1126,
+            518,
+            130,
+            33
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.FesMenu.MatchLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_menu/match_label.png",
+        "roi": [
+            985,
+            525,
+            120,
+            32
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.FesMenu.GradeLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_menu/grade_label.png",
+        "roi": [
+            1128,
+            547,
+            126,
+            26
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.FesMain.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_main/title.png",
+        "roi": [
+            6,
+            16,
+            150,
+            40
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.FesMain.UnitButton": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_main/unit_button.png",
+        "roi": [
+            905,
+            628,
+            160,
+            62
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.FesMain.JoinLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_main/join_label.png",
+        "roi": [
+            1130,
+            595,
+            105,
+            50
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.ShopList.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/title.png",
+        "roi": [
+            6,
+            16,
+            150,
+            40
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.ShopList.MoneySelected": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/money_selected.png",
+        "roi": [
+            440,
+            90,
+            112,
+            42
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Presence.ShopList.AllSelected": {
+        "recognition": "TemplateMatch",
+        "template": "native/shop_list/all_selected.png",
+        "roi": [
+            40,
+            165,
+            172,
+            44
+        ],
+        "threshold": 0.8,
+        "method": 5
+    },
+    "SC.Common.Anchor.Announcement.HeaderButtons": {
+        "recognition": "TemplateMatch",
+        "template": "native/announcement/header_buttons.png",
+        "roi": [
+            823,
+            16,
+            442,
+            60
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchSkip.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_skip/title.png",
+        "roi": [
+            48,
+            46,
+            170,
+            42
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchSkip.Recovery": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_skip/recovery.png",
+        "roi": [
+            72,
+            133,
+            165,
+            40
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchSkip.Filter": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_skip/filter.png",
+        "roi": [
+            1020,
+            132,
+            166,
+            42
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchSkip.Cancel": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_skip/cancel.png",
+        "roi": [
+            380,
+            582,
+            166,
+            80
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.MatchSkip.CostLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/match_skip/cost_label.png",
+        "roi": [
+            1060,
+            588,
+            140,
+            28
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesResume.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_resume/title.png",
+        "roi": [
+            358,
+            193,
+            190,
+            45
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesResume.Text": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_resume/text.png",
+        "roi": [
+            490,
+            310,
+            282,
+            54
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesResume.EndLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_resume/end_label.png",
+        "roi": [
+            505,
+            453,
+            70,
+            35
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.FesResume.ResumeLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/fes_resume/resume_label.png",
+        "roi": [
+            705,
+            453,
+            70,
+            35
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.AnyHelp.CloseLabel": {
+        "recognition": "OCR",
+        "roi": [
+            572,
+            575,
+            137,
+            55
+        ],
+        "expected": [
+            "^閉じる$"
+        ]
+    },
+    "SC.Common.Anchor.AnyHelp.Icon": {
+        "recognition": "TemplateMatch",
+        "template": "native/any_help/icon.png",
+        "roi": [
+            62,
+            54,
+            112,
+            86
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Common.Anchor.AnyHelp.Close": {
+        "recognition": "TemplateMatch",
+        "template": "native/any_help/close.png",
+        "roi": [
+            552,
+            556,
+            179,
+            90
+        ],
+        "threshold": 0.95,
+        "method": 5
+    }
+}

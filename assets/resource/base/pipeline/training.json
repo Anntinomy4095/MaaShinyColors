@@ -1,0 +1,4262 @@
+{
+    "SC.Training.Anchor.Detail.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/title.png",
+        "roi": [
+            48,
+            24,
+            177,
+            31
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.CardName": {
+        "doc": "完整卡名区域OCR；Python在准备、确认和训练后再次核对本次所选卡名。阈值0.90：2026-10-12实机「【HoP PoP らびっつ】三峰結華」读对但仅0.9497；卡名仍须与所选卡完全一致。",
+        "recognition": "OCR",
+        "roi": [
+            159,
+            96,
+            451,
+            31
+        ],
+        "expected": [
+            "【.+】.+"
+        ],
+        "threshold": 0.9
+    },
+    "SC.Training.Anchor.Detail.Portrait": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/portrait.png",
+        "roi": [
+            40,
+            102,
+            99,
+            75
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.BronzeLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/bronze_label.png",
+        "roi": [
+            810,
+            270,
+            325,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.BronzeZero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/bronze_zero.png",
+        "roi": [
+            939,
+            322,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.Lv50Zero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/lv50_zero.png",
+        "roi": [
+            939,
+            184,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.SilverZero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/silver_zero.png",
+        "roi": [
+            939,
+            456,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.ClearDisabled": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/clear_disabled.png",
+        "roi": [
+            906,
+            636,
+            146,
+            50
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.Plus": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/plus.png",
+        "roi": [
+            1058,
+            320,
+            58,
+            52
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/title.png",
+        "roi": [
+            48,
+            24,
+            177,
+            31
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.CardName": {
+        "doc": "完整卡名区域OCR；Python在准备、确认和训练后再次核对本次所选卡名。",
+        "recognition": "OCR",
+        "roi": [
+            159,
+            96,
+            451,
+            31
+        ],
+        "expected": [
+            "【.+】.+"
+        ],
+        "threshold": 0.9
+    },
+    "SC.Training.Anchor.One.Portrait": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/portrait.png",
+        "roi": [
+            40,
+            102,
+            99,
+            75
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.BronzeLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/bronze_label.png",
+        "roi": [
+            810,
+            270,
+            325,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.BronzeOne": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/bronze_one.png",
+        "roi": [
+            939,
+            322,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.SilverZero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/silver_zero.png",
+        "roi": [
+            939,
+            456,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.Exp50": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/exp50.png",
+        "roi": [
+            164,
+            175,
+            147,
+            28
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.Submit": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/submit.png",
+        "roi": [
+            1097,
+            635,
+            153,
+            57
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Confirm.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_confirm/title.png",
+        "roi": [
+            406,
+            165,
+            230,
+            35
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Confirm.CardName": {
+        "doc": "完整卡名区域OCR；Python在准备、确认和训练后再次核对本次所选卡名。",
+        "recognition": "OCR",
+        "roi": [
+            159,
+            96,
+            451,
+            31
+        ],
+        "expected": [
+            "【.+】.+"
+        ],
+        "threshold": 0.9
+    },
+    "SC.Training.Anchor.Confirm.Prompt": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_confirm/prompt.png",
+        "roi": [
+            453,
+            245,
+            369,
+            57
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Confirm.OnlyBronzeOne": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_confirm/only_bronze_one.png",
+        "roi": [
+            366,
+            219,
+            548,
+            220
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Confirm.BronzeTicket": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_confirm/bronze_ticket.png",
+        "roi": [
+            592,
+            327,
+            105,
+            83
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Confirm.QuantityOne": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_confirm/quantity_one.png",
+        "roi": [
+            672,
+            412,
+            24,
+            18
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Confirm.Start": {
+        "doc": "按钮文字部分（y>=485）：超成功活动期按钮上方的「超成功発生中！」气泡不在模板内，有无气泡都匹配。",
+        "recognition": "TemplateMatch",
+        "template": "native/training_confirm/start_label.png",
+        "roi": [
+            660,
+            475,
+            159,
+            68
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Result.Title": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_result/title.png",
+        "roi": [
+            408,
+            190,
+            260,
+            35
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Result.CardNamePrefix": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_result/card_name_prefix.png",
+        "roi": [
+            159,
+            96,
+            271,
+            31
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Result.Portrait": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_result/portrait.png",
+        "roi": [
+            40,
+            102,
+            99,
+            75
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Result.StatsLabels": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_result/stats_labels.png",
+        "roi": [
+            374,
+            328,
+            40,
+            88
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Result.Close": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_result/close.png",
+        "roi": [
+            563,
+            451,
+            154,
+            65
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Result.TitleStem": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_result/title_stem.png",
+        "roi": [
+            408,
+            190,
+            160,
+            35
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Result.CardNameShort": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_result/card_name_short.png",
+        "roi": [
+            159,
+            96,
+            190,
+            31
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Detail.Guard": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.Detail.Lv50.Guard",
+            "SC.Training.Detail.Top.Guard"
+        ]
+    },
+    "SC.Training.One.Guard": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.One.Lv50.Guard",
+            "SC.Training.One.Top.Guard"
+        ]
+    },
+    "SC.Training.Confirm.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Anchor.Confirm.Title",
+            "SC.Training.Anchor.Confirm.CardName",
+            "SC.Training.Anchor.Confirm.Prompt",
+            "SC.Training.Anchor.Confirm.OnlyBronzeOne",
+            "SC.Training.Anchor.Confirm.BronzeTicket",
+            "SC.Training.Anchor.Confirm.QuantityOne",
+            "SC.Training.Anchor.Confirm.Start"
+        ]
+    },
+    "SC.Training.Result.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Anchor.Result.Title",
+            "SC.Training.Anchor.Result.StatsLabels",
+            "SC.Training.Anchor.Result.Close"
+        ]
+    },
+    "SC.Training.ResultAny.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Anchor.Result.TitleStem",
+            "SC.Training.Anchor.Result.StatsLabels",
+            "SC.Training.Anchor.Result.Close"
+        ]
+    },
+    "SC.Training.List.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.TrainingList.Title",
+            "SC.Common.Variant.TrainingSupportTab",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Training.Detail.AnyTitle": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.Anchor.Detail.Title",
+            "SC.Training.Anchor.One.Title"
+        ]
+    },
+    "SC.Training.Detail.AnyBronzeLabel": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Variant.TrainingSelectedBronze"
+        ]
+    },
+    "SC.Training.Detail.Shell": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Detail.AnyTitle",
+            "SC.Training.Detail.AnyBronzeLabel",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Training.State.Active": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.State",
+        "custom_recognition_param": {
+            "is": "active"
+        }
+    },
+    "SC.Training.State.Finished": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        }
+    },
+    "SC.Training.State.Halted": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        }
+    },
+    "SC.Training.State.ConfirmCancel": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.State",
+        "custom_recognition_param": {
+            "is": "confirm_cancel"
+        }
+    },
+    "SC.Training.State.Closing": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.State",
+        "custom_recognition_param": {
+            "is": "closing"
+        }
+    },
+    "SC.Training.Plan.Plus": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.Plan",
+        "custom_recognition_param": {
+            "step": "plus"
+        }
+    },
+    "SC.Training.Plan.Submit": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.Plan",
+        "custom_recognition_param": {
+            "step": "submit"
+        }
+    },
+    "SC.Training.Check.Confirm": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.Check",
+        "custom_recognition_param": {
+            "stage": "confirm"
+        }
+    },
+    "SC.Training.Check.Result": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.Check",
+        "custom_recognition_param": {
+            "stage": "result"
+        }
+    },
+    "SC.Training.Check.After": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.Check",
+        "custom_recognition_param": {
+            "stage": "after"
+        }
+    },
+    "SC.Training.Check.Identity": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.Check",
+        "custom_recognition_param": {
+            "stage": "identity"
+        }
+    },
+    "SC.Training.List.Locate.Card": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-select-card",
+            "node": "SC.Training.List.Select"
+        }
+    },
+    "SC.Training.List.Pending": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "hold"
+        }
+    },
+    "SC.Training.Config.Card": {
+        "recognition": "DirectHit",
+        "attach": {
+            "card": "",
+            "card_id": ""
+        }
+    },
+    "SC.Training.Config.Ticket": {
+        "recognition": "DirectHit",
+        "attach": {
+            "ticket": "basic_bronze"
+        }
+    },
+    "SC.Training.Config.Quantity": {
+        "recognition": "DirectHit",
+        "attach": {
+            "quantity": 1
+        }
+    },
+    "SC.Training.Config.Daily": {
+        "recognition": "DirectHit",
+        "attach": {
+            "skip_if_done_today": false
+        }
+    },
+    "SC.Training.Config.List": {
+        "recognition": "DirectHit",
+        "attach": {
+            "max_scroll_steps": 10
+        }
+    },
+    "SC.Training.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Training.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.Training.Config.Card",
+                "SC.Training.Config.Ticket",
+                "SC.Training.Config.Quantity",
+                "SC.Training.Config.Daily",
+                "SC.Training.Config.List"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Training.Main"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练：固定基础铜券×1，按所选S卡身份定位；留空时从列表顶部按当前排序寻找第一张未满级S卡。"
+        }
+    },
+    "SC.Training.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 60000,
+        "next": [
+            "SC.Training.Halt",
+            "[JumpBack]SC.Training.Result.Close",
+            "[JumpBack]SC.Training.Result.Wait",
+            "[JumpBack]SC.Training.Resolve.Elsewhere",
+            "[JumpBack]SC.Training.SortPopup.Unexpected",
+            "[JumpBack]SC.Training.SortPopup.Pick.R1C1",
+            "[JumpBack]SC.Training.SortPopup.Pick.R1C2",
+            "[JumpBack]SC.Training.SortPopup.Pick.R1C3",
+            "[JumpBack]SC.Training.SortPopup.Pick.R2C1",
+            "[JumpBack]SC.Training.SortPopup.Pick.R2C2",
+            "[JumpBack]SC.Training.SortPopup.Pick.R2C3",
+            "[JumpBack]SC.Training.SortPopup.Pick.R3C1",
+            "[JumpBack]SC.Training.SortPopup.Pick.R3C2",
+            "[JumpBack]SC.Training.SortPopup.Pick.R3C3",
+            "[JumpBack]SC.Training.SortPopup.Apply",
+            "[JumpBack]SC.Resource.Observe.TrainingList",
+            "[JumpBack]SC.Training.Detail.After",
+            "[JumpBack]SC.Training.Detail.Hold",
+            "[JumpBack]SC.Training.Detail.Identity",
+            "[JumpBack]SC.Training.Detail.Submit",
+            "[JumpBack]SC.Training.Detail.Plus.Top",
+            "[JumpBack]SC.Training.Detail.Plus",
+            "[JumpBack]SC.Training.List.Select",
+            "[JumpBack]SC.Training.List.Select.R1C1",
+            "[JumpBack]SC.Training.List.Select.R1C3",
+            "[JumpBack]SC.Training.List.Select.R1C4",
+            "[JumpBack]SC.Training.List.Select.R1C5",
+            "[JumpBack]SC.Training.List.Select.R1C6",
+            "[JumpBack]SC.Training.List.Select.R1C7",
+            "[JumpBack]SC.Training.List.Select.R2C1",
+            "[JumpBack]SC.Training.List.Select.R2C2",
+            "[JumpBack]SC.Training.List.Select.R2C3",
+            "[JumpBack]SC.Training.List.Select.R2C4",
+            "[JumpBack]SC.Training.List.Select.R2C5",
+            "[JumpBack]SC.Training.List.Select.R2C6",
+            "[JumpBack]SC.Training.List.Select.R2C7",
+            "[JumpBack]SC.Training.List.Select.R3C1",
+            "[JumpBack]SC.Training.List.Select.R3C2",
+            "[JumpBack]SC.Training.List.Select.R3C3",
+            "[JumpBack]SC.Training.List.Select.R3C4",
+            "[JumpBack]SC.Training.List.Select.R3C5",
+            "[JumpBack]SC.Training.List.Select.R3C6",
+            "[JumpBack]SC.Training.List.Select.R3C7",
+            "[JumpBack]SC.Training.List.Select.B.R1C1",
+            "[JumpBack]SC.Training.List.Select.B.R1C2",
+            "[JumpBack]SC.Training.List.Select.B.R1C3",
+            "[JumpBack]SC.Training.List.Select.B.R1C4",
+            "[JumpBack]SC.Training.List.Select.B.R1C5",
+            "[JumpBack]SC.Training.List.Select.B.R1C6",
+            "[JumpBack]SC.Training.List.Select.B.R1C7",
+            "[JumpBack]SC.Training.List.Select.B.R2C1",
+            "[JumpBack]SC.Training.List.Select.B.R2C2",
+            "[JumpBack]SC.Training.List.Select.B.R2C3",
+            "[JumpBack]SC.Training.List.Select.B.R2C4",
+            "[JumpBack]SC.Training.List.Select.B.R2C5",
+            "[JumpBack]SC.Training.List.Select.B.R2C6",
+            "[JumpBack]SC.Training.List.Select.B.R2C7",
+            "[JumpBack]SC.Training.List.Select.B.R3C1",
+            "[JumpBack]SC.Training.List.Select.B.R3C2",
+            "[JumpBack]SC.Training.List.Select.B.R3C3",
+            "[JumpBack]SC.Training.List.Select.B.R3C4",
+            "[JumpBack]SC.Training.List.Select.B.R3C5",
+            "[JumpBack]SC.Training.List.Select.B.R3C6",
+            "[JumpBack]SC.Training.List.Select.B.R3C7",
+            "[JumpBack]SC.Training.List.Select.C.R1C1",
+            "[JumpBack]SC.Training.List.Select.C.R1C2",
+            "[JumpBack]SC.Training.List.Select.C.R1C3",
+            "[JumpBack]SC.Training.List.Select.C.R1C4",
+            "[JumpBack]SC.Training.List.Select.C.R1C5",
+            "[JumpBack]SC.Training.List.Select.C.R1C6",
+            "[JumpBack]SC.Training.List.Select.C.R1C7",
+            "[JumpBack]SC.Training.List.Select.C.R2C1",
+            "[JumpBack]SC.Training.List.Select.C.R2C2",
+            "[JumpBack]SC.Training.List.Select.C.R2C3",
+            "[JumpBack]SC.Training.List.Select.C.R2C4",
+            "[JumpBack]SC.Training.List.Select.C.R2C5",
+            "[JumpBack]SC.Training.List.Select.C.R2C6",
+            "[JumpBack]SC.Training.List.Select.C.R2C7",
+            "[JumpBack]SC.Training.List.SortOpen",
+            "[JumpBack]SC.Training.List.SortToggle",
+            "[JumpBack]SC.Training.List.ScrollDown",
+            "[JumpBack]SC.Training.List.ScrollUp",
+            "[JumpBack]SC.Training.List.Hold",
+            "[JumpBack]SC.Training.Idol.Open",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "[JumpBack]SC.Training.Confirm.Start",
+            "[JumpBack]SC.Training.Confirm.Cancel",
+            "SC.Training.Finish",
+            "[JumpBack]SC.Training.Leave",
+            "SC.Resource.Observe.Home",
+            "[JumpBack]SC.Training.AtHome",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "训练：按当前画面判断下一步（停止→结果→排序弹窗→详情→列表→アイドル→其他弹窗→确认→首页）。"
+        },
+        "doc": "2026-10-24 提速：详情、列表、アイドル页的不消耗节点排在共享弹窗关闭 SC.Popup.CloseKnown（每轮约 0.5 s）之前；它们的页面守卫都要求背景未遮暗，弹窗或加载时不会命中。消耗训练券的「開始」（Confirm.Start）仍在弹窗关闭之后。被动观测 Observe.TrainingList 自带列表守卫与教程弹窗排除，随列表节点前移。"
+    },
+    "SC.Training.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Training.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Training.HomeClean"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ]
+    },
+    "SC.Training.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Training.OpenIdol"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页干净（与 SC.Common.HomeClean 相同的外来锚点清单）。"
+        }
+    },
+    "SC.Training.OpenIdol": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            508,
+            667,
+            114,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.Idol.Opened"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页：点击アイドル（每次任务最多 2 次）。"
+        }
+    },
+    "SC.Training.Idol.Opened": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.MissionCompleted.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Training.Idol.Open": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Training.State.Active"
+        ],
+        "action": "Click",
+        "target": [
+            409,
+            285,
+            218,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.Idol.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "アイドル页：点击「トレーニング」。"
+        }
+    },
+    "SC.Training.Idol.Tapped": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.TrainingList.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Training.List.Select": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.Card"
+        ],
+        "action": "Click",
+        "target": [
+            409,
+            189,
+            101,
+            87
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：已读排序/方向/筛选（未知即停止），按卡身份（原生卡面+稀有度框+DB缩略图）定位到目标卡且其格子正好是已登记的点击框：点击该卡。"
+        }
+    },
+    "SC.Training.List.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.List.Pending"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 80,
+        "focus": {
+            "Node.Recognition.Succeeded": "训练列表：等列表停稳（同一读数须在下一帧重复，每次读数最多等 6 帧）、排序文字暂不可读（最多 3 次），或本帧已得出停止结论（下一轮返回首页）。不点击。"
+        },
+        "doc": "2026-10-12：max_hit 5→80。列表加载/滚动中先等停稳（training_task.MAX_SETTLE_HOLDS），本节点只等待不点击。"
+    },
+    "SC.Training.List.Locate.R1C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r1c1",
+            "node": "SC.Training.List.Select.R1C1"
+        }
+    },
+    "SC.Training.List.Select.R1C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R1C1"
+        ],
+        "action": "Click",
+        "target": [
+            281,
+            198,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 1 行第 1 列（动作 training-list-slot-r1c1）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R1C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r1c3",
+            "node": "SC.Training.List.Select.R1C3"
+        }
+    },
+    "SC.Training.List.Select.R1C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R1C3"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            198,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 1 行第 3 列（动作 training-list-slot-r1c3）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R1C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r1c4",
+            "node": "SC.Training.List.Select.R1C4"
+        }
+    },
+    "SC.Training.List.Select.R1C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R1C4"
+        ],
+        "action": "Click",
+        "target": [
+            695,
+            198,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 1 行第 4 列（动作 training-list-slot-r1c4）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R1C5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r1c5",
+            "node": "SC.Training.List.Select.R1C5"
+        }
+    },
+    "SC.Training.List.Select.R1C5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R1C5"
+        ],
+        "action": "Click",
+        "target": [
+            833,
+            198,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 1 行第 5 列（动作 training-list-slot-r1c5）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R1C6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r1c6",
+            "node": "SC.Training.List.Select.R1C6"
+        }
+    },
+    "SC.Training.List.Select.R1C6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R1C6"
+        ],
+        "action": "Click",
+        "target": [
+            971,
+            198,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 1 行第 6 列（动作 training-list-slot-r1c6）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R1C7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r1c7",
+            "node": "SC.Training.List.Select.R1C7"
+        }
+    },
+    "SC.Training.List.Select.R1C7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R1C7"
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            198,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 1 行第 7 列（动作 training-list-slot-r1c7）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R2C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r2c1",
+            "node": "SC.Training.List.Select.R2C1"
+        }
+    },
+    "SC.Training.List.Select.R2C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R2C1"
+        ],
+        "action": "Click",
+        "target": [
+            281,
+            352,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 2 行第 1 列（动作 training-list-slot-r2c1）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R2C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r2c2",
+            "node": "SC.Training.List.Select.R2C2"
+        }
+    },
+    "SC.Training.List.Select.R2C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R2C2"
+        ],
+        "action": "Click",
+        "target": [
+            419,
+            352,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 2 行第 2 列（动作 training-list-slot-r2c2）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R2C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r2c3",
+            "node": "SC.Training.List.Select.R2C3"
+        }
+    },
+    "SC.Training.List.Select.R2C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R2C3"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            352,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 2 行第 3 列（动作 training-list-slot-r2c3）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R2C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r2c4",
+            "node": "SC.Training.List.Select.R2C4"
+        }
+    },
+    "SC.Training.List.Select.R2C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R2C4"
+        ],
+        "action": "Click",
+        "target": [
+            695,
+            352,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 2 行第 4 列（动作 training-list-slot-r2c4）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R2C5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r2c5",
+            "node": "SC.Training.List.Select.R2C5"
+        }
+    },
+    "SC.Training.List.Select.R2C5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R2C5"
+        ],
+        "action": "Click",
+        "target": [
+            833,
+            352,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 2 行第 5 列（动作 training-list-slot-r2c5）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R2C6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r2c6",
+            "node": "SC.Training.List.Select.R2C6"
+        }
+    },
+    "SC.Training.List.Select.R2C6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R2C6"
+        ],
+        "action": "Click",
+        "target": [
+            971,
+            352,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 2 行第 6 列（动作 training-list-slot-r2c6）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R2C7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r2c7",
+            "node": "SC.Training.List.Select.R2C7"
+        }
+    },
+    "SC.Training.List.Select.R2C7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R2C7"
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            352,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 2 行第 7 列（动作 training-list-slot-r2c7）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R3C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r3c1",
+            "node": "SC.Training.List.Select.R3C1"
+        }
+    },
+    "SC.Training.List.Select.R3C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R3C1"
+        ],
+        "action": "Click",
+        "target": [
+            281,
+            506,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 3 行第 1 列（动作 training-list-slot-r3c1）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R3C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r3c2",
+            "node": "SC.Training.List.Select.R3C2"
+        }
+    },
+    "SC.Training.List.Select.R3C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R3C2"
+        ],
+        "action": "Click",
+        "target": [
+            419,
+            506,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 3 行第 2 列（动作 training-list-slot-r3c2）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R3C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r3c3",
+            "node": "SC.Training.List.Select.R3C3"
+        }
+    },
+    "SC.Training.List.Select.R3C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R3C3"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            506,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 3 行第 3 列（动作 training-list-slot-r3c3）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R3C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r3c4",
+            "node": "SC.Training.List.Select.R3C4"
+        }
+    },
+    "SC.Training.List.Select.R3C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R3C4"
+        ],
+        "action": "Click",
+        "target": [
+            695,
+            506,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 3 行第 4 列（动作 training-list-slot-r3c4）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R3C5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r3c5",
+            "node": "SC.Training.List.Select.R3C5"
+        }
+    },
+    "SC.Training.List.Select.R3C5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R3C5"
+        ],
+        "action": "Click",
+        "target": [
+            833,
+            506,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 3 行第 5 列（动作 training-list-slot-r3c5）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R3C6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r3c6",
+            "node": "SC.Training.List.Select.R3C6"
+        }
+    },
+    "SC.Training.List.Select.R3C6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R3C6"
+        ],
+        "action": "Click",
+        "target": [
+            971,
+            506,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 3 行第 6 列（动作 training-list-slot-r3c6）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.R3C7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-r3c7",
+            "node": "SC.Training.List.Select.R3C7"
+        }
+    },
+    "SC.Training.List.Select.R3C7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.R3C7"
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            506,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：本帧已读排序/方向/筛选并按卡身份定位到目标卡，位于第 3 行第 7 列（动作 training-list-slot-r3c7）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R1C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r1c1",
+            "node": "SC.Training.List.Select.B.R1C1"
+        }
+    },
+    "SC.Training.List.Select.B.R1C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R1C1"
+        ],
+        "action": "Click",
+        "target": [
+            281,
+            249,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 1 行第 1 列，动作 training-list-slot-b-r1c1）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R1C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r1c2",
+            "node": "SC.Training.List.Select.B.R1C2"
+        }
+    },
+    "SC.Training.List.Select.B.R1C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R1C2"
+        ],
+        "action": "Click",
+        "target": [
+            419,
+            249,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 1 行第 2 列，动作 training-list-slot-b-r1c2）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R1C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r1c3",
+            "node": "SC.Training.List.Select.B.R1C3"
+        }
+    },
+    "SC.Training.List.Select.B.R1C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R1C3"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            249,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 1 行第 3 列，动作 training-list-slot-b-r1c3）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R1C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r1c4",
+            "node": "SC.Training.List.Select.B.R1C4"
+        }
+    },
+    "SC.Training.List.Select.B.R1C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R1C4"
+        ],
+        "action": "Click",
+        "target": [
+            695,
+            249,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 1 行第 4 列，动作 training-list-slot-b-r1c4）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R1C5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r1c5",
+            "node": "SC.Training.List.Select.B.R1C5"
+        }
+    },
+    "SC.Training.List.Select.B.R1C5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R1C5"
+        ],
+        "action": "Click",
+        "target": [
+            833,
+            249,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 1 行第 5 列，动作 training-list-slot-b-r1c5）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R1C6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r1c6",
+            "node": "SC.Training.List.Select.B.R1C6"
+        }
+    },
+    "SC.Training.List.Select.B.R1C6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R1C6"
+        ],
+        "action": "Click",
+        "target": [
+            971,
+            249,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 1 行第 6 列，动作 training-list-slot-b-r1c6）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R1C7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r1c7",
+            "node": "SC.Training.List.Select.B.R1C7"
+        }
+    },
+    "SC.Training.List.Select.B.R1C7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R1C7"
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            249,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 1 行第 7 列，动作 training-list-slot-b-r1c7）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R2C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r2c1",
+            "node": "SC.Training.List.Select.B.R2C1"
+        }
+    },
+    "SC.Training.List.Select.B.R2C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R2C1"
+        ],
+        "action": "Click",
+        "target": [
+            281,
+            403,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 2 行第 1 列，动作 training-list-slot-b-r2c1）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R2C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r2c2",
+            "node": "SC.Training.List.Select.B.R2C2"
+        }
+    },
+    "SC.Training.List.Select.B.R2C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R2C2"
+        ],
+        "action": "Click",
+        "target": [
+            419,
+            403,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 2 行第 2 列，动作 training-list-slot-b-r2c2）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R2C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r2c3",
+            "node": "SC.Training.List.Select.B.R2C3"
+        }
+    },
+    "SC.Training.List.Select.B.R2C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R2C3"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            403,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 2 行第 3 列，动作 training-list-slot-b-r2c3）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R2C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r2c4",
+            "node": "SC.Training.List.Select.B.R2C4"
+        }
+    },
+    "SC.Training.List.Select.B.R2C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R2C4"
+        ],
+        "action": "Click",
+        "target": [
+            695,
+            403,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 2 行第 4 列，动作 training-list-slot-b-r2c4）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R2C5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r2c5",
+            "node": "SC.Training.List.Select.B.R2C5"
+        }
+    },
+    "SC.Training.List.Select.B.R2C5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R2C5"
+        ],
+        "action": "Click",
+        "target": [
+            833,
+            403,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 2 行第 5 列，动作 training-list-slot-b-r2c5）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R2C6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r2c6",
+            "node": "SC.Training.List.Select.B.R2C6"
+        }
+    },
+    "SC.Training.List.Select.B.R2C6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R2C6"
+        ],
+        "action": "Click",
+        "target": [
+            971,
+            403,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 2 行第 6 列，动作 training-list-slot-b-r2c6）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R2C7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r2c7",
+            "node": "SC.Training.List.Select.B.R2C7"
+        }
+    },
+    "SC.Training.List.Select.B.R2C7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R2C7"
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            403,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 2 行第 7 列，动作 training-list-slot-b-r2c7）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R3C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r3c1",
+            "node": "SC.Training.List.Select.B.R3C1"
+        }
+    },
+    "SC.Training.List.Select.B.R3C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R3C1"
+        ],
+        "action": "Click",
+        "target": [
+            281,
+            557,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 3 行第 1 列，动作 training-list-slot-b-r3c1）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R3C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r3c2",
+            "node": "SC.Training.List.Select.B.R3C2"
+        }
+    },
+    "SC.Training.List.Select.B.R3C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R3C2"
+        ],
+        "action": "Click",
+        "target": [
+            419,
+            557,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 3 行第 2 列，动作 training-list-slot-b-r3c2）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R3C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r3c3",
+            "node": "SC.Training.List.Select.B.R3C3"
+        }
+    },
+    "SC.Training.List.Select.B.R3C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R3C3"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            557,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 3 行第 3 列，动作 training-list-slot-b-r3c3）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R3C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r3c4",
+            "node": "SC.Training.List.Select.B.R3C4"
+        }
+    },
+    "SC.Training.List.Select.B.R3C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R3C4"
+        ],
+        "action": "Click",
+        "target": [
+            695,
+            557,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 3 行第 4 列，动作 training-list-slot-b-r3c4）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R3C5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r3c5",
+            "node": "SC.Training.List.Select.B.R3C5"
+        }
+    },
+    "SC.Training.List.Select.B.R3C5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R3C5"
+        ],
+        "action": "Click",
+        "target": [
+            833,
+            557,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 3 行第 5 列，动作 training-list-slot-b-r3c5）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R3C6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r3c6",
+            "node": "SC.Training.List.Select.B.R3C6"
+        }
+    },
+    "SC.Training.List.Select.B.R3C6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R3C6"
+        ],
+        "action": "Click",
+        "target": [
+            971,
+            557,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 3 行第 6 列，动作 training-list-slot-b-r3c6）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.B.R3C7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-b-r3c7",
+            "node": "SC.Training.List.Select.B.R3C7"
+        }
+    },
+    "SC.Training.List.Select.B.R3C7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.B.R3C7"
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            557,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 51 px，第 3 行第 7 列，动作 training-list-slot-b-r3c7）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R1C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r1c1",
+            "node": "SC.Training.List.Select.C.R1C1"
+        }
+    },
+    "SC.Training.List.Select.C.R1C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R1C1"
+        ],
+        "action": "Click",
+        "target": [
+            281,
+            301,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 1 行第 1 列，动作 training-list-slot-c-r1c1）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R1C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r1c2",
+            "node": "SC.Training.List.Select.C.R1C2"
+        }
+    },
+    "SC.Training.List.Select.C.R1C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R1C2"
+        ],
+        "action": "Click",
+        "target": [
+            419,
+            301,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 1 行第 2 列，动作 training-list-slot-c-r1c2）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R1C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r1c3",
+            "node": "SC.Training.List.Select.C.R1C3"
+        }
+    },
+    "SC.Training.List.Select.C.R1C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R1C3"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            301,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 1 行第 3 列，动作 training-list-slot-c-r1c3）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R1C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r1c4",
+            "node": "SC.Training.List.Select.C.R1C4"
+        }
+    },
+    "SC.Training.List.Select.C.R1C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R1C4"
+        ],
+        "action": "Click",
+        "target": [
+            695,
+            301,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 1 行第 4 列，动作 training-list-slot-c-r1c4）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R1C5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r1c5",
+            "node": "SC.Training.List.Select.C.R1C5"
+        }
+    },
+    "SC.Training.List.Select.C.R1C5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R1C5"
+        ],
+        "action": "Click",
+        "target": [
+            833,
+            301,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 1 行第 5 列，动作 training-list-slot-c-r1c5）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R1C6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r1c6",
+            "node": "SC.Training.List.Select.C.R1C6"
+        }
+    },
+    "SC.Training.List.Select.C.R1C6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R1C6"
+        ],
+        "action": "Click",
+        "target": [
+            971,
+            301,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 1 行第 6 列，动作 training-list-slot-c-r1c6）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R1C7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r1c7",
+            "node": "SC.Training.List.Select.C.R1C7"
+        }
+    },
+    "SC.Training.List.Select.C.R1C7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R1C7"
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            301,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 1 行第 7 列，动作 training-list-slot-c-r1c7）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R2C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r2c1",
+            "node": "SC.Training.List.Select.C.R2C1"
+        }
+    },
+    "SC.Training.List.Select.C.R2C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R2C1"
+        ],
+        "action": "Click",
+        "target": [
+            281,
+            455,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 2 行第 1 列，动作 training-list-slot-c-r2c1）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R2C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r2c2",
+            "node": "SC.Training.List.Select.C.R2C2"
+        }
+    },
+    "SC.Training.List.Select.C.R2C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R2C2"
+        ],
+        "action": "Click",
+        "target": [
+            419,
+            455,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 2 行第 2 列，动作 training-list-slot-c-r2c2）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R2C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r2c3",
+            "node": "SC.Training.List.Select.C.R2C3"
+        }
+    },
+    "SC.Training.List.Select.C.R2C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R2C3"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            455,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 2 行第 3 列，动作 training-list-slot-c-r2c3）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R2C4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r2c4",
+            "node": "SC.Training.List.Select.C.R2C4"
+        }
+    },
+    "SC.Training.List.Select.C.R2C4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R2C4"
+        ],
+        "action": "Click",
+        "target": [
+            695,
+            455,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 2 行第 4 列，动作 training-list-slot-c-r2c4）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R2C5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r2c5",
+            "node": "SC.Training.List.Select.C.R2C5"
+        }
+    },
+    "SC.Training.List.Select.C.R2C5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R2C5"
+        ],
+        "action": "Click",
+        "target": [
+            833,
+            455,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 2 行第 5 列，动作 training-list-slot-c-r2c5）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R2C6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r2c6",
+            "node": "SC.Training.List.Select.C.R2C6"
+        }
+    },
+    "SC.Training.List.Select.C.R2C6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R2C6"
+        ],
+        "action": "Click",
+        "target": [
+            971,
+            455,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 2 行第 6 列，动作 training-list-slot-c-r2c6）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Locate.C.R2C7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "open",
+            "action": "training-list-slot-c-r2c7",
+            "node": "SC.Training.List.Select.C.R2C7"
+        }
+    },
+    "SC.Training.List.Select.C.R2C7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Locate.C.R2C7"
+        ],
+        "action": "Click",
+        "target": [
+            1109,
+            455,
+            80,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Tapped"
+        ],
+        "on_error": [
+            "SC.Training.List.TapFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：按卡身份定位到目标卡（网格下移 103 px，第 2 行第 7 列，动作 training-list-slot-c-r2c7）：点击该卡，随后等待详情页。"
+        }
+    },
+    "SC.Training.List.Plan.ScrollDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "scroll",
+            "direction": "down",
+            "node": "SC.Training.List.ScrollDown"
+        }
+    },
+    "SC.Training.List.ScrollDown": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Plan.ScrollDown"
+        ],
+        "action": "Click",
+        "target": [
+            1120,
+            300,
+            80,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 12,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Scrolled"
+        ],
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：目标卡不在本屏，有界搜索规划向下滚动一格（滚轮，无按键；总步数受「列表最多滚动」设置限制）。"
+        }
+    },
+    "SC.Training.List.Plan.ScrollUp": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "scroll",
+            "direction": "up",
+            "node": "SC.Training.List.ScrollUp"
+        }
+    },
+    "SC.Training.List.ScrollUp": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Plan.ScrollUp"
+        ],
+        "action": "Click",
+        "target": [
+            1140,
+            332,
+            60,
+            14
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 12,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Scrolled"
+        ],
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：目标卡不在本屏，有界搜索规划向上滚动一格（滚轮，无按键；总步数受「列表最多滚动」设置限制）。"
+        }
+    },
+    "SC.Training.List.Scrolled": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "训练列表：滚动后重新截图仍是训练列表，回到主循环重新读排序并按身份定位（不复用旧帧坐标）。"
+        }
+    },
+    "SC.Training.List.TapFailed": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Training.Abort",
+        "custom_action_param": {
+            "list_error": "tile_tap_unverified"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "训练列表：点击卡格后未在时限内看到详情页（或点击被拒绝），不重试，本任务失败。"
+        }
+    },
+    "SC.Training.List.ScrollFailed": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Training.Abort",
+        "custom_action_param": {
+            "list_error": "scroll_unverified"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "训练列表：滚动后未在时限内重新看到训练列表（或滚轮被拒绝），不重试，本任务失败。"
+        }
+    },
+    "SC.Training.List.Tapped": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.Detail.Guard",
+            "SC.Training.Detail.Shell",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Training.Detail.Plus": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Detail.Lv50.Guard",
+            "SC.Training.Plan.Plus"
+        ],
+        "action": "Click",
+        "target": [
+            1058,
+            320,
+            58,
+            52
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.Detail.Plused"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练详情：库存/等级/剩余经验已读，点击铜券「+」一次（非消费，只是预览）。"
+        }
+    },
+    "SC.Training.Detail.Plused": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.One.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Training.Detail.Submit": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.One.Guard",
+            "SC.Training.Plan.Submit"
+        ],
+        "action": "Click",
+        "target": [
+            1097,
+            635,
+            44,
+            57
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.Detail.Submitted"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "铜券×1 预览（EXP50、银券0）已核对：点击「トレーニング」打开确认（非消费）。"
+        }
+    },
+    "SC.Training.Detail.Submitted": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.ConfirmShell.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Training.Confirm.Start": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Confirm.Guard",
+            "SC.Training.Check.Confirm"
+        ],
+        "action": "Click",
+        "target": [
+            725,
+            475,
+            94,
+            68
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.Training.Confirm.Sent"
+        ],
+        "on_error": [
+            "SC.Training.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "トレーニング確認：唯一材料=基础铜券×1、等级与基线一致，凭一次性授权点击「トレーニング開始」（消耗1张）。"
+        }
+    },
+    "SC.Training.Confirm.Sent": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.ResultAny.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Training.Confirm.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.ConfirmShell.Guard",
+            "SC.Training.State.ConfirmCancel"
+        ],
+        "action": "Click",
+        "target": [
+            460,
+            475,
+            96,
+            65
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.Confirm.Cancelled"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "トレーニング確認（标题/卡名/提示/开始按钮）但材料不是唯一基础铜券×1、核对不通过或无消费授权：点击「キャンセル」，本任务失败。"
+        }
+    },
+    "SC.Training.Confirm.Cancelled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.One.Guard",
+            "SC.Training.Detail.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Training.Result.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.ResultAny.Guard",
+            "SC.Training.Check.Result"
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            450,
+            82,
+            31
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.Result.Closed"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练结果（标题 OCR 为 トレーニング成功/大成功/超成功）：记录或核对后点击「閉じる」（非消费；消耗已在 トレーニング開始 发生）。"
+        }
+    },
+    "SC.Training.Result.Closed": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Training.Detail.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.MissionCompleted.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Training.Result.Wait": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.ResultAny.Guard",
+            "SC.Training.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 5,
+        "focus": {
+            "Node.Recognition.Succeeded": "训练结果弹窗标题尚不可读（动画中）：不点击，再截一帧（读不出 3 次以上即判定不确定并停止）。"
+        }
+    },
+    "SC.Training.Resolve.Elsewhere": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.State",
+        "custom_recognition_param": {
+            "is": "resolve_elsewhere"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "当天有不确定的训练消耗，画面不是训练结果弹窗：按当前画面正常训练（不确定只提醒）。"
+        }
+    },
+    "SC.Training.Detail.After": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Detail.Guard",
+            "SC.Training.Check.After"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "训练后详情：库存−1、等级/经验增长已核验（或判定无法核验）。"
+        }
+    },
+    "SC.Training.Detail.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Detail.Guard",
+            "SC.Training.State.Closing"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 6,
+        "focus": {
+            "Node.Recognition.Succeeded": "训练后详情数字尚未稳定：再截一帧。"
+        }
+    },
+    "SC.Training.Finish": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Training.State.Finished"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Training.FinishClean",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ]
+    },
+    "SC.Training.FinishClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "action": "Custom",
+        "custom_action": "SC.Training.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "已回到干净首页：写出训练报告并结束任务。"
+        }
+    },
+    "SC.Training.Leave": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Common.GoHome"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "训练已有结论：返回首页。"
+        }
+    },
+    "SC.Training.Detail.Identity": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Detail.Shell",
+            "SC.Training.Check.Identity"
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 6,
+        "focus": {
+            "Node.Recognition.Succeeded": "训练详情：卡名 OCR 不是指定卡（停止，不消费，返回）或暂不可读（再截一帧）。不点击。"
+        }
+    },
+    "SC.Training.Halt": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        },
+        "action": "Custom",
+        "custom_action": "SC.Training.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "训练：结论要求立即停止（不再点击），本任务失败。"
+        }
+    },
+    "SC.Training.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Training.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "训练：未知画面/超时/核对失败，不再点击，本任务失败（下一任务照常）。"
+        }
+    },
+    "SC.Training.SpendError": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Training.SpendError",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "トレーニング開始 后未观察到トレーニング成功：记为不确定消费，不重试。"
+        }
+    },
+    "SC.Training.ConfirmShell.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Anchor.Confirm.Title",
+            "SC.Training.Anchor.Confirm.CardName",
+            "SC.Training.Anchor.Confirm.Prompt",
+            "SC.Training.Anchor.Confirm.Start"
+        ]
+    },
+    "SC.Training.List.Plan.SortSent": {
+        "doc": "只在 SortToggle 的点击之后到达：记为方向按钮已点击（下一帧必须读到所要求的方向）。",
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_sent"
+        }
+    },
+    "SC.Training.List.Plan.Sort": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort",
+            "node": "SC.Training.List.SortToggle"
+        }
+    },
+    "SC.Training.List.SortToggle": {
+        "doc": "2026-10-10：目标卡不在本屏且按持有等级判断在列表另一端时，点一次方向按钮（▼降順⇄▲昇順，training-list-direction-toggle，预留禁用，需监督实机验证 ▲昇順 帧后启用）。每次运行最多 1 次；下一帧必须读到所要求的方向，否则 sort_toggle_unverified 停止。不改排序键。",
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Plan.Sort"
+        ],
+        "action": "Click",
+        "target": [
+            1152,
+            114,
+            84,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 1200,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.List.Sorted"
+        ],
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：目标卡不在本屏，按持有等级切换排序方向一次（不改排序键），之后重新读排序并按身份定位。"
+        }
+    },
+    "SC.Training.List.Sorted": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Plan.SortSent",
+            "SC.Training.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "训练列表：切换方向后仍是训练列表，回到主循环重新读排序（必须为所要求的方向）。"
+        }
+    },
+    "SC.Training.SortPopup.Guard": {
+        "doc": "並び替え 弹窗标题（训练列表的弹窗尚无样本；同组件 ノウハウブック一覧 knowhow_sort_options.png 标题 ≈[410,128,110,32]）。",
+        "recognition": "OCR",
+        "roi": [
+            355,
+            110,
+            300,
+            60
+        ],
+        "expected": [
+            "並び替え"
+        ],
+        "threshold": 0.3
+    },
+    "SC.Training.SortPopup.OCR": {
+        "recognition": "OCR",
+        "roi": [
+            350,
+            105,
+            582,
+            505
+        ],
+        "threshold": 0.3
+    },
+    "SC.Training.List.Plan.SortOpen": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_open",
+            "node": "SC.Training.List.SortOpen"
+        }
+    },
+    "SC.Training.List.SortOpen": {
+        "doc": "2026-10-11：排序键不是 Lv順 且目标不在本屏时，点排序键按钮一次打开「並び替え」（training-list-sort-open，预留禁用，需样本）。每次运行最多 1 次。",
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard",
+            "SC.Training.State.Active",
+            "SC.Training.List.Plan.SortOpen"
+        ],
+        "action": "Click",
+        "target": [
+            976,
+            114,
+            150,
+            32
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.SortPopup.Opened"
+        ],
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练列表：目标不在本屏且排序键不是 Lv順，打开「並び替え」选择 Lv順（只一次）。"
+        }
+    },
+    "SC.Training.SortPopup.Opened": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "「並び替え」弹窗已打开：按 OCR 定位「Lv順」所在的唯一按键格。"
+        }
+    },
+    "SC.Training.SortPopup.Plan.R1C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r1c1",
+            "node": "SC.Training.SortPopup.Pick.R1C1"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R1C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R1C1"
+        ],
+        "action": "Click",
+        "target": [
+            373,
+            220,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第1行第1列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.R1C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r1c2",
+            "node": "SC.Training.SortPopup.Pick.R1C2"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R1C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R1C2"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            220,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第1行第2列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.R1C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r1c3",
+            "node": "SC.Training.SortPopup.Pick.R1C3"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R1C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R1C3"
+        ],
+        "action": "Click",
+        "target": [
+            741,
+            220,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第1行第3列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.R2C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r2c1",
+            "node": "SC.Training.SortPopup.Pick.R2C1"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R2C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R2C1"
+        ],
+        "action": "Click",
+        "target": [
+            373,
+            315,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第2行第1列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.R2C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r2c2",
+            "node": "SC.Training.SortPopup.Pick.R2C2"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R2C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R2C2"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            315,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第2行第2列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.R2C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r2c3",
+            "node": "SC.Training.SortPopup.Pick.R2C3"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R2C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R2C3"
+        ],
+        "action": "Click",
+        "target": [
+            741,
+            315,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第2行第3列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.R3C1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r3c1",
+            "node": "SC.Training.SortPopup.Pick.R3C1"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R3C1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R3C1"
+        ],
+        "action": "Click",
+        "target": [
+            373,
+            409,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第3行第1列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.R3C2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r3c2",
+            "node": "SC.Training.SortPopup.Pick.R3C2"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R3C2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R3C2"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            409,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第3行第2列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.R3C3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_pick",
+            "action": "training-sort-key-r3c3",
+            "node": "SC.Training.SortPopup.Pick.R3C3"
+        }
+    },
+    "SC.Training.SortPopup.Pick.R3C3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.R3C3"
+        ],
+        "action": "Click",
+        "target": [
+            741,
+            409,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 1,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：点「Lv順」（第3行第3列，按 OCR 绑定）。"
+        },
+        "next": [
+            "SC.Training.SortPopup.Picked"
+        ]
+    },
+    "SC.Training.SortPopup.Plan.Apply": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_apply",
+            "node": "SC.Training.SortPopup.Apply"
+        }
+    },
+    "SC.Training.SortPopup.Apply": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.Apply"
+        ],
+        "action": "Click",
+        "target": [
+            558,
+            505,
+            164,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.SortPopup.Applied"
+        ],
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "「並び替え」：Lv順 已显示为选中，按「決定」（只一次）；之后必须读到 Lv順。"
+        }
+    },
+    "SC.Training.SortPopup.Applied": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.List.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "决定后回到训练列表：主循环重新读排序（必须为 Lv順）。"
+        }
+    },
+    "SC.Training.SortPopup.Plan.Unexpected": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.List",
+        "custom_recognition_param": {
+            "want": "sort_popup_unexpected"
+        }
+    },
+    "SC.Training.SortPopup.Unexpected": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard",
+            "SC.Training.SortPopup.Plan.Unexpected"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Training.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "出现本次未打开的「並び替え」弹窗：停止，不点击。"
+        }
+    },
+    "SC.Training.SortPopup.Picked": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.SortPopup.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 5000,
+        "on_error": [
+            "SC.Training.List.ScrollFailed"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "已点 Lv順，弹窗仍在：主循环确认 Lv順 显示为选中后按「決定」。"
+        }
+    },
+    "SC.Training.Detail.Lv50.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Anchor.Detail.Title",
+            "SC.Training.Anchor.Detail.CardName",
+            "SC.Training.Anchor.Detail.BronzeLabel",
+            "SC.Training.Anchor.Detail.BronzeZero",
+            "SC.Training.Anchor.Detail.Lv50Zero",
+            "SC.Training.Anchor.Detail.SilverZero",
+            "SC.Training.Anchor.Detail.ClearDisabled",
+            "SC.Training.Anchor.Detail.Plus",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Training.One.Lv50.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Anchor.One.Title",
+            "SC.Training.Anchor.One.CardName",
+            "SC.Training.Anchor.One.BronzeLabel",
+            "SC.Training.Anchor.One.BronzeOne",
+            "SC.Training.Anchor.One.SilverZero",
+            "SC.Training.Anchor.One.Exp50",
+            "SC.Training.Anchor.One.Submit",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Training.Anchor.Detail.Top.BronzeLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/bronze_label_top.png",
+        "roi": [
+            810,
+            139,
+            325,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.Top.BronzeZero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/bronze_zero_top.png",
+        "roi": [
+            939,
+            190,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.Top.SilverZero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/silver_zero_top.png",
+        "roi": [
+            939,
+            322,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.Top.GoldZero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/gold_zero_top.png",
+        "roi": [
+            939,
+            456,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.Detail.Top.Plus": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/plus_top.png",
+        "roi": [
+            1058,
+            184,
+            58,
+            52
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Detail.Top.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Anchor.Detail.Title",
+            "SC.Training.Anchor.Detail.CardName",
+            "SC.Training.Anchor.Detail.Top.BronzeLabel",
+            "SC.Training.Anchor.Detail.Top.BronzeZero",
+            "SC.Training.Anchor.Detail.Top.SilverZero",
+            "SC.Training.Anchor.Detail.Top.GoldZero",
+            "SC.Training.Anchor.Detail.Top.Plus",
+            "SC.Training.Anchor.Detail.ClearDisabled",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Training.Anchor.One.Top.BronzeLabel": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_detail/bronze_label_top.png",
+        "roi": [
+            810,
+            139,
+            325,
+            34
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.Top.BronzeOne": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/bronze_one_top.png",
+        "roi": [
+            939,
+            190,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.Top.SilverZero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/silver_zero_top.png",
+        "roi": [
+            939,
+            322,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.Anchor.One.Top.GoldZero": {
+        "recognition": "TemplateMatch",
+        "template": "native/training_one/gold_zero_top.png",
+        "roi": [
+            939,
+            456,
+            62,
+            44
+        ],
+        "threshold": 0.95,
+        "method": 5
+    },
+    "SC.Training.One.Top.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Anchor.One.Title",
+            "SC.Training.Anchor.One.CardName",
+            "SC.Training.Anchor.One.Top.BronzeLabel",
+            "SC.Training.Anchor.One.Top.BronzeOne",
+            "SC.Training.Anchor.One.Top.SilverZero",
+            "SC.Training.Anchor.One.Top.GoldZero",
+            "SC.Training.Anchor.One.Exp50",
+            "SC.Training.Anchor.One.Submit",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Training.Plan.Plus.Top": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Training.Plan",
+        "custom_recognition_param": {
+            "step": "plus",
+            "layout": "top"
+        }
+    },
+    "SC.Training.Detail.Plus.Top": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Training.Detail.Top.Guard",
+            "SC.Training.Plan.Plus.Top"
+        ],
+        "action": "Click",
+        "target": [
+            1058,
+            184,
+            58,
+            52
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Training.Detail.Plused"
+        ],
+        "on_error": [
+            "SC.Training.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "训练详情：库存/等级/剩余经验已读，点击铜券「+」一次（非消费，只是预览）。"
+        }
+    }
+}

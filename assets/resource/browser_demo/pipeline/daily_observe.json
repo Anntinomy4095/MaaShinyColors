@@ -1,0 +1,29 @@
+{
+  "SC.Browser.Daily.Observe": {
+    "recognition": "DirectHit", "action": "DoNothing",
+    "next": ["SC.Browser.Daily.Ambiguous", "SC.Browser.Daily.Ready", "SC.Browser.Daily.Complete", "SC.Browser.Daily.Unknown"],
+    "on_error": ["SC.Browser.Daily.Error"],
+    "timeout": 1000, "rate_limit": 0, "pre_delay": 0, "post_delay": 0
+  },
+  "SC.Browser.Daily.Ambiguous": {
+    "recognition": "And", "all_of": ["SC.Browser.Daily.Ready", "SC.Browser.Daily.Complete"],
+    "action": "StopTask", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.Browser.Daily.Ready": {
+    "recognition": "ColorMatch", "method": 4,
+    "lower": [10, 145, 55], "upper": [35, 180, 95], "roi": [430, 380, 420, 160], "count": 30000,
+    "action": "DoNothing", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.Browser.Daily.Complete": {
+    "recognition": "ColorMatch", "method": 4,
+    "lower": [25, 85, 215], "upper": [50, 115, 255], "roi": [320, 250, 640, 130], "count": 45000,
+    "action": "DoNothing", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.Browser.Daily.Unknown": {
+    "recognition": "Or", "any_of": ["SC.Browser.Daily.Ready", "SC.Browser.Daily.Complete"], "inverse": true,
+    "action": "StopTask", "pre_delay": 0, "post_delay": 0
+  },
+  "SC.Browser.Daily.Error": {
+    "recognition": "DirectHit", "action": "StopTask", "pre_delay": 0, "post_delay": 0
+  }
+}

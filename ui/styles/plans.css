@@ -1,0 +1,15 @@
+/* U17: named plans + save indicator (linked on first use by plans.js; CSP 'self'). */
+.plan-row { display: flex; align-items: center; flex-wrap: wrap; gap: var(--sp-1) var(--sp-2); padding: 0 var(--sp-4) var(--sp-2); font-size: var(--fs-12); color: var(--sc-text-2); }
+.plan-row .grow { flex: 1 1 auto; }
+.save-state { display: inline-flex; align-items: center; gap: 6px; }
+.save-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sc-success); flex: none; }
+.save-state.is-failed { color: var(--sc-danger); }
+.save-state.is-failed .save-dot { background: var(--sc-danger); }
+.save-state.is-dirty { color: var(--sc-accent-text); }
+.plan-dialog { width: min(420px, calc(100vw - 24px)); }
+.plan-dialog .input { width: 100%; margin-top: 4px; }
+.plan-message { min-height: 1.4em; margin: 4px 0 0; color: var(--sc-danger); }
+.plan-list { list-style: none; margin: var(--sp-2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.plan-item { display: inline-flex; align-items: center; border: 1px solid var(--sc-line); border-radius: var(--r-pill); padding-left: 4px; }
+.toast .toast-action { pointer-events: auto; margin-left: var(--sp-2); }
+.toast.has-action { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); }

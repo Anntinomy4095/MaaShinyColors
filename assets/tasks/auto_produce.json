@@ -1,0 +1,1640 @@
+{
+    "task": [
+        {
+            "name": "AutoProduce",
+            "label": "W.I.N.G.",
+            "entry": "SC.Produce.Entry",
+            "default_check": false,
+            "description": "按所选 P 偶像和编队打一局：W.I.N.G.（True End 或各季晋级线）或 say \"Halo\"（掘书线，每次 1 局），在「Produce」页上方选剧本。有进行中的一局先核对 P 偶像与编队，一致才接着打，否则停止；没有就开新局。消耗：每局体力 30，局数按「次数」（默认 1 局）。选推荐编队时开新局会改写所选ユニット。不用钻石和付费道具。在「Produce」页开始，普通任务队列不运行。",
+            "option": [
+                "Produce剧本",
+                "Halo带书",
+                "Produce目标",
+                "Produce难度",
+                "Produce主属性",
+                "Produce编队方式",
+                "Produce编队槽位",
+                "Produce找编队",
+                "ProduceP卡",
+                "ProduceS卡1",
+                "ProduceS卡2",
+                "ProduceS卡3",
+                "ProduceS卡4",
+                "Produce客串",
+                "Produce次数",
+                "Produce休息阈值",
+                "Produce低分兜底",
+                "ProduceSP加点",
+                "Produce上限余量",
+                "Produce约定",
+                "Produce试镜出牌",
+                "Produce出牌风格",
+                "Produce限定试镜S1",
+                "Produce限定试镜S2",
+                "Produce限定试镜S3",
+                "Produce限定试镜S4",
+                "Produce事件选项",
+                "ProduceP道具",
+                "Produce大富豪",
+                "Produce改游戏设置",
+                "Produce终局清空SP",
+                "Produce报酬读取",
+                "Produce保护Lv5书",
+                "Produce报酬后OK",
+                "Produce自动锁书",
+                "Produce自动卖书",
+                "Produce卖书策略",
+                "Produce再抽选",
+                "Produce高级SP权重",
+                "Produce高级紧迫度",
+                "Produce高级兜底比例",
+                "Produce高级羁绊权重",
+                "Produce高级Auto门槛"
+            ]
+        }
+    ],
+    "option": {
+        "Produce剧本": {
+            "type": "select",
+            "label": "剧本",
+            "description": "W.I.N.G. 或 say \"Halo\"。say \"Halo\" 沿用这里的 P 偶像与编队，按「路线」打，每次 1 局。",
+            "default_case": "W.I.N.G.",
+            "cases": [
+                {
+                    "name": "W.I.N.G.",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Scenario": {
+                            "attach": {
+                                "scenario": "wing"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "say \"Halo\"",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Scenario": {
+                            "attach": {
+                                "scenario": "halo"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Halo带书": {
+            "type": "select",
+            "label": "带书",
+            "description": "开局时放 1 本ノウハウブック：游戏的おまかせ編成、最新設定履歴、游戏内プリセット1/2，或ノウハウ页「设为 Halo 带书」的那本。",
+            "default_case": "おまかせ編成",
+            "cases": [
+                {
+                    "name": "おまかせ編成",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Halo.Book": {
+                            "attach": {
+                                "halo_book": "auto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "設定履歴",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Halo.Book": {
+                            "attach": {
+                                "halo_book": "history"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "プリセット1",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Halo.Book": {
+                            "attach": {
+                                "halo_book": "preset1"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "プリセット2",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Halo.Book": {
+                            "attach": {
+                                "halo_book": "preset2"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ノウハウ页指定",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Halo.Book": {
+                            "attach": {
+                                "halo_book": "target"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce编队方式": {
+            "type": "select",
+            "label": "编队",
+            "description": "编队来源：指定ユニット（可开「自动查找编队」），或推荐编队（Maa 从持有卡选 P 卡、S 卡和 Guest，开新局时改写所选ユニット）。开始后核对 P 和编队，不符就停止。",
+            "default_case": "指定编队",
+            "cases": [
+                {
+                    "name": "指定编队",
+                    "pipeline_override": {
+                        "SC.Produce.Config.TeamMode": {
+                            "attach": {
+                                "team_mode": "manual"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "自动编队",
+                    "pipeline_override": {
+                        "SC.Produce.Config.TeamMode": {
+                            "attach": {
+                                "team_mode": "auto"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce编队槽位": {
+            "type": "select",
+            "label": "ユニット",
+            "description": "ユニット1–20（默认ユニット1）。推荐编队时这个ユニット会被改写。",
+            "default_case": "unit1",
+            "cases": [
+                {
+                    "name": "unit1",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit1"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit2",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit2"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit3",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit3"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit4",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit4"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit5",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit5"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit6",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit6"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit7",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit7"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit8",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit8"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit9",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit9"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit10",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit10"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit11",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit11"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit12",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit12"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit13",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit13"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit14",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit14"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit15",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit15"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit16",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit16"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit17",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit17"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit18",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit18"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit19",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit19"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "unit20",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitPreset": {
+                            "attach": {
+                                "unit_preset": "unit20"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce找编队": {
+            "type": "switch",
+            "label": "自动查找编队",
+            "description": "指定ユニット时：开新局在ユニット1–20 里找含此 P 的编队（有上次读到的编队时找同一套），找不到就停止。推荐编队时不用。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitSearch": {
+                            "attach": {
+                                "unit_search": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.UnitSearch": {
+                            "attach": {
+                                "unit_search": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "ProduceP卡": {
+            "type": "input",
+            "label": "P 偶像",
+            "description": "必选，从持有 P 卡中选；推荐编队按这张 P 卡配 S 卡和 Guest。开局前核对编队最左格。",
+            "inputs": [
+                {
+                    "name": "card",
+                    "label": "卡 ID",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^(1\\d{9})?$",
+                    "pattern_msg": "Wiki 卡 ID：1 开头的 10 位数字，留空=未登记"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Produce.Config.Card.P": {
+                    "attach": {
+                        "p_card": "{card}"
+                    }
+                }
+            }
+        },
+        "ProduceS卡1": {
+            "type": "input",
+            "label": "S 卡 1",
+            "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+            "inputs": [
+                {
+                    "name": "card",
+                    "label": "卡 ID",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^(2\\d{9})?$",
+                    "pattern_msg": "Wiki 卡 ID：2 开头的 10 位数字，留空=未登记"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Produce.Config.Card.S1": {
+                    "attach": {
+                        "s1": "{card}"
+                    }
+                }
+            }
+        },
+        "ProduceS卡2": {
+            "type": "input",
+            "label": "S 卡 2",
+            "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+            "inputs": [
+                {
+                    "name": "card",
+                    "label": "卡 ID",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^(2\\d{9})?$",
+                    "pattern_msg": "Wiki 卡 ID：2 开头的 10 位数字，留空=未登记"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Produce.Config.Card.S2": {
+                    "attach": {
+                        "s2": "{card}"
+                    }
+                }
+            }
+        },
+        "ProduceS卡3": {
+            "type": "input",
+            "label": "S 卡 3",
+            "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+            "inputs": [
+                {
+                    "name": "card",
+                    "label": "卡 ID",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^(2\\d{9})?$",
+                    "pattern_msg": "Wiki 卡 ID：2 开头的 10 位数字，留空=未登记"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Produce.Config.Card.S3": {
+                    "attach": {
+                        "s3": "{card}"
+                    }
+                }
+            }
+        },
+        "ProduceS卡4": {
+            "type": "input",
+            "label": "S 卡 4",
+            "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+            "inputs": [
+                {
+                    "name": "card",
+                    "label": "卡 ID",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^(2\\d{9})?$",
+                    "pattern_msg": "Wiki 卡 ID：2 开头的 10 位数字，留空=未登记"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Produce.Config.Card.S4": {
+                    "attach": {
+                        "s4": "{card}"
+                    }
+                }
+            }
+        },
+        "Produce客串": {
+            "type": "input",
+            "label": "Guest",
+            "description": "开发者：手动登记（留空不登记）。通常不用：首次运行读取游戏编队并存快照，之后按快照核对，以快照为准。",
+            "inputs": [
+                {
+                    "name": "card",
+                    "label": "卡 ID",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "verify": "^(2\\d{9})?$",
+                    "pattern_msg": "Wiki 卡 ID：2 开头的 10 位数字，留空=未登记"
+                }
+            ],
+            "pipeline_override": {
+                "SC.Produce.Config.Card.Guest": {
+                    "attach": {
+                        "guest": "{card}"
+                    }
+                }
+            }
+        },
+        "Produce主属性": {
+            "type": "select",
+            "label": "主属性",
+            "description": "课程、试镜与编队推荐都按它安排。自动选择：跟随 P 偶像特长（Vocal→Vo、Dance→Da、Visual→Vi）。",
+            "default_case": "自动",
+            "cases": [
+                {
+                    "name": "自动",
+                    "pipeline_override": {
+                        "SC.Produce.Config.PrimaryStat": {
+                            "attach": {
+                                "primary_stat": "auto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Vo",
+                    "pipeline_override": {
+                        "SC.Produce.Config.PrimaryStat": {
+                            "attach": {
+                                "primary_stat": "Vo"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Da",
+                    "pipeline_override": {
+                        "SC.Produce.Config.PrimaryStat": {
+                            "attach": {
+                                "primary_stat": "Da"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Vi",
+                    "pipeline_override": {
+                        "SC.Produce.Config.PrimaryStat": {
+                            "attach": {
+                                "primary_stat": "Vi"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce难度": {
+            "type": "select",
+            "label": "难度",
+            "description": "开新局时生效；True End 需要 Middle 或 Master。接着打进行中的一局时沿用原难度（继续窗口显示的难度不同则停止）。",
+            "default_case": "Middle",
+            "cases": [
+                {
+                    "name": "Beginner",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Difficulty": {
+                            "attach": {
+                                "difficulty": "beginner"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Middle",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Difficulty": {
+                            "attach": {
+                                "difficulty": "middle"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Master",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Difficulty": {
+                            "attach": {
+                                "difficulty": "master"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce目标": {
+            "type": "select",
+            "label": "目标",
+            "description": "True End（默认）：按各季粉丝目标安排试镜，第 4 季冲到 50 万粉丝并争取 W.I.N.G. 优胜。各季晋级线：每季只追到晋级所需粉丝，第 4 季不追 50 万。周常 3 次用独立任务「Auto Produce·周常」。",
+            "default_case": "True End",
+            "cases": [
+                {
+                    "name": "True End",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Goal": {
+                            "attach": {
+                                "goal": "true_end"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "只过季门槛",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Goal": {
+                            "attach": {
+                                "goal": "fans"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce次数": {
+            "type": "select",
+            "label": "次数",
+            "description": "连续打几局，每局消耗体力 30。2 局以上需开启「读取后自动确认」；每局结束读新书，读到目标缺的条目就停。",
+            "default_case": "1",
+            "cases": [
+                {
+                    "name": "1",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Runs": {
+                            "attach": {
+                                "max_runs": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Runs": {
+                            "attach": {
+                                "max_runs": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Runs": {
+                            "attach": {
+                                "max_runs": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Runs": {
+                            "attach": {
+                                "max_runs": 4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "5",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Runs": {
+                            "attach": {
+                                "max_runs": 5
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce休息阈值": {
+            "type": "select",
+            "label": "失败率上限",
+            "description": "失败率（トラブル率）达到此值的课程和工作不选，改为休息、试镜或低失败率的工作。默认 10%。",
+            "default_case": "10%",
+            "cases": [
+                {
+                    "name": "5%",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Rest": {
+                            "attach": {
+                                "rest_trouble_rate": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "10%",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Rest": {
+                            "attach": {
+                                "rest_trouble_rate": 10
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "15%",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Rest": {
+                            "attach": {
+                                "rest_trouble_rate": 15
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "20%",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Rest": {
+                            "attach": {
+                                "rest_trouble_rate": 20
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce低分兜底": {
+            "type": "select",
+            "label": "低收益时的选择",
+            "description": "最高分的课程/工作不到无 S 卡主属性课的 60% 时生效：无 S 卡训练（默认；失败率达到阈值、已到上限或不如休息时改休息）/ 休息 / 选择最高分行动。最高分已是休息或试镜时照常执行。",
+            "default_case": "主属性课",
+            "cases": [
+                {
+                    "name": "主属性课",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Fallback": {
+                            "attach": {
+                                "fallback": "empty_room"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "休息",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Fallback": {
+                            "attach": {
+                                "fallback": "rest"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "不兜底",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Fallback": {
+                            "attach": {
+                                "fallback": "none"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "ProduceSP加点": {
+            "type": "select",
+            "label": "SP 使用策略",
+            "description": "技能优先（默认）：P 卡技能与上限 → 主力 S 卡技能 → 主属性上限 → 其他 S 卡技能 → 被动。上限优先：主属性上限排到 S 卡技能前。暂不使用：SP 留着不用。手动设置：需要加点时停止运行，由你操作。",
+            "default_case": "技能优先",
+            "cases": [
+                {
+                    "name": "技能优先",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpOrder": {
+                            "attach": {
+                                "sp_order": "skills_first",
+                                "sp_mode": "auto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "上限优先",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpOrder": {
+                            "attach": {
+                                "sp_order": "caps_first",
+                                "sp_mode": "auto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "不加点",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpOrder": {
+                            "attach": {
+                                "sp_order": "skills_first",
+                                "sp_mode": "skip"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "交给我",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpOrder": {
+                            "attach": {
+                                "sp_order": "skills_first",
+                                "sp_mode": "handover"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce上限余量": {
+            "type": "select",
+            "label": "上限学习阈值",
+            "description": "主属性离上限不超过此值时，SP 先提升主属性上限，再学主力 S 卡技能（无成长预测时只在此范围内学上限）。默认 100。",
+            "default_case": "100",
+            "cases": [
+                {
+                    "name": "50",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.CapMargin": {
+                            "attach": {
+                                "cap_margin": 50
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "100",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.CapMargin": {
+                            "attach": {
+                                "cap_margin": 100
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "150",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.CapMargin": {
+                            "attach": {
+                                "cap_margin": 150
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "200",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.CapMargin": {
+                            "attach": {
+                                "cap_margin": 200
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce约定": {
+            "type": "select",
+            "label": "约定处理",
+            "description": "事件里的约定（「約束」）照常接受。中立（默认）：约定的课程只加一点分，其他行动照常评分。优先守约：约定的课程优先于其他课程与营业，需要的试镜仍优先。",
+            "default_case": "中立",
+            "cases": [
+                {
+                    "name": "中立",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Promise": {
+                            "attach": {
+                                "promise": "neutral"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "优先守约",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Promise": {
+                            "attach": {
+                                "promise": "keep"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce限定试镜S1": {
+            "type": "switch",
+            "label": "S1 限定试镜（+4万）",
+            "description": "强化周第 1 季最终周的限定试镜。开（默认）：普通试镜已达本季目标、出场条件满足且胜率够时参加；不够就照常打普通试镜。关：不参加。",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpecialS1": {
+                            "attach": {
+                                "special_s1": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpecialS1": {
+                            "attach": {
+                                "special_s1": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce限定试镜S2": {
+            "type": "switch",
+            "label": "S2 限定试镜（+10万）",
+            "description": "强化周第 2 季最终周的限定试镜。开（默认）：普通试镜已达本季目标、出场条件满足且胜率够时参加；不够就照常打普通试镜。关：不参加。",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpecialS2": {
+                            "attach": {
+                                "special_s2": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpecialS2": {
+                            "attach": {
+                                "special_s2": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce限定试镜S3": {
+            "type": "switch",
+            "label": "S3 限定试镜（+5万）",
+            "description": "强化周第 3 季最终周的限定试镜。开（默认）：普通试镜已达本季目标、出场条件满足且胜率够时参加；不够就照常打普通试镜。关：不参加。",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpecialS3": {
+                            "attach": {
+                                "special_s3": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpecialS3": {
+                            "attach": {
+                                "special_s3": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce限定试镜S4": {
+            "type": "switch",
+            "label": "S4 限定试镜（+25万）",
+            "description": "强化周第 4 季最终周的限定试镜。开（默认）：普通试镜已达本季目标、出场条件满足且胜率够时参加；不够就照常打普通试镜。关：不参加。",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpecialS4": {
+                            "attach": {
+                                "special_s4": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpecialS4": {
+                            "attach": {
+                                "special_s4": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce试镜出牌": {
+            "type": "select",
+            "label": "出牌方式",
+            "description": "工具策略（默认）：Maa 逐手出牌。游戏 Auto：预计合格率达到 Auto 门槛的普通试镜交给游戏 Auto；准决赛与决赛需要第 1 名，仍由 Maa 出牌。",
+            "default_case": "自研策略",
+            "cases": [
+                {
+                    "name": "自研策略",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.LiveMode": {
+                            "attach": {
+                                "live_mode": "policy"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "游戏 Auto",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.LiveMode": {
+                            "attach": {
+                                "live_mode": "game_auto"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce出牌风格": {
+            "type": "select",
+            "label": "出牌目标",
+            "description": "用于 Maa 自己出牌的试镜。主攻流行 1 位（默认）：预计能拿下流行 1 位的 Top Appeal 时优先攻击该审查员，拿稳后按期望星数出牌。平衡：不偏向某位审查员，每手按期望星数选择出牌与审查员。",
+            "default_case": "稳拿第一",
+            "cases": [
+                {
+                    "name": "稳拿第一",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.AuditionStyle": {
+                            "attach": {
+                                "audition_style": "first"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "按属性",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.AuditionStyle": {
+                            "attach": {
+                                "audition_style": "attribute"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce事件选项": {
+            "type": "select",
+            "label": "事件默认选项",
+            "description": "コミュ出现选项时选这一项（默认第 1 项）；有「約束」选项时先接受约定。该事件没有这一项时停止。",
+            "default_case": "第 1 项",
+            "cases": [
+                {
+                    "name": "第 1 项",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.EventChoice": {
+                            "attach": {
+                                "event_default_choice": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "第 2 项",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.EventChoice": {
+                            "attach": {
+                                "event_default_choice": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "第 3 项",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.EventChoice": {
+                            "attach": {
+                                "event_default_choice": 2
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "ProduceP道具": {
+            "type": "select",
+            "label": "P 道具",
+            "description": "目前只支持不带。",
+            "default_case": "不带",
+            "cases": [
+                {
+                    "name": "不带",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Items": {
+                            "attach": {
+                                "p_items": "none"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce大富豪": {
+            "type": "select",
+            "label": "开局前大富豪",
+            "description": "开新局前从首页玩一局大富豪（每回合 パス），获得育成加成。自动：推荐编队评分偏低时才玩；指定ユニット没有评分，不玩。不消耗体力。",
+            "default_case": "自动",
+            "cases": [
+                {
+                    "name": "关",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Minigame": {
+                            "attach": {
+                                "minigame": "off"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "自动",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Minigame": {
+                            "attach": {
+                                "minigame": "auto"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "每次",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Minigame": {
+                            "attach": {
+                                "minigame": "always"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce改游戏设置": {
+            "type": "switch",
+            "label": "自动改游戏设置",
+            "description": "开：第一次到 Produce 主页时把 オプション 的「未読イベント早送り解除」「警告ポップアップ」改为 OFF 并保存，之后保持；已是 OFF 不改，读数不符即停止。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.SettingsFix": {
+                            "attach": {
+                                "settings_fix": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.SettingsFix": {
+                            "attach": {
+                                "settings_fix": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce高级SP权重": {
+            "type": "select",
+            "label": "SP 权重",
+            "description": "打分器：每 1 SP 折算的主属性点数（w_sp）。默认 1.0。",
+            "default_case": "1.0",
+            "cases": [
+                {
+                    "name": "0.5",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Sp": {
+                            "attach": {
+                                "tune_w_sp": 0.5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1.0",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Sp": {
+                            "attach": {
+                                "tune_w_sp": 1.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1.5",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Sp": {
+                            "attach": {
+                                "tune_w_sp": 1.5
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce高级紧迫度": {
+            "type": "select",
+            "label": "试镜紧迫度",
+            "description": "打分器：临近粉丝期限时试镜加分的上限（urgency_max）。默认 3。",
+            "default_case": "3",
+            "cases": [
+                {
+                    "name": "2",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Urgency": {
+                            "attach": {
+                                "tune_urgency_max": 2.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "3",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Urgency": {
+                            "attach": {
+                                "tune_urgency_max": 3.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Urgency": {
+                            "attach": {
+                                "tune_urgency_max": 4.0
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce高级兜底比例": {
+            "type": "select",
+            "label": "兜底线",
+            "description": "「都不划算时」的兜底线 = 空房主属性课收益 × 此百分比（floor_ratio）。默认 60%。",
+            "default_case": "0.6",
+            "cases": [
+                {
+                    "name": "0.4",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Floor": {
+                            "attach": {
+                                "tune_floor_ratio": 0.4
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "0.6",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Floor": {
+                            "attach": {
+                                "tune_floor_ratio": 0.6
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "0.8",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Floor": {
+                            "attach": {
+                                "tune_floor_ratio": 0.8
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce高级羁绊权重": {
+            "type": "select",
+            "label": "羁绊权重",
+            "description": "打分器：支援羁绊每点的价值（bond_beta，随周数衰减）。默认 0.5。",
+            "default_case": "0.5",
+            "cases": [
+                {
+                    "name": "0.25",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Bond": {
+                            "attach": {
+                                "tune_bond_beta": 0.25
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "0.5",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Bond": {
+                            "attach": {
+                                "tune_bond_beta": 0.5
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "1.0",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.Bond": {
+                            "attach": {
+                                "tune_bond_beta": 1.0
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce高级Auto门槛": {
+            "type": "select",
+            "label": "Auto 门槛",
+            "description": "选择游戏 Auto 时，普通试镜交给 Auto 所需的最低估计合格率（auto_min_pass）。默认 97%。",
+            "default_case": "97%",
+            "cases": [
+                {
+                    "name": "95%",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.AutoPass": {
+                            "attach": {
+                                "tune_auto_min_pass": 0.95
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "97%",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.AutoPass": {
+                            "attach": {
+                                "tune_auto_min_pass": 0.97
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "99%",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.Tune.AutoPass": {
+                            "attach": {
+                                "tune_auto_min_pass": 0.99
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce终局清空SP": {
+            "type": "switch",
+            "label": "结束前使用剩余 SP",
+            "description": "W.I.N.G. 准决赛/决赛前最后一次加点时，剩余 SP 用于上限（主属性优先，其次其他属性与 Me）和可满足条件的被动。默认关：剩余 SP 结束时作废。SP 使用策略为暂不使用或手动设置时不生效。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpSpendDown": {
+                            "attach": {
+                                "sp_spend_down": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.SpSpendDown": {
+                            "attach": {
+                                "sp_spend_down": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce报酬读取": {
+            "type": "switch",
+            "label": "读取结算奖励",
+            "description": "「獲得報酬」页：读取 Exスキル，再逐本点开ノウハウブック读取详情（只读点击），结果写入结算摘要。",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.RewardRead": {
+                            "attach": {
+                                "reward_read": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.RewardRead": {
+                            "attach": {
+                                "reward_read": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce保护Lv5书": {
+            "type": "switch",
+            "label": "自动锁定 Lv5 书（暂不可用）",
+            "description": "暂不可用：游戏里的锁定（「保護」）按钮尚未实机核对，Maa 不会点击。结算摘要会列出含 Lv.5 的书，请在游戏里锁定。Maa 从不点「売却」。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.RewardProtect": {
+                            "attach": {
+                                "reward_protect_lv5": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.RewardProtect": {
+                            "attach": {
+                                "reward_protect_lv5": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce再抽选": {
+            "type": "switch",
+            "label": "重新抽选（每次体力 30）",
+            "description": "「獲得報酬」的「再抽選」。消耗：体力 30/次。默认关；按钮尚未实机验证、动作表中禁用，开启也不会点击。有 Lv5 书、已保护或未读全时不用。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.RewardReroll": {
+                            "attach": {
+                                "reward_reroll": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.RewardReroll": {
+                            "attach": {
+                                "reward_reroll": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce报酬后OK": {
+            "type": "switch",
+            "label": "读取后自动确认",
+            "description": "开（默认）：读取完成后按「獲得報酬」页的 OK，回首页再读新书的全部词条，同步到ノウハウ页；读取不完整时停在该页。关：停在该页，由你锁定或出售后按 OK。",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.RewardOk": {
+                            "attach": {
+                                "reward_ok": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.RewardOk": {
+                            "attach": {
+                                "reward_ok": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce自动锁书": {
+            "type": "switch",
+            "label": "自动锁定新书",
+            "description": "W.I.N.G. 回到首页后读新书：想要的条目在书库中同等或更高 Lv 不足 3 本时锁定（「保護」）。锁定结果不确定将停止。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.KnowhowLock": {
+                            "attach": {
+                                "knowhow_lock": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.KnowhowLock": {
+                            "attach": {
+                                "knowhow_lock": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce自动卖书": {
+            "type": "switch",
+            "label": "自动卖书",
+            "description": "按「卖书策略」卖出新书，换取マニー；卖出后无法找回。已锁定、有マーク或详情未读完的书不卖。确认框待采样：目前只列出要卖的书，不点击。",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.KnowhowSell": {
+                            "attach": {
+                                "knowhow_sell": true
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.KnowhowSell": {
+                            "attach": {
+                                "knowhow_sell": false
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Produce卖书策略": {
+            "type": "select",
+            "label": "卖书策略",
+            "description": "只卖没用的书：没有想要的条目，其余条目书库里都有同等或更高 Lv。库存够 3 本 / 有 1 本：想要的条目书库里已有这么多本同等或更高 Lv，其余条目同上。",
+            "default_case": "只卖没用的书",
+            "cases": [
+                {
+                    "name": "只卖没用的书",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.KnowhowSellStrategy": {
+                            "attach": {
+                                "knowhow_sell_strategy": "useless_only"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "库存够3本就卖",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.KnowhowSellStrategy": {
+                            "attach": {
+                                "knowhow_sell_strategy": "keep3"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "库存有1本就卖",
+                    "pipeline_override": {
+                        "SC.Produce.Config.Wing.KnowhowSellStrategy": {
+                            "attach": {
+                                "knowhow_sell_strategy": "keep1"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

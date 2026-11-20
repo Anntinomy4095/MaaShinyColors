@@ -1,0 +1,110 @@
+{
+  "SC.SupervisedStartup.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.SupervisedStartup.Startup.ReadOnly",
+      "SC.SupervisedStartup.Unknown"
+    ],
+    "on_error": [
+      "SC.SupervisedStartup.Error"
+    ],
+    "timeout": 1000,
+    "rate_limit": 0,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.SupervisedStartup.Startup.TitleLogo": {
+    "recognition": "TemplateMatch",
+    "template": "titlelogo.png",
+    "roi": [
+      422,
+      452,
+      441,
+      111
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.SupervisedStartup.Startup.StartTarget": {
+    "recognition": "TemplateMatch",
+    "template": "start.png",
+    "roi": [
+      414,
+      591,
+      456,
+      76
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.SupervisedStartup.Startup.Publisher": {
+    "recognition": "TemplateMatch",
+    "template": "publisher.png",
+    "roi": [
+      1030,
+      8,
+      239,
+      67
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.SupervisedStartup.Startup.ReadOnly": {
+    "recognition": "And",
+    "all_of": [
+      "SC.SupervisedStartup.Startup.TitleLogo",
+      "SC.SupervisedStartup.Startup.StartTarget",
+      "SC.SupervisedStartup.Startup.Publisher"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.SupervisedStartup.Startup.Click": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.SupervisedStartup.Startup.TitleLogo",
+      "SC.SupervisedStartup.Startup.StartTarget",
+      "SC.SupervisedStartup.Startup.Publisher"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      630,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.SupervisedStartup.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.SupervisedStartup.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.SupervisedStartup.Startup.ReadOnly"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.SupervisedStartup.Error": {
+    "recognition": "DirectHit",
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  }
+}

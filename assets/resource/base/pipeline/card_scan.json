@@ -1,0 +1,686 @@
+{
+    "SC.CardScan.Config": {
+        "recognition": "DirectHit",
+        "attach": {
+            "tabs": [
+                "support",
+                "produce"
+            ],
+            "max_scrolls_per_tab": 30,
+            "max_frames": 150,
+            "max_holds": 4,
+            "required_order": null
+        }
+    },
+    "SC.CardScan.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.CardScan.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.CardScan.Config"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.CardScan.Main"
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "持有卡扫描（仅 tools/run_tasks.py --live --supervised-task 的 CardScan 单次入口可运行；点击节点默认禁用，按动作 id 放行）：首页→アイドル→アイドル一覧→サポート/プロデュース 标签逐屏滚动读取全部卡→返回首页。不改排序/筛选，每帧存私有原图，结果只进审核导入。"
+        }
+    },
+    "SC.CardScan.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 60000,
+        "next": [
+            "SC.CardScan.Done",
+            "[JumpBack]SC.CardScan.List.Settle",
+            "[JumpBack]SC.CardScan.List.TapSupport",
+            "[JumpBack]SC.CardScan.List.TapProduce",
+            "[JumpBack]SC.CardScan.List.ScrollDown",
+            "[JumpBack]SC.CardScan.List.ScrollUp",
+            "[JumpBack]SC.CardScan.List.Hold",
+            "[JumpBack]SC.CardScan.List.Back",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "[JumpBack]SC.CardScan.Portal.OpenList",
+            "[JumpBack]SC.CardScan.Portal.Back",
+            "[JumpBack]SC.CardScan.Home.AtHome"
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ]
+    },
+    "SC.CardScan.Anchor.List.Title": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            8,
+            220,
+            52
+        ],
+        "expected": [
+            "アイドル.?覧"
+        ],
+        "threshold": 0.3
+    },
+    "SC.CardScan.Anchor.List.Filter": {
+        "recognition": "OCR",
+        "roi": [
+            760,
+            104,
+            176,
+            52
+        ],
+        "expected": [
+            "絞り込み"
+        ],
+        "threshold": 0.3
+    },
+    "SC.CardScan.Color.SupportTab": {
+        "recognition": "ColorMatch",
+        "roi": [
+            28,
+            270,
+            150,
+            62
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 500,
+        "method": 4,
+        "connected": false
+    },
+    "SC.CardScan.Color.ProduceTab": {
+        "recognition": "ColorMatch",
+        "roi": [
+            28,
+            184,
+            150,
+            62
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 500,
+        "method": 4,
+        "connected": false
+    },
+    "SC.CardScan.Color.ScanTab": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.CardScan.Color.SupportTab",
+            "SC.CardScan.Color.ProduceTab"
+        ]
+    },
+    "SC.CardScan.Color.FesTab": {
+        "doc": "原生 idol_list_fes_initial.png：从アイドル页进入一覧默认停在フェスアイドル标签，粉字 706 px，其余标签 0。",
+        "recognition": "ColorMatch",
+        "roi": [
+            28,
+            100,
+            150,
+            62
+        ],
+        "lower": [
+            230,
+            40,
+            110
+        ],
+        "upper": [
+            255,
+            140,
+            200
+        ],
+        "count": 500,
+        "method": 4,
+        "connected": false
+    },
+    "SC.CardScan.Color.ListTab": {
+        "doc": "一覧页面守卫用：任一可识别的已选标签（フェス/プロデュース/サポート）。入口落在フェス标签时 List.Settled 也要命中，才能由 Want 决定点 S/P 标签。滚动只在 ScanTab（S/P）上执行。",
+        "recognition": "Or",
+        "any_of": [
+            "SC.CardScan.Color.FesTab",
+            "SC.CardScan.Color.SupportTab",
+            "SC.CardScan.Color.ProduceTab"
+        ]
+    },
+    "SC.CardScan.List.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.Anchor.List.Title",
+            "SC.CardScan.Anchor.List.Filter",
+            "SC.CardScan.Color.ListTab",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.CardScan.Anchor.Portal.ListEntry": {
+        "recognition": "OCR",
+        "roi": [
+            790,
+            462,
+            215,
+            62
+        ],
+        "expected": [
+            "アイドル.?覧"
+        ],
+        "threshold": 0.3
+    },
+    "SC.CardScan.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.CardScan.Home.OpenIdol"
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ]
+    },
+    "SC.CardScan.Home.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.CardScan.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.CardScan.HomeClean"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页（扫描未结束）：确认无弹窗/公告/加载后再点アイドル。"
+        }
+    },
+    "SC.CardScan.State.Active": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "is": "active"
+        }
+    },
+    "SC.CardScan.State.Finished": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "is": "finished"
+        }
+    },
+    "SC.CardScan.Want.TapSupport": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "want": "tap_tab",
+            "tab": "support"
+        }
+    },
+    "SC.CardScan.Want.TapProduce": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "want": "tap_tab",
+            "tab": "produce"
+        }
+    },
+    "SC.CardScan.Want.ScrollDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "want": "scroll",
+            "direction": "down"
+        }
+    },
+    "SC.CardScan.Want.ScrollUp": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "want": "scroll",
+            "direction": "up"
+        }
+    },
+    "SC.CardScan.Want.Hold": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "want": "hold"
+        }
+    },
+    "SC.CardScan.Want.Settle": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "want": "settle"
+        }
+    },
+    "SC.CardScan.Want.Exit": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.CardScan.Want",
+        "custom_recognition_param": {
+            "want": "exit"
+        }
+    },
+    "SC.CardScan.Home.OpenIdol": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.CardScan.State.Active"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "首页：点击アイドル"
+        },
+        "target": [
+            508,
+            667,
+            114,
+            30
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.Portal.Settled"
+        ]
+    },
+    "SC.CardScan.Portal.OpenList": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.IdolPortal.Guard",
+            "SC.CardScan.Anchor.Portal.ListEntry",
+            "SC.CardScan.State.Active"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル页：点击「アイドル一覧」"
+        },
+        "target": [
+            830,
+            456,
+            170,
+            44
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.List.Settled"
+        ]
+    },
+    "SC.CardScan.List.TapSupport": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Want.TapSupport"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル一覧：切到サポートアイドル标签（每标签最多 1 次）"
+        },
+        "target": [
+            26,
+            296,
+            72,
+            36
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.List.SupportSettled"
+        ]
+    },
+    "SC.CardScan.List.TapProduce": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Want.TapProduce"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル一覧：切到プロデュースアイドル标签（每标签最多 1 次）"
+        },
+        "target": [
+            30,
+            184,
+            140,
+            44
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.List.ProduceSettled"
+        ]
+    },
+    "SC.CardScan.List.ScrollDown": {
+        "doc": "post_delay 1000：滚轮后由 Agent 确认列表已停住（与上一帧内容不再移动）才读，并自限速每 61 s ≤28 次（宿主每动作每分钟上限 30 次；2026-10-24 前为按旧上限 12 次设的 5000）。一格位移须在 154–356 px（到底的最后一步可更短），否则 overlap_lost。 max_hit 为整次 Pipeline 的累计命中上限，160 容纳两个标签各最多80次；实际预算由 Agent 的每标签选项与监督入口总输入上限限制。",
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Color.ScanTab",
+            "SC.CardScan.Want.ScrollDown"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 160,
+        "focus": {
+            "Node.Action.Starting": "アイドル一覧：已读本屏全部卡，向下滚动一格（每标签上限见选项）"
+        },
+        "target": [
+            270,
+            430,
+            130,
+            40
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.List.Settled"
+        ]
+    },
+    "SC.CardScan.List.ScrollUp": {
+        "doc": "post_delay 1000：滚轮后由 Agent 确认列表已停住（与上一帧内容不再移动）才读，并自限速每 61 s ≤28 次（宿主每动作每分钟上限 30 次；2026-10-24 前为按旧上限 12 次设的 5000）。一格位移须在 154–356 px（到底的最后一步可更短），否则 overlap_lost。 max_hit 为整次 Pipeline 的累计命中上限，160 容纳两个标签各最多80次；实际预算由 Agent 的每标签选项与监督入口总输入上限限制。",
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Color.ScanTab",
+            "SC.CardScan.Want.ScrollUp"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 160,
+        "focus": {
+            "Node.Action.Starting": "アイドル一覧：列表不在顶部，向上滚动一格"
+        },
+        "target": [
+            420,
+            430,
+            130,
+            40
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.List.Settled"
+        ]
+    },
+    "SC.CardScan.List.Settle": {
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Want.Settle"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2000,
+        "focus": {
+            "Node.Recognition.Succeeded": "アイドル一覧：滚轮后列表仍在移动或需按宿主限速等待：不点击，再截一帧（有上限）。"
+        },
+        "next": [
+            "SC.CardScan.Advance"
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ]
+    },
+    "SC.CardScan.List.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Want.Hold"
+        ],
+        "pre_delay": 0,
+        "post_delay": 2000,
+        "max_hit": 2000,
+        "focus": {
+            "Node.Recognition.Succeeded": "アイドル一覧：卡面/排序文字尚未加载或不可读：不点击，再截一帧（有上限）。"
+        },
+        "next": [
+            "SC.CardScan.Advance"
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ]
+    },
+    "SC.CardScan.List.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Want.Exit"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル一覧：扫描结束或停止，按返回键回アイドル页"
+        },
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.Portal.Settled"
+        ]
+    },
+    "SC.CardScan.Portal.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.IdolPortal.Guard",
+            "SC.CardScan.State.Finished"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 300,
+        "max_hit": 2,
+        "focus": {
+            "Node.Action.Starting": "アイドル页：扫描已结束，按返回键回首页"
+        },
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.Home.Settled"
+        ]
+    },
+    "SC.CardScan.Done": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.CardScan.State.Finished"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.CardScan.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "回到首页：保存扫描记录；完整扫描才写审核导入文件（owned-levels.js / inventory-scan.js），不写用户档案。"
+        }
+    },
+    "SC.CardScan.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.CardScan.Stop",
+        "custom_action_param": {
+            "reason": "abort"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "持有卡扫描：未知画面/超时/守卫失败，不再输入，本任务失败（已读部分只存私有记录）。"
+        }
+    },
+    "SC.CardScan.Portal.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.CardScan.Abort"
+        ]
+    },
+    "SC.CardScan.List.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.CardScan.List.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.Advance"
+        ]
+    },
+    "SC.CardScan.List.SupportSettled": {
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Color.SupportTab"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.Advance"
+        ]
+    },
+    "SC.CardScan.List.ProduceSettled": {
+        "recognition": "And",
+        "all_of": [
+            "SC.CardScan.List.Guard",
+            "SC.CardScan.Color.ProduceTab"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.CardScan.Abort"
+        ],
+        "next": [
+            "SC.CardScan.Advance"
+        ]
+    },
+    "SC.CardScan.Home.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "on_error": [
+            "SC.CardScan.Abort"
+        ]
+    },
+    "SC.CardScan.Advance": {
+        "doc": "非输入步骤确认：仅列表进入/标签切换/滚动的后置守卫或Hold等待完成后清除当前决策，再由既有JumpBack返回Main。候选识别和背景动画不会推进扫描。",
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.CardScan.Advance",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "on_error": [
+            "SC.CardScan.Abort"
+        ]
+    }
+}

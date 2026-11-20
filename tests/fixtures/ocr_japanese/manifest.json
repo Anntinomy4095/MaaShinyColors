@@ -1,0 +1,81 @@
+{
+    "samples":  [
+                    {
+                        "expected":  {
+                                         "SC.Daily.ClaimableText":  "受け取る",
+                                         "SC.Daily.CompletedText":  null
+                                     },
+                        "id":  "claimable",
+                        "image":  "claimable.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Daily.ClaimableText":  null,
+                                         "SC.Daily.CompletedText":  "受け取り済み"
+                                     },
+                        "id":  "completed",
+                        "image":  "completed.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Daily.ClaimableText":  null,
+                                         "SC.Daily.CompletedText":  null
+                                     },
+                        "id":  "blank",
+                        "image":  "blank.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Daily.ClaimableText":  null,
+                                         "SC.Daily.CompletedText":  null
+                                     },
+                        "id":  "similar",
+                        "image":  "similar.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Daily.ClaimableText":  null,
+                                         "SC.Daily.CompletedText":  null
+                                     },
+                        "id":  "ambiguous",
+                        "image":  "ambiguous.png"
+                    },
+                    {
+                        "expected":  {
+                                         "SC.Daily.ClaimableText":  null,
+                                         "SC.Daily.CompletedText":  null
+                                     },
+                        "id":  "hard_negative_yugothic",
+                        "image":  "hard_negative_yugothic.png"
+                    }
+                ],
+    "version":  1,
+    "fields":  [
+                   {
+                       "expected":  "^受け取る$",
+                       "threshold":  0.95,
+                       "name":  "SC.Daily.ClaimableText",
+                       "roi":  [
+                                   300,
+                                   240,
+                                   680,
+                                   200
+                               ]
+                   },
+                   {
+                       "expected":  "^受け取り済み$",
+                       "threshold":  0.95,
+                       "name":  "SC.Daily.CompletedText",
+                       "roi":  [
+                                   300,
+                                   240,
+                                   680,
+                                   200
+                               ]
+                   }
+               ],
+    "canvas":  [
+                   1280,
+                   720
+               ]
+}

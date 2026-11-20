@@ -1,0 +1,1052 @@
+{
+    "SC.Popup.LoginBoard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Story.Skip",
+            "SC.Common.Color.SkipUndimmed"
+        ]
+    },
+    "SC.Popup.Announcement.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Announcement.Title",
+            "SC.Common.Anchor.Announcement.Return",
+            "SC.Common.Variant.AnnouncementTab",
+            "SC.Common.Color.BackUndimmed"
+        ]
+    },
+    "SC.Popup.Reward.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Reward.Title",
+            "SC.Common.Anchor.Reward.Body",
+            "SC.Common.Anchor.Reward.Ok"
+        ]
+    },
+    "SC.Popup.EventFanReward.Title": {
+        "recognition": "OCR",
+        "roi": [405, 240, 425, 43],
+        "expected": ["^イベント累計(ファン数)?報酬獲得$"]
+    },
+    "SC.Popup.EventFanReward.Body": {
+        "recognition": "OCR",
+        "roi": [410, 321, 470, 46],
+        "expected": ["^イベント累計(ファン数)?報酬が受け取れます$"]
+    },
+    "SC.Popup.EventFanReward.Ok": {
+        "recognition": "OCR",
+        "roi": [585, 400, 110, 54],
+        "expected": ["^OK$"]
+    },
+    "SC.Popup.EventFanReward.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.EventFanReward.Title",
+            "SC.Popup.EventFanReward.Body",
+            "SC.Popup.EventFanReward.Ok"
+        ]
+    },
+    "SC.Popup.EventFanReward.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.EventFanReward.Title",
+            "SC.Popup.EventFanReward.Body",
+            "SC.Popup.EventFanReward.Ok"
+        ],
+        "action": "Click",
+        "target": [558, 391, 164, 76],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": ["SC.Popup.EventFanReward.Settled"],
+        "on_error": ["SC.Common.FailTask"],
+        "focus": {
+            "Node.Action.Starting": "活动累计（粉丝数）奖励提示：OK 后进入活动页，再返回首页"
+        }
+    },
+    "SC.Popup.EventFanReward.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Popup.ProduceEventHelp.Guard",
+            "SC.Popup.EventFanReceipt.Guard",
+            "SC.Popup.EventMissionReceipt.Guard",
+            "SC.Nav.ProduceEvent.Guard",
+            "SC.Nav.TrainingEvent.Guard",
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.MissionCompleted.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MissionCompleted.Title",
+            "SC.Common.Anchor.MissionCompleted.Body",
+            "SC.Common.Anchor.MissionCompleted.Ok"
+        ]
+    },
+    "SC.Popup.MissionHelp.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MissionHelp.Title",
+            "SC.Common.Anchor.MissionHelp.Page",
+            "SC.Common.Anchor.MissionHelp.Close"
+        ]
+    },
+    "SC.Popup.MatchHelp.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MatchHelp.Title",
+            "SC.Common.Anchor.MatchHelp.Page",
+            "SC.Common.Anchor.MatchHelp.Close"
+        ]
+    },
+    "SC.Popup.TrainingHelp.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.TrainingHelp.Title",
+            "SC.Common.Anchor.TrainingHelp.Page",
+            "SC.Common.Anchor.TrainingHelp.Close"
+        ]
+    },
+    "SC.Popup.FesHelp.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.FesHelp.Title",
+            "SC.Common.Anchor.FesHelp.Page",
+            "SC.Common.Anchor.FesHelp.Icon",
+            "SC.Common.Anchor.FesHelp.Close"
+        ]
+    },
+    "SC.Popup.Pickup.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Pickup.Title",
+            "SC.Common.Anchor.Pickup.Close",
+            "SC.Common.Anchor.Pickup.Details"
+        ]
+    },
+    "SC.Popup.Story.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Story.Skip",
+            "SC.Common.Anchor.Story.Log",
+            "SC.Common.Anchor.Story.Hide"
+        ]
+    },
+    "SC.Popup.Announcement.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Announcement.Title",
+            "SC.Common.Anchor.Announcement.Return",
+            "SC.Common.Variant.AnnouncementTab",
+            "SC.Common.Color.BackUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.Announcement.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭公告页（返回键）"
+        }
+    },
+    "SC.Popup.Announcement.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.Reward.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Reward.Title",
+            "SC.Common.Anchor.Reward.Body",
+            "SC.Common.Anchor.Reward.Ok"
+        ],
+        "action": "Click",
+        "target": [
+            606,
+            481,
+            119,
+            81
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 8,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.Reward.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "确认登录奖励「報酬受け取り」：OK"
+        }
+    },
+    "SC.Popup.Reward.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.MissionCompleted.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MissionCompleted.Title",
+            "SC.Common.Anchor.MissionCompleted.Body",
+            "SC.Common.Anchor.MissionCompleted.Ok"
+        ],
+        "action": "Click",
+        "target": [
+            451,
+            540,
+            105,
+            81
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.MissionCompleted.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "确认「ミッション達成」：OK（不点「ミッションへ」）"
+        }
+    },
+    "SC.Popup.MissionCompleted.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.EventFanReward.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.MissionHelp.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MissionHelp.Title",
+            "SC.Common.Anchor.MissionHelp.Page",
+            "SC.Common.Anchor.MissionHelp.Close"
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            562,
+            85,
+            78
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.MissionHelp.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭首次任务教程：閉じる"
+        }
+    },
+    "SC.Popup.MissionHelp.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.MatchHelp.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MatchHelp.Title",
+            "SC.Common.Anchor.MatchHelp.Page",
+            "SC.Common.Anchor.MatchHelp.Close"
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            562,
+            85,
+            78
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.MatchHelp.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭首次 MATCH LIVE 教程：閉じる"
+        }
+    },
+    "SC.Popup.MatchHelp.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.TrainingHelp.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.TrainingHelp.Title",
+            "SC.Common.Anchor.TrainingHelp.Page",
+            "SC.Common.Anchor.TrainingHelp.Close"
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            562,
+            85,
+            78
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.TrainingHelp.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭首次训练教程：閉じる"
+        }
+    },
+    "SC.Popup.TrainingHelp.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.FesHelp.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.FesHelp.Title",
+            "SC.Common.Anchor.FesHelp.Page",
+            "SC.Common.Anchor.FesHelp.Icon",
+            "SC.Common.Anchor.FesHelp.Close"
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            562,
+            85,
+            78
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.FesHelp.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭首次フェス教程：閉じる"
+        }
+    },
+    "SC.Popup.FesHelp.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.Pickup.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Pickup.Title",
+            "SC.Common.Anchor.Pickup.Close",
+            "SC.Common.Anchor.Pickup.Details"
+        ],
+        "action": "Click",
+        "target": [
+            1091,
+            48,
+            42,
+            38
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.Pickup.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭ピックアップコンテンツ通知：×（不勾选もう表示しない）"
+        }
+    },
+    "SC.Popup.Pickup.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.Story.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Story.Skip",
+            "SC.Common.Anchor.Story.Log",
+            "SC.Common.Anchor.Story.Hide"
+        ],
+        "action": "Click",
+        "target": [
+            1193,
+            33,
+            56,
+            45
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.Story.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "跳过闲置剧情：SKIP"
+        }
+    },
+    "SC.Popup.Story.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.GachaAnnouncement.TopBar": {
+        "doc": "2026-10-27: the full-screen gacha announcement is letterboxed (black bands above and below the art; sparkles of the 10-20 promo leave ~58 %); the cut-in, gacha page and Home have almost none. 2026-10-31 live: the 摩美々 stamp gacha banner has a grey web haze in the top band (33 % at <=20, 73 % at <=40), so the top band takes <=40 (cut-in 24 %, gacha page 5 %, Home 2 %); the bottom band stays <=20",
+        "recognition": "ColorMatch",
+        "roi": [0, 0, 1280, 36],
+        "lower": [0, 0, 0],
+        "upper": [40, 40, 40],
+        "count": 20000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Popup.GachaAnnouncement.BottomBar": {
+        "recognition": "ColorMatch",
+        "roi": [0, 684, 1280, 36],
+        "lower": [0, 0, 0],
+        "upper": [20, 20, 20],
+        "count": 20000,
+        "method": 4,
+        "connected": false
+    },
+    "SC.Popup.GachaAnnouncement.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.GachaAnnouncement.TopBar",
+            "SC.Popup.GachaAnnouncement.BottomBar",
+            "SC.Common.Anchor.GachaAnnouncement.Period",
+            "SC.Common.Anchor.GachaAnnouncement.Title"
+        ]
+    },
+    "SC.Popup.GachaAnnouncement.Close": {
+        "enabled": false,
+        "doc": "2026-10-27 user: Maa closes the announcement itself. One tap on the plain band below the 開催期間 pill (no button there; the gacha page, whose draw button sits near this spot, has no letterbox). A tap that leaves the banner is not repeated (Settled excludes it); ≤3 per task for banners that follow later cut-ins",
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.GachaAnnouncement.TopBar",
+            "SC.Popup.GachaAnnouncement.BottomBar",
+            "SC.Common.Anchor.GachaAnnouncement.Period",
+            "SC.Common.Anchor.GachaAnnouncement.Title"
+        ],
+        "action": "Click",
+        "target": [560, 640, 160, 22],
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.GachaAnnouncement.Settled"
+        ],
+        "on_error": [
+            "SC.Common.Stop.GachaAnnouncement",
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭卡池公告：点公告下方空白处"
+        }
+    },
+    "SC.Popup.GachaAnnouncement.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.EventFanReward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.Birthday.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Nav.Gacha.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "公告已关闭（下一张公告先出过场，由 SKIP 处理）；进了ガシャ页则由返回键退出。点后公告没变：不再点击，停止。"
+        }
+    },
+    "SC.Popup.NewGacha.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.NewGacha.SkipAll",
+            "SC.Common.Anchor.NewGacha.Skip",
+            "SC.Common.Color.SkipUndimmed"
+        ]
+    },
+    "SC.Popup.NewGacha.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.NewGacha.SkipAll",
+            "SC.Common.Anchor.NewGacha.Skip",
+            "SC.Common.Color.SkipUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            1186,
+            78,
+            70,
+            15
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 4,
+        "timeout": 30000,
+        "next": [
+            "SC.Popup.NewGacha.Settled"
+        ],
+        "on_error": [
+            "SC.Common.Stop.GachaAnnouncement",
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "跳过预告：SKIP"
+        }
+    },
+    "SC.Popup.NewGacha.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "SKIP 后已到达另一个已知画面（含 SKIP 后留下的卡池公告）；ガシャ页等未知画面不在此列 → 超时失败。"
+        }
+    },
+    "SC.Popup.FesResume.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.FesResume.Title",
+            "SC.Common.Anchor.FesResume.Text",
+            "SC.Common.Anchor.FesResume.EndLabel",
+            "SC.Common.Anchor.FesResume.ResumeLabel"
+        ]
+    },
+    "SC.Popup.FesResume.Stop": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Popup.FesResume.Guard"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.FailTask",
+        "custom_action_param": {
+            "reason": "fes_resume_pending_never_closed"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "フェス再開（进行中的 Fes Live）：不是可自动关闭的弹窗——「終了」会放弃已消耗的参加权，永不点击；只有 GradeFes 任务会点「再開」。本任务不点击、失败。"
+        }
+    },
+    "SC.Popup.MatchSeason.Guard": {
+        "doc": "2026-10-31: 「マッチライブ更新」 after a season switch (ranking titles already granted; only 閉じる). Left open it stopped Match, then Missions and Business (live-20261031/match-season-update.png)",
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MatchSeason.Title",
+            "SC.Common.Anchor.MatchSeason.Body",
+            "SC.Common.Anchor.MatchSeason.Close"
+        ]
+    },
+    "SC.Popup.MatchSeason.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.MatchSeason.Title",
+            "SC.Common.Anchor.MatchSeason.Body",
+            "SC.Common.Anchor.MatchSeason.Close"
+        ],
+        "action": "Click",
+        "target": [
+            600,
+            526,
+            80,
+            44
+        ],
+        "pre_delay": 0,
+        "post_delay": 800,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.MatchSeason.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭「マッチライブ更新」：閉じる"
+        }
+    },
+    "SC.Popup.MatchSeason.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Loading.Present",
+            "SC.Common.Home.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "「マッチライブ更新」已关闭；没关掉：不再点击，结束任务。"
+        }
+    },
+    "SC.Popup.CloseKnown": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.EventFanReward.Guard",
+            "SC.Popup.FesPeriodReward.Guard",
+            "SC.Popup.Birthday.Guard",
+            "SC.Popup.ProduceEventHelp.Guard",
+            "SC.Popup.EventFanReceipt.Guard",
+            "SC.Popup.EventMissionReceipt.Guard",
+            "SC.Popup.ScenarioPlay.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.MatchSeason.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.AnyHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Popup.FesResume.Guard",
+            "SC.Training.ResultAny.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Popup.Announcement.Close",
+            "SC.Popup.Reward.Close",
+            "SC.Popup.EventFanReward.Close",
+            "SC.Popup.FesPeriodReward.Close",
+            "SC.Popup.Birthday.Close",
+            "SC.Popup.ProduceEventHelp.Close",
+            "SC.Popup.EventFanReceipt.Close",
+            "SC.Popup.EventMissionReceipt.Close",
+            "SC.Popup.ScenarioPlay.Cancel",
+            "SC.Popup.MissionCompleted.Close",
+            "SC.Popup.MissionHelp.Close",
+            "SC.Popup.MatchHelp.Close",
+            "SC.Popup.MatchSeason.Close",
+            "SC.Popup.TrainingHelp.Close",
+            "SC.Popup.FesHelp.Close",
+            "SC.Popup.AnyHelp.Close",
+            "SC.Popup.Pickup.Close",
+            "SC.Popup.NewGacha.Close",
+            "SC.Popup.GachaAnnouncement.Close",
+            "SC.Common.Stop.GachaAnnouncement",
+            "SC.Popup.Story.Close",
+            "SC.Popup.FesResume.Stop",
+            "SC.Training.Result.Close",
+            "SC.Popup.NotHandled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ]
+    },
+    "SC.Popup.NotHandled": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "已识别白名单弹窗，但关闭节点未启用或已达次数上限：不点击，结束任务。"
+        }
+    },
+    "SC.Popup.AnyHelp.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.AnyHelp.Icon",
+            "SC.Common.Anchor.AnyHelp.CloseLabel",
+            "SC.Common.Anchor.AnyHelp.Close"
+        ]
+    },
+    "SC.Popup.AnyHelp.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.AnyHelp.Icon",
+            "SC.Common.Anchor.AnyHelp.CloseLabel",
+            "SC.Common.Anchor.AnyHelp.Close"
+        ],
+        "action": "Click",
+        "target": [
+            640,
+            562,
+            85,
+            78
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Popup.AnyHelp.Settled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ],
+        "focus": {
+            "Node.Action.Starting": "关闭首次教程：閉じる"
+        }
+    },
+    "SC.Popup.AnyHelp.Settled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Home.Guard",
+            "SC.Loading.Present",
+            "SC.Popup.LoginBoard",
+            "SC.Popup.Announcement.Guard",
+            "SC.Popup.Reward.Guard",
+            "SC.Popup.MissionCompleted.Guard",
+            "SC.Popup.MissionHelp.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.TrainingHelp.Guard",
+            "SC.Popup.Pickup.Guard",
+            "SC.Popup.Story.Guard",
+            "SC.Popup.NewGacha.Guard",
+            "SC.Popup.GachaAnnouncement.Guard",
+            "SC.Nav.Mission.Guard",
+            "SC.Nav.IdolPortal.Guard",
+            "SC.Nav.TrainingList.Guard",
+            "SC.Nav.TrainingSelected.Guard",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Nav.FesMain.Guard",
+            "SC.Nav.ShopList.Guard",
+            "SC.Popup.FesHelp.Guard",
+            "SC.Popup.ProduceEventHelp.Guard",
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Nav.Present.Guard",
+            "SC.Nav.IdolList.Guard",
+            "SC.Nav.KnowhowList.Guard",
+            "SC.Nav.Business.Guard",
+            "SC.Nav.MatchStages.Guard",
+            "SC.Nav.GradeDifficulty.Guard",
+            "SC.Nav.GradeUnit.Guard",
+            "SC.Nav.ProduceSelect.Guard",
+            "SC.Nav.ProduceUnit.Guard",
+            "SC.Nav.ProduceItem.Guard",
+            "SC.Nav.ItemList.Guard",
+            "SC.Nav.Gacha.Guard",
+            "SC.Nav.ShopPremium.Guard",
+            "SC.Nav.AutoSchedule.Guard",
+            "SC.Nav.TrainingEvent.Guard",
+            "SC.Nav.CollaboEvent.Guard",
+            "SC.Nav.CollaboDifficulty.Guard",
+            "SC.Nav.CollaboUnit.Guard",
+            "SC.Nav.ProduceEvent.Guard",
+            "SC.Nav.ScenarioEvent.Guard",
+            "SC.Collabo.Home.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Popup.HelpFallback": {
+        "doc": "2026-11-23：日常任务等待节点的末尾兜底（agent/core/popup_fallback.py 在载入时加入）。先查小块头像模板，普通页面在第一步即不命中，代价很低。",
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.AnyHelp.Icon",
+            "SC.Common.Anchor.AnyHelp.Close",
+            "SC.Common.Anchor.AnyHelp.CloseLabel"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Popup.AnyHelp.Close",
+            "SC.Popup.NotHandled"
+        ],
+        "on_error": [
+            "SC.Common.FailTask"
+        ]
+    }
+}

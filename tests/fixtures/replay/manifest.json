@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "canvas": [
+    1280,
+    720
+  ],
+  "scenes": [
+    {
+      "name": "SC.Replay.Ready",
+      "recognition": "ColorMatch",
+      "roi": [
+        430,
+        380,
+        420,
+        160
+      ],
+      "lower": [
+        10,
+        145,
+        55
+      ],
+      "upper": [
+        35,
+        180,
+        95
+      ],
+      "count": 30000
+    },
+    {
+      "name": "SC.Replay.Complete",
+      "recognition": "ColorMatch",
+      "roi": [
+        320,
+        250,
+        640,
+        130
+      ],
+      "lower": [
+        25,
+        85,
+        215
+      ],
+      "upper": [
+        50,
+        115,
+        255
+      ],
+      "count": 45000
+    }
+  ],
+  "samples": [
+    {
+      "id": "ready",
+      "image": "ready.png",
+      "expected": {
+        "scene": "SC.Replay.Ready",
+        "allowed": true,
+        "reason": "positive_guard"
+      }
+    },
+    {
+      "id": "similar_wrong_color",
+      "image": "similar_wrong_color.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "unknown_state"
+      }
+    },
+    {
+      "id": "partial",
+      "image": "partial.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "unknown_state"
+      }
+    },
+    {
+      "id": "unknown",
+      "image": "unknown.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "unknown_state"
+      }
+    },
+    {
+      "id": "invalid_size",
+      "image": "invalid_size.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "invalid_dimensions"
+      }
+    },
+    {
+      "id": "complete",
+      "image": "complete.png",
+      "expected": {
+        "scene": "SC.Replay.Complete",
+        "allowed": true,
+        "reason": "positive_guard"
+      }
+    },
+    {
+      "id": "ambiguous",
+      "image": "ambiguous.png",
+      "expected": {
+        "scene": null,
+        "allowed": false,
+        "reason": "ambiguous_state"
+      }
+    }
+  ]
+}

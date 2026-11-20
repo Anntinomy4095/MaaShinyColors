@@ -1,0 +1,2583 @@
+{
+    "SC.Match.State.Active": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "active"
+        }
+    },
+    "SC.Match.State.Finished": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        }
+    },
+    "SC.Match.State.Halted": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        }
+    },
+    "SC.Match.State.CancelSkip": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "cancel_skip"
+        }
+    },
+    "SC.Match.Plan.OpenSkip": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "open_skip"
+        }
+    },
+    "SC.Match.Config.Stage": {
+        "recognition": "DirectHit",
+        "attach": {
+            "stage": "latest"
+        }
+    },
+    "SC.Match.Config.Count": {
+        "recognition": "DirectHit",
+        "attach": {
+            "count": 20,
+            "count_mode": "all"
+        }
+    },
+    "SC.Match.Config.Reserve": {
+        "recognition": "DirectHit",
+        "attach": {
+            "rights_reserve": 0
+        }
+    },
+    "SC.Match.Config.Recovery": {
+        "recognition": "DirectHit",
+        "attach": {
+            "use_recovery_tickets": false
+        }
+    },
+    "SC.Match.Config.RecoveryCap": {
+        "recognition": "DirectHit",
+        "attach": {
+            "recovery_cap": 1
+        }
+    },
+    "SC.Match.Config.Sample": {
+        "recognition": "DirectHit",
+        "attach": {
+            "sample_only": true
+        }
+    },
+    "SC.Match.Config.Play": {
+        "recognition": "DirectHit",
+        "attach": {
+            "play": "advance"
+        }
+    },
+    "SC.Match.Config.Unit": {
+        "recognition": "DirectHit",
+        "attach": {
+            "unit": 0
+        }
+    },
+    "SC.Match.Config.Retries": {
+        "recognition": "DirectHit",
+        "attach": {
+            "retries": 3
+        }
+    },
+    "SC.Match.Entry": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Match.Begin",
+        "custom_action_param": {
+            "config_nodes": [
+                "SC.Match.Config.Stage",
+                "SC.Match.Config.Count",
+                "SC.Match.Config.Reserve",
+                "SC.Match.Config.Recovery",
+                "SC.Match.Config.RecoveryCap",
+                "SC.Match.Config.Sample",
+                "SC.Match.Config.Play",
+                "SC.Match.Config.Unit",
+                "SC.Match.Config.Retries"
+            ]
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Match.Main"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Match：读取配置；推进模式先打下一未通关关卡（ライブ開始），再按最新关跳过剩余参加权；消费需本轮授权。"
+        }
+    },
+    "SC.Match.Main": {
+        "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 60000,
+        "next": [
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait",
+            "SC.Match.Halt",
+            "SC.Match.Done",
+            "SC.Match.Play.Observe",
+            "[JumpBack]SC.Match.Play.AreaNext",
+            "[JumpBack]SC.Match.Play.AreaOpen",
+            "[JumpBack]SC.Match.Play.StageDecide",
+            "[JumpBack]SC.Match.Play.StageBack",
+            "[JumpBack]SC.Match.Play.UnitOpen",
+            "[JumpBack]SC.Match.Play.UnitTab1",
+            "[JumpBack]SC.Match.Play.UnitTab2",
+            "[JumpBack]SC.Match.Play.UnitTab3",
+            "[JumpBack]SC.Match.Play.UnitTab4",
+            "[JumpBack]SC.Match.Play.UnitTab5",
+            "[JumpBack]SC.Match.Play.UnitTab6",
+            "[JumpBack]SC.Match.Play.UnitTab7",
+            "[JumpBack]SC.Match.Play.UnitTab8",
+            "[JumpBack]SC.Match.Play.UnitTab9",
+            "[JumpBack]SC.Match.Play.UnitTab10",
+            "[JumpBack]SC.Match.Play.Omakase",
+            "[JumpBack]SC.Match.Play.UnitBack",
+            "[JumpBack]SC.Match.Play.InfoBack",
+            "[JumpBack]SC.Match.Play.LiveStart",
+            "[JumpBack]SC.Match.Play.Touch",
+            "[JumpBack]SC.Match.Play.Skip",
+            "[JumpBack]SC.Match.Play.NextStage",
+            "[JumpBack]SC.Match.Play.AreaSelect",
+            "[JumpBack]SC.Match.Play.LoseClose",
+            "[JumpBack]SC.Match.Play.Wait",
+            "[JumpBack]SC.Match.Skip.Result.Close",
+            "[JumpBack]SC.Match.Watch.Concluded",
+            "[JumpBack]SC.Match.Skip.Start",
+            "[JumpBack]SC.Match.Skip.Review",
+            "[JumpBack]SC.Match.Skip.Clear",
+            "[JumpBack]SC.Match.Skip.ReviewCancel",
+            "[JumpBack]SC.Match.Skip.Cancel",
+            "[JumpBack]SC.Match.Skip.Plus1",
+            "[JumpBack]SC.Match.Skip.Plus2",
+            "[JumpBack]SC.Match.Skip.Plus3",
+            "[JumpBack]SC.Match.Skip.Plus4",
+            "[JumpBack]SC.Match.Skip.Plus5",
+            "[JumpBack]SC.Match.Skip.Plus6",
+            "[JumpBack]SC.Match.Skip.ScrollDown",
+            "[JumpBack]SC.Match.Skip.ScrollUp",
+            "[JumpBack]SC.Match.Skip.Sample",
+            "[JumpBack]SC.Match.Skip.Hold",
+            "SC.Match.Finish",
+            "[JumpBack]SC.Match.Latest.AreaUp",
+            "[JumpBack]SC.Match.Latest.AreaDown",
+            "[JumpBack]SC.Match.Latest.AreaOpen",
+            "[JumpBack]SC.Match.Latest.Back",
+            "[JumpBack]SC.Match.Latest.Hold",
+            "[JumpBack]SC.Match.Leave",
+            "[JumpBack]SC.Match.Main.OpenSkip",
+            "[JumpBack]SC.Match.Menu.Match",
+            "[JumpBack]SC.Match.AtHome",
+            "[JumpBack]SC.Nav.BackOne"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "Match：按当前画面判断下一步（弹窗→スキップ弹窗→Match主页→フェス弹层→首页）。"
+        }
+    },
+    "SC.Match.AtHome": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Match.State.Active"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Match.HomeClean"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ]
+    },
+    "SC.Match.HomeClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Match.OpenFes"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "首页干净（与 SC.Common.HomeClean 相同的外来锚点清单）。"
+        }
+    },
+    "SC.Match.OpenFes": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed"
+        ],
+        "action": "Click",
+        "target": [
+            1130,
+            606,
+            120,
+            29
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Fes.Opened"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "首页：点击「フェス」打开弹层（每次任务最多 2 次）。"
+        }
+    },
+    "SC.Match.Fes.Opened": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Fes.Menu.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Match.Menu.Match": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Fes.Menu.Guard",
+            "SC.Match.State.Active"
+        ],
+        "action": "Click",
+        "target": [
+            978,
+            508,
+            134,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Menu.Tapped"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェス弹层：点击「マッチライブ」。"
+        }
+    },
+    "SC.Match.Menu.Tapped": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Popup.MatchHelp.Guard",
+            "SC.Popup.MatchSeason.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Match.Main.OpenSkip": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Match.Plan.OpenSkip"
+        ],
+        "action": "Click",
+        "target": [
+            1130,
+            520,
+            120,
+            25
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Opened"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Match 主页：已读参加权计数，点击「スキップ」打开弹窗（非消费）。"
+        }
+    },
+    "SC.Match.Skip.Opened": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Match.Skip.Sample": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Sample",
+        "custom_recognition_param": {},
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 12,
+        "focus": {
+            "Node.Recognition.Succeeded": "スキップ弹窗：只读保存一帧（不点击任何数量/スキップする/参加権回復）。"
+        }
+    },
+    "SC.Match.Skip.Cancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.State.CancelSkip"
+        ],
+        "action": "Click",
+        "target": [
+            382,
+            621,
+            69,
+            38
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Cancelled"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：采样完成或核对结束，点「キャンセル」（非消费）。"
+        }
+    },
+    "SC.Match.Skip.Cancelled": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Loading.Present"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Match.Finish": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Common.Anchor.Home.FesText",
+            "SC.Common.Variant.HomeMission",
+            "SC.Common.Color.HomeUndimmed",
+            "SC.Match.State.Finished"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "next": [
+            "SC.Match.FinishClean",
+            "[JumpBack]SC.Popup.CloseKnown",
+            "[JumpBack]SC.Loading.Wait"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ]
+    },
+    "SC.Match.FinishClean": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Common.Presence.Announcement.Title",
+            "SC.Common.Presence.Announcement.ListHeading",
+            "SC.Common.Presence.Announcement.TopicsSelected",
+            "SC.Common.Presence.Reward.Title",
+            "SC.Common.Presence.Reward.Body",
+            "SC.Common.Presence.Loading.Text",
+            "SC.Common.Presence.Loading.Feather",
+            "SC.Common.Presence.Mission.Title",
+            "SC.Common.Presence.Mission.DailyTab",
+            "SC.Common.Presence.IdolPortal.Title",
+            "SC.Common.Presence.IdolPortal.TrainingEntry",
+            "SC.Common.Presence.IdolPortal.TrainingEntryNative",
+            "SC.Common.Presence.TrainingList.Title",
+            "SC.Common.Presence.TrainingList.SupportTab",
+            "SC.Common.Presence.TrainingList.SupportTabNative",
+            "SC.Common.Presence.TrainingList.AsahiPortrait",
+            "SC.Common.Presence.TrainingSelected.CardName",
+            "SC.Common.Presence.TrainingSelected.Portrait",
+            "SC.Common.Presence.MissionCompleted.Title",
+            "SC.Common.Presence.MissionCompleted.Body",
+            "SC.Common.Presence.MissionHelp.Title",
+            "SC.Common.Presence.MatchHelp.Title",
+            "SC.Common.Presence.TrainingHelp.Title",
+            "SC.Common.Presence.FesHelp.Title",
+            "SC.Common.Presence.FesHelp.Icon",
+            "SC.Common.Presence.Pickup.Title",
+            "SC.Common.Presence.Pickup.Details",
+            "SC.Common.Presence.Story.Skip",
+            "SC.Common.Presence.Story.Log",
+            "SC.Common.Presence.Story.Hide",
+            "SC.Common.Presence.MatchMain.Title",
+            "SC.Common.Presence.MatchMain.AreaPrompt",
+            "SC.Common.Presence.MatchMain.SkipTarget",
+            "SC.Common.Presence.FesMenu.MatchLabel",
+            "SC.Common.Presence.FesMenu.GradeLabel",
+            "SC.Common.Presence.FesMain.Title",
+            "SC.Common.Presence.FesMain.UnitButton",
+            "SC.Common.Presence.FesMain.JoinLabel",
+            "SC.Common.Presence.ShopList.Title",
+            "SC.Common.Presence.ShopList.MoneySelected",
+            "SC.Common.Presence.ShopList.AllSelected"
+        ],
+        "inverse": true,
+        "action": "Custom",
+        "custom_action": "SC.Match.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000,
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "已回到干净首页：写出Match报告并结束任务。"
+        }
+    },
+    "SC.Match.Leave": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "finished"
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "SC.Common.GoHome"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "Match已有结论：返回首页。"
+        }
+    },
+    "SC.Match.Halt": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "halted"
+        },
+        "action": "Custom",
+        "custom_action": "SC.Match.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Match：结论要求立即停止（不再点击），本任务失败。"
+        }
+    },
+    "SC.Match.Abort": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Match.Abort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "Match：未知画面/超时/核对失败，不再点击，本任务失败（下一任务照常）。"
+        }
+    },
+    "SC.Match.State.NeedClear": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "need_clear"
+        }
+    },
+    "SC.Match.State.Waiting": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "waiting"
+        }
+    },
+    "SC.Match.State.Observed": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "observed"
+        }
+    },
+    "SC.Match.Plan.Plus1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "plus",
+            "slot": 1
+        }
+    },
+    "SC.Match.Skip.Plus1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Plan.Plus1"
+        ],
+        "action": "Click",
+        "target": true,
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 20,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：目标关卡在第 1 格，计数与参加権消費数已核对，点「+」一次（非消费；每轮 ≤20 次，宿主每动作每分钟上限 30 次）。"
+        },
+        "box_index": 1
+    },
+    "SC.Match.Plan.Plus2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "plus",
+            "slot": 2
+        }
+    },
+    "SC.Match.Skip.Plus2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Plan.Plus2"
+        ],
+        "action": "Click",
+        "target": true,
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 20,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：目标关卡在第 2 格，计数与参加権消費数已核对，点「+」一次（非消费；每轮 ≤20 次，宿主每动作每分钟上限 30 次）。"
+        },
+        "box_index": 1
+    },
+    "SC.Match.Plan.Plus3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "plus",
+            "slot": 3
+        }
+    },
+    "SC.Match.Skip.Plus3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Plan.Plus3"
+        ],
+        "action": "Click",
+        "target": true,
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 20,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：目标关卡在第 3 格，计数与参加権消費数已核对，点「+」一次（非消费；每轮 ≤20 次，宿主每动作每分钟上限 30 次）。"
+        },
+        "box_index": 1
+    },
+    "SC.Match.Plan.Plus4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "plus",
+            "slot": 4
+        }
+    },
+    "SC.Match.Skip.Plus4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Plan.Plus4"
+        ],
+        "action": "Click",
+        "target": true,
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 20,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：目标关卡在第 4 格，计数与参加権消費数已核对，点「+」一次（非消费；每轮 ≤20 次，宿主每动作每分钟上限 30 次）。"
+        },
+        "box_index": 1
+    },
+    "SC.Match.Plan.Plus5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "plus",
+            "slot": 5
+        }
+    },
+    "SC.Match.Skip.Plus5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Plan.Plus5"
+        ],
+        "action": "Click",
+        "target": true,
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 20,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：目标关卡在第 5 格，计数与参加権消費数已核对，点「+」一次（非消费；每轮 ≤20 次，宿主每动作每分钟上限 30 次）。"
+        },
+        "box_index": 1
+    },
+    "SC.Match.Plan.Plus6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "plus",
+            "slot": 6
+        }
+    },
+    "SC.Match.Skip.Plus6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Plan.Plus6"
+        ],
+        "action": "Click",
+        "target": true,
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 20,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：目标关卡在第 6 格，计数与参加権消費数已核对，点「+」一次（非消费；每轮 ≤20 次，宿主每动作每分钟上限 30 次）。"
+        },
+        "box_index": 1
+    },
+    "SC.Match.Plan.ScrollDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "scroll_down"
+        }
+    },
+    "SC.Match.Plan.ScrollUp": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Plan",
+        "custom_recognition_param": {
+            "step": "scroll_up"
+        }
+    },
+    "SC.Match.Skip.ScrollDown": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Plan.ScrollDown"
+        ],
+        "action": "Click",
+        "target": [
+            170,
+            232,
+            88,
+            56
+        ],
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 16,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：列表向下滚动一次（滚轮，无按键）读取更多关卡。滚后等列表连续两帧一致再读。"
+        }
+    },
+    "SC.Match.Skip.ScrollUp": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Plan.ScrollUp"
+        ],
+        "action": "Click",
+        "target": [
+            170,
+            360,
+            88,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 1000,
+        "max_hit": 16,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：列表向上滚动一次，回到目标关卡。滚后等列表连续两帧一致再读。"
+        }
+    },
+    "SC.Match.Skip.Changed": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.MatchSkip.Guard"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Match.Advance",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "on_error": [
+            "SC.Match.Skip.Failed"
+        ]
+    },
+    "SC.Match.Skip.Clear": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.State.NeedClear"
+        ],
+        "action": "Click",
+        "target": [
+            560,
+            600,
+            79,
+            57
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 2,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗：核对不通过，先点「クリア」把所有数量归零（非消费）。"
+        }
+    },
+    "SC.Match.Check.Confirm": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Check",
+        "custom_recognition_param": {
+            "stage": "start"
+        }
+    },
+    "SC.Match.Watch.Concluded": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Watch",
+        "custom_recognition_param": {},
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Recognition.Succeeded": "最终开始后：Match首页参加权减少了设定次数，记录本批完成。"
+        }
+    },
+    "SC.Match.Done": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "observed"
+        },
+        "action": "Custom",
+        "custom_action": "SC.Match.Finish",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "スキップする 之后已识别到已知画面：写出报告并结束（消耗后不再点击）。"
+        }
+    },
+    "SC.Match.SpendError": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Match.SpendError",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "スキップする 后 30 s 内未识别到已知画面：记为不确定消耗，不重试，已保存帧。"
+        }
+    },
+    "SC.Match.Skip.Hold": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.State.Waiting"
+        ],
+        "action": "Custom",
+        "custom_action": "SC.Match.Advance",
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 60,
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "スキップ弹窗读数尚未稳定：再截一帧。"
+        }
+    },
+    "SC.Match.Skip.Failed": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Match.MarkAbort",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "next": [
+            "SC.Match.Main"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ弹窗内的非消费点击失败：转入 クリア→キャンセル 收尾，本任务失败。"
+        }
+    },
+    "SC.Match.Review.Title": {
+        "recognition": "OCR",
+        "expected": [
+            "スキップ確認"
+        ],
+        "roi": [
+            410,
+            42,
+            185,
+            43
+        ],
+        "threshold": 0.95
+    },
+    "SC.Match.Review.Prompt": {
+        "recognition": "OCR",
+        "expected": [
+            "フェス参加権を消費して"
+        ],
+        "roi": [
+            373,
+            114,
+            528,
+            54
+        ],
+        "threshold": 0.95
+    },
+    "SC.Match.Review.Cancel": {
+        "recognition": "OCR",
+        "expected": [
+            "キャンセル"
+        ],
+        "roi": [
+            466,
+            595,
+            147,
+            44
+        ],
+        "threshold": 0.95
+    },
+    "SC.Match.Review.Start": {
+        "recognition": "OCR",
+        "expected": [
+            "スキップ開始"
+        ],
+        "roi": [
+            658,
+            595,
+            163,
+            44
+        ],
+        "threshold": 0.95
+    },
+    "SC.Match.Review.Header": {
+        "recognition": "OCR",
+        "expected": [
+            "エリア[0-9]{1,2}.*ステージ[0-9]{1,3}"
+        ],
+        "roi": [
+            393,
+            191,
+            310,
+            28
+        ],
+        "threshold": 0.95,
+        "only_rec": true
+    },
+    "SC.Match.Review.Count": {
+        "recognition": "OCR",
+        "expected": [
+            "[0-9]{1,2}"
+        ],
+        "roi": [
+            735,
+            254,
+            110,
+            38
+        ],
+        "threshold": 0.95,
+        "only_rec": true
+    },
+    "SC.Match.Review.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Review.Title",
+            "SC.Match.Review.Prompt",
+            "SC.Match.Review.Cancel",
+            "SC.Match.Review.Start",
+            "SC.Match.Review.Header",
+            "SC.Match.Review.Count"
+        ]
+    },
+    "SC.Match.Check.Review": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Check",
+        "custom_recognition_param": {
+            "stage": "confirm"
+        }
+    },
+    "SC.Match.Skip.Review": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Match.Check.Review"
+        ],
+        "action": "Click",
+        "target": [
+            856,
+            586,
+            42,
+            70
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.Match.Skip.Start",
+            "SC.Match.Skip.ReviewCancel"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "选定关卡、次数和费用已核对：打开「スキップ確認」（不消费）。"
+        },
+        "rate_limit": 1500
+    },
+    "SC.Match.State.CancelReview": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "cancel_review"
+        }
+    },
+    "SC.Match.Skip.ReviewCancel": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Review.Guard",
+            "SC.Match.State.CancelReview"
+        ],
+        "action": "Click",
+        "target": [
+            470,
+            600,
+            86,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 600,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Skip.ReviewClosed"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "スキップ確認：核对不通过或上次留下，点「キャンセル」（不消耗）。"
+        }
+    },
+    "SC.Match.Skip.ReviewClosed": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Nav.MatchSkip.Guard",
+            "SC.Nav.MatchMain.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Match.Skip.Start": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Review.Guard",
+            "SC.Match.Check.Confirm"
+        ],
+        "action": "Click",
+        "target": [
+            656,
+            583,
+            165,
+            75
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.Match.Skip.Result.Close",
+            "SC.Match.Watch.Concluded"
+        ],
+        "on_error": [
+            "SC.Match.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "最终确认框：唯一关卡、次数和费用再次核对，点击「スキップ開始」消耗参加权。"
+        },
+        "rate_limit": 1500
+    },
+    "SC.Match.Result.Title": {
+        "recognition": "OCR",
+        "expected": [
+            "スキップ結果"
+        ],
+        "roi": [
+            268,
+            67,
+            180,
+            42
+        ],
+        "threshold": 0.95
+    },
+    "SC.Match.Result.CloseLabel": {
+        "recognition": "OCR",
+        "expected": [
+            "閉じる"
+        ],
+        "roi": [
+            597,
+            581,
+            90,
+            38
+        ],
+        "threshold": 0.95
+    },
+    "SC.Match.Result.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Result.Title",
+            "SC.Match.Result.CloseLabel"
+        ]
+    },
+    "SC.Match.State.PendingReceipt": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.State",
+        "custom_recognition_param": {
+            "is": "pending_receipt"
+        }
+    },
+    "SC.Match.Skip.Result.Close": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Result.Guard",
+            "SC.Match.State.PendingReceipt"
+        ],
+        "action": "Click",
+        "target": [
+            557,
+            563,
+            163,
+            75
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "max_hit": 1,
+        "timeout": 30000,
+        "next": [
+            "SC.Match.Skip.Cancel"
+        ],
+        "on_error": [
+            "SC.Match.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "已识别跳过结果：关闭收据、退出列表，回 Match 首页核对参加权扣除。"
+        }
+    },
+    "SC.Match.Latest.Stage.Title": {
+        "recognition": "OCR",
+        "roi": [
+            39,
+            10,
+            200,
+            49
+        ],
+        "expected": [
+            "^ステージ選択$"
+        ],
+        "threshold": 0.95
+    },
+    "SC.Match.Latest.Stage.Area": {
+        "recognition": "OCR",
+        "roi": [
+            32,
+            92,
+            110,
+            38
+        ],
+        "expected": [
+            "^エリア[1-7]$"
+        ],
+        "threshold": 0.95
+    },
+    "SC.Match.Latest.Stage.Undimmed": {
+        "recognition": "ColorMatch",
+        "roi": [
+            26,
+            432,
+            513,
+            48
+        ],
+        "lower": [
+            235,
+            235,
+            235
+        ],
+        "upper": [
+            255,
+            255,
+            255
+        ],
+        "count": 4000
+    },
+    "SC.Match.Latest.Stage.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Latest.Stage.Title",
+            "SC.Match.Latest.Stage.Area",
+            "SC.Match.Latest.Stage.Undimmed"
+        ]
+    },
+    "SC.Match.Latest.Plan.AreaUp": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Latest.Plan",
+        "custom_recognition_param": {
+            "step": "area_up"
+        }
+    },
+    "SC.Match.Latest.AreaUp": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Match.Latest.Plan.AreaUp"
+        ],
+        "action": "Click",
+        "target": [
+            184,
+            86,
+            50,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 18,
+        "timeout": 5000,
+        "next": [
+            "SC.Match.Latest.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Latest.Error"
+        ]
+    },
+    "SC.Match.Latest.Plan.AreaDown": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Latest.Plan",
+        "custom_recognition_param": {
+            "step": "area_down"
+        }
+    },
+    "SC.Match.Latest.AreaDown": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Match.Latest.Plan.AreaDown"
+        ],
+        "action": "Click",
+        "target": [
+            184,
+            636,
+            50,
+            60
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 18,
+        "timeout": 5000,
+        "next": [
+            "SC.Match.Latest.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Latest.Error"
+        ]
+    },
+    "SC.Match.Latest.Plan.AreaOpen": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Latest.Plan",
+        "custom_recognition_param": {
+            "step": "area_open"
+        }
+    },
+    "SC.Match.Latest.AreaOpen": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Match.Latest.Plan.AreaOpen"
+        ],
+        "action": "Click",
+        "target": [
+            36,
+            270,
+            340,
+            47
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Match.Latest.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Latest.Error"
+        ]
+    },
+    "SC.Match.Latest.Plan.Back": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Latest.Plan",
+        "custom_recognition_param": {
+            "step": "back"
+        }
+    },
+    "SC.Match.Latest.Back": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Latest.Stage.Guard",
+            "SC.Match.Latest.Plan.Back"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            627,
+            75,
+            71
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 1,
+        "timeout": 5000,
+        "next": [
+            "SC.Match.Latest.Changed"
+        ],
+        "on_error": [
+            "SC.Match.Latest.Error"
+        ]
+    },
+    "SC.Match.Latest.Hold": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Latest.Plan",
+        "custom_recognition_param": {
+            "step": "hold"
+        },
+        "post_delay": 700,
+        "next": [
+            "SC.Match.Latest.Changed"
+        ]
+    },
+    "SC.Match.Latest.Changed": {
+        "recognition": "Or",
+        "any_of": ["SC.Nav.MatchMain.Guard", "SC.Match.Latest.Stage.Guard"],
+        "action": "Custom",
+        "custom_action": "SC.Match.Latest.Advance",
+        "custom_action_param": {},
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Match.Latest.Error": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Match.Latest.Error",
+        "custom_action_param": {},
+        "next": [
+            "SC.Match.Main"
+        ]
+    },
+    "SC.Match.Play.Anchor.InfoTitle": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            12,
+            240,
+            48
+        ],
+        "expected": [
+            "^マッチライブ詳細$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.LiveStart": {
+        "recognition": "OCR",
+        "roi": [
+            1095,
+            622,
+            165,
+            50
+        ],
+        "expected": [
+            "^ライブ開始$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.UnitButton": {
+        "recognition": "OCR",
+        "roi": [
+            28,
+            352,
+            225,
+            47
+        ],
+        "expected": [
+            "マッチライブユニット編成"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Info.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Anchor.InfoTitle",
+            "SC.Match.Play.Anchor.LiveStart",
+            "SC.Match.Play.Anchor.UnitButton"
+        ]
+    },
+    "SC.Match.Play.Anchor.UnitTitle": {
+        "recognition": "OCR",
+        "roi": [
+            40,
+            12,
+            250,
+            48
+        ],
+        "expected": [
+            "^フェスユニット編成$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.Omakase": {
+        "recognition": "OCR",
+        "roi": [
+            1080,
+            148,
+            165,
+            50
+        ],
+        "expected": [
+            "^おまかせ編成$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Unit.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Anchor.UnitTitle",
+            "SC.Match.Play.Anchor.Omakase"
+        ]
+    },
+    "SC.Match.Play.Anchor.Touch": {
+        "recognition": "OCR",
+        "roi": [
+            520,
+            490,
+            240,
+            100
+        ],
+        "expected": [
+            "^Touch$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.Skip": {
+        "recognition": "OCR",
+        "roi": [
+            1100,
+            30,
+            85,
+            50
+        ],
+        "expected": [
+            "^SKIP$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.StageLabel": {
+        "recognition": "OCR",
+        "roi": [
+            30,
+            5,
+            120,
+            40
+        ],
+        "expected": [
+            "^ステージ[0-9]{1,2}$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Touch.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Anchor.Touch",
+            "SC.Match.Play.Anchor.Skip"
+        ]
+    },
+    "SC.Match.Play.Live.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Anchor.Skip",
+            "SC.Match.Play.Anchor.StageLabel"
+        ]
+    },
+    "SC.Match.Play.Anchor.Mission": {
+        "recognition": "OCR",
+        "roi": [
+            780,
+            28,
+            350,
+            60
+        ],
+        "expected": [
+            "ステージミッション"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.AreaSelect": {
+        "recognition": "OCR",
+        "roi": [
+            895,
+            630,
+            180,
+            60
+        ],
+        "expected": [
+            "^エリア選択へ$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.Retry": {
+        "recognition": "OCR",
+        "roi": [
+            705,
+            630,
+            180,
+            60
+        ],
+        "expected": [
+            "^もう.度挑戦$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Result.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Anchor.AreaSelect",
+            "SC.Match.Play.Anchor.Retry"
+        ]
+    },
+    "SC.Match.Play.Anchor.LoseNotice": {
+        "recognition": "OCR",
+        "roi": [
+            360,
+            300,
+            560,
+            55
+        ],
+        "expected": [
+            "フェス参加権を返却"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.LoseClose": {
+        "recognition": "OCR",
+        "roi": [
+            570,
+            405,
+            140,
+            65
+        ],
+        "expected": [
+            "^閉じる$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.LoseNotice.Guard": {
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Anchor.LoseNotice",
+            "SC.Match.Play.Anchor.LoseClose"
+        ]
+    },
+    "SC.Match.Play.Anchor.NextStage": {
+        "recognition": "OCR",
+        "roi": [
+            1085,
+            630,
+            180,
+            60
+        ],
+        "expected": [
+            "^次のステージへ$"
+        ],
+        "threshold": 0.8
+    },
+    "SC.Match.Play.Anchor.Decide": {
+        "recognition": "OCR",
+        "roi": [
+            1125,
+            612,
+            105,
+            52
+        ],
+        "expected": [
+            "^決定$"
+        ],
+        "threshold": 0.7
+    },
+    "SC.Match.Play.Observe": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "observe"
+        }
+    },
+    "SC.Match.Play.Want.AreaNext": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "area_next"
+        }
+    },
+    "SC.Match.Play.AreaNext": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Match.Play.Want.AreaNext"
+        ],
+        "action": "Click",
+        "target": [
+            36,
+            406,
+            340,
+            47
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 500,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Match 主页：下一张区域卡未锁，点它（选中后移到最上）。"
+        }
+    },
+    "SC.Match.Play.Want.AreaOpen": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "area_open"
+        }
+    },
+    "SC.Match.Play.AreaOpen": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Nav.MatchMain.Guard",
+            "SC.Match.Play.Want.AreaOpen"
+        ],
+        "action": "Click",
+        "target": [
+            36,
+            270,
+            340,
+            47
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 200,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Match 主页：最上方区域的下一张卡已锁（=当前进度区域），打开ステージ選択。"
+        }
+    },
+    "SC.Match.Play.Want.StageDecide": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "stage_decide"
+        }
+    },
+    "SC.Match.Play.StageDecide": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Latest.Stage.Guard",
+            "SC.Match.Play.Anchor.Decide",
+            "SC.Match.Play.Want.StageDecide"
+        ],
+        "action": "Click",
+        "target": [
+            1110,
+            610,
+            130,
+            45
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 200,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ステージ選択：选中关卡星星全灰（未通关），点「決定」。"
+        }
+    },
+    "SC.Match.Play.Want.StageBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "stage_back"
+        }
+    },
+    "SC.Match.Play.StageBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Latest.Stage.Guard",
+            "SC.Match.Play.Want.StageBack"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 100,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ステージ選択：推进结束，返回 Match 主页。"
+        }
+    },
+    "SC.Match.Play.Want.UnitOpen": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_open"
+        }
+    },
+    "SC.Match.Play.UnitOpen": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Info.Guard",
+            "SC.Match.Play.Want.UnitOpen"
+        ],
+        "action": "Click",
+        "target": [
+            40,
+            358,
+            200,
+            34
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 10,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "マッチライブ詳細：打开「マッチライブユニット編成」核对编队（每次运行一次）。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab1": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_1"
+        }
+    },
+    "SC.Match.Play.UnitTab1": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab1"
+        ],
+        "action": "Click",
+        "target": [
+            32,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット1。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab2": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_2"
+        }
+    },
+    "SC.Match.Play.UnitTab2": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab2"
+        ],
+        "action": "Click",
+        "target": [
+            146,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット2。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab3": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_3"
+        }
+    },
+    "SC.Match.Play.UnitTab3": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab3"
+        ],
+        "action": "Click",
+        "target": [
+            259,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット3。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab4": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_4"
+        }
+    },
+    "SC.Match.Play.UnitTab4": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab4"
+        ],
+        "action": "Click",
+        "target": [
+            369,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット4。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab5": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_5"
+        }
+    },
+    "SC.Match.Play.UnitTab5": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab5"
+        ],
+        "action": "Click",
+        "target": [
+            484,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット5。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab6": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_6"
+        }
+    },
+    "SC.Match.Play.UnitTab6": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab6"
+        ],
+        "action": "Click",
+        "target": [
+            596,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット6。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab7": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_7"
+        }
+    },
+    "SC.Match.Play.UnitTab7": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab7"
+        ],
+        "action": "Click",
+        "target": [
+            708,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット7。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab8": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_8"
+        }
+    },
+    "SC.Match.Play.UnitTab8": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab8"
+        ],
+        "action": "Click",
+        "target": [
+            821,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット8。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab9": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_9"
+        }
+    },
+    "SC.Match.Play.UnitTab9": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab9"
+        ],
+        "action": "Click",
+        "target": [
+            933,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット9。"
+        }
+    },
+    "SC.Match.Play.Want.UnitTab10": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_tab_10"
+        }
+    },
+    "SC.Match.Play.UnitTab10": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitTab10"
+        ],
+        "action": "Click",
+        "target": [
+            1046,
+            88,
+            80,
+            28
+        ],
+        "pre_delay": 0,
+        "post_delay": 700,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：切到ユニット10。"
+        }
+    },
+    "SC.Match.Play.Want.Omakase": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "omakase"
+        }
+    },
+    "SC.Match.Play.Omakase": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.Omakase"
+        ],
+        "action": "Click",
+        "target": [
+            1095,
+            158,
+            135,
+            30
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 3,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：有空位「タッチして編成」，点「おまかせ編成」。"
+        }
+    },
+    "SC.Match.Play.Want.UnitBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "unit_back"
+        }
+    },
+    "SC.Match.Play.UnitBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Want.UnitBack"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 10,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "フェスユニット編成：编队就绪，返回关卡详情。"
+        }
+    },
+    "SC.Match.Play.Want.InfoBack": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "info_back"
+        }
+    },
+    "SC.Match.Play.InfoBack": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Info.Guard",
+            "SC.Match.Play.Want.InfoBack"
+        ],
+        "action": "Click",
+        "target": [
+            20,
+            628,
+            74,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 100,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "マッチライブ詳細：推进结束，返回。"
+        }
+    },
+    "SC.Match.Play.Want.LiveStart": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "live_start"
+        }
+    },
+    "SC.Match.Play.LiveStart": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Info.Guard",
+            "SC.Match.Play.Want.LiveStart"
+        ],
+        "action": "Click",
+        "target": [
+            1105,
+            628,
+            145,
+            38
+        ],
+        "pre_delay": 0,
+        "post_delay": 1500,
+        "max_hit": 40,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.SpendError"
+        ],
+        "focus": {
+            "Node.Action.Starting": "マッチライブ詳細：未通关关卡、まとめて消費关闭、参加权已读：点「ライブ開始」。消耗：Fes 参加权 1。"
+        }
+    },
+    "SC.Match.Play.Want.Touch": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "touch"
+        }
+    },
+    "SC.Match.Play.Touch": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Touch.Guard",
+            "SC.Match.Play.Want.Touch"
+        ],
+        "action": "Click",
+        "target": [
+            560,
+            510,
+            160,
+            55
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 120,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Live：点「Touch」开始。"
+        }
+    },
+    "SC.Match.Play.Want.Skip": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "skip"
+        }
+    },
+    "SC.Match.Play.Skip": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Live.Guard",
+            "SC.Match.Play.Want.Skip"
+        ],
+        "action": "Click",
+        "target": [
+            1112,
+            15,
+            58,
+            50
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 120,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Live：点「SKIP」跳到结果。"
+        }
+    },
+    "SC.Match.Play.Want.NextStage": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "next_stage"
+        }
+    },
+    "SC.Match.Play.NextStage": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Result.Guard",
+            "SC.Match.Play.Anchor.NextStage",
+            "SC.Match.Play.Want.NextStage"
+        ],
+        "action": "Click",
+        "target": [
+            1105,
+            632,
+            140,
+            45
+        ],
+        "pre_delay": 0,
+        "post_delay": 1200,
+        "max_hit": 60,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "结果 WIN：点「次のステージへ」。"
+        }
+    },
+    "SC.Match.Play.Want.AreaSelect": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "area_select"
+        }
+    },
+    "SC.Match.Play.AreaSelect": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.Result.Guard",
+            "SC.Match.Play.Want.AreaSelect"
+        ],
+        "action": "Click",
+        "target": [
+            910,
+            632,
+            150,
+            45
+        ],
+        "pre_delay": 0,
+        "post_delay": 1200,
+        "max_hit": 100,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "结果：LOSE 重试或推进结束，点「エリア選択へ」。"
+        }
+    },
+    "SC.Match.Play.Want.LoseClose": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "lose_close"
+        }
+    },
+    "SC.Match.Play.LoseClose": {
+        "enabled": false,
+        "recognition": "And",
+        "all_of": [
+            "SC.Match.Play.LoseNotice.Guard",
+            "SC.Match.Play.Want.LoseClose"
+        ],
+        "action": "Click",
+        "target": [
+            590,
+            418,
+            100,
+            40
+        ],
+        "pre_delay": 0,
+        "post_delay": 900,
+        "max_hit": 100,
+        "timeout": 10000,
+        "next": [
+            "SC.Match.Play.Sent"
+        ],
+        "on_error": [
+            "SC.Match.Play.Failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "LOSE：参加权已返还，点「閉じる」。"
+        }
+    },
+    "SC.Match.Play.Wait": {
+        "recognition": "Custom",
+        "custom_recognition": "SC.Match.Play.Check",
+        "custom_recognition_param": {
+            "stage": "wait"
+        },
+        "action": "DoNothing",
+        "pre_delay": 0,
+        "post_delay": 500,
+        "focus": {
+            "Node.Recognition.Succeeded": "Match 推进：画面切换中或 Live 进行中，再截一帧。"
+        }
+    },
+    "SC.Match.Play.Sent": {
+        "recognition": "Or",
+        "any_of": [
+            "SC.Loading.Present",
+            "SC.Nav.MatchMain.Guard",
+            "SC.Match.Latest.Stage.Guard",
+            "SC.Match.Play.Info.Guard",
+            "SC.Match.Play.Unit.Guard",
+            "SC.Match.Play.Touch.Guard",
+            "SC.Match.Play.Live.Guard",
+            "SC.Match.Play.LoseNotice.Guard",
+            "SC.Match.Play.Result.Guard"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 20000,
+        "on_error": [
+            "SC.Match.Main"
+        ]
+    },
+    "SC.Match.Play.Failed": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Match.Play.Failed",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 3,
+        "next": [
+            "SC.Match.Main"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "Match 推进：非消费点击失败，结束推进（不重点），剩余参加权交给跳过。"
+        }
+    },
+    "SC.Match.Play.SpendError": {
+        "recognition": "DirectHit",
+        "action": "Custom",
+        "custom_action": "SC.Match.Play.SpendError",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "max_hit": 1,
+        "next": [
+            "SC.Match.Main"
+        ],
+        "on_error": [
+            "SC.Match.Abort"
+        ],
+        "focus": {
+            "Node.Action.Starting": "ライブ開始 点击失败：未发送则结束推进；结果不确定将暂停。"
+        }
+    }
+}

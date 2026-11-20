@@ -1,0 +1,941 @@
+{
+  "SC.Grade.Home.ShopLabel": {
+    "recognition": "TemplateMatch",
+    "template": "Home-ShopLabel.png",
+    "roi": [
+      35,
+      276,
+      56,
+      17
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Home.MenuLabel": {
+    "recognition": "TemplateMatch",
+    "template": "Home-MenuLabel.png",
+    "roi": [
+      33,
+      348,
+      60,
+      24
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Home.PresentLabel": {
+    "recognition": "TemplateMatch",
+    "template": "Home-PresentLabel.png",
+    "roi": [
+      30,
+      193,
+      66,
+      18
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMenu.MatchLabel": {
+    "recognition": "TemplateMatch",
+    "template": "FesMenu-MatchLabel.png",
+    "roi": [
+      985,
+      525,
+      120,
+      32
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMenu.GradeLabel": {
+    "recognition": "TemplateMatch",
+    "template": "FesMenu-GradeLabel.png",
+    "roi": [
+      1128,
+      547,
+      126,
+      26
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.Title": {
+    "recognition": "TemplateMatch",
+    "template": "FesMain-Title.png",
+    "roi": [
+      6,
+      16,
+      150,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.Back": {
+    "recognition": "TemplateMatch",
+    "template": "FesMain-Back.png",
+    "roi": [
+      20,
+      628,
+      74,
+      66
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.UnitButton": {
+    "recognition": "TemplateMatch",
+    "template": "FesMain-UnitButton.png",
+    "roi": [
+      905,
+      628,
+      160,
+      62
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.JoinLabel": {
+    "recognition": "TemplateMatch",
+    "template": "FesMain-JoinLabel.png",
+    "roi": [
+      1130,
+      595,
+      105,
+      50
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.ScoreLabel": {
+    "recognition": "TemplateMatch",
+    "template": "FesMain-ScoreLabel.png",
+    "roi": [
+      30,
+      288,
+      285,
+      32
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesHelp.Title": {
+    "recognition": "TemplateMatch",
+    "template": "FesHelp-Title.png",
+    "roi": [
+      190,
+      82,
+      225,
+      40
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesHelp.Icon": {
+    "recognition": "TemplateMatch",
+    "template": "FesHelp-Icon.png",
+    "roi": [
+      68,
+      60,
+      100,
+      74
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesHelp.Close": {
+    "recognition": "TemplateMatch",
+    "template": "FesHelp-Close.png",
+    "roi": [
+      558,
+      562,
+      167,
+      78
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.ModeSelect.RehearsalButton": {
+    "recognition": "TemplateMatch",
+    "template": "ModeSelect-RehearsalButton.png",
+    "roi": [
+      912,
+      378,
+      150,
+      150
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.ModeSelect.GradeButton": {
+    "recognition": "TemplateMatch",
+    "template": "ModeSelect-GradeButton.png",
+    "roi": [
+      1092,
+      378,
+      150,
+      150
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Title": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-Title.png",
+    "roi": [
+      232,
+      88,
+      815,
+      46
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Easy": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-Easy.png",
+    "roi": [
+      255,
+      262,
+      155,
+      68
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Normal": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-Normal.png",
+    "roi": [
+      538,
+      270,
+      195,
+      60
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Hard": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-Hard.png",
+    "roi": [
+      858,
+      265,
+      170,
+      65
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.ScoreEasy": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-ScoreEasy.png",
+    "roi": [
+      280,
+      420,
+      110,
+      65
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.ScoreNormal": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-ScoreNormal.png",
+    "roi": [
+      585,
+      420,
+      110,
+      65
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.ScoreHard": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-ScoreHard.png",
+    "roi": [
+      885,
+      420,
+      115,
+      65
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Prompt": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-Prompt.png",
+    "roi": [
+      815,
+      568,
+      450,
+      52
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.CheckboxOff": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-CheckboxOff.png",
+    "roi": [
+      866,
+      644,
+      46,
+      46
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.BulkLabel": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-BulkLabel.png",
+    "roi": [
+      918,
+      644,
+      160,
+      46
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Back": {
+    "recognition": "TemplateMatch",
+    "template": "Difficulty-Back.png",
+    "roi": [
+      20,
+      628,
+      74,
+      66
+    ],
+    "threshold": 0.95,
+    "method": 5,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.Undimmed": {
+    "recognition": "ColorMatch",
+    "roi": [
+      150,
+      22,
+      200,
+      30
+    ],
+    "lower": [
+      235,
+      235,
+      235
+    ],
+    "upper": [
+      255,
+      255,
+      255
+    ],
+    "count": 5800,
+    "method": 4,
+    "connected": false,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.BubbleBright": {
+    "recognition": "ColorMatch",
+    "roi": [
+      840,
+      612,
+      380,
+      10
+    ],
+    "lower": [
+      235,
+      235,
+      235
+    ],
+    "upper": [
+      255,
+      255,
+      255
+    ],
+    "count": 3200,
+    "method": 4,
+    "connected": false,
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Home.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.Home.ShopLabel",
+      "SC.Grade.Home.MenuLabel",
+      "SC.Grade.Home.PresentLabel"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Home.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Grade.Home.Guard"
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "timeout": 8000,
+    "rate_limit": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Home.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Grade.Home.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMenu.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.Home.ShopLabel",
+      "SC.Grade.Home.MenuLabel",
+      "SC.Grade.Home.PresentLabel",
+      "SC.Grade.FesMenu.MatchLabel",
+      "SC.Grade.FesMenu.GradeLabel"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMenu.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Grade.FesMenu.Guard"
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "timeout": 8000,
+    "rate_limit": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMenu.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Grade.FesMenu.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.FesMain.Title",
+      "SC.Grade.FesMain.Back",
+      "SC.Grade.FesMain.UnitButton",
+      "SC.Grade.FesMain.JoinLabel",
+      "SC.Grade.FesMain.ScoreLabel",
+      "SC.Grade.FesMain.Undimmed"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Grade.FesMain.Guard"
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "timeout": 8000,
+    "rate_limit": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesMain.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Grade.FesMain.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesHelp.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.FesHelp.Title",
+      "SC.Grade.FesHelp.Icon",
+      "SC.Grade.FesHelp.Close"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesHelp.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Grade.FesHelp.Guard"
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "timeout": 8000,
+    "rate_limit": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.FesHelp.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Grade.FesHelp.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.ModeSelect.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.FesMain.Title",
+      "SC.Grade.FesMain.Back",
+      "SC.Grade.FesMain.UnitButton",
+      "SC.Grade.FesMain.JoinLabel",
+      "SC.Grade.FesMain.ScoreLabel",
+      "SC.Grade.ModeSelect.RehearsalButton",
+      "SC.Grade.ModeSelect.GradeButton",
+      "SC.Grade.FesMain.Undimmed"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.ModeSelect.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Grade.ModeSelect.Guard"
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "timeout": 8000,
+    "rate_limit": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.ModeSelect.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Grade.ModeSelect.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Guard": {
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.Difficulty.Title",
+      "SC.Grade.Difficulty.Easy",
+      "SC.Grade.Difficulty.Normal",
+      "SC.Grade.Difficulty.Hard",
+      "SC.Grade.Difficulty.ScoreEasy",
+      "SC.Grade.Difficulty.ScoreNormal",
+      "SC.Grade.Difficulty.ScoreHard",
+      "SC.Grade.Difficulty.Prompt",
+      "SC.Grade.Difficulty.CheckboxOff",
+      "SC.Grade.Difficulty.BulkLabel",
+      "SC.Grade.Difficulty.Back",
+      "SC.Grade.Difficulty.BubbleBright"
+    ],
+    "action": "DoNothing",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Observe": {
+    "recognition": "DirectHit",
+    "action": "DoNothing",
+    "next": [
+      "SC.Grade.Difficulty.Guard"
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "timeout": 8000,
+    "rate_limit": 500,
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Difficulty.Unknown": {
+    "recognition": "Or",
+    "any_of": [
+      "SC.Grade.Difficulty.Guard"
+    ],
+    "inverse": true,
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.fes-grade-entry.FesMenu": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.Home.ShopLabel",
+      "SC.Grade.Home.MenuLabel",
+      "SC.Grade.Home.PresentLabel",
+      "SC.Grade.FesMenu.MatchLabel",
+      "SC.Grade.FesMenu.GradeLabel"
+    ],
+    "action": "Click",
+    "target": [
+      1188,
+      541,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.fes-help-close.FesHelp": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.FesHelp.Title",
+      "SC.Grade.FesHelp.Icon",
+      "SC.Grade.FesHelp.Close"
+    ],
+    "action": "Click",
+    "target": [
+      640,
+      600,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.grade-join-open.FesMain": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.FesMain.Title",
+      "SC.Grade.FesMain.Back",
+      "SC.Grade.FesMain.UnitButton",
+      "SC.Grade.FesMain.JoinLabel",
+      "SC.Grade.FesMain.ScoreLabel",
+      "SC.Grade.FesMain.Undimmed"
+    ],
+    "action": "Click",
+    "target": [
+      1183,
+      620,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.grade-mode-grade.ModeSelect": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.FesMain.Title",
+      "SC.Grade.FesMain.Back",
+      "SC.Grade.FesMain.UnitButton",
+      "SC.Grade.FesMain.JoinLabel",
+      "SC.Grade.FesMain.ScoreLabel",
+      "SC.Grade.ModeSelect.RehearsalButton",
+      "SC.Grade.ModeSelect.GradeButton",
+      "SC.Grade.FesMain.Undimmed"
+    ],
+    "action": "Click",
+    "target": [
+      1167,
+      453,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.grade-back.FesMain": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.FesMain.Title",
+      "SC.Grade.FesMain.Back",
+      "SC.Grade.FesMain.UnitButton",
+      "SC.Grade.FesMain.JoinLabel",
+      "SC.Grade.FesMain.ScoreLabel",
+      "SC.Grade.FesMain.Undimmed"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.grade-back.ModeSelect": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.FesMain.Title",
+      "SC.Grade.FesMain.Back",
+      "SC.Grade.FesMain.UnitButton",
+      "SC.Grade.FesMain.JoinLabel",
+      "SC.Grade.FesMain.ScoreLabel",
+      "SC.Grade.ModeSelect.RehearsalButton",
+      "SC.Grade.ModeSelect.GradeButton",
+      "SC.Grade.FesMain.Undimmed"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.grade-back.Difficulty": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.Difficulty.Title",
+      "SC.Grade.Difficulty.Easy",
+      "SC.Grade.Difficulty.Normal",
+      "SC.Grade.Difficulty.Hard",
+      "SC.Grade.Difficulty.ScoreEasy",
+      "SC.Grade.Difficulty.ScoreNormal",
+      "SC.Grade.Difficulty.ScoreHard",
+      "SC.Grade.Difficulty.Prompt",
+      "SC.Grade.Difficulty.CheckboxOff",
+      "SC.Grade.Difficulty.BulkLabel",
+      "SC.Grade.Difficulty.Back",
+      "SC.Grade.Difficulty.BubbleBright"
+    ],
+    "action": "Click",
+    "target": [
+      57,
+      662,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.grade-difficulty-easy.Difficulty": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.Difficulty.Title",
+      "SC.Grade.Difficulty.Easy",
+      "SC.Grade.Difficulty.Normal",
+      "SC.Grade.Difficulty.Hard",
+      "SC.Grade.Difficulty.ScoreEasy",
+      "SC.Grade.Difficulty.ScoreNormal",
+      "SC.Grade.Difficulty.ScoreHard",
+      "SC.Grade.Difficulty.Prompt",
+      "SC.Grade.Difficulty.CheckboxOff",
+      "SC.Grade.Difficulty.BulkLabel",
+      "SC.Grade.Difficulty.Back",
+      "SC.Grade.Difficulty.BubbleBright"
+    ],
+    "action": "Click",
+    "target": [
+      332,
+      360,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.grade-difficulty-normal.Difficulty": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.Difficulty.Title",
+      "SC.Grade.Difficulty.Easy",
+      "SC.Grade.Difficulty.Normal",
+      "SC.Grade.Difficulty.Hard",
+      "SC.Grade.Difficulty.ScoreEasy",
+      "SC.Grade.Difficulty.ScoreNormal",
+      "SC.Grade.Difficulty.ScoreHard",
+      "SC.Grade.Difficulty.Prompt",
+      "SC.Grade.Difficulty.CheckboxOff",
+      "SC.Grade.Difficulty.BulkLabel",
+      "SC.Grade.Difficulty.Back",
+      "SC.Grade.Difficulty.BubbleBright"
+    ],
+    "action": "Click",
+    "target": [
+      638,
+      360,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Action.grade-difficulty-hard.Difficulty": {
+    "enabled": false,
+    "recognition": "And",
+    "all_of": [
+      "SC.Grade.Difficulty.Title",
+      "SC.Grade.Difficulty.Easy",
+      "SC.Grade.Difficulty.Normal",
+      "SC.Grade.Difficulty.Hard",
+      "SC.Grade.Difficulty.ScoreEasy",
+      "SC.Grade.Difficulty.ScoreNormal",
+      "SC.Grade.Difficulty.ScoreHard",
+      "SC.Grade.Difficulty.Prompt",
+      "SC.Grade.Difficulty.CheckboxOff",
+      "SC.Grade.Difficulty.BulkLabel",
+      "SC.Grade.Difficulty.Back",
+      "SC.Grade.Difficulty.BubbleBright"
+    ],
+    "action": "Click",
+    "target": [
+      942,
+      360,
+      1,
+      1
+    ],
+    "on_error": [
+      "SC.Grade.Error"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "SC.Grade.Error": {
+    "recognition": "DirectHit",
+    "action": "StopTask",
+    "pre_delay": 0,
+    "post_delay": 0
+  }
+}

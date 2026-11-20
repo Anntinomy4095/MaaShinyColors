@@ -1,0 +1,49 @@
+/* Produce 结束确认 (produce-end.js). Tokens only; light/dark follow tokens.css. */
+
+.pe-dialog { width: min(560px, calc(100vw - 32px)); max-height: calc(100vh - 32px); }
+.pe-body { overflow-y: auto; min-height: 0; display: flex; flex-direction: column; gap: var(--sp-3); margin-top: var(--sp-3); }
+.pe-preview { margin: var(--sp-1) 0 0; }
+.pe-kv { margin: 0; }
+.pe-rank { font-size: var(--fs-16); }
+.pe-stats { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-3); font-variant-numeric: tabular-nums; }
+.pe-stat { white-space: nowrap; display: inline-flex; align-items: center; gap: 3px; }
+/* In-game badges (ui/game-assets/icons, local only); the text stays beside them. */
+.pe-rank-wrap { display: inline-flex; align-items: center; gap: var(--sp-1); }
+.pe-rank-img, .pe-stat-img { flex: none; object-fit: contain; }
+.pe-stat.muted .pe-stat-img { opacity: .55; filter: grayscale(1); }
+.pe-ok { color: var(--sc-success); font-weight: 600; }
+.pe-warn { color: var(--sc-warning); font-weight: 600; }
+
+.pe-ex-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.pe-ex { display: flex; align-items: center; gap: var(--sp-1); min-width: 0; }
+.pe-ex-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.pe-tier {
+  flex: none; min-width: 2em; padding: 0 6px; border-radius: var(--r-s); text-align: center;
+  font-size: var(--fs-11); line-height: 1.7; font-weight: 600; border: 1px solid var(--sc-border);
+  background: var(--sc-surface-2); color: var(--sc-text-2);
+}
+.pe-tier-gold { background: color-mix(in srgb, var(--sc-warning) 18%, var(--sc-surface)); color: var(--sc-text); border-color: var(--sc-warning); }
+/* 虹: flat token fill + accent outline (project bans decorative colour ramps). */
+.pe-tier-rainbow { background: var(--sc-uncertain); color: var(--sc-on-primary); border-color: var(--sc-accent); }
+.pe-tier-unknown { border-style: dashed; }
+
+.pe-notes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--sp-1); }
+.pe-note {
+  padding: 4px var(--sp-2); border-radius: var(--r-s); font-size: var(--fs-12); line-height: 1.5;
+  border-left: 3px solid var(--sc-border); background: var(--sc-surface-2);
+}
+.pe-note.tone-accent { border-left-color: var(--sc-accent); }
+.pe-note.tone-success { border-left-color: var(--sc-success); }
+.pe-note.tone-warning { border-left-color: var(--sc-warning); }
+.pe-note.tone-danger { border-left-color: var(--sc-danger); }
+.pe-note.tone-info { border-left-color: var(--sc-primary); }
+
+.pe-suggest { padding: var(--sp-2) var(--sp-3); border-radius: var(--r-m); border: 1px solid var(--sc-border); background: var(--sc-surface); }
+.pe-suggest p { margin: var(--sp-1) 0 0; line-height: 1.6; }
+.pe-suggest-keep strong { color: var(--sc-success); }
+.pe-suggest-release_candidate strong, .pe-suggest-undecided strong { color: var(--sc-warning); }
+.pe-intent { display: flex; align-items: flex-start; gap: var(--sp-1); line-height: 1.5; color: var(--sc-text-2); }
+.pe-intent input { margin-top: 3px; }
+.pe-settings { display: flex; flex-direction: column; gap: var(--sp-1); }
+.pe-toggles { margin: 0; }
+.pe-card-actions { display: flex; justify-content: flex-end; margin-top: var(--sp-2); }

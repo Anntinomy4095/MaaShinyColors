@@ -1,0 +1,26 @@
+{
+    "SC.Resource.Observe.Home": {
+        "doc": "被动资源观测：在任务轮询已截取的同一帧上只读读取首页マニー/ジュエル(仅显示)/体力/フェス参加権。只在实际读了列表的那一帧命中（DoNothing 后 JumpBack，训练用新截图做决定，避免帧超过 5 秒被宿主拒绝），不截图、不点击；默认禁用，仅由 agent.core.resource_observer.install 启用。",
+        "enabled": false,
+        "recognition": "Custom",
+        "custom_recognition": "SC.Resource.Observe",
+        "custom_recognition_param": {
+            "layout": "home_counters"
+        },
+        "action": "DoNothing",
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "SC.Resource.Observe.TrainingList": {
+        "doc": "被动资源观测：在训练任务已截取的同一帧上只读读取训练列表可见 S 卡的 Lv/凸，写入持有卡读数。识别恒为未命中，不截图、不点击、不改流程；默认禁用，仅由 agent.core.resource_observer.install 启用。",
+        "enabled": false,
+        "recognition": "Custom",
+        "custom_recognition": "SC.Resource.Observe",
+        "custom_recognition_param": {
+            "layout": "training_list"
+        },
+        "action": "DoNothing",
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}
