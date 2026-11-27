@@ -14,7 +14,9 @@ export const HOTKEY_HINT = "任何窗口中按下即停止运行中的任务";
 export const REPORT_HINT = "打包最近的运行记录、输入日志、W.I.N.G. 决策、设置和最近 10 张失败截图。不含登录信息和游戏素材，本机路径与用户名已替换；只保存在本机，不上传。";
 export const REPORT_SHORT = "含运行记录、日志、设置、失败截图 · 不含登录信息 · 不上传";
 
-const UPDATE_REASON = { network: "网络不可用", timeout: "连接超时", http_403: "请求过于频繁，请稍后再试", http_404: "找不到发布页" };
+const UPDATE_REASON = { network: "网络不可用", timeout: "连接超时", http_403: "请求过于频繁，请稍后再试", http_404: "找不到发布页",
+  no_asset: "发布页没有安装包", asset_size: "下载不完整", digest: "文件校验失败", file_hash: "文件校验失败", patch_base: "更新包与当前版本不符",
+  patch_target: "更新包版本不符", full_version: "安装包版本不符", not_update_zip: "不是更新包", io: "无法写入更新目录" };
 
 /** Normalised status.update.support: {hotkey: {enabled, registered, supported}, update: {...}, lastReport}. */
 export function supportModel(host) {
@@ -23,9 +25,13 @@ export function supportModel(host) {
   return {
     hotkey: { enabled: hotkey.enabled === true, registered: hotkey.registered === true, supported: hotkey.supported === true },
     update: s.update || { state: "idle" },
+    lastApply: s.last_apply && typeof s.last_apply === "object" ? s.last_apply : null,
+    package: s.package === true,
     lastReport: typeof s.last_report === "string" ? s.last_report : null,
   };
 }
+
+const percent = (u) => (Number.isFinite(u.total) && u.total > 0 && Number.isFinite(u.bytes) ? ` ${Math.floor((u.bytes / u.total) * 100)}%` : "");
 
 /** One line for the 更新 card: what the last check found. */
 export function updateText(update, info) {
@@ -33,6 +39,10 @@ export function updateText(update, info) {
   switch (update?.state) {
     case "checking": return "正在检查…";
     case "failed": return `检查失败：${UPDATE_REASON[update.reason] || "未知原因"}`;
+    case "downloading": return `正在下载 ${update.latest || ""}${percent(update)}`;
+    case "staging": return "正在校验文件…";
+    case "ready": return `${update.latest || "新版本"} 已下载（${update.files ?? "?"} 个文件），重启后完成更新`;
+    case "download_failed": return `下载失败：${UPDATE_REASON[update.reason] || "未知原因"}`;
     case "done":
       if (!update.latest) return "发布页暂无版本";
       return update.newer ? `有新版本 ${update.latest}${update.published_at ? `（${String(update.published_at).slice(0, 10)}）` : ""}` : `已是最新版本（${update.latest}）`;
@@ -82,16 +92,29 @@ export function updateView(state, actions) {
     [["stable", "正式版"], ["beta", "测试版"]].map(([key, label]) => h("button", {
       class: `segment${channel === key ? " is-selected" : ""}`, type: "button", role: "radio", "aria-checked": String(channel === key),
       dataset: { focusKey: `update-${key}` }, onclick: () => actions.setPref("update_channel", key) }, h("span", { text: label }))));
-  const canCheck = Boolean(info?.repo) && state.bridgeKind !== "mock" && update.state !== "checking";
+  const busy = ["checking", "downloading", "staging"].includes(update.state);
+  const canCheck = Boolean(info?.repo) && state.bridgeKind !== "mock" && !busy;
+  // 2026-11-27: 下载更新 after a check found a newer release (installed package only); 重启并更新 once it is staged.
+  const download = m.package && ((update.state === "done" && update.newer) || update.state === "download_failed")
+    ? h("button", { class: "btn btn-small btn-primary", type: "button", dataset: { focusKey: "update-download" },
+      onclick: () => actions.support?.("update_download") }, "下载更新") : null;
+  const restart = update.state === "ready"
+    ? h("button", { class: "btn btn-small btn-primary", type: "button", disabled: state.run.active, dataset: { focusKey: "update-restart" },
+      title: state.run.active ? "任务结束后再重启" : null, onclick: () => actions.support?.("update_restart") }, "重启并更新") : null;
+  const applied = m.lastApply
+    ? h("p", { class: `small ${m.lastApply.ok ? "muted" : "tone-warning"}`,
+      text: m.lastApply.ok ? `已更新到 ${m.lastApply.version}` : `上次更新未完成，已恢复原版本：${m.lastApply.message || "未知原因"}` }) : null;
   return h("div", { class: "support-block" },
     h("dl", { class: "kv" },
       h("dt", { text: "当前版本" }), h("dd", { class: "num", text: info?.version || state.schema.interface?.version || "—" }),
       h("dt", { text: "构建" }), h("dd", { class: "num", text: buildText(info?.build) })),
     h("div", { class: "field form-row" }, h("div", { class: "field-label-row" }, h("span", { class: "field-label", text: "通道" })), h("div", { class: "field-control" }, seg)),
-    h("p", { class: `small${update.newer ? " tone-accent" : " muted"}`, text: updateText(update, info) }),
+    h("p", { class: `small${update.newer || update.state === "ready" ? " tone-accent" : " muted"}`, text: updateText(update, info) }),
+    applied,
     h("div", { class: "btn-row" },
+      download, restart,
       h("button", { class: "btn btn-small", type: "button", disabled: !canCheck, dataset: { focusKey: "update-check" },
-        title: "只检查并提示，不自动下载或安装", onclick: () => actions.support?.("update_check", { channel }) }, "检查更新"),
+        onclick: () => actions.support?.("update_check", { channel }) }, "检查更新"),
       info?.repo ? h("button", { class: "btn btn-small btn-text", type: "button", dataset: { focusKey: "update-releases" },
         onclick: () => actions.support?.("open_link", { link: "releases" }) }, "打开发布页") : null));
 }

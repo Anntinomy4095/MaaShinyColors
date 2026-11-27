@@ -13,7 +13,7 @@
 
 </div>
 
-基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework)。游戏运行在程序自带的窗口中，任务在右侧面板选择。当前为 0.1.0 测试版，游戏更新后部分页面可能需要适配。
+基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework)。游戏运行在程序自带的窗口中，任务在右侧面板选择。当前为 0.1.1 测试版，游戏更新后部分页面可能需要适配。
 
 ## 下载与使用
 
@@ -100,7 +100,9 @@
 
 ## 本机数据
 
-设置、登录状态、截图与运行记录保存在程序目录下的 `dev_assets/private/`，不会上传。升级时将该文件夹复制到新版本目录。「设置 → 存储」可清理截图和运行记录。
+设置、登录状态、截图与运行记录保存在程序目录下的 `dev_assets/private/`，不会上传。
+
+升级（0.1.1 起）：设置 → 更新 → 检查更新 → 下载更新 → 重启并更新。只替换有变化的程序文件，设置和登录不动；更新失败会恢复原版本。也可以退出程序后，把 Release 中的 `MaaShinyColors-update-<旧版本>-to-<新版本>.zip` 或完整 `MaaShinyColors.zip` 解压到原目录并覆盖。「设置 → 存储」可清理截图和运行记录。
 
 ## 数据来源
 
@@ -112,7 +114,7 @@
 | 支援技能效果公式 | [note.com/ze3rx](https://note.com/ze3rx/n/ndc0cfb2da6ba) | 用于 W.I.N.G. 评分 |
 | OCR 模型 | [MaaCommonAssets](https://github.com/MaaXYZ/MaaCommonAssets)（PaddleOCR） | 随发布包提供 |
 | 识别模板 | 游戏画面裁剪 | 仅随发布包提供 |
-| 版本信息 | 本仓库 GitHub Releases | 手动检查更新时读取 |
+| 版本信息与更新包 | 本仓库 GitHub Releases | 手动检查更新时读取；点「下载更新」才下载 |
 
 游戏画面只在本机截图识别。
 

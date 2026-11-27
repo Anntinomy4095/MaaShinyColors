@@ -5,8 +5,8 @@ export const schema = {
   "interface": {
     "name": "MaaShinyColors",
     "label": "MaaShinyColors（开发监督版）",
-    "title": "MaaShinyColors v0.1.0",
-    "version": "0.1.0",
+    "title": "MaaShinyColors v0.1.1",
+    "version": "0.1.1",
     "interface_version": 2
   },
   "run_config": {

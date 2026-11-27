@@ -241,6 +241,7 @@ internal sealed class CompositionDemoForm : Form
         {
             var support = _uiDock.Support;
             support.Notify = (title, message, icon) => _keeper?.ShowNotification(title, message, icon);
+            support.Exit = () => BeginInvoke(Close);   // 重启并更新: the launcher waits for this window to close
             support.Hotkey = () => new System.Text.Json.Nodes.JsonObject
                 { ["enabled"] = _prefs.StopHotkey, ["registered"] = _stopHotkeyRegistered, ["supported"] = true };
             support.SetHotkey = enabled =>

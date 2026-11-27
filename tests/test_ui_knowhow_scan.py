@@ -112,8 +112,7 @@ console.log(JSON.stringify([
 
     def test_confirmation_never_mentions_sell_or_protect_as_actions(self):
         out = node("console.log(JSON.stringify(m.CONFIRM_LINES));")
-        self.assertEqual(set(out), {"calibrate", "scan", "newest"})
-        self.assertIn("不改排序", "".join(out["calibrate"]))
+        self.assertEqual(set(out), {"scan", "newest"})        # 2026-11-27: 校准 left the UI
         for lines in out.values():
             self.assertTrue(any("不修改书库" in line for line in lines))
 
@@ -121,17 +120,15 @@ console.log(JSON.stringify([
         out = node("""
 const note = (s) => { const el = m.knowhowScanResultNote(s); return el ? el.textContent : null; };
 console.log(JSON.stringify([
-  note({ state: "finished", outcome: "calibrated", grid_step_px: 158, grid_step_rows: 1.003, detail_step_px: 201, scan_ready: true,
-         grid_bottom_reached: true, frames_folder: "calibrate-20261012T000000Z" }),
   note({ state: "finished", outcome: "partial", reason: "book_budget_exhausted", books_read: 15, needs_review: 2, sort_restore_needed: true }),
   note({ state: "running" }),
   note({ state: "finished", outcome: "failed", reason: "<img>" }),
+  note({ state: "finished", outcome: "partial", reason: "detail_rows_missing", books_read: 52, resumable: true }),
 ]));""")
-        calibrated, partial, running, hostile = out
-        self.assertIn("158 px", calibrated)
-        self.assertIn("calibrate-20261012T000000Z", calibrated)
+        partial, running, hostile, resumable = out
         self.assertIn("2 本需要你确认", partial)
-        self.assertIn("再次开始将重新读取全库", partial)
+        self.assertIn("再次扫描将重新读取全库", partial)
+        self.assertIn("再次扫描从断点接续", resumable)       # 2026-11-24: resume after any stop while the game is untouched
         self.assertIn("排序仍为评价值顺", partial)
         self.assertIsNone(running)
         self.assertNotIn("<img>", hostile)
@@ -214,7 +211,7 @@ console.log(JSON.stringify({ topupText, noneText: none.textContent, ok: m.openLi
         panel = (ROOT / "ui" / "components" / "knowhow-panel.js").read_text(encoding="utf-8")
         app = (ROOT / "ui" / "app.js").read_text(encoding="utf-8")
         self.assertIn("knowhowScanGate(state?.policy, state?.host)", panel)
-        self.assertIn('mode === "newest" ? { confirmed: true, mode, count } : { confirmed: true, mode: mode === "scan" ? "scan" : "calibrate" }', app)
+        self.assertIn('mode === "newest" ? { confirmed: true, mode, count } : { confirmed: true, mode: "scan" }', app)
         self.assertIn('bridge.request("knowhow.scan.start", params)', app)
         # 2026-10-25: turning 自动卖书 on (or changing its strategy) checks the library through the panel's own confirmation
         task_panel = (ROOT / "ui" / "components" / "task-panel.js").read_text(encoding="utf-8")

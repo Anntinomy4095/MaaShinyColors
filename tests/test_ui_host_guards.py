@@ -143,8 +143,14 @@ class UiHostGuardTests(unittest.TestCase):
         # ShellOpen.cs (2026-10-15 设置 → 问题反馈 / 关于 / 更新): Explorer at a host-chosen dev_assets/private folder or file and
         # the default browser at https://github.com/<interface.json github> pages; the page never supplies a path or URL.
         # UiCardLibrary: fixed public-data updater, independent of game input; its self-test uses local fixture children.
+        # UpdateLauncher.cs (2026-11-27 重启并更新): only <root>\MaaShinyColors.exe --update, the package's own launcher.
         self.assertEqual(users, ["BrowserHostForm.cs", "ShellOpen.cs", "UiCardLibrary.cs", "UiCardLibrarySelfTest.cs", "UiCardScan.cs", "UiCardScanSelfTest.cs",
-                                 "UiEngineSupervisor.cs", "UiKnowhowScan.cs", "UiKnowhowScanSelfTest.cs", "UiTeamPropose.cs"])
+                                 "UiEngineSupervisor.cs", "UiKnowhowScan.cs", "UiKnowhowScanSelfTest.cs", "UiTeamPropose.cs",
+                                 "UpdateLauncher.cs"])
+        launcher = _read(ROOT / "browser_host" / "UpdateLauncher.cs")
+        self.assertIn('Path.Combine(root, "MaaShinyColors.exe")', launcher)
+        self.assertIn('Argument = "--update"', launcher)
+        self.assertEqual(launcher.count("Process.Start"), 1)
 
     def test_card_scan_supervisor_only_launches_the_fixed_supervised_scan(self) -> None:
         text = re.sub(r"//[^\n]*", "", _read(UI_HOST / "UiCardScan.cs"))

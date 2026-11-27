@@ -47,8 +47,9 @@ ambiguous, ✓ binding lost, detail mismatch, frame / hold budgets. Budget exhau
 sort as it is and reports ``sort_restore_needed``. Results are always flagged: ``grid_complete`` (whole 評価値 grid
 proven), ``details_complete`` (every grid tile has a complete book), ``partial``.
 
-Resume: only automatic segments of the same uninterrupted ``scan_id`` may reuse a previous ``result()``. The host
-starts a new id for a user-started scan or changed game activity. Legacy/different scans are read afresh: tile signatures
+Resume: only runs of the same ``scan_id`` may reuse a previous ``result()``. The host keeps the id across automatic
+segments and, since 2026-11-24, across a stop followed by a user start while no game input happened in between; it
+starts a new id for a fresh scan or changed game activity. Legacy/different scans are read afresh: tile signatures
 alone cannot identify books. Within one scan the owned count and grid prefix must still match before reuse.
 
 Calibration status: grid/detail scrollbar geometry and the sort popup selection are measured on the 2026-10-08 native

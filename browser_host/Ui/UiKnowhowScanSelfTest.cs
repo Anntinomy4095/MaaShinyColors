@@ -260,7 +260,45 @@ internal static partial class UiSelfTest
             while (supervisor.Active && watch.ElapsedMilliseconds < 10_000) { supervisor.Tick(); Thread.Sleep(20); }
             var status = supervisor.Status();
             checks.Add(P, "manual_input_blocks_complete_import", (string?)status["outcome"] == "stopped"
-                && (string?)status["reason"] == "manual_game_input" && (bool?)status["imported"] == false && !supervisor.Active);
+                && (string?)status["reason"] == "manual_game_input" && (bool?)status["imported"] == false && !supervisor.Active
+                && (bool?)status["resumable"] == false);
+        }
+
+        // 2026-11-24: a scan that stopped part-way (not a budget segment) resumes on the next user start while the game
+        // was not touched; any input in between starts afresh.
+        ProcessStartInfo StoppedChild(CardScanLaunch launch)
+        {
+            var command = Child(launch);
+            File.WriteAllText(launch.SummaryPath, """{"tasks":[{"name":"KnowhowScan","reports":[{"kind":"knowhow_scan","mode":"scan","outcome":"partial:detail_rows_missing","books":52}]}]}""");
+            return command;
+        }
+        foreach (var touched in new[] { false, true })
+        {
+            var host = new JsonObject { ["manual_click_seq"] = 0L, ["run_window"] = 1L, ["clicks_this_run"] = 300L };
+            var configs = new List<JsonNode>();
+            ProcessStartInfo Recorded(CardScanLaunch launch)
+            {
+                var command = StoppedChild(launch);
+                configs.Add(JsonNode.Parse(File.ReadAllText(launch.ConfigPath))!);
+                return command;
+            }
+            using var supervisor = new UiKnowhowScanSupervisor(fakeRepo, () => null, () => session, Recorded,
+                runsRoot: Path.Combine(runs, "user-resume-" + touched), framesRoot: framesRoot, outputGameAssets: outAssets, hostStatus: () => host);
+            supervisor.Start("scan");
+            var watch = Stopwatch.StartNew();
+            while (supervisor.Active && watch.ElapsedMilliseconds < 10_000) { supervisor.Tick(); Thread.Sleep(20); }
+            var stopped = supervisor.Status();
+            if (touched) { host["manual_click_seq"] = 1L; }
+            var resumable = (bool?)supervisor.Status()["resumable"];
+            var restarted = supervisor.Start("scan") is null;
+            var first = configs[0]["tasks"]![0]!["option"]!;
+            var second = configs.LastOrDefault()?["tasks"]?[0]?["option"];
+            checks.Add(P, "user_start_resumes_" + (touched ? "touched" : "untouched"),
+                (string?)stopped["reason"] == "detail_rows_missing" && restarted && configs.Count == 2 && resumable == !touched
+                && (touched
+                    ? (string?)second?["scan_id"] != (string?)first["scan_id"] && second?["resume_record"] is null
+                    : (string?)second?["scan_id"] == (string?)first["scan_id"] && (string?)second?["resume_record"] == "latest"));
+            supervisor.RequestStop();
         }
     }
 }

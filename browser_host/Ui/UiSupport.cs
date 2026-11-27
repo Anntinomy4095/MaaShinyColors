@@ -17,7 +17,8 @@ namespace MaaShinyColors.BrowserHost.Ui;
 /// into dev_assets/private/issue-reports/ and shown in Explorer, plus the newest failure screenshots
 /// (run_logs/diagnostics/failures, the frame a task stopped on). No recordings, WebView2 profile (login), other
 /// captures or game assets; local paths and the Windows user name are replaced in text. Nothing is uploaded.</item>
-/// <item>检查更新: GitHub releases of interface.json's <c>github</c> (owner/repo) only, on request; reports, never downloads.</item>
+/// <item>检查更新: GitHub releases of interface.json's <c>github</c> (owner/repo) only, on request. 下载更新 / 重启并更新 are
+/// separate clicks (UiSupportUpdate.cs).</item>
 /// <item>链接: repo / issues / releases of the same repo, opened in the default browser.</item>
 /// </list>
 /// The status snapshot (<see cref="Snapshot"/>) rides on status.update, so a background update check needs no extra event.
@@ -46,7 +47,10 @@ internal sealed partial class UiSupport
     {
         _root = Path.GetFullPath(root);
         _private = Path.Combine(_root, "dev_assets", "private");
+        _lastApply = LastApply();
     }
+
+    private readonly JsonObject? _lastApply;
 
     [GeneratedRegex("^[A-Za-z0-9-]{1,39}/[A-Za-z0-9._-]{1,100}$")] private static partial Regex RepoPattern();
 
@@ -133,6 +137,8 @@ internal sealed partial class UiSupport
             {
                 ["hotkey"] = Hotkey?.Invoke() ?? new JsonObject { ["enabled"] = false, ["registered"] = false, ["supported"] = false },
                 ["update"] = _update.DeepClone(),
+                ["last_apply"] = _lastApply?.DeepClone(),
+                ["package"] = IsPackage,
                 ["last_report"] = _lastReport,
             };
         }
@@ -177,6 +183,10 @@ internal sealed partial class UiSupport
             case "update_check":
                 var channel = parameters.TryGetProperty("channel", out var channelElement) && channelElement.GetString() == "beta" ? "beta" : "stable";
                 return StartUpdateCheck(channel);
+            case "update_download":
+                return StartUpdateDownload();
+            case "update_restart":
+                return RestartForUpdate();
             case "notify_test":
                 if (Notify is null) { return (null, "当前窗口不支持系统通知。"); }
                 Notify("MaaShinyColors · 测试通知", "系统通知可以正常显示。", ToolTipIcon.Info);

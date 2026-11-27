@@ -273,8 +273,86 @@ class LauncherSourceTests(unittest.TestCase):
         self.assertIn('OfflineModes = { "--self-test-ui", "--self-test-ui-dock", "--ui-preview" }', code)
 
     def test_unknown_arguments_are_refused(self):
-        self.assertIn("if (!(args.Length == 0 || check || offline || supervised || import))", self.source)
+        self.assertIn("if (!(args.Length == 0 || check || offline || supervised || import || update || applyOnly))", self.source)
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def _full_zip(path: Path, version: str, files: dict[str, bytes]) -> Path:
+    with zipfile.ZipFile(path, "w") as handle:
+        handle.writestr("MaaShinyColors/assets/interface.json", json.dumps({"version": version}))
+        for name, data in files.items():
+            handle.writestr(f"MaaShinyColors/{name}", data)
+    return path
+
+
+class ReleaseArtifactTests(unittest.TestCase):
+    """2026-11-27: full zip + update zip for GitHub, full zip with the private resources for the user's own PCs."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, self.tmp, True)
+        self.old = _full_zip(self.tmp / "old.zip", "0.1.0", {"agent/a.py": b"a", "agent/gone.py": b"g", "host/x.dll": b"x"})
+        self.new = _full_zip(self.tmp / "new.zip", "0.1.1", {"agent/a.py": b"a2", "host/x.dll": b"x", "ui/new.js": b"n"})
+
+    def test_update_zip_carries_only_changed_files_and_removals(self):
+        archive = package.make_patch(self.old, self.new, self.tmp / "out")
+        self.assertEqual(archive.name, "MaaShinyColors-update-0.1.0-to-0.1.1.zip")
+        with zipfile.ZipFile(archive) as handle:
+            names = sorted(handle.namelist())
+            patch = json.loads(handle.read("MaaShinyColors/UPDATE_PATCH.json"))
+            self.assertEqual(handle.read("MaaShinyColors/agent/a.py"), b"a2")
+        self.assertEqual(names, ["MaaShinyColors/UPDATE_PATCH.json", "MaaShinyColors/agent/a.py",
+                                 "MaaShinyColors/assets/interface.json", "MaaShinyColors/ui/new.js"])
+        self.assertEqual((patch["from"], patch["to"], patch["removed"]), ("0.1.0", "0.1.1", ["agent/gone.py"]))
+        self.assertEqual(set(patch["files"]), {"agent/a.py", "assets/interface.json", "ui/new.js"})
+        with self.assertRaises(ValueError):
+            package.make_patch(self.new, self.old, self.tmp / "out")       # never backwards
+
+    def test_player_data_never_enters_an_update(self):
+        bad = _full_zip(self.tmp / "bad.zip", "0.1.2", {"dev_assets/private/x.json": b"1"})
+        with self.assertRaises(ValueError):
+            package.make_patch(self.new, bad, self.tmp / "out")
+
+    def test_with_resources_adds_only_player_data(self):
+        pack = self.tmp / "pack.zip"
+        with zipfile.ZipFile(pack, "w") as handle:
+            handle.writestr("MaaShinyColors\\ui\\game-assets\\cards\\1.png", b"p")   # Compress-Archive style name
+            handle.writestr("MaaShinyColors/dev_assets/private/shinycolorsdb/s.json", b"s")
+        out = package.with_resources(self.new, pack, self.tmp / "with.zip")
+        with zipfile.ZipFile(out) as handle:
+            self.assertIn("MaaShinyColors/ui/game-assets/cards/1.png", handle.namelist())
+            self.assertIn("MaaShinyColors/agent/a.py", handle.namelist())
+        with zipfile.ZipFile(pack, "a") as handle:
+            handle.writestr("MaaShinyColors/agent/a.py", b"evil")
+        with self.assertRaises(ValueError):
+            package.with_resources(self.new, pack, self.tmp / "with2.zip")
+        recovered = package.resources_from(out, self.new, self.tmp / "recovered.zip")
+        with zipfile.ZipFile(recovered) as handle:
+            self.assertEqual(sorted(handle.namelist()), ["MaaShinyColors/dev_assets/private/shinycolorsdb/s.json",
+                                                         "MaaShinyColors/ui/game-assets/cards/1.png"])
+
+    def test_release_writes_three_artifacts_and_keeps_the_full_zip(self):
+        pack = self.tmp / "pack.zip"
+        with zipfile.ZipFile(pack, "w") as handle:
+            handle.writestr("MaaShinyColors/ui/game-assets/cards/1.png", b"p")
+        releases = self.tmp / "releases"
+        (releases / "0.1.0").mkdir(parents=True)
+        shutil.copy2(self.old, releases / "0.1.0" / "MaaShinyColors.zip")
+        out = package.ROOT / "dist" / "release-test-tmp"
+        self.addCleanup(shutil.rmtree, out, True)
+        with mock.patch.object(package, "RELEASES", releases):
+            package.release(SimpleNamespace(zip=self.new, previous=None, resources=pack, out=out))
+        self.assertEqual(sorted(p.name for p in out.iterdir()),
+                         ["MaaShinyColors-update-0.1.0-to-0.1.1.zip", "MaaShinyColors-with-resources.zip",
+                          "MaaShinyColors.zip", "SHA256SUMS.txt"])
+        sums = (out / "SHA256SUMS.txt").read_text(encoding="utf-8")
+        self.assertNotIn("with-resources", sums)                         # never listed for upload
+        self.assertTrue((releases / "0.1.1" / "MaaShinyColors.zip").is_file())
+
+    def test_version_order(self):
+        self.assertLess(package.version_key("0.1.9"), package.version_key("0.1.10"))
+        self.assertLess(package.version_key("v0.2.0-beta.1"), package.version_key("0.2.0"))
+        self.assertEqual(package.interface_version('{\n  // JSONC\n  "title": "x",\n  "version": "0.1.2",\n}\n'), "0.1.2")

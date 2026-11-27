@@ -12,7 +12,7 @@ const CODE = /^[a-z_]{1,40}(?::[a-z0-9,-]{1,200})?$/;
 const SAFE = /^[A-Za-z0-9_:.,-]{1,80}$/;
 
 export { gateTitle };
-export const MODES = [["calibrate", "校准"], ["scan", "扫描书库"]];
+export const MODES = [["scan", "扫描书库"]];
 export const NEWEST_MAX = 10;      // agent/core/knowhow_scan.NEWEST_MAX: one screen of 獲得順 tiles
 
 export const BLOCKER_TEXT = {
@@ -28,7 +28,7 @@ export const REASON_TEXT = {
   manual_game_input: "游戏被手动操作",
   grid_scroll_budget_exhausted: "网格滚动次数用完",
   grid_wheel_budget_before_bottom: "校准滚到上限仍没到底（步长已记录）",
-  grid_overlap_lost: "网格滚动后与上一屏对不上（步长可能不是整行，请先校准）",
+  grid_overlap_lost: "网格滚动后与上一屏对不上（滚动步长不符）",
   grid_overlap_ambiguous: "网格滚动后对不准位置",
   detail_binding_lost: "打开的书与格子对不上",
   detail_mismatch: "详情与格子内容不一致",
@@ -82,7 +82,7 @@ export function knowhowScanGate(policy, host) {
     ready, running, reason, blocker,
     label: "读取书库",
     title: ready
-      ? "自动打开「アイドル → アイドル一覧 → ノウハウブック」：先校准滚轮步长，再按评价值顺读取书库；只读，开始前会再确认"
+      ? "自动打开「アイドル → アイドル一覧 → ノウハウブック」：按评价值顺读取书库；只读，开始前会再确认"
       : running ? "扫描进行中"
       : blocker ? `现在不能扫描：${blockText}`
       : "此功能暂不可用：需要更新程序",
@@ -91,11 +91,6 @@ export function knowhowScanGate(policy, host) {
 }
 
 export const CONFIRM_LINES = {
-  calibrate: [
-    "约 10–15 分钟，最多查看 2 本书",
-    "不修改书库，不改排序",
-    "扫描时勿触碰游戏；可随时停止",
-  ],
   scan: [
     "读取整个书库，结束后恢复排序",
     "不修改书库",
@@ -142,7 +137,7 @@ const clock = (s) => (Number.isFinite(s) && s >= 0 ? `${String(Math.floor(s / 60
 const n = (v) => (Number.isInteger(v) && v >= 0 ? v : 0);
 
 export function progressText(scan) {
-  const reading = scan?.mode === "newest" ? "补读新书" : scan?.mode !== "calibrate" ? "读取书库" : "校准中";
+  const reading = scan?.mode === "newest" ? "补读新书" : "读取书库";
   const where = scan?.entered ? reading : "正在进入ノウハウブック一覧";
   return `${where} · 滚轮 ${n(scan?.scrolls)} 次 · 打开 ${n(scan?.books)} 本 · 已存 ${n(scan?.frames)} 帧 · 用时 ${clock(scan?.elapsed_s)}`;
 }
@@ -151,7 +146,7 @@ export function knowhowScanProgress(scan, { onStop } = {}) {
   const stopping = scan?.state === "stopping";
   return h("div", { class: "card-scan-progress", role: "status", dataset: { knowhowScanProgress: scan?.state || "running" } },
     h("span", { class: "card-scan-title small", text: stopping ? "正在停止…" : scan?.mode === "newest" ? "补读新书中（只读，请勿触碰游戏画面）"
-      : scan?.mode !== "calibrate" ? "扫描ノウハウ进行中（只读，请勿触碰游戏画面）" : "ノウハウ校准进行中（只滚轮测步长）" }),
+      : "扫描ノウハウ进行中（只读，请勿触碰游戏画面）" }),
     h("span", { class: "card-scan-line muted small num", dataset: { knowhowScanLine: "1" }, text: progressText(scan) }),
     h("button", { type: "button", class: "btn btn-small btn-emergency", disabled: stopping ? "" : null, dataset: { focusKey: "knowhow-scan-stop" },
       title: "停止扫描并保留已读资料；排序未恢复时会显示提示", onclick: () => onStop?.() }, stopping ? "停止中…" : "停止"));
@@ -169,13 +164,9 @@ export function knowhowScanResultNote(scan) {
   const reason = reasonText(scan.reason);
   let text;
   let tone = "warning";
-  if (scan.outcome === "calibrated") {
-    const grid = Number.isFinite(scan.grid_step_px) ? `网格每格 ${scan.grid_step_px} px（${scan.grid_step_rows ?? "?"} 行）` : "网格步长未测到";
-    const detail = Number.isFinite(scan.detail_step_px) ? `详情每格约 ${scan.detail_step_px} px` : "详情步长未测到";
-    text = `上次校准完成：${grid}，${detail}${scan.grid_bottom_reached === true ? "，已滚到网格底部" : ""}。`
-      + (scan.scan_ready === true ? "步长是整行且详情有重叠：核对存图后可开始「扫描书库」。" : "步长不满足扫描条件（非整行或无重叠）：调整后再扫描。");
-    tone = scan.scan_ready === true ? "success" : "warning";
-  } else if (scan.outcome === "scanned") {
+  // 2026-11-24: a stopped scan resumes while the game was not touched since (host `resumable`).
+  const again = scan.resumable === true ? "再次扫描从断点接续" : "再次扫描将重新读取全库";
+  if (scan.outcome === "scanned") {
     text = `上次扫描读完整个书库${Number.isFinite(scan.books_read) ? `（${scan.books_read} 本）` : ""}。`; tone = "success";
   } else if (scan.outcome === "newest_read") {
     text = `新书已读入书库${Number.isFinite(scan.books_read) ? `（${scan.books_read} 本）` : ""}。`; tone = "success";
@@ -184,8 +175,8 @@ export function knowhowScanResultNote(scan) {
   } else if (scan.outcome === "needs_full_scan") {
     text = `所持数与书库对不上${reason ? `（${reason}）` : ""}：请读取书库。`;
   } else if (scan.outcome === "partial") {
-    text = `上次扫描读了一部分${Number.isFinite(scan.books_read) ? `（${scan.books_read} 本）` : ""}：${reason || "未知原因"}。已读资料已保存；再次开始将重新读取全库。`;
-  } else if (scan.outcome === "stopped") text = `上次扫描已停止：${reason || "已停止"}。`;
+    text = `上次扫描读了一部分${Number.isFinite(scan.books_read) ? `（${scan.books_read} 本）` : ""}：${reason || "未知原因"}。已读资料已保存；${again}。`;
+  } else if (scan.outcome === "stopped") text = `上次扫描已停止：${reason || "已停止"}。${scan.resumable === true ? `${again}。` : ""}`;
   else if (scan.outcome === "uncertain") text = `上次扫描结果不确定：${reason || "进程被终止"}。请在游戏中核对，可能需要手动改回排序。`;
   else text = `上次扫描失败：${reason || "未知原因"}。`;
   if (scan.sort_restore_needed === true) text += "排序仍为评价值顺，可在游戏内调整。";

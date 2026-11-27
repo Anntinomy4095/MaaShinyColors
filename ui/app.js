@@ -590,6 +590,7 @@ async function main() {
         if (op === "issue_report") toast(`问题包已生成：${result.file}（${result.files} 个文件），已在资源管理器中选中`, "success");
         else if (op === "notify_test") toast("已发送测试通知，桌面右下角应弹出提示");
         else if (op === "update_check") toast("正在检查更新…");
+        else if (op === "update_download") toast("正在下载更新…");
         else if (op === "hotkey") toast(result.hotkey?.enabled ? (result.hotkey.registered ? "紧急停止快捷键已开启" : "快捷键被其他程序占用，未能开启") : "紧急停止快捷键已关闭",
           result.hotkey?.enabled && !result.hotkey.registered ? "warning" : undefined);
         return result;
@@ -646,11 +647,11 @@ async function main() {
     },
     // ノウハウ → 扫描ノウハウ: the host launches the supervised KnowhowScan (mode chosen in the panel's own confirmation).
     knowhowScanStart: async (mode, count = 0) => {
-      const params = mode === "newest" ? { confirmed: true, mode, count } : { confirmed: true, mode: mode === "scan" ? "scan" : "calibrate" };
+      // 2026-11-27: 校准 left the UI (the scan measures each scroll itself); the host keeps it for development runs.
+      const params = mode === "newest" ? { confirmed: true, mode, count } : { confirmed: true, mode: "scan" };
       try {
         await bridge.request("knowhow.scan.start", params);
-        toast(mode === "newest" ? "补读新书已开始：请勿触碰游戏画面" : mode === "scan" ? "扫描ノウハウ已开始：请勿触碰游戏画面"
-          : "ノウハウ校准已开始：请勿触碰游戏画面", "warning");
+        toast(mode === "newest" ? "补读新书已开始：请勿触碰游戏画面" : "扫描ノウハウ已开始：请勿触碰游戏画面", "warning");
       } catch (error) { toast(error.message, "danger"); }
     },
     // 自动卖书 turned on / strategy changed (task-panel): when the local library is not current, suggest reading it and go

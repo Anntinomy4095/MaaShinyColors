@@ -36,6 +36,7 @@ import datetime as _dt
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -105,7 +106,17 @@ FORBIDDEN_SEGMENTS = {"dev_assets", "game-assets", "game-assets-src", "resource_
                       "EBWebView", ".git", "node_modules", "__pycache__", "captures", "recordings"}
 FORBIDDEN_SUFFIXES = {".webp", ".jsonl", ".har", ".pyc", ".mp4", ".sqlite", ".pdb"}
 # Generated (not repository) files outside host/ and .venv/.
-GENERATED_FILES = {"MaaShinyColors.exe", "PACKAGE_MANIFEST.json"} | {f"{OCR_TARGET}/{name}" for name in OCR_FILES}
+GENERATED_FILES = ({"MaaShinyColors.exe", "PACKAGE_MANIFEST.json", "UPDATE_FILES.json"}
+                   | {f"{OCR_TARGET}/{name}" for name in OCR_FILES})
+
+# Release artifacts (2026-11-27): every full zip lists its files ({path: sha256}) so an update knows what changed; an
+# update zip carries only the changed files of one version step. Player data next to the exe is never part of either.
+UPDATE_FILES = "UPDATE_FILES.json"      # full zip: {"version", "files": {path: sha256}}
+UPDATE_PATCH = "UPDATE_PATCH.json"      # update zip: {"from", "to", "files": {path: sha256}, "removed": [path]}
+USER_DATA_PREFIXES = ("dev_assets/", "ui/game-assets/", "host/ui/game-assets/")
+PACKAGE_ROOT = "MaaShinyColors"
+RELEASES = PRIVATE / "package-build" / "releases"                  # <version>/MaaShinyColors.zip for later patches
+RESOURCES_PACK = PRIVATE / "package-build" / "resources-private.zip"  # the user's own resource overlay (never uploaded)
 
 
 def log(message: str) -> None:
@@ -464,18 +475,170 @@ def write_archive(package: Path) -> Path:
     problems = audit(package, runtime=True)
     if problems:
         raise RuntimeError(f"package audit failed: {problems[:5]}")
-    manifest = json.loads((package / "PACKAGE_MANIFEST.json").read_text(encoding="utf-8"))
     archive = package.parent / f"{package.name}.zip"
     begun = time.monotonic()
+    shipped = []
+    for path in sorted(package.rglob("*")):
+        if path.is_file():
+            relative = path.relative_to(package).as_posix()
+            if (relative.startswith("dev_assets/") or "__pycache__" in relative.split("/") or relative.endswith(".pyc")
+                    or relative == UPDATE_FILES):
+                continue
+            shipped.append(relative)
+    listing = {"version": folder_version(package), "files": {item: sha256_file(package / item) for item in shipped}}
+    (package / UPDATE_FILES).write_text(json.dumps(listing, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as handle:
-        for path in sorted(package.rglob("*")):
-            if path.is_file():
-                relative = path.relative_to(package).as_posix()
-                if relative.startswith("dev_assets/") or "__pycache__" in relative.split("/") or relative.endswith(".pyc"):
-                    continue
-                handle.write(path, PurePosixPath(package.name, relative).as_posix())
+        for relative in shipped + [UPDATE_FILES]:
+            handle.write(package / relative, PurePosixPath(package.name, relative).as_posix())
     log(f"zip {archive}: {archive.stat().st_size / 2**20:.1f} MiB, {time.monotonic() - begun:.0f} s")
     return archive
+
+
+# ---------------------------------------------------------------------------------------------- release artifacts
+
+def interface_version(text: str) -> str | None:
+    """The "version" of assets/interface.json (JSONC: comments and trailing commas, so not json.loads)."""
+    match = re.search(r'"version"\s*:\s*"([^"]+)"', text)
+    return match.group(1) if match else None
+
+
+def folder_version(package: Path) -> str | None:
+    try:
+        return interface_version((package / "assets" / "interface.json").read_text(encoding="utf-8"))
+    except OSError:
+        return None
+
+
+def version_key(text: str) -> tuple:
+    core = text.strip().lstrip("vV").split("+", 1)[0]
+    numbers, _, suffix = core.partition("-")
+    return tuple(int(p) if p.isdigit() else 0 for p in numbers.split(".")) + ((1,) if not suffix else (0, suffix))
+
+
+def is_user_data(relative: str) -> bool:
+    return relative.startswith(USER_DATA_PREFIXES)
+
+
+def _zip_entries(handle: zipfile.ZipFile) -> dict[str, zipfile.ZipInfo]:
+    """{path below the single top folder: entry}; folders skipped, backslash names (Compress-Archive) accepted."""
+    entries, roots = {}, set()
+    for info in handle.infolist():
+        name = info.filename.replace("\\", "/")
+        if name.endswith("/"):
+            continue
+        root, _, relative = name.partition("/")
+        if not relative or ".." in relative.split("/") or relative.startswith("/"):
+            raise ValueError(f"unexpected zip entry {info.filename!r}")
+        roots.add(root)
+        entries[relative] = info
+    if len(roots) != 1:
+        raise ValueError(f"zip must have one top folder, got {sorted(roots)[:5]}")
+    return entries
+
+
+def _entry_sha(handle: zipfile.ZipFile, info: zipfile.ZipInfo) -> str:
+    digest = hashlib.sha256()
+    with handle.open(info) as stream:
+        for block in iter(lambda: stream.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def zip_listing(archive: Path) -> tuple[str, dict[str, str]]:
+    """(version, {path: sha256}) of a full package zip, hashed from its contents (old zips have no UPDATE_FILES)."""
+    with zipfile.ZipFile(archive) as handle:
+        entries = _zip_entries(handle)
+        version = interface_version(handle.read(entries["assets/interface.json"]).decode("utf-8"))
+        if version is None:
+            raise ValueError(f"{archive.name}: no version in assets/interface.json")
+        return version, {path: _entry_sha(handle, info) for path, info in entries.items()}
+
+
+def make_patch(old: Path, new: Path, out_dir: Path) -> Path:
+    """MaaShinyColors-update-<old>-to-<new>.zip: the files that differ, UPDATE_PATCH.json and nothing of the player's."""
+    old_version, old_files = zip_listing(old)
+    new_version, new_files = zip_listing(new)
+    if version_key(new_version) <= version_key(old_version):
+        raise ValueError(f"update must go forward: {old_version} -> {new_version}")
+    changed = sorted(path for path, sha in new_files.items() if old_files.get(path) != sha)
+    removed = sorted(path for path in old_files if path not in new_files and path != UPDATE_FILES)
+    bad = [path for path in changed + removed if is_user_data(path)]
+    if bad:
+        raise ValueError(f"player data in a release zip: {bad[:5]}")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    archive = out_dir / f"{PACKAGE_ROOT}-update-{old_version}-to-{new_version}.zip"
+    patch = {"from": old_version, "to": new_version, "files": {path: new_files[path] for path in changed},
+             "removed": removed}
+    with zipfile.ZipFile(new) as source, zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as handle:
+        entries = _zip_entries(source)
+        for path in changed:
+            handle.writestr(f"{PACKAGE_ROOT}/{path}", source.read(entries[path]))
+        handle.writestr(f"{PACKAGE_ROOT}/{UPDATE_PATCH}", json.dumps(patch, ensure_ascii=False, indent=1) + "\n")
+    log(f"update {archive.name}: {len(changed)} changed, {len(removed)} removed, {archive.stat().st_size / 2**20:.1f} MiB")
+    return archive
+
+
+def with_resources(release: Path, resources: Path, out: Path) -> Path:
+    """The release zip plus the user's private resource overlay (player-data paths only; never uploaded)."""
+    with zipfile.ZipFile(release) as base, zipfile.ZipFile(resources) as extra:
+        program, overlay = _zip_entries(base), _zip_entries(extra)
+        bad = [path for path in overlay if not is_user_data(path)]
+        if bad:
+            raise ValueError(f"resource pack outside player data: {bad[:5]}")
+        with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as handle:
+            for path, info in program.items():
+                handle.writestr(f"{PACKAGE_ROOT}/{path}", base.read(info))
+            for path, info in overlay.items():
+                handle.writestr(f"{PACKAGE_ROOT}/{path}", extra.read(info))
+    log(f"with resources {out.name}: {len(program)} + {len(overlay)} files, {out.stat().st_size / 2**20:.1f} MiB")
+    return out
+
+
+def resources_from(with_resources_zip: Path, release: Path, out: Path) -> Path:
+    """Recover the resource overlay from an older with-resources zip: its player-data files not in the release."""
+    with zipfile.ZipFile(with_resources_zip) as full, zipfile.ZipFile(release) as base:
+        program, entries = _zip_entries(base), _zip_entries(full)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as handle:
+            kept = 0
+            for path, info in entries.items():
+                if is_user_data(path) and path not in program:
+                    handle.writestr(f"{PACKAGE_ROOT}/{path}", full.read(info))
+                    kept += 1
+    log(f"resource pack {out}: {kept} files")
+    return out
+
+
+def release(args) -> int:
+    """The three artifacts of one version in dist/release-<version>/: full zip and update zip (GitHub), full zip with
+    the private resources (local only). The full zip is kept under package-build/releases for the next update."""
+    full = args.zip.resolve()
+    version, _ = zip_listing(full)
+    out = checked_output(args.out or ROOT / "dist" / f"release-{version}")
+    if out.exists():
+        shutil.rmtree(out)
+    out.mkdir(parents=True)
+    shutil.copy2(full, out / f"{PACKAGE_ROOT}.zip")
+    previous = args.previous
+    if previous is None and RELEASES.is_dir():
+        older = [p for p in RELEASES.iterdir() if (p / f"{PACKAGE_ROOT}.zip").is_file()
+                 and version_key(p.name) < version_key(version)]
+        previous = max(older, key=lambda p: version_key(p.name)) / f"{PACKAGE_ROOT}.zip" if older else None
+    upload = [out / f"{PACKAGE_ROOT}.zip"]
+    if previous is not None:
+        upload.append(make_patch(previous, full, out))
+    else:
+        log("no previous release zip: no update zip")
+    resources = args.resources or RESOURCES_PACK
+    local = with_resources(full, resources, out / f"{PACKAGE_ROOT}-with-resources.zip") if resources.is_file() else None
+    if local is None:
+        log(f"no resource pack at {resources}: no with-resources zip")
+    kept = RELEASES / version
+    kept.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(full, kept / f"{PACKAGE_ROOT}.zip")
+    (out / "SHA256SUMS.txt").write_text("".join(f"{sha256_file(p)}  {p.name}\n" for p in upload), encoding="utf-8")
+    log("upload to GitHub: " + ", ".join(p.name for p in upload) + (f"; local only: {local.name}" if local else ""))
+    return 0
 
 
 # ---------------------------------------------------------------------------------------------------------- audit
@@ -647,13 +810,34 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--skip-host", action="store_true")
     z = sub.add_parser("archive", help="zip an audited package, excluding local runtime data")
     z.add_argument("--package", type=Path, default=DEFAULT_OUT)
+    rel = sub.add_parser("release", help="full zip + update zip (GitHub) + with-resources zip (local) in dist/release-<v>")
+    rel.add_argument("--zip", type=Path, default=DEFAULT_OUT.parent / f"{PACKAGE_ROOT}.zip")
+    rel.add_argument("--previous", type=Path, help="previous full zip (default: newest kept release below this one)")
+    rel.add_argument("--resources", type=Path, help=f"private resource pack (default {RESOURCES_PACK})")
+    rel.add_argument("--out", type=Path)
+    pack = sub.add_parser("resources-from", help="recover the private resource pack from an old with-resources zip")
+    pack.add_argument("--with-resources", type=Path, required=True)
+    pack.add_argument("--release", type=Path, required=True)
+    pack.add_argument("--out", type=Path, default=RESOURCES_PACK)
+    keep = sub.add_parser("keep-release", help="keep a full zip as the base of later update zips")
+    keep.add_argument("--zip", type=Path, required=True)
     args = parser.parse_args(argv)
     if sys.platform != "win32":
         raise SystemExit("the portable package is Windows x64 only")
     if args.command == "archive":
         write_archive(args.package)
         return 0
-    return {"build": build, "audit": audit_command, "smoke": smoke, "resources": export_recognition}[args.command](args)
+    if args.command == "resources-from":
+        resources_from(args.with_resources, args.release, args.out)
+        return 0
+    if args.command == "keep-release":
+        version, _ = zip_listing(args.zip)
+        (RELEASES / version).mkdir(parents=True, exist_ok=True)
+        shutil.copy2(args.zip, RELEASES / version / f"{PACKAGE_ROOT}.zip")
+        log(f"kept {version}")
+        return 0
+    return {"build": build, "audit": audit_command, "smoke": smoke, "resources": export_recognition,
+            "release": release}[args.command](args)
 
 
 if __name__ == "__main__":

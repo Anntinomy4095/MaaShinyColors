@@ -135,7 +135,8 @@ internal sealed partial class UiKnowhowScanSupervisor : IUiKnowhowScan, IDisposa
     {
         if (!ValidMode(mode) || !ValidCount(mode, count)) { return "invalid_mode"; }
         _newestCount = mode == "newest" ? count : 0;
-        var refusal = Start(mode, continuation: false);
+        // A scan that stopped part-way resumes from its own record while the game was not touched since (2026-11-24).
+        var refusal = Start(mode, continuation: mode == "scan");
         if (refusal is not null && !Active) { _scanId = _resumeActivity = null; }
         return refusal;
     }
@@ -209,8 +210,8 @@ internal sealed partial class UiKnowhowScanSupervisor : IUiKnowhowScan, IDisposa
 
     private bool RequestStop(string reason)
     {
+        // The scan id stays: Finalize (or the pending continuation) keeps it for a later user start.
         _scanAll = false;
-        _scanId = _resumeActivity = null;
         if (_continueAtMs is not null)
         {
             _continueAtMs = null;
@@ -280,6 +281,10 @@ internal sealed partial class UiKnowhowScanSupervisor : IUiKnowhowScan, IDisposa
         }
     }
 
+    /// <summary>The next 「扫描书库」 continues the stopped scan: same id, and no game input since it ended.</summary>
+    private bool Resumable => !Active && _continueAtMs is null && _scanId is not null && _resumeActivity is not null
+        && InputActivity(_hostStatus?.Invoke()) == _resumeActivity;
+
     public JsonObject Status()
     {
         var run = _run;
@@ -305,6 +310,7 @@ internal sealed partial class UiKnowhowScanSupervisor : IUiKnowhowScan, IDisposa
             foreach (var (key, value) in _last) { status[key] = value?.DeepClone(); }
         }
         if (_scanAll) { status["mode"] = "scan"; }
+        status["resumable"] = Resumable;
         return status;
     }
 
@@ -391,7 +397,10 @@ internal sealed partial class UiKnowhowScanSupervisor : IUiKnowhowScan, IDisposa
             }
         }
         _scanAll = false;
-        _scanId = _resumeActivity = null;
+        // Any partial or stopped scan keeps its id: the next start resumes only if the game state is unchanged.
+        _resumeActivity = run.Mode == "scan" && _scanId is not null && outcome is "partial" or "stopped"
+            && (string?)result["reason"] != "manual_game_input" ? InputActivity(_hostStatus?.Invoke()) : null;
+        if (_resumeActivity is null) { _scanId = null; }
         Log(outcome is "calibrated" or "scanned" or "newest_read" or "library_up_to_date" ? "info" : "warn", outcome switch
         {
             "calibrated" => "ノウハウ校准完成：步长与帧已保存（私有目录 " + (string?)result["frames_folder"] + "）。",

@@ -633,7 +633,7 @@
       }
     },
     "app.support": {
-      "description": "设置 → 关于 / 问题反馈 / 更新 / 通知 / 快捷键。op=info 返回版本、构建、项目地址、第三方许可；open_logs 在资源管理器打开本机运行记录目录；open_guide 在资源管理器中选中使用说明（README.md）；issue_report 把最近的文字记录（运行记录、输入日志、W.I.N.G. 决策、设置；本机路径与用户名已替换）和最近 10 张失败截图（failures/）（不含登录信息、游戏素材）打包到 dev_assets/private/issue-reports/ 并在资源管理器中选中，不上传；open_link（repo/issues/releases）用默认浏览器打开 interface.json github 仓库页面；update_check（channel stable/beta）只读取该仓库的 GitHub Releases 并比较版本，不下载、不安装，结果见 status.update support.update；notify_test 显示一条系统通知；hotkey（enabled）开关全局紧急停止热键 Ctrl+Alt+Shift+S（只停止运行中的任务，不开始任何任务）。页面不能提供路径或网址。",
+      "description": "设置 → 关于 / 问题反馈 / 更新 / 通知 / 快捷键。op=info 返回版本、构建、项目地址、第三方许可；open_logs 在资源管理器打开本机运行记录目录；open_guide 在资源管理器中选中使用说明（README.md）；issue_report 把最近的文字记录（运行记录、输入日志、W.I.N.G. 决策、设置；本机路径与用户名已替换）和最近 10 张失败截图（failures/）（不含登录信息、游戏素材）打包到 dev_assets/private/issue-reports/ 并在资源管理器中选中，不上传；open_link（repo/issues/releases）用默认浏览器打开 interface.json github 仓库页面；update_check（channel stable/beta）只读取该仓库的 GitHub Releases 并比较版本，结果见 status.update support.update；update_download 在检查到新版本后下载该版本的增量更新包（无则完整包），校验后把有变化的文件暂存到 dev_assets/private/update/staged/（不含用户数据）；update_restart 启动 MaaShinyColors.exe --update 并关闭窗口，启动器备份后替换文件，失败则恢复；notify_test 显示一条系统通知；hotkey（enabled）开关全局紧急停止热键 Ctrl+Alt+Shift+S（只停止运行中的任务，不开始任何任务）。页面不能提供路径或网址。",
       "params": {
         "type": "object",
         "required": [
@@ -649,6 +649,8 @@
               "issue_report",
               "open_link",
               "update_check",
+              "update_download",
+              "update_restart",
               "notify_test",
               "hotkey"
             ]
